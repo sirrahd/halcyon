@@ -27,10 +27,10 @@
             </section>
 
             <div class="right_column_clone">
-                <?php include dirname(__FILE__).('/widgets/side_what_to_follow.php'); ?>
+                <?php include dirname(__FILE__).('/widgets/side_who_to_follow.php'); ?>
                 <?php include dirname(__FILE__).('/widgets/side_footer.php'); ?>
             </div>
-            
+
         </aside>
 
         <article class="center_column">
@@ -79,7 +79,7 @@
 
         <aside class="right_column">
             <section class="side_widgets_wrap">
-                <?php include dirname(__FILE__).('/widgets/side_what_to_follow.php'); ?>
+                <?php include dirname(__FILE__).('/widgets/side_who_to_follow.php'); ?>
             </section>
             <!-- FOOTER -->
             <?php include dirname(__FILE__).('/widgets/side_footer.php'); ?>
