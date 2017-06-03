@@ -2507,7 +2507,7 @@ body {
 #js-overlay_content_wrap #js-overlay_content {
 	width: 628px;
 	height: calc( 100% - 32px);
-	margin: 16px auto 16px;
+	margin: 0 auto;
 	position: relative;
 }
 
@@ -2585,6 +2585,7 @@ body {
 
 .toot_detail_wrap {
 	border-radius: 5px;
+	margin: 64px auto;
 }
 
 .toot_detail_wrap .toot_detail:first-child,
@@ -2868,6 +2869,7 @@ body {
 	max-height: 100%;
 	display: flex;
 	flex-direction: column;
+	margin: 32px auto;
 }
 
 .media_detail .media_box {
@@ -2964,6 +2966,18 @@ body {
 
 #main .search_nav_wrap .search_nav {
 	width: 1200px;
+}
+
+}
+
+/*---------------------------------------------
+  1680px or more
+---------------------------------------------*/
+
+@media screen and (min-width : 	1680px) {
+
+#main > .header_image_box {
+  height: 500px;
 }
 
 }
