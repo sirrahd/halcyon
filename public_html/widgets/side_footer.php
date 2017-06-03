@@ -9,11 +9,7 @@
         <li>
             <a class="footer_widget_about">About</a>
         </li>
-
-        <li>
-            <a class="footer_widget_about">About this instance</a>
-        </li>
-
+        
         <li>
             <a class="footer_widget_terms">Terms</a>
         </li>
