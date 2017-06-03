@@ -2506,14 +2506,14 @@ body {
 
 #js-overlay_content_wrap #js-overlay_content {
 	width: 628px;
-	height: calc( 100% - 32px);
+	height: calc( 100% - 64px );
 	margin: 0 auto;
 	position: relative;
 }
 
 #js-overlay_content_wrap #js-overlay_content .parmanent_object.visible,
 #js-overlay_content_wrap #js-overlay_content .temporary_object.visible {
-	max-height: 100%;
+	height: 100%;
 	width: 100%;
 }
 
