@@ -13,12 +13,12 @@
   <link rel="stylesheet" type="text/css" href="/assets/css/fonts.css" media="all" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="/assets/js/halcyonFunc.js"></script>
+  <script src="/assets/js/halcyon/halcyonFunctions.js"></script>
   <script src="/assets/js/mastodon.js/mastodon.js"></script><!-- thx @kirschn -->
   <script src="/assets/js/jquery-cookie/src/jquery.cookie.js"></script>
   <script src="/assets/js/shortcut.js"></script>
   <script src="/assets/js/replace_emoji.js"></script>
-  <script src="/assets/js/halcyonUI.js"></script>
+  <script src="/assets/js/halcyon/halcyonUI.js"></script>
   <script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.2.3"></script>
 
   <script>
