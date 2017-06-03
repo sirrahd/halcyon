@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Next version
-- Oauth login
+- ~~Oauth login~~
 - Add meida attachment's next/prev button
 
 ## Future
