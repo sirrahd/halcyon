@@ -1,6 +1,6 @@
 <div class="side_widget what_to_follow">
 
-    <h2>What to follow</h2>
+    <h2>Who to follow</h2>
 
     <ul class="account_list">
         <li class="account_box what_to_follow_0">
