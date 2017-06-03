@@ -98,7 +98,7 @@
 
         if ( !search.accounts.length ) {
           location.href="/404.php";
-        } else if ( search.accounts[0].url === query ) {
+        } else if ( "@"+search.accounts[0].acct === query ) {
           setAccount(search.accounts[0]);
           setFollows(search.accounts[0].id,'following',[{name:'limit',data:18}]);
           setRecentImages(search.accounts[0].id);

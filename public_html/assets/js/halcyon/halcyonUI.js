@@ -2,10 +2,9 @@
   Reset
 -----------------------------------*/
 
-for (let i=0; i<document.forms.length; ++i) {
-  clearForm(document.forms[i]);
+$(function() {
   $('input[type="file"]').val('');
-}
+})
 
 /*-----------------------------------
   Buttons
@@ -178,9 +177,15 @@ $(function() {
   $(document).on('click','.cw_button', function(e) {
 
       e.stopPropagation();
+      const article = $(this).parent();
 
-      $(this).toggleClass('invisible');
-      $(this).parent().toggleClass('content_warning');
+      if ( article.hasClass('content_warning') ) {
+        $(this).text('SHOW LESS');
+        article.removeClass('content_warning');
+      } else {
+        $(this).text('SHOW MORE');
+        article.addClass('content_warning');
+      }
 
       return false;
   });
@@ -1925,13 +1930,27 @@ function setNotifications(load_options) {
 
 function setFollows(mid, param, load_options) {
 
-  let isSyncing = true;
+  let isSyncing   = true,
+      followsList = [];
 
   api.get('accounts/'+mid+'/'+param, load_options, function(follows) {
 
+
     for (let i in follows) {
       follows_template(follows[i]).appendTo("#js-follows_profile");
+      followsList.unshift(follows[i].id);
     };
+
+    api.getArray('accounts/relationships', [{name:'id', data:followsList}], function(RelationshipsObj) {
+      for ( let i in RelationshipsObj ) {
+        if ( RelationshipsObj[i].following ) {
+          const button = $('#js-follows_profile .follow_button[mid="'+RelationshipsObj[i].id+'"]');
+          button.removeClass("follow_button");
+          button.addClass("following_button");
+          button.text('Following');
+        }
+      }
+    });
 
     links = getLinkFromXHRHeader(responce_headers);
     replace_emoji();
@@ -1954,11 +1973,25 @@ function setFollows(mid, param, load_options) {
 
         api.get('accounts/'+mid+'/'+param, load_options, function(follows) {
 
+          let followsList = [];
+
           if (follows.length) {
 
             for(let i in follows) {
               follows_template(follows[i]).appendTo("#js-follows_profile");
+              followsList.unshift(follows[i].id);
             };
+
+            api.getArray('accounts/relationships', [{name:'id', data:followsList}], function(RelationshipsObj) {
+              for ( let i in RelationshipsObj ) {
+                if ( RelationshipsObj[i].following ) {
+                  const button = $('#js-follows_profile .follow_button[mid="'+RelationshipsObj[i].id+'"]');
+                  button.removeClass("follow_button");
+                  button.addClass("following_button");
+                  button.text('Following');
+                }
+              }
+            });
 
             links = getLinkFromXHRHeader(responce_headers);
             replace_emoji();
@@ -2213,7 +2246,8 @@ function setOverlayMedia(sid,url) {
 
   // If not seletcting text, show status details
   $('#js-overlay_content_wrap').addClass('view');
-  $('#js-overlay_content_wrap').addClass('black_05');
+  $('#js-overlay_content_wrap').addClass('black_08');
+  $('#js-overlay_content .temporary_object').addClass('visible');
 
   api.get("statuses/"+sid, function(status) {
 
@@ -3086,6 +3120,7 @@ $(function() {
     $('#js-overlay_content_wrap .overlay_copy_link').addClass('invisible');
 
     // remove here
+    $('#js-overlay_content .temporary_object, #js-overlay_content .parmanent_object').removeClass('visible');
     $('#js-overlay_content_wrap .overlay_status      .submit_status_label').removeClass('active_submit_button');
     $('#js-overlay_content_wrap .single_reply_status .submit_status_label').removeClass('active_submit_button');
     $('#js-overlay_content_wrap #reply_status_form   .submit_status_label').removeClass('active_submit_button');

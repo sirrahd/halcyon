@@ -9,7 +9,7 @@
         <li>
             <a class="footer_widget_about">About</a>
         </li>
-        
+
         <li>
             <a class="footer_widget_terms">Terms</a>
         </li>
@@ -25,7 +25,7 @@
         <li>
             <a href="https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/List-of-Mastodon-instances.md">Other instances</a>
         </li>
-        
+
     </ul>
 
 </footer>
