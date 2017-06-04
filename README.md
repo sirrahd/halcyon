@@ -23,14 +23,14 @@ I didn't prepared setup script so you have to setup manually...
 
 After installed PHP, run this.
 
-```bash.sh
-$ sudo pecl install pdo_mysql
-$ sudo vi php.ini
+```bash
+sudo pecl install pdo_mysql
+sudo vi php.ini
 ```
 
 change to this
 
-```bash.sh
+```php.ini
 extension=mysqli.so
 extension=pdo_mysql.so
 ```
