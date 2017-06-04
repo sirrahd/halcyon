@@ -36,19 +36,19 @@ extension=pdo_mysql.so
 ### MySQL
 After installed MySQL, create a user, run this.
 ```bash.sh
-$ CREATE DATABASE <DB NAME> DEFAULT CHARACTER SET utf8;
-$ CREATE TABLE <DB NAME>.instances(domain varchar(261), client_id varchar(64), client_secret varchar(64));
+$ CREATE DATABASE <DATABASE NAME> DEFAULT CHARACTER SET utf8;
+$ CREATE TABLE <DATABASE NAME>.instances(domain varchar(261), client_id varchar(64), client_secret varchar(64));
 ```
 and change `/config.ini` like this
 ```config.ini
 ~~~ line 3 ~~~
-api_client_name = <App Name>
-api_client_website = <App Website link>
+api_client_name = <APP NAME>
+api_client_website = <APP WEBSITE LINK>
 ~~~ line 8 ~~~
-db_host = <DataBase Host Domain>
-db_user = <DataBase User>
-db_pass = <DataBase Password>
-db_name = <DataBase Name>
+db_host = <DATABASE HOST DOMAIN>
+db_user = <DATABASE USERNAME>
+db_pass = <DATABASE PASSWORD>
+db_name = <DATABASE NAME>
 ```
 
 ## Credits
