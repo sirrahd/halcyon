@@ -101,6 +101,7 @@ textarea {
 
 input {
 	max-width: 100%;
+	-webkit-appearance: none;
 }
 
 button, input[type="submit"], input[type="button"]{
@@ -1242,7 +1243,7 @@ body {
 
 #js-follows_profile{
 	display: flex;
-	width: 900px;
+	width: 600px;
 	box-sizing: border-box;
 	height: auto;
 	flex-wrap: wrap;
@@ -1736,8 +1737,9 @@ body {
 #header .header_nav_wrap .header_left_box {
 	display: flex;
 	justify-content: flex-start;
-	flex: 2;
+	flex-grow: 2;
 	height: 100%;
+	flex-shrink: 0;
 }
 
 /* Left navigation box */
@@ -1867,10 +1869,11 @@ body {
 
 /* header nav right*/
 #header .header_nav_wrap .header_right_box {
-	flex: 2;
+	flex-grow: 2;
 	box-sizing: border-box;
 	padding: 8px 0;
 	height: 100%;
+	flex-shrink: 0;
 }
 
 /* header nav right list */
@@ -2954,6 +2957,10 @@ body {
 
 #main .profile_nav_wrap .profile_nav .profile_nav_right {
 	width: 900px;
+}
+
+#js-follows_profile {
+    width: 900px;
 }
 
 /*--------------------------------------
