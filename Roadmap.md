@@ -7,6 +7,7 @@
 
 ## Future
 - Multi account
+- Emoji picker
 - Native profile edit
 - Dark theme
 - Translation support

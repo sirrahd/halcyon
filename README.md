@@ -23,23 +23,23 @@ I didn't prepared setup script so you have to setup manually...
 
 After installed PHP, run this.
 
-```bash.sh
-$ sudo pecl install pdo_mysql
-$ sudo vi php.ini
+```bash
+sudo pecl install pdo_mysql
+sudo vi php.ini
 ```
 
 change to this
 
-```bash.sh
+```php.ini
 extension=mysqli.so
 extension=pdo_mysql.so
 ```
 
 ### MySQL
 After installed MySQL, create a user, run this.
-```bash.sh
-$ CREATE DATABASE <DATABASE NAME> DEFAULT CHARACTER SET utf8;
-$ CREATE TABLE <DATABASE NAME>.instances(domain varchar(261), client_id varchar(64), client_secret varchar(64));
+```sql
+CREATE DATABASE DATABASE_NAME DEFAULT CHARACTER SET utf8;
+CREATE TABLE DATABASE_NAME.instances(domain varchar(261), client_id varchar(64), client_secret varchar(64));
 ```
 and change `/config.ini` like this
 ```config.ini
