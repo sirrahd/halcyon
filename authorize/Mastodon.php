@@ -14,19 +14,21 @@ use Exception;
 --------------------*/
 class Mastodon extends \Mastodon_api
 {
-    $appSettings = parse_ini_file('../config.ini', true);
-    
-    private $clientName         = $appSettings["App"]["api_client_name"];
-    private $clientWebsite      = $appSettings["App"]["api_client_website"];
-    private $clientRedirectUris = $appSettings["App"]["api_client_website"].'/auth urn:ietf:wg:oauth:2.0:oob';
-    private $clientScopes       = array('read', 'write', 'follow');
-    private $instances          = array();
-    private $dbHost             = $appSettings["Mysql"]["db_host"];
-    private $dbUser             = $appSettings["Mysql"]["db_user"];
-    private $dbPass             = $appSettings["Mysql"]["db_pass"];
-    private $dbName             = $appSettings["Mysql"]["db_name"];
 
     function __construct(){
+        $this->appSettings = parse_ini_file('../../config.ini', true);
+
+        $this->clientName         = $this->appSettings["App"]["api_client_name"];
+        $this->clientRedirectUris = $this->appSettings["App"]["api_client_website"].'/auth urn:ietf:wg:oauth:2.0:oob';
+        $this->clientWebsite      = $this->appSettings["App"]["api_client_website"];
+        $this->clientScopes       = array('read', 'write', 'follow');
+        $this->instances          = array();
+
+        $this->dbHost             = $this->appSettings["Mysql"]["db_host"];
+        $this->dbUser             = $this->appSettings["Mysql"]["db_user"];
+        $this->dbPass             = $this->appSettings["Mysql"]["db_pass"];
+        $this->dbName             = $this->appSettings["Mysql"]["db_name"];
+
         $this->database = new Database($this->dbHost, $this->dbUser, $this->dbPass, $this->dbName);
         $this->readInstances();
     }
