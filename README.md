@@ -43,12 +43,12 @@ and change `/config.ini` like this
 ```config.ini
 ~~~ line 3 ~~~
 api_client_name = <App Name>
-api_client_website = <Website's link>
+api_client_website = <App Website link>
 ~~~ line 8 ~~~
 db_host = <DataBase Host Domain>
 db_user = <DataBase User>
 db_pass = <DataBase Password>
-db_name = <DataBase's Name>
+db_name = <DataBase Name>
 ```
 
 ## Credits
