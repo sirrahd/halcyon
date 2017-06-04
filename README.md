@@ -20,6 +20,7 @@ https://halcyon.social/
 I didn't prepared setup script so you have to setup manually...
 
 ### MySQL
+After installed MySQL, create a user, run this.
 ```bash.sh
 CREATE DATABASE <DB NAME> DEFAULT CHARACTER SET utf8;
 CREATE TABLE <DB NAME>.instances(domain varchar(261), client_id varchar(64), client_secret varchar(64));
