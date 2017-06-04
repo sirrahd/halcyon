@@ -1682,7 +1682,7 @@ function setTimeline(level,load_options) {
 
                     //context
                     if ( level === "timelines/home" | level === "timelines/public" ) {
-                      if (userstream.payload.in_reply_to_id & !$(".toot_entry[sid='"+statuses[i].in_reply_to_id+"']").length) {
+                      if (userstream.payload.in_reply_to_id & !$(".toot_entry[sid='"+userstream.in_reply_to_id+"']").length) {
                            let reply_source = userstream.payload.id;
                           api.get('statuses/'+userstream.payload.in_reply_to_id, function(in_reply_statuses) {
                             $("#js-timeline .toot_entry[sid='"+reply_source+"']").before(context_template(in_reply_statuses, 'ancestors_status default_padding'));
@@ -2442,11 +2442,13 @@ $(function() {
 
     } else {
 
-      const attachment  = $('#overlay_status_media_atta').clone(),
-          dummy_form  = $('<form></form>').append(attachment),
-          media_array = [],
-          files       = dummy_form[0][0].files,
-          filesLen    = files.length -1;
+      const dummy_form  = $('<form></form>').append($('#overlay_status_media_atta')),
+            files       = dummy_form[0][0].files,
+            filesLen    = files.length -1;
+
+      let media_array = [];
+
+      $("#overlay_status_form .status_bottom").append($('<input id="overlay_status_media_atta" name="files" multiple="" class="invisible" type="file">'));
 
       for (let i=0; i<files.length; i++) {
 
@@ -2629,11 +2631,14 @@ $(function() {
 
     } else {
 
-      const attachment  = $('#header_status_media_atta').clone(),
-          dummy_form  = $('<form></form>').append(attachment),
-          media_array = [],
-          files       = dummy_form[0][0].files,
-          filesLen    = files.length -1;
+      // 擬似formに追加。そのあとクローンを元の位置に戻す。
+      const dummy_form             = $('<form></form>').append($('#header_status_media_atta')),
+            files                  = dummy_form[0][0].files,
+            filesLen               = files.length -1;
+
+      let media_array = [];
+
+      $("#header_status_form .status_bottom").append($('<input id="header_status_media_atta" name="files" multiple="" class="invisible" type="file">'));
 
       for (let i=0; i<files.length; i++) {
 
@@ -2820,11 +2825,13 @@ $(function() {
 
     } else {
 
-      const attachment  = $('#reply_status_media_atta').clone(),
-            dummy_form  = $('<form></form>').append(attachment),
-            media_array = [],
-            files       = dummy_form[0][0].files,
-            filesLen    = files.length -1;
+      const dummy_form             = $('<form></form>').append($('#reply_status_media_atta')),
+            files                  = dummy_form[0][0].files,
+            filesLen               = files.length -1;
+
+      let media_array = [];
+
+      $('#reply_status_form .status_bottom').append($('<input id="reply_status_media_atta" name="files" multiple="" class="invisible" type="file">'));
 
       for (let i=0; i<files.length; i++) {
 
@@ -3030,11 +3037,13 @@ $(function() {
 
     } else {
 
-      const attachment  = $('#single_reply_status_media_atta').clone(),
-            dummy_form  = $('<form></form>').append(attachment),
-            media_array = [],
+      const dummy_form  = $('<form></form>').append($('#single_reply_status_media_atta')),
             files       = dummy_form[0][0].files,
             filesLen    = files.length -1;
+
+      let media_array = [];
+
+      $("#single_reply_status_form .status_bottom").append($('<input id="single_reply_status_media_atta" name="files" multiple="" class="invisible" type="file">'));
 
       for (let i=0; i<files.length; i++) {
 
