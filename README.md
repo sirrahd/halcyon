@@ -41,10 +41,10 @@ $ CREATE TABLE <DB NAME>.instances(domain varchar(261), client_id varchar(64), c
 ```
 and change `/config.ini` like this
 ```config.ini
-;~~~
+~~~ line 3 ~~~
 api_client_name = <App Name>
 api_client_website = <Website's link>
-;~~~
+~~~ line 8 ~~~
 db_host = <DataBase Host Domain>
 db_user = <DataBase User>
 db_pass = <DataBase Password>
