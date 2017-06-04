@@ -39,17 +39,16 @@ After installed MySQL, create a user, run this.
 $ CREATE DATABASE <DB NAME> DEFAULT CHARACTER SET utf8;
 $ CREATE TABLE <DB NAME>.instances(domain varchar(261), client_id varchar(64), client_secret varchar(64));
 ```
-and change `/authorize/Mastodon.php` like this
-```Mastodon.php
-private $clientName = 'Halcyon for Mastodon';
-private $clientRedirectUris = 'https://<YOUR DOMAIN>/auth urn:ietf:wg:oauth:2.0:oob';
-private $clientWebsite = 'https://<YOUR DOMAIN>/';
-private $clientScopes = array('read', 'write', 'follow');
-private $instances = array();
-private $dbHost = '<DB HOST>';
-private $dbUser = '<DB USERNAME>';
-private $dbPass = '<DB PASSWORD>';
-private $dbName = '<DB NAME>';
+and change `/config.ini` like this
+```config.ini
+;~~~
+api_client_name = <App Name>
+api_client_website = <Website's link>
+;~~~
+db_host = <DataBase Host Domain>
+db_user = <DataBase User>
+db_pass = <DataBase Password>
+db_name = <DataBase's Name>
 ```
 
 ## Credits
