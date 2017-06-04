@@ -19,11 +19,25 @@ https://halcyon.social/
 ## Setup(仮)
 I didn't prepared setup script so you have to setup manually...
 
+### PDO MySQL
+
+```bash.sh
+$ sudo pecl install pdo_mysql
+$ sudo vi php.ini
+```
+
+change to this
+
+```bash.sh
+extension=mysqli.so
+extension=pdo_mysql.so
+```
+
 ### MySQL
 After installed MySQL, create a user, run this.
 ```bash.sh
-CREATE DATABASE <DB NAME> DEFAULT CHARACTER SET utf8;
-CREATE TABLE <DB NAME>.instances(domain varchar(261), client_id varchar(64), client_secret varchar(64));
+$ CREATE DATABASE <DB NAME> DEFAULT CHARACTER SET utf8;
+$ CREATE TABLE <DB NAME>.instances(domain varchar(261), client_id varchar(64), client_secret varchar(64));
 ```
 and change `/authorize/Mastodon.php` like this
 ```Mastodon.php
