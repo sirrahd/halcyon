@@ -62,6 +62,9 @@ var MastodonAPI = function(config) {
                 },
                 error: function(xhr, textStatus, errorThrown) {
                   putMessage(`[${xhr.status}] ${xhr.responseJSON['error']}`);
+                  if ( xhr.status === 401 ) {
+                    location.href = "/logout"
+                  }
                 }
             });
         },
@@ -114,6 +117,9 @@ var MastodonAPI = function(config) {
                 },
                 error: function(xhr, textStatus, errorThrown) {
                   putMessage(`[${xhr.status}] ${xhr.responseJSON['error']}`);
+                  if ( xhr.status === 401 ) {
+                    location.href = "/logout"
+                  }
                 }
             });
         },
@@ -156,6 +162,9 @@ var MastodonAPI = function(config) {
                 },
                 error: function(xhr, textStatus, errorThrown) {
                   putMessage(`[${xhr.status}] ${xhr.responseJSON['error']}`);
+                  if ( xhr.status === 401 ) {
+                    location.href = "/logout"
+                  }
                 }
             });
         },
@@ -181,6 +190,9 @@ var MastodonAPI = function(config) {
                 },
                 error: function(xhr, textStatus, errorThrown) {
                     putMessage(`[${xhr.status}] ${xhr.responseJSON['error']}`);
+                    if ( xhr.status === 401 ) {
+                      location.href = "/logout"
+                    }
                 }
             });
         },
@@ -210,6 +222,9 @@ var MastodonAPI = function(config) {
                 },
                 error: function(xhr, textStatus, errorThrown) {
                   putMessage(`[${xhr.status}] ${xhr.responseJSON['error']}`);
+                  if ( xhr.status === 401 ) {
+                    location.href = "/logout"
+                  }
                 }
             });
 
@@ -226,6 +241,9 @@ var MastodonAPI = function(config) {
                 },
                 error: function(xhr, textStatus, errorThrown) {
                   putMessage(`[${xhr.status}] ${xhr.responseJSON['error']}`);
+                  if ( xhr.status === 401 ) {
+                    location.href = "/logout"
+                  }
                 }
             });
         },
@@ -251,67 +269,6 @@ var MastodonAPI = function(config) {
             es.onmessage = listener;
 
 
-        },
-        registerApplication: function (client_name, redirect_uri, scopes, website, callback) {
-            //register a new application
-
-            // OAuth Auth flow:
-            // First register the application
-            // 2) get a access code from a user (using the link, generation function below!)
-            // 3) insert the data you got from the application and the code from the user into
-            // getAccessTokenFromAuthCode. Note: scopes has to be an array, every time!
-            // For example ["read", "write"]
-
-            //determine which parameters we got
-            if (website === null) {
-                website = "";
-            }
-            // build scope array to string for the api request
-            var scopeBuild = "";
-            if (typeof scopes !== "string") {
-                scopes = scopes.join(" ");
-            }
-            $.ajax({
-                url: apiBase + "apps",
-                type: "POST",
-                data: {
-                    client_name: client_name,
-                    redirect_uris: redirect_uri,
-                    scopes: scopes,
-                    website: website
-                },
-                success: function (data, textStatus) {
-                    console.log("Registered Application: " + data);
-                    callback(data);
-                },
-                error: function(xhr, textStatus, errorThrown) {
-                  putMessage(`[${xhr.status}] ${xhr.responseJSON['error']}`);
-                }
-            });
-        },
-        generateAuthLink: function (client_id, redirect_uri, responseType, scopes) {
-            return config.instance + "/oauth/authorize?client_id=" + client_id + "&redirect_uri=" + redirect_uri +
-                    "&response_type=" + responseType + "&scope=" + scopes.join("+");
-        },
-        getAccessTokenFromAuthCode: function (client_id, client_secret, redirect_uri, code, callback) {
-            $.ajax({
-                url: config.instance + "/oauth/token",
-                type: "POST",
-                data: {
-                    client_id: client_id,
-                    client_secret: client_secret,
-                    redirect_uri: redirect_uri,
-                    grant_type: "authorization_code",
-                    code: code
-                },
-                success: function (data, textStatus) {
-                    console.log("Got Token: " + data);
-                    callback(data);
-                },
-                error: function(xhr, textStatus, errorThrown) {
-                  putMessage(`[${xhr.status}] ${xhr.responseJSON['error']}`);
-                }
-            });
         }
     };
 };
