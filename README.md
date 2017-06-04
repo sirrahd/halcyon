@@ -21,8 +21,9 @@ I didn't prepared setup script so you have to setup manually...
 
 ### PDO MySQL
 
-```bash.sh
 After installed PHP, run this.
+
+```bash.sh
 $ sudo pecl install pdo_mysql
 $ sudo vi php.ini
 ```
