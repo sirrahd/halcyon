@@ -9,3 +9,5 @@
 - Multi account
 - Native profile edit
 - Dark theme
+- Translation support
+- Mobile devices support
