@@ -1,9 +1,2 @@
 config.ini
 .ftpconfig
-<<<<<<< HEAD
-fonts/
-=======
-fonts/
-public_html/login/login.php
-public_html/login/assets/images/background.jpg
->>>>>>> 2b604827ec33c860139101d3baf33e28969bded8
