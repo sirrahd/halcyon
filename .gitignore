@@ -2,3 +2,4 @@ config.ini
 .ftpconfig
 fonts/
 login/login.php
+login/assets/images/background.jpg
