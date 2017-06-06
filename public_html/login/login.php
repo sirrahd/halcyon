@@ -130,7 +130,7 @@
 
                     <form method="POST" >
 
-                        <h2>Login to Halcyon Developers</h2>
+                        <h2>Login to Halcyon</h2>
                         <p>
                             or <a href="https://joinmastodon.org/">create an account</a>
                         </p>
@@ -150,7 +150,7 @@
                         <div class="login_form_agree">
                             <label class="login_form_agree_check disallow_select pointer">
                                 <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                I am a developer
+                                I agree with the <a href="/terms">Terms</a>
                                 <input id="agree" type="checkbox" required checked class="invisible"/>
                             </label>
                         </div>
