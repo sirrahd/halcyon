@@ -37,16 +37,16 @@
           $URL    = 'https://'.$domain;
           $api    = new Mastodon();
           if ( !preg_match('/(^[a-z0-9\-\.\/]+?\.[a-z0-9-]+$)/', $domain) ) {
-              header('Location: https://halcyon.social/login?cause=domain', true, 303);
+              header('Location: '.$api->clientWebsite.'/login?cause=domain', true, 303);
               die();
           } else {
               try {
                 $client_id     = $api->getInstance($URL)["client_id"];
-                $authorizeURL  = $URL.'/oauth/authorize?client_id='.$client_id.'&response_type=code&scope=read+write+follow&website=https://halcyon.social&redirect_uri='.urlencode('https://halcyon.social/auth?&host='.$domain);
+                $authorizeURL  = $URL.'/oauth/authorize?client_id='.$client_id.'&response_type=code&scope=read+write+follow&website='.$api->clientWebsite.'&redirect_uri='.urlencode($api->clientWebsite.'/auth?&host='.$domain);
                 header("Location: {$authorizeURL}", true, 303);
                 die();
               } catch (Exception $e) {
-                header('Location: https://halcyon.social/login?cause=domain', true, 303);
+                header('Location: '.$api->clientWebsite.'/login?cause=domain', true, 303);
                 die();
               }
           }
