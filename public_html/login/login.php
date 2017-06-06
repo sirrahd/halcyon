@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Halcyon for Mastodon</title>
+    <title>Halcyon-Dev for Mastodon</title>
     <link rel="shortcut icon" href="/assets/images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/login/assets/css/style.css" media="all" />
     <link rel="stylesheet" type="text/css" href="/assets/css/fonts.css" media="all" />
@@ -130,7 +130,7 @@
 
                     <form method="POST" >
 
-                        <h2>Login to Halcyon</h2>
+                        <h2>Login to Halcyon-Dev</h2>
                         <p>
                             or <a href="https://joinmastodon.org/">create an account</a>
                         </p>
@@ -150,7 +150,7 @@
                         <div class="login_form_agree">
                             <label class="login_form_agree_check disallow_select pointer">
                                 <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                I agree with the <a href="/terms">Terms</a>
+                                I am a Developer
                                 <input id="agree" type="checkbox" required checked class="invisible"/>
                             </label>
                         </div>
