@@ -1,5 +1,5 @@
 config.ini
 .ftpconfig
 fonts/
-login/login.php
-login/assets/images/background.jpg
+public_html/login/login.php
+public_html/login/assets/images/background.jpg
