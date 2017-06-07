@@ -970,11 +970,10 @@ body {
 
 .toot_entry .toot_entry_body .toot_content .toot_reaction {
 	height: 21px;
-	flex-grow: 1;
+	width: calc( 100% / 3 );
 }
 
 .toot_entry .toot_entry_body .toot_content .toot_reaction button {
-	margin: auto;
 	color: #AAB8C2;
 	font-size: 18px;
 	height: 21px;
