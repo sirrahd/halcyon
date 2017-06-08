@@ -562,7 +562,7 @@ body {
 	transition: 0.15s ease-out;
 }
 
-#footer .span {
+#footer span {
 	font-size: 14px;
 	color: #ddd;
 	margin: auto;
