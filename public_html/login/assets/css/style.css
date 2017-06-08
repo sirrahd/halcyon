@@ -561,3 +561,11 @@ body {
 	color: #555;
 	transition: 0.15s ease-out;
 }
+
+#footer span {
+	font-size: 14px;
+	color: #ddd;
+	margin: auto;
+	display: block;
+	text-align: center;
+}
