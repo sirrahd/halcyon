@@ -12,3 +12,4 @@
 - [ ] Dark theme
 - [ ] Translation support
 - [ ] Mobile devices support
+- [ ] PHP PSR4 / Autoload
