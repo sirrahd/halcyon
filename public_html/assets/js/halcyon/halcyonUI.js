@@ -3,7 +3,9 @@
 -----------------------------------*/
 
 $(function() {
+
   $('input[type="file"]').val('');
+
 })
 
 /*-----------------------------------
@@ -242,7 +244,9 @@ function mediaattachments_template(status) {
 
   let media_views = "";
 
-  if ( !status.sensitive ) {
+  if ( status.media_attachments[0].url === "/files/original/missing.png" ) {
+    return "";
+  } else if ( !status.sensitive ) {
     // NORMAL CONTENT
     media_views = `<div class='media_views' sid="${status.id}" media_length='${status.media_attachments.length}'>`;
   } else {
@@ -255,6 +259,7 @@ function mediaattachments_template(status) {
       </div>
     `;
   }
+
   if ( status.media_attachments[0].type === "video" | status.media_attachments[0].type === "gifv" ) {
     // VIDEO CONTENT
     media_views += (`
@@ -1677,7 +1682,7 @@ function setTimeline(level,load_options) {
 
                     //context
                     if ( level === "timelines/home" | level === "timelines/public" ) {
-                      if (userstream.payload.in_reply_to_id & !$(".toot_entry[sid='"+statuses[i].in_reply_to_id+"']").length) {
+                      if (userstream.payload.in_reply_to_id & !$(".toot_entry[sid='"+userstream.in_reply_to_id+"']").length) {
                            let reply_source = userstream.payload.id;
                           api.get('statuses/'+userstream.payload.in_reply_to_id, function(in_reply_statuses) {
                             $("#js-timeline .toot_entry[sid='"+reply_source+"']").before(context_template(in_reply_statuses, 'ancestors_status default_padding'));
@@ -2409,6 +2414,7 @@ $(function() {
   $(document).on('click','#overlay_status_form .submit_status_label', function(e) {
 
     $('#overlay_status_form').addClass('ready');
+    $('#overlay_status_form .character_count').html('<i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>');
 
     const form = document.forms.overlay_status_form;
     if ( !$('#overlay_status_media_atta')[0].files.length ) {
@@ -2426,6 +2432,7 @@ $(function() {
         $('#overlay_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
         form.reset();
         $('#overlay_status_form').removeClass('ready');
+        $('#overlay_status_form .character_count').html('500');
         $('.overlay_status .submit_status_label').removeClass('active_submit_button');
         $('.overlay_status').addClass('invisible');
         $('#js-overlay_content_wrap').removeClass('view');
@@ -2435,11 +2442,13 @@ $(function() {
 
     } else {
 
-      const attachment  = $('#overlay_status_media_atta').clone(),
-          dummy_form  = $('<form></form>').append(attachment),
-          media_array = [],
-          files       = dummy_form[0][0].files,
-          filesLen    = files.length -1;
+      const dummy_form  = $('<form></form>').append($('#overlay_status_media_atta')),
+            files       = dummy_form[0][0].files,
+            filesLen    = files.length -1;
+
+      let media_array = [];
+
+      $("#overlay_status_form .status_bottom").append($('<input id="overlay_status_media_atta" name="files" multiple="" class="invisible" type="file">'));
 
       for (let i=0; i<files.length; i++) {
 
@@ -2466,6 +2475,7 @@ $(function() {
               $('#overlay_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
               form.reset();
               $('#overlay_status_form').removeClass('ready');
+              $('#overlay_status_form .character_count').html('500');
               $('.overlay_status .submit_status_label').removeClass('active_submit_button');
               $('.overlay_status').addClass('invisible');
               $('#js-overlay_content_wrap').removeClass('view');
@@ -2598,6 +2608,7 @@ $(function() {
   $(document).on('click','#header_status_form .submit_status_label', function(e) {
 
     $('#header_status_form').addClass('ready');
+    $('#header_status_form .character_count').html('<i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>');
 
     const form = document.forms.header_status_form;
     if ( !$('#header_status_media_atta')[0].files.length ) {
@@ -2615,15 +2626,19 @@ $(function() {
         $('#header_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
         form.reset();
         $('#header_status_form').removeClass('ready');
+        $('#header_status_form .character_count').html('500');
       });
 
     } else {
 
-      const attachment  = $('#header_status_media_atta').clone(),
-          dummy_form  = $('<form></form>').append(attachment),
-          media_array = [],
-          files       = dummy_form[0][0].files,
-          filesLen    = files.length -1;
+      // 擬似formに追加。そのあとクローンを元の位置に戻す。
+      const dummy_form             = $('<form></form>').append($('#header_status_media_atta')),
+            files                  = dummy_form[0][0].files,
+            filesLen               = files.length -1;
+
+      let media_array = [];
+
+      $("#header_status_form .status_bottom").append($('<input id="header_status_media_atta" name="files" multiple="" class="invisible" type="file">'));
 
       for (let i=0; i<files.length; i++) {
 
@@ -2650,6 +2665,7 @@ $(function() {
               $('#header_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
               form.reset();
               $('#header_status_form').removeClass('ready');
+              $('#header_status_form .character_count').html('500');
             });
 
           });
@@ -2781,6 +2797,7 @@ $(function() {
   $(document).on('click','#reply_status_form .submit_status_label', function(e) {
 
     $('#reply_status_form').addClass('ready');
+    $('#reply_status_form .character_count').html('<i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>');
 
     let form = document.forms.reply_status_form;
     if ( !$('#reply_status_media_atta')[0].files.length ) {
@@ -2799,6 +2816,7 @@ $(function() {
         $('#reply_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
         form.reset();
         $('#reply_status_form').removeClass('ready');
+        $('#reply_status_form .character_count').html('500');
         $('.reply_status .submit_status_label').removeClass('active_submit_button');
         context_template(data, 'descendants_status').appendTo("#js-overlay_content .temporary_object .toot_detail_wrap");
         replace_emoji();
@@ -2807,11 +2825,13 @@ $(function() {
 
     } else {
 
-      const attachment  = $('#reply_status_media_atta').clone(),
-            dummy_form  = $('<form></form>').append(attachment),
-            media_array = [],
-            files       = dummy_form[0][0].files,
-            filesLen    = files.length -1;
+      const dummy_form             = $('<form></form>').append($('#reply_status_media_atta')),
+            files                  = dummy_form[0][0].files,
+            filesLen               = files.length -1;
+
+      let media_array = [];
+
+      $('#reply_status_form .status_bottom').append($('<input id="reply_status_media_atta" name="files" multiple="" class="invisible" type="file">'));
 
       for (let i=0; i<files.length; i++) {
 
@@ -2839,6 +2859,7 @@ $(function() {
               $('#reply_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
               form.reset();
               $('#reply_status_form').removeClass('ready');
+              $('#reply_status_form .character_count').html('500');
               $('.reply_status .submit_status_label').removeClass('active_submit_button');
               context_template(data, 'descendants_status').appendTo("#js-overlay_content .temporary_object .toot_detail_wrap");
               replace_emoji();
@@ -2986,6 +3007,7 @@ $(function() {
   $(document).on('click','#single_reply_status_form .submit_status_label', function(e) {
 
     $('#single_reply_status_form').addClass('ready');
+    $('#single_reply_status_form .character_count').html('<i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>');
 
     let form = document.forms.single_reply_status_form;
     if ( !$('#single_reply_status_media_atta')[0].files.length ) {
@@ -3004,6 +3026,7 @@ $(function() {
         $('#single_reply_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
         form.reset();
         $('#single_reply_status_form').removeClass('ready');
+        $('#single_reply_status_form .character_count').html('500');
         $('.single_reply_status .submit_status_label').removeClass('active_submit_button');
         $('.single_reply_status').addClass('invisible');
         $('#js-overlay_content_wrap').removeClass('view');
@@ -3014,11 +3037,13 @@ $(function() {
 
     } else {
 
-      const attachment  = $('#single_reply_status_media_atta').clone(),
-            dummy_form  = $('<form></form>').append(attachment),
-            media_array = [],
+      const dummy_form  = $('<form></form>').append($('#single_reply_status_media_atta')),
             files       = dummy_form[0][0].files,
             filesLen    = files.length -1;
+
+      let media_array = [];
+
+      $("#single_reply_status_form .status_bottom").append($('<input id="single_reply_status_media_atta" name="files" multiple="" class="invisible" type="file">'));
 
       for (let i=0; i<files.length; i++) {
 
@@ -3046,6 +3071,7 @@ $(function() {
               $('#single_reply_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
               form.reset();
               $('#single_reply_status_form').removeClass('ready');
+              $('#single_reply_status_form .character_count').html('500');
               $('.single_reply_status .submit_status_label').removeClass('active_submit_button');
               $('.single_reply_status').addClass('invisible');
               $('#js-overlay_content_wrap').removeClass('view');
