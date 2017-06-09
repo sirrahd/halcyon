@@ -2414,7 +2414,7 @@ $(function() {
   $(document).on('click','#overlay_status_form .submit_status_label', function(e) {
 
     $('#overlay_status_form').addClass('ready');
-    $('#overlay_status_form .status_textarea textarea').addClass('disallow_select');
+    $('#overlay_status_form .status_textarea').addClass('disallow_select');
     $('#overlay_status_form .character_count').html('<i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>');
 
     const form = document.forms.overlay_status_form;
@@ -2433,7 +2433,7 @@ $(function() {
         $('#overlay_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
         form.reset();
         $('#overlay_status_form').removeClass('ready');
-        $('#overlay_status_form .status_textarea textarea').removeClass('disallow_select');
+        $('#overlay_status_form .status_textarea').removeClass('disallow_select');
         $('#overlay_status_form .character_count').html('500');
         $('.overlay_status .submit_status_label').removeClass('active_submit_button');
         $('.overlay_status').addClass('invisible');
