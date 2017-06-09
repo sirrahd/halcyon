@@ -5,7 +5,7 @@ RewriteCond %{HTTP_HOST} ^halcyon.social
 RewriteRule (.*) http://www.yourdomain.com/$1 [R=301,L]
 
 # RewriteCond %{HTTP_HOST} ^halcyon.social [NC]
-# RewriteRule ^(.*)$ https://halcyon.social/$1 [R=301,L]
+# RewriteRule ^(.*)$ https://www.halcyon.social/$1 [R=301,L]
 
 # Main
 RewriteBase /

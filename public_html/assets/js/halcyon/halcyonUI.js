@@ -2477,6 +2477,7 @@ $(function() {
               $('#overlay_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
               form.reset();
               $('#overlay_status_form').removeClass('ready');
+              $('#overlay_status_form .status_textarea').removeClass('disallow_select');
               $('#overlay_status_form .character_count').html('500');
               $('.overlay_status .submit_status_label').removeClass('active_submit_button');
               $('.overlay_status').addClass('invisible');
@@ -2610,6 +2611,7 @@ $(function() {
   $(document).on('click','#header_status_form .submit_status_label', function(e) {
 
     $('#header_status_form').addClass('ready');
+    $('#header_status_form .status_textarea').addClass('disallow_select');
     $('#header_status_form .character_count').html('<i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>');
 
     const form = document.forms.header_status_form;
@@ -2628,6 +2630,7 @@ $(function() {
         $('#header_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
         form.reset();
         $('#header_status_form').removeClass('ready');
+        $('#header_status_form .status_textarea').removeClass('disallow_select');
         $('#header_status_form .character_count').html('500');
       });
 
@@ -2667,6 +2670,7 @@ $(function() {
               $('#header_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
               form.reset();
               $('#header_status_form').removeClass('ready');
+              $('#header_status_form .status_textarea').removeClass('disallow_select');
               $('#header_status_form .character_count').html('500');
             });
 
@@ -2799,6 +2803,7 @@ $(function() {
   $(document).on('click','#reply_status_form .submit_status_label', function(e) {
 
     $('#reply_status_form').addClass('ready');
+    $('#reply_status_form .status_textarea').addClass('disallow_select');
     $('#reply_status_form .character_count').html('<i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>');
 
     let form = document.forms.reply_status_form;
@@ -2818,6 +2823,7 @@ $(function() {
         $('#reply_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
         form.reset();
         $('#reply_status_form').removeClass('ready');
+        $('#reply_status_form .status_textarea').removeClass('disallow_select');
         $('#reply_status_form .character_count').html('500');
         $('.reply_status .submit_status_label').removeClass('active_submit_button');
         context_template(data, 'descendants_status').appendTo("#js-overlay_content .temporary_object .toot_detail_wrap");
@@ -2861,6 +2867,7 @@ $(function() {
               $('#reply_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
               form.reset();
               $('#reply_status_form').removeClass('ready');
+              $('#reply_status_form .status_textarea').removeClass('disallow_select');
               $('#reply_status_form .character_count').html('500');
               $('.reply_status .submit_status_label').removeClass('active_submit_button');
               context_template(data, 'descendants_status').appendTo("#js-overlay_content .temporary_object .toot_detail_wrap");
@@ -3009,6 +3016,7 @@ $(function() {
   $(document).on('click','#single_reply_status_form .submit_status_label', function(e) {
 
     $('#single_reply_status_form').addClass('ready');
+    $('#single_reply_status_form .status_textarea').addClass('disallow_select');
     $('#single_reply_status_form .character_count').html('<i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>');
 
     let form = document.forms.single_reply_status_form;
@@ -3028,6 +3036,7 @@ $(function() {
         $('#single_reply_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
         form.reset();
         $('#single_reply_status_form').removeClass('ready');
+        $('#single_reply_status_form .status_textarea').removeClass('disallow_select');
         $('#single_reply_status_form .character_count').html('500');
         $('.single_reply_status .submit_status_label').removeClass('active_submit_button');
         $('.single_reply_status').addClass('invisible');
@@ -3073,6 +3082,7 @@ $(function() {
               $('#single_reply_status_form .status_textarea .media_attachments_preview_area').addClass('invisible');
               form.reset();
               $('#single_reply_status_form').removeClass('ready');
+              $('#single_reply_status_form .status_textarea').removeClass('disallow_select');
               $('#single_reply_status_form .character_count').html('500');
               $('.single_reply_status .submit_status_label').removeClass('active_submit_button');
               $('.single_reply_status').addClass('invisible');
