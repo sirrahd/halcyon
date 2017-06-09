@@ -232,7 +232,7 @@ body {
 	height: 68px;
 }
 
-.status_form .status_textarea textarea.disallow_select {
+.status_form .status_textarea.disallow_select {
 	background-color: #F5F8FA;
 	pointer-events: none;
 }
