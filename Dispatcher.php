@@ -103,7 +103,7 @@ class Dispatcher
         if ( !isset($controllerInstance) )
         {
             header("HTTP/1.0 404 Not Found");
-            $controllerInstance = new Controllers\NotFoundController();
+            $controllerInstance = new Controllers\ErrorController();
             exit;
         }
 
