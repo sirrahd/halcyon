@@ -1,12 +1,14 @@
 <IfModule mod_rewrite.c>
 
   RewriteEngine on
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_URI} !^/(static|src)/
-  RewriteRule .* www/index.php [NC,L,QSA]
 
   # SSL
   RewriteCond %{SERVER_PORT} 80
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # MVC
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !^/(static|src)/
+  RewriteRule .* htdocs/index.php [NC,L,QSA]
 
 </IfModule>
