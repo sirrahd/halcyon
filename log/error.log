@@ -1,5 +1,0 @@
-[31-Jul-2017 07:03:36 UTC] PHP Fatal error:  Uncaught Error: Class 'Controllers\LocalController' not found in /var/www/html/halcyon-dev/Dispatcher.php:23
-Stack trace:
-#0 /var/www/html/halcyon-dev/public/index.php(10): Dispatcher->dispatch()
-#1 {main}
-  thrown in /var/www/html/halcyon-dev/Dispatcher.php on line 23
