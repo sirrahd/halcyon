@@ -1,6 +1,5 @@
-config.ini
-!.gitkeep
-README.md
-ROADMAP.md
+!.keep
 .sass-cache/
-*.scssc
+config/*.ini
+log/
+ROADMAP.md

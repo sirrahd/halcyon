@@ -1,14 +1,13 @@
 {
     "autoload": {
         "psr-4": {
-            "Controllers\\"      : "controllers/",
-            "Models\\"           : "models/",
-            "Views\\"            : "views/",
-            "Models\\Sub\\"      : "models/sub/",
-            "Views\\Templates\\" : "views/templates/",
-            "Views\\Widgets\\"   : "views/widgets/",
-            "Views\\Errors\\"    : "views/errors/",
-            "Views\\Locales\\"   : "views/locales/",
+            "Controllers\\"      : "app/controllers/",
+            "Models\\"           : "app/models/",
+            "Views\\"            : "app/views/",
+            "Libs"               : "app/libs",
+            "Views\\Errors\\"    : "app/views/errors/",
+            "Views\\Templates\\" : "app/views/templates/",
+            "Views\\Widgets\\"   : "app/views/widgets/",
         }
     }
 }

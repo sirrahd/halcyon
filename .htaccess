@@ -8,7 +8,7 @@
 
   # MVC
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_URI} !^/(static|src)/
-  RewriteRule .* htdocs/index.php [NC,L,QSA]
+  RewriteCond %{REQUEST_URI} !^/(assets)/
+  RewriteRule .* public/index.php [NC,L,QSA]
 
 </IfModule>
