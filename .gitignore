@@ -1,5 +1,4 @@
 !.keep
 .sass-cache/
 config/*.ini
-log/
 ROADMAP.md
