@@ -1,10 +1,11 @@
 <?php
-    #!/usr/bin/env php
-    error_reporting(E_ALL);
-    ini_set("error_log", "../log/error.log");
+#!/usr/bin/env php
 
-    require_once __DIR__ . "/../Dispatcher.php";
-    $dispatcher = new Dispatcher();
-    $dispatcher->dispatch();
+# Logging errors
+error_reporting(E_ALL);
+ini_set("error_log", "../log/error.log");
 
-?>
+# Run router
+require_once __DIR__."/../Dispatcher.php";
+$dispatcher = new Dispatcher();
+$dispatcher->dispatch();

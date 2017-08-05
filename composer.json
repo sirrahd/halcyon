@@ -1,13 +1,26 @@
 {
+    "config": {
+      "vendor-dir": "app/vendor"
+    },
+
+    "require": {
+      "php": ">=7.0.0",
+      "smarty/smarty": "dev-trunk",
+      "guzzlehttp/guzzle": "^6.2"
+    },
+
     "autoload": {
         "psr-4": {
             "Controllers\\"      : "app/controllers/",
             "Models\\"           : "app/models/",
             "Views\\"            : "app/views/",
-            "Libs"               : "app/libs",
-            "Views\\Errors\\"    : "app/views/errors/",
-            "Views\\Templates\\" : "app/views/templates/",
-            "Views\\Widgets\\"   : "app/views/widgets/",
-        }
+            "Lib\\"              : "app/lib/",
+            "Request\\"          : "app/lib/Request/",
+            "HalcyonSuite\\MastodonRegister\\": "app/vendor/mastodon-register/src"
+        },
+        "files": [
+            "app/lib/functions.php",
+            "app/vendor/mastodon-register/src/Helper.php"
+        ]
     }
 }

@@ -1,113 +1,88 @@
 <?php
 
-require_once __DIR__ . "/app/vendor/autoload.php";
+require_once __DIR__."/app/vendor/autoload.php";
 
 class Dispatcher
 {
+
+    protected $request;
+    protected $params;
+
+    public function __construct()
+    {
+        $this->request = new \Request\Request();
+        $this->params  = $this->request->getParam();
+    }
+
     public function dispatch()
     {
 
-        $requestURI = explode("/", mb_strtolower(parse_url($_SERVER["REQUEST_URI"])["path"]));
-        $requestURILength = count($requestURI);
-
-        if ( $requestURILength === 2 )
-        {
-            switch ($requestURI[1])
-            {
-
-                case "":
-                    $controllerInstance = new Controllers\HomeController();
-                    break;
-
-                case "local":
-                    $controllerInstance = new Controllers\LocalController();
-                    break;
-
-                case "federated":
-                    $controllerInstance = new Controllers\FederatedController();
-                    break;
-
-                case "notifications":
-                    $controllerInstance = new Controllers\NotificationsController();
-                    break;
-
-                case "login":
-                    $controllerInstance = new Controllers\LoginController();
-                    break;
-
-                case "logout":
-                    $controllerInstance = new Controllers\LogoutController();
-                    break;
-
-                case "terms":
-                    $controllerInstance = new Controllers\TermsController();
-                    break;
-
-                case "search":
-                    $controllerInstance = new Controllers\SearchController();
-                    break;
-
-                case preg_match("/^@(.+)@(.+)\.([a-z]+)$/", $requestURI[1], $matches) === 1:
-                    $controllerInstance = new Controllers\UserController();
-                    break;
-
-            }
-
+        if ( $this->params[1] === "" ) {
+            $controllerName  = "\Controllers\HomeController";
         }
 
-        else if  ( $requestURILength === 3 )
-        {
-            switch ($requestURI[1]) {
-
-                case "search":
-                    switch ($requestURI[2]) {
-
-                        case "users":
-                            $controllerInstance = new Controllers\SearchUsersController();
-                            break;
-
-                    }
-
-                case preg_match("/^@(.+)@(.+)\.([a-z]+)$/", $requestURI[1], $matches) === 1:
-                    switch ($requestURI[2]) {
-
-                        case "status":
-                            $controllerInstance = new Controllers\UserStatusController();
-                            break;
-
-                        case "following":
-                            $controllerInstance = new Controllers\UserFollowingController();
-                            break;
-
-                        case "followers":
-                            $controllerInstance = new Controllers\UserFollowersController();
-                            break;
-
-                        case "favourites":
-                            $controllerInstance = new Controllers\UserFavouritesController();
-                            break;
-
-                        case "media":
-                            $controllerInstance = new Controllers\UserMediaContorller();
-                            break;
-
-                        case "with_replies":
-                            $controllerInstance = new Controllers\UserWithRepliesController();
-                            break;
-
-                    }
-
-            }
+        else if ( $this->params[1] === "local" ) {
+            $controllerName  = "\Controllers\LocalController";
         }
 
-        if ( !isset($controllerInstance) )
-        {
+        else if ( $this->params[1] === "federated" ) {
+            $controllerName  = "\Controllers\FederatedController";
+        }
+
+        else if ( $this->params[1] === "notifications" ) {
+            $controllerName  = "\Controllers\NotificationsController";
+        }
+
+        else if ( $this->params[1] === "search" ) {
+            $controllerName  = "\Controllers\SeachController";
+        }
+
+        else if ( preg_match("/^@(.+)@(.+)\.([a-z]+)$/", $this->params[1]) ) {
+            $controllerName = "\Controllers\UserController";
+        }
+
+        else if ( $this->params[1] === "login" ) {
+            $controllerName = "\Controllers\LoginController";
+        }
+
+        else if ( $this->params[1] === "logout" ) {
+            $controllerName = "\Controllers\LogoutController";
+        }
+
+
+
+
+        /* Check controller's existance */
+        if ( isset($controllerName) ) {
+            $controllerInstance = new $controllerName;
+        }
+        /* IF controller doesn't exists */
+        else {
             header("HTTP/1.0 404 Not Found");
-            $controllerInstance = new Controllers\ErrorController();
+            echo file_get_contents(__DIR__."/public/errors/404.html");
             exit;
         }
 
-    }
-}
+        /* Set 2nd param as action in controller */
+        if ( isset($this->params[2]) ) {
+            $actionName = $this->params[2]."Action";
 
-?>
+            /* Check action's existence */
+            if  (method_exists($controllerInstance, $actionName)) {
+                $controllerInstance->setAction($controllerName, $actionName);
+            }
+            /* IF action doesn't exists */
+            else {
+                header("HTTP/1.0 404 Not Found");
+                echo file_get_contents(__DIR__."/public/errors/404.html");
+                exit;
+            }
+
+        }
+
+        /* Run */
+        $controllerInstance->run();
+
+    }
+
+}

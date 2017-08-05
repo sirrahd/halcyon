@@ -1,5 +1,16 @@
+# Git keep
 !.keep
+
+# Caches
 .sass-cache/
+template_c
+
+# Installation
+/app/vendor/
+
+# Configs
 config/*.ini
+config/*.json
+
+# Logs
 log/*.log
-ROADMAP.md
