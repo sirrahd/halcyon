@@ -1,8 +1,14 @@
 {
-  "lang"  : "en",
-
-  "head"  : {
-    "title"      : "Halcyon for Mastodon"
-  }
-  
+    "lang": "en",
+    "head_login_title": "Login | Halcyon for Mastodon",
+    "head_home_title": "Halcyon",
+    "head_local_title": "Halcyon / Local",
+    "head_federated_title": "Halcyon / Federated",
+    "head_notifications_title": "Halcyon / Notifications",
+    "head_profile_title": "%s | Halcyon",
+    "head_profile_following_title": "People followed by %s | Halcyon",
+    "head_profile_followers_title": "People following %s | Halcyon",
+    "head_profile_favourited_title": "Toots liked by %s | Halcyon",
+    "head_profile_with_replies_title": "Tweets with replies by %s | Halcyon",
+    "head_profile_only_media": "Media Tweets by %s | Halcyon"
 }

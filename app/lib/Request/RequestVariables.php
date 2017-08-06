@@ -14,22 +14,32 @@ abstract class RequestVariables
 
     public function get($key = null)
     {
-        $ret = null;
-        if (null == $key) {
-            $ret = $this->_values;
+
+        // IF dont have any args
+        if (!$key) {
+            $return = $this->_values;
+
+        // IF arg's key exists
+        } else if ( $this->has($key) ) {
+            $return = $this->_values[$key];
+
+        // ELSE
         } else {
-            if (true == $this->has($key)) {
-                $ret = $this->_values[$key];
-            }
+            $return = null;
         }
-        return $ret;
+
+        return $return;
     }
 
     public function has($key)
     {
-        if (false == array_key_exists($key, $this->_values)) {
-            return false;
+
+        if ( $this->_values ) {
+            if ( array_key_exists($key, $this->_values) ) {
+                return true;
+            }
         }
-        return true;
+
+        return false;
     }
 }

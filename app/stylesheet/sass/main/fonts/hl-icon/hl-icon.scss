@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'hl-icon';
-  src:  url('fonts/hl-icon/hl-icon.eot?z8woma');
-  src:  url('fonts/hl-icon/hl-icon.eot?z8woma#iefix') format('embedded-opentype'),
-    url('fonts/hl-icon/hl-icon.ttf?z8woma') format('truetype'),
-    url('fonts/hl-icon/hl-icon.woff?z8woma') format('woff'),
-    url('fonts/hl-icon/hl-icon.svg?z8woma#icomoon') format('svg');
+  src:  url('#{$hl-font-path}/hl-icon.eot?z8woma');
+  src:  url('{$hl-font-path}/hl-icon.eot?z8woma#iefix') format('embedded-opentype'),
+    url('{$hl-font-path}/hl-icon.ttf?z8woma') format('truetype'),
+    url('{$hl-font-path}/hl-icon.woff?z8woma') format('woff'),
+    url('{$hl-font-path}/hl-icon.svg?z8woma#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }

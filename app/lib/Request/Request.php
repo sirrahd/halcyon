@@ -26,45 +26,73 @@ class Request
         $this->param  = new UriParameter();
     }
 
+    /**
+     * getPost
+     *
+     * @param   string        $key
+     *
+     * @return  string/array  $this->post->get($key)
+     */
     public function getPost($key = null)
     {
-        if (null == $key) {
+        if (!$key) {
             return $this->post->get();
         }
-        if (false == $this->post->has($key)) {
+        if (!$this->post->has($key)) {
             return null;
         }
         return $this->post->get($key);
     }
 
+    /**
+     * getQuery
+     *
+     * @param   string        $key
+     *
+     * @return  string/array  $this->query->get($key)
+     */
     public function getQuery($key = null)
     {
-        if (null == $key) {
+        if (!$key) {
             return $this->query->get();
         }
-        if (false == $this->query->has($key)) {
+        if (!$this->query->has($key)) {
             return null;
         }
         return $this->query->get($key);
     }
 
+    /**
+     * getCookie
+     *
+     * @param   string        $key
+     *
+     * @return  string/array  $this->cookie->get($key)
+     */
     public function getCookie($key = null)
     {
-        if (null == $key) {
+        if (!$key) {
             return $this->cookie->get();
         }
-        if (false == $this->cookie->has($key)) {
+        if (!$this->cookie->has($key)) {
             return null;
         }
         return $this->cookie->get($key);
     }
 
+    /**
+     * getParam
+     *
+     * @param   number        $key
+     *
+     * @return  string/array  $this->param->get($key)
+     */
     public function getParam($key = null)
     {
-        if (null == $key) {
+        if (!$key) {
             return $this->param->get();
         }
-        if (false == $this->param->has($key)) {
+        if (!$this->param->has($key)) {
             return null;
         }
         return $this->param->get($key);

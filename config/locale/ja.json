@@ -1,4 +1,14 @@
 {
-  "header__site-name"     : "Halcyon",
-  "header__site-name-alt" : "ハルシオン",
+    "lang": "ja",
+    "head_login_title": "ログイン | Halcyon for Mastodon",
+    "head_home_title": "Halcyon",
+    "head_local_title": "Halcyon / ローカル",
+    "head_federated_title": "Halcyon / 連合",
+    "head_notifications_title": "Halcyon / 通知",
+    "head_profile_title": "%sさん | Halcyon",
+    "head_profile_following_title": "%sさんがフォロー中のユーザー | Halcyon",
+    "head_profile_followers_title": "%sさんをフォロー中のユーザー | Halcyon",
+    "head_profile_favourited_title": "%sさんのお気に入りのトゥート | Halcyon",
+    "head_profile_with_replies_title": "%sさんのトゥートと返信 | Halcyon",
+    "head_profile_only_media": "%sのメディア付きトゥート | Halcyon"
 }

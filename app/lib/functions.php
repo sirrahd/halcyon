@@ -24,7 +24,7 @@ function h($char)
 function parse_json_file($json_path)
 {
     $json_file = file_get_contents($json_path);
-    $return    = json_decode($json_file);
+    $return    = json_decode($json_file, true);
 
     return $return;
 }

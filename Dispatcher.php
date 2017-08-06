@@ -17,7 +17,7 @@ class Dispatcher
     public function dispatch()
     {
 
-        if ( $this->params[1] === "" ) {
+        if ( !isset($this->params[1]) ) {
             $controllerName  = "\Controllers\HomeController";
         }
 

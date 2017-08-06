@@ -16,6 +16,10 @@ class ComposerStaticInit05ac51045e1f1f02d6de2c1d6ee0ee0c
     );
 
     public static $prefixLengthsPsr4 = array (
+        'i' => 
+        array (
+            'i18n\\' => 5,
+        ),
         'V' => 
         array (
             'Views\\' => 6,
@@ -49,10 +53,15 @@ class ComposerStaticInit05ac51045e1f1f02d6de2c1d6ee0ee0c
         'C' => 
         array (
             'Controllers\\' => 12,
+            'Config\\' => 7,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'i18n\\' => 
+        array (
+            0 => __DIR__ . '/../../..' . '/app/lib/i18n',
+        ),
         'Views\\' => 
         array (
             0 => __DIR__ . '/../../..' . '/app/views',
@@ -92,6 +101,10 @@ class ComposerStaticInit05ac51045e1f1f02d6de2c1d6ee0ee0c
         'Controllers\\' => 
         array (
             0 => __DIR__ . '/../../..' . '/app/controllers',
+        ),
+        'Config\\' => 
+        array (
+            0 => __DIR__ . '/../../..' . '/app/lib/Config',
         ),
     );
 

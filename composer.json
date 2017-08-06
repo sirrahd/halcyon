@@ -16,6 +16,8 @@
             "Views\\"            : "app/views/",
             "Lib\\"              : "app/lib/",
             "Request\\"          : "app/lib/Request/",
+            "Config\\"           : "app/lib/Config/",
+            "i18n\\"             : "app/lib/i18n/",
             "HalcyonSuite\\MastodonRegister\\": "app/vendor/mastodon-register/src"
         },
         "files": [

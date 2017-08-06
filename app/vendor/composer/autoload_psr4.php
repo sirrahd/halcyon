@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname(dirname($vendorDir));
 
 return array(
+    'i18n\\' => array($baseDir . '/app/lib/i18n'),
     'Views\\' => array($baseDir . '/app/views'),
     'Request\\' => array($baseDir . '/app/lib/Request'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
@@ -16,4 +17,5 @@ return array(
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Controllers\\' => array($baseDir . '/app/controllers'),
+    'Config\\' => array($baseDir . '/app/lib/Config'),
 );
