@@ -37,8 +37,10 @@ class Dispatcher
             $controllerName  = "\Controllers\SeachController";
         }
 
-        else if ( preg_match("/^@(.+)@(.+)\.([a-z]+)$/", $this->params[1]) ) {
+        else if ( preg_match("/^@(.+)@(.+)\.(.+)$/", $this->params[1]) ) {
             $controllerName = "\Controllers\UserController";
+            /* 本当はpatternは[a-zA-Z0-9]とかがいいんだろうけども、日本語URIは
+            デコードせずに処理したいので.とします。*/
         }
 
         else if ( $this->params[1] === "login" ) {

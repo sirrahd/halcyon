@@ -3,10 +3,18 @@
       "vendor-dir": "app/vendor"
     },
 
+    "repositories": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/halcyon-suite/mastodon-register"
+        }
+      ],
+
     "require": {
       "php": ">=7.0.0",
       "smarty/smarty": "dev-trunk",
-      "guzzlehttp/guzzle": "^6.2"
+      "guzzlehttp/guzzle": "^6.2",
+      "halcyon-suite/mastodon-register": "1.2.1"
     },
 
     "autoload": {
@@ -17,12 +25,10 @@
             "Lib\\"              : "app/lib/",
             "Request\\"          : "app/lib/Request/",
             "Config\\"           : "app/lib/Config/",
-            "i18n\\"             : "app/lib/i18n/",
-            "HalcyonSuite\\MastodonRegister\\": "app/vendor/mastodon-register/src"
+            "i18n\\"             : "app/lib/i18n/"
         },
         "files": [
-            "app/lib/functions.php",
-            "app/vendor/mastodon-register/src/Helper.php"
+            "app/lib/functions.php"
         ]
     }
 }

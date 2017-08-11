@@ -1,5 +1,6 @@
 {
     "lang": "ja",
+    "app": "Halcyon",
     "head_login_title": "ログイン | Halcyon for Mastodon",
     "head_home_title": "Halcyon",
     "head_local_title": "Halcyon / ローカル",
@@ -10,5 +11,18 @@
     "head_profile_followers_title": "%sさんをフォロー中のユーザー | Halcyon",
     "head_profile_favourited_title": "%sさんのお気に入りのトゥート | Halcyon",
     "head_profile_with_replies_title": "%sさんのトゥートと返信 | Halcyon",
-    "head_profile_only_media": "%sのメディア付きトゥート | Halcyon"
+    "head_profile_only_media": "%sのメディア付きトゥート | Halcyon",
+    "login_app_donation": "開発者を支援する",
+    "login_app_news": "アップデート",
+    "login_app_terms": "規約",
+    "login_app_sorce_code": "ソースコード",
+    "login_message": "Halcyonにログインす<br/>る",
+    "login_create_an_account": "またはアカウントを作成",
+    "login_agreee_terms": "利用規約に同意",
+    "login_what_is_halcyon": "Halcyonとは？",
+    "login_what_is_halcyon_content": "<ruby>Halcyon<rt>ハルシオン</rt></ruby>はマストドンのために作られたもう一つのアプリケーションで、マストドンのすべての機能を全く違ったユーザー体験で扱うことができます。そしてもう一つの大きな特徴は、その見た目です。Twitterのようなインターフェースで、使い慣れた画面がマストドンでそのまま操作できます。",
+    "login_feedback": "フィードバック",
+    "login_feedback_content": "下記の連絡先より開発者に直接フィードバックを送信できます。",
+    "login_help_us": "開発者を支援",
+    "login_help_us_content": "Halcyonは企業ではなく、有志の開発者がソースコードを公開しています。そのため、あなたの寄付が我々の開発資金に充てられます。"
 }

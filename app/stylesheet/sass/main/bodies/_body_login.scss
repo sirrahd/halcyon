@@ -1,0 +1,27 @@
+
+body.login {
+    color: $login_primary_color;
+    background-color: $login_backgound_color;
+
+    a {
+        color: $login_highlight_color;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    code {
+        display: inline-block;
+        margin: auto 0.25em;
+        padding: 0 0.5em;
+        vertical-align: middle;
+        white-space: nowrap;
+        font-size: 0.85em;
+        border-radius: 2.5px;
+        font-family: Consolas, Monaco, monospace;
+        background-color: $login_area_color;
+    }
+
+}

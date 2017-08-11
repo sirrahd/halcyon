@@ -1,11 +1,11 @@
 <?php
-/* Smarty version {Smarty::SMARTY_VERSION}, created on 2017-08-06 07:02:14
+/* Smarty version {Smarty::SMARTY_VERSION}, created on 2017-08-09 18:23:53
   from "/var/www/html/halcyon-dev/app/views/templates/Home.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.32-dev-16',
-  'unifunc' => 'content_5986bef6800809_65509249',
+  'version' => '3.1.32-dev-19',
+  'unifunc' => 'content_598b5339adee93_92665691',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,6 +20,6 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5986bef6800809_65509249 (Smarty_Internal_Template $_smarty_tpl) {
+function content_598b5339adee93_92665691 (Smarty_Internal_Template $_smarty_tpl) {
 }
 }

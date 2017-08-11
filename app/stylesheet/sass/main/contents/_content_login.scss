@@ -1,0 +1,182 @@
+
+#login_main {
+    margin: 24px auto;
+    padding: 56px;
+    box-sizing: border-box;
+    max-width: $login-container-width;
+    background-color: $login_base_color;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
+
+    & > * {
+        padding: 24px 0;
+        border-bottom: 1px solid $login_secondary_color;
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+    }
+
+    .login_form_wrap {
+
+        #login_form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & > * {
+                margin-bottom: 24px;
+            }
+
+            .login_form_title {
+                text-align: center;
+
+                h1 {
+                    font-size: 38px;
+                    padding-bottom: 8px;
+                }
+
+                span {
+                    font-size: 0.8em;
+                }
+
+            }
+
+            .login_form_input_wrap {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .login_form_error_message {
+                    font-size: 0.9em;
+                    color: $orange;
+                    margin-bottom: 0.5em;
+                }
+
+                .login_form_acct_wrap {
+                    margin-bottom: 16px;
+
+                    .login_form_acct {
+                        padding: 0.5em 1em;
+                        width: 300px;
+                        border-radius: 30px;
+                        border: 1px solid $login_secondary_color;
+                        font-size: 16px; /*1em*/
+                        box-sizing: border-box;
+
+                        &:focus, &:invalid {
+                            outline: none;
+                            box-shadow: none;
+                        }
+
+                        &:focus:invalid {
+                            border-color: $orange;
+                        }
+
+                        &:focus:valid {
+                            border-color: $blue;
+                        }
+                    }
+
+                    .login_form_submit {
+                        display: block;
+                        position: relative;
+                        top: calc( -19px + -0.5em);
+                        left: calc( 100% - 2em );
+                        height: 0;
+                        width: 0;
+                        font-size: 16px;
+                        overflow: visible;
+                        transition: 0.15s ease-out;
+
+                        &:hover, &:focus, &:active {
+                            opacity: .5;
+                            transition: 0.15s ease-out;
+                        }
+                    }
+                }
+
+                .login_form_agree_checkbox {
+
+                    i::before {
+                        content: "";
+                    }
+
+                    input[type="checkbox"]:checked + i::before {
+                        content: "";
+                    }
+                }
+
+            }
+        }
+    }
+
+    .login_article {
+        line-height: 1.6;
+
+        & > * {
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            margin: 4px auto;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .login_contact_box {
+            width: 100%;
+
+            .contact_list {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                .contact_child {
+                    width: calc( 100% / 3 );
+                    border: 1px solid $login_secondary_color;
+                    border-radius: 5px;
+                    transition: 0.15s ease-out;
+
+                    &:not(:last-child) {
+                        margin-right: 16px;
+                    }
+
+                    &:hover, &:focus, &:active {
+                        transition: 0.15s ease-out;
+                        box-shadow: 0 0 3px rgba(0, 0, 0, 0.26);
+                    }
+
+                    a {
+                        display: block;
+                        padding: 16px;
+                        box-sizing: border-box;
+                        text-decoration: none;
+
+                        h3 {
+                            color: #333;
+                            font-size: 20px;
+                        }
+
+                        span {
+                            font-size: 0.8em;
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
+        .donate_links {
+            display: block;
+            list-style: disc none inside;
+        }
+
+    }
+}

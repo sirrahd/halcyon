@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e972d4f9fce72df8c7bc982bad8b6c7",
+    "content-hash": "ac82b7b5f8dcbc834eb2fd09dad966bf",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -188,6 +188,50 @@
             "time": "2017-03-20T17:10:46+00:00"
         },
         {
+            "name": "halcyon-suite/mastodon-register",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/halcyon-suite/mastodon-register.git",
+                "reference": "3eb60fbfb2470093300bbfde10916e528739ca59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/halcyon-suite/mastodon-register/zipball/3eb60fbfb2470093300bbfde10916e528739ca59",
+                "reference": "3eb60fbfb2470093300bbfde10916e528739ca59",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HalcyonSuite\\MastodonRegister\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "neetshin",
+                    "email": "neetshin@neetsh.in"
+                }
+            ],
+            "description": "Mastodon PHP/MySQL register library",
+            "homepage": "https://github.com/halcyon-suite/mastodon-register",
+            "keywords": [
+                "mastodon"
+            ],
+            "support": {
+                "source": "https://github.com/halcyon-suite/mastodon-register/tree/1.2.1",
+                "issues": "https://github.com/halcyon-suite/mastodon-register/issues"
+            },
+            "time": "2017-08-10T05:18:28+00:00"
+        },
+        {
             "name": "psr/http-message",
             "version": "1.0.1",
             "source": {
@@ -243,12 +287,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/smarty-php/smarty.git",
-                "reference": "c3b331d2ad79ab378c538aa150aaaf185ea14a33"
+                "reference": "511773ce6bb43f8b10429c6d924428c9469f8ec9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/c3b331d2ad79ab378c538aa150aaaf185ea14a33",
-                "reference": "c3b331d2ad79ab378c538aa150aaaf185ea14a33",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/511773ce6bb43f8b10429c6d924428c9469f8ec9",
+                "reference": "511773ce6bb43f8b10429c6d924428c9469f8ec9",
                 "shasum": ""
             },
             "require": {
@@ -288,7 +332,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-07-31 21:26:41"
+            "time": "2017-08-09 10:58:47"
         }
     ],
     "packages-dev": [],

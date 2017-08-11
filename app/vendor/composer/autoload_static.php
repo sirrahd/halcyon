@@ -9,10 +9,9 @@ class ComposerStaticInit05ac51045e1f1f02d6de2c1d6ee0ee0c
     public static $files = array (
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        'f084d01b0a599f67676cffef638aa95b' => __DIR__ . '/..' . '/smarty/smarty/libs/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'f084d01b0a599f67676cffef638aa95b' => __DIR__ . '/..' . '/smarty/smarty/libs/bootstrap.php',
         '09623995200989fe538db21903a21101' => __DIR__ . '/../../..' . '/app/lib/functions.php',
-        'e10c87c7c036c1515036f465342820db' => __DIR__ . '/..' . '/mastodon-register/src/Helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -84,7 +83,7 @@ class ComposerStaticInit05ac51045e1f1f02d6de2c1d6ee0ee0c
         ),
         'HalcyonSuite\\MastodonRegister\\' => 
         array (
-            0 => __DIR__ . '/..' . '/mastodon-register/src',
+            0 => __DIR__ . '/..' . '/halcyon-suite/mastodon-register/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (

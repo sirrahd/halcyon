@@ -1,0 +1,70 @@
+
+#login_header {
+    color: $login_base_color;
+    background-color: $login_primary_color;
+
+    .header_inner {
+        display: flex;
+        align-items: center;
+        margin: auto;
+        padding: 8px 16px;
+        max-width: $login-container-width;
+        height: 60px;
+
+        .header_area {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            flex-shrink: 0;
+            height: 100%;
+
+            &.header_right_area {
+                justify-content: flex-start;
+            }
+
+            &.header_left_area {
+                justify-content: flex-end;
+            }
+
+            .header_title {
+                height: 100%;
+            }
+
+            .header_nav {
+                height: 100%;
+                font-weight: bold;
+
+                ul {
+                    display: flex;
+                    align-items: baseline;
+                    justify-content: flex-end;
+                    height: 100%;
+
+                    li {
+                        display: block;
+                        flex-grow: 1;
+                        flex-shrink: 0;
+                        height: 100%;
+
+                        &:not(:first-child) {
+                            margin-left: 36px;
+                        }
+
+                        a {
+                            display: flex;
+                            align-items: center;
+                            font-size: 0.8em;
+                            text-decoration: none;
+                            height: 100%;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

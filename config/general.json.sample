@@ -1,0 +1,21 @@
+{
+    "defualt": {
+        "lang": "en",
+        "theme": "halcyon",
+        "public_dir": "/public"
+    },
+
+    "app": {
+        "clientName"         : "Halcyon",
+        "clientRedirectUris" : ["https://example.com/login", "urn:ietf:wg:oauth:2.0:oob"],
+        "clientWebsite"      : "https://example.com",
+        "clientScopes"       : ["read", "write", "follow"]
+    },
+
+    "db": {
+        "host"     : "localhost",
+        "user"     : "Iamuser",
+        "password" : "Password",
+        "name"     : "TheDatabase"
+    }
+}

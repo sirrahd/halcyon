@@ -3,16 +3,15 @@ namespace Config;
 
 class Config
 {
-    public $conf;
+    protected $config;
 
-    public function __construct($conf_dir)
+    public function __construct($dir)
     {
-        $this->conf = parse_json_file($conf_dir);
+        $this->config = parse_json_file($dir, true);
     }
 
-    public function getConf()
+    public function get()
     {
-        return $this->conf;
+        return $this->$config;
     }
-
 }

@@ -16,19 +16,21 @@ class LanguageDetector
 
     public function setValue()
     {
+        $queryLang = $this->request->getQuery("lang");
+        $cookieLang = $this->request->getCookie("lang");
 
-        // IF sets query / e.g. ?lang=foo
-        if ( $this->request->getQuery("lang") ) {
-            $lang = $this->request->getQuery("lang");
+        // IF sets query
+        if ( $queryLang && in_array($queryLang, $this->known_languages) ) {
+            $lang = $queryLang;
         }
 
-        // IF sets cookie / e.g. lang=foo;
-        else if ( $this->request->getCookie("lang") ) {
-            $lang = $this->request->getCookie("lang");
+        // IF sets cookie
+        else if ( $cookieLang && in_array($cookieLang, $this->known_languages) ) {
+            $lang = $cookieLang;
         }
 
         // Parse Accept-Language from http header
-        else if ( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) {
+        else if ( isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ) {
 
             $accept_languages = array_filter(
                 array_map(

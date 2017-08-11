@@ -7,7 +7,7 @@
     <title>{$head_login_title}</title>
 
     <link rel="stylesheet" type="text/css" href="{$public_dir}/stylesheet/theme-{$theme}.css" media="all" />
-    <link rel="shortcut icon" href="/public/images/favicon.ico" />
+    <link rel="shortcut icon" href="{$public_dir}/images/favicon.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
@@ -18,12 +18,34 @@
 
     <div class="header_inner">
 
-        <div class="header_right_box">
-
+        <div class="header_area header_right_area">
+            <h1 class="header_title">
+                <img src="{$public_dir}/images/halcyon_title.png" alt="{$app}" />
+            </h1>
         </div>
 
-        <div class="header_left_box">
+        <div class="header_area header_left_area">
+            <nav class="header_nav">
+                <ul>
 
+                    <li>
+                        <a href="">{$login_app_donation}</a>
+                    </li>
+
+                    <li>
+                        <a href="">{$login_app_news}</a>
+                    </li>
+
+                    <li>
+                        <a href="">{$login_app_terms}</a>
+                    </li>
+
+                    <li>
+                        <a href="">{$login_app_sorce_code}</a>
+                    </li>
+
+                </ul>
+            </nav>
         </div>
 
     </div>

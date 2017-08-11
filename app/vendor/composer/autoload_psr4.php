@@ -12,7 +12,7 @@ return array(
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Models\\' => array($baseDir . '/app/models'),
     'Lib\\' => array($baseDir . '/app/lib'),
-    'HalcyonSuite\\MastodonRegister\\' => array($vendorDir . '/mastodon-register/src'),
+    'HalcyonSuite\\MastodonRegister\\' => array($vendorDir . '/halcyon-suite/mastodon-register/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
