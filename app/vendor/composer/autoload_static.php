@@ -49,6 +49,10 @@ class ComposerStaticInit05ac51045e1f1f02d6de2c1d6ee0ee0c
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
         ),
+        'D' => 
+        array (
+            'Database\\' => 9,
+        ),
         'C' => 
         array (
             'Controllers\\' => 12,
@@ -96,6 +100,10 @@ class ComposerStaticInit05ac51045e1f1f02d6de2c1d6ee0ee0c
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'Database\\' => 
+        array (
+            0 => __DIR__ . '/../../..' . '/app/lib/Database',
         ),
         'Controllers\\' => 
         array (

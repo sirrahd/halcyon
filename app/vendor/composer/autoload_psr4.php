@@ -16,6 +16,7 @@ return array(
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
+    'Database\\' => array($baseDir . '/app/lib/Database'),
     'Controllers\\' => array($baseDir . '/app/controllers'),
     'Config\\' => array($baseDir . '/app/lib/Config'),
 );

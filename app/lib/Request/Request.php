@@ -35,10 +35,10 @@ class Request
      */
     public function getPost($key = null)
     {
-        if (!$key) {
+        if (null === $key) {
             return $this->post->get();
         }
-        if (!$this->post->has($key)) {
+        if (false === $this->post->has($key)) {
             return null;
         }
         return $this->post->get($key);
@@ -53,10 +53,10 @@ class Request
      */
     public function getQuery($key = null)
     {
-        if (!$key) {
+        if (null === $key) {
             return $this->query->get();
         }
-        if (!$this->query->has($key)) {
+        if (false === $this->query->has($key)) {
             return null;
         }
         return $this->query->get($key);
@@ -71,10 +71,10 @@ class Request
      */
     public function getCookie($key = null)
     {
-        if (!$key) {
+        if (null === $key) {
             return $this->cookie->get();
         }
-        if (!$this->cookie->has($key)) {
+        if (false === $this->cookie->has($key)) {
             return null;
         }
         return $this->cookie->get($key);
@@ -89,10 +89,10 @@ class Request
      */
     public function getParam($key = null)
     {
-        if (!$key) {
+        if (null === $key) {
             return $this->param->get();
         }
-        if (!$this->param->has($key)) {
+        if (false === $this->param->has($key)) {
             return null;
         }
         return $this->param->get($key);

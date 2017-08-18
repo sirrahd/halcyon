@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{$head_login_title}</title>
 
-    <link rel="stylesheet" type="text/css" href="{$public_dir}/stylesheet/theme-{$theme}.css" media="all" />
-    <link rel="shortcut icon" href="{$public_dir}/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{$stylesheet_dir}/theme-{$theme}.css" media="all" />
+    <link rel="shortcut icon" href="{$images_dir}/favicon.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
@@ -20,7 +20,7 @@
 
         <div class="header_area header_right_area">
             <h1 class="header_title">
-                <img src="{$public_dir}/images/halcyon_title.png" alt="{$app}" />
+                <img src="{$images_dir}/halcyon_title.png" alt="{$app}" />
             </h1>
         </div>
 

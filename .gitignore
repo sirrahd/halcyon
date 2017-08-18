@@ -9,8 +9,7 @@ template_c
 /app/vendor/
 
 # Configs
-config/*.ini
-config/*.json
+config/general.json
 
 # Logs
-log/*.log
+log/

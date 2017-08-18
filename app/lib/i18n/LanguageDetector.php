@@ -47,7 +47,7 @@ class LanguageDetector
             foreach ( $accept_languages as &$a ) {
                 if ( in_array($a, $this->known_languages) ) {
                     $lang = $a;
-                    setcookie("lang", $a, time()+60*60*24*30 );
+                    setcookie("lang", $a, time()+60*60*24*30*12 );
                     break;
                 }
             };

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version {Smarty::SMARTY_VERSION}, created on 2017-08-09 17:56:04
+/* Smarty version {Smarty::SMARTY_VERSION}, created on 2017-08-17 13:50:20
   from "/var/www/html/halcyon-dev/app/views/templates/common/login_header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32-dev-19',
-  'unifunc' => 'content_598b4cb4029078_30154918',
+  'unifunc' => 'content_59959f1c857c03_92152057',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'caa4bee6ced18fa97888861afc246356cc2691a1' => 
     array (
       0 => '/var/www/html/halcyon-dev/app/views/templates/common/login_header.tpl',
-      1 => 1502166321,
+      1 => 1502977724,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_598b4cb4029078_30154918 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59959f1c857c03_92152057 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE HTML>
 <html lang="<?php echo $_smarty_tpl->tpl_vars['lang']->value;?>
@@ -32,11 +32,11 @@ function content_598b4cb4029078_30154918 (Smarty_Internal_Template $_smarty_tpl)
     <title><?php echo $_smarty_tpl->tpl_vars['head_login_title']->value;?>
 </title>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['public_dir']->value;?>
-/stylesheet/theme-<?php echo $_smarty_tpl->tpl_vars['theme']->value;?>
+    <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['stylesheet_dir']->value;?>
+/theme-<?php echo $_smarty_tpl->tpl_vars['theme']->value;?>
 .css" media="all" />
-    <link rel="shortcut icon" href="<?php echo $_smarty_tpl->tpl_vars['public_dir']->value;?>
-/images/favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo $_smarty_tpl->tpl_vars['images_dir']->value;?>
+/favicon.ico" />
     <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"><?php echo '</script'; ?>
 >
@@ -52,8 +52,8 @@ function content_598b4cb4029078_30154918 (Smarty_Internal_Template $_smarty_tpl)
 
         <div class="header_area header_right_area">
             <h1 class="header_title">
-                <img src="<?php echo $_smarty_tpl->tpl_vars['public_dir']->value;?>
-/images/halcyon_title.png" alt="<?php echo $_smarty_tpl->tpl_vars['app']->value;?>
+                <img src="<?php echo $_smarty_tpl->tpl_vars['images_dir']->value;?>
+/halcyon_title.png" alt="<?php echo $_smarty_tpl->tpl_vars['app']->value;?>
 " />
             </h1>
         </div>
