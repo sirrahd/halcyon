@@ -15,7 +15,7 @@
         "name"     : "the_database"
     },
 
-    "defualt": {
+    "default": {
         "theme": "halcyon",
         "known_themes": [
             "halcyon",

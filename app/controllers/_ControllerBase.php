@@ -93,8 +93,8 @@ class _ControllerBase
     public function assignTheme()
     {
         $theme = $this->request->getCookie("theme");
-        $defualt_theme = $this->config->data["defualt"]["theme"];
-        $known_themes = $this->config->data["defualt"]["known_themes"];
+        $defualt_theme = $this->config->data["default"]["theme"];
+        $known_themes = $this->config->data["default"]["known_themes"];
 
         if ( $theme & in_array($theme, $known_themes) ) {
             $this->view->assign("theme", $theme);
