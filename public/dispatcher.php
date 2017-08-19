@@ -38,7 +38,7 @@ class Dispatcher
         }
 
         else if ( preg_match("/^@(.+)@(.+)\.(.+)$/", $this->params[1]) ) {
-            $controllerName = "\Controllers\UserController";
+            $controllerName = "\Controllers\ProfileController";
         }
 
         else if ( $this->params[1] === "login" ) {
