@@ -1,0 +1,23 @@
+{
+  "name": "Halcyon",
+  "version": "1.2",
+  "description": "The Another Interface of Mastodon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halcyon-suite/halcyon.git"
+  },
+  "author": "Halcyon Suite",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/halcyon-suite/halcyon/issues"
+  },
+  "homepage": "https://github.com/halcyon-suite/halcyon#readme",
+  "dependencies": {
+    "eslint": "^4.4.1",
+    "react-tools": "^0.13.3"
+  }
+}

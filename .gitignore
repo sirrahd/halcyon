@@ -2,11 +2,13 @@
 !.keep
 
 # Caches
-.sass-cache/
+.sass-cache
 template_c
 
 # Installation
+.bundle
 /app/vendor/
+/node_modules
 
 # Configs
 config/general.json
