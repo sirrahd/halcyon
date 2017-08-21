@@ -1,11 +1,10 @@
 <?php
-namespace i18n;
-require_once __DIR__."/../../vendor/autoload.php";
+namespace Locale;
 
 require_once("LanguageDetector.php");
 require_once("LocaleLoader.php");
 
-class i18n
+class Locale
 {
 
     protected $lang;

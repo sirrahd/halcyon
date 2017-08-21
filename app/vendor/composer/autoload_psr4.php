@@ -6,13 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname(dirname($vendorDir));
 
 return array(
-    'i18n\\' => array($baseDir . '/app/lib/i18n'),
     'Views\\' => array($baseDir . '/app/views'),
     'Request\\' => array($baseDir . '/app/lib/Request'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Models\\' => array($baseDir . '/app/models'),
+    'Locale\\' => array($baseDir . '/app/lib/Locale'),
     'Lib\\' => array($baseDir . '/app/lib'),
-    'HalcyonSuite\\MastodonRegister\\' => array($vendorDir . '/halcyon-suite/mastodon-register/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),

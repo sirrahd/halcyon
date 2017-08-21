@@ -97,7 +97,6 @@ location.href = '/';
             } else {
                 $this->view->assign("login_error_message", "");
             }
-
             $this->view->display("Login.tpl");
         }
     }

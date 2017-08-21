@@ -1,6 +1,5 @@
 <?php
 namespace Controllers;
-require_once __DIR__."/../vendor/autoload.php";
 
 class _ControllerBase
 {
@@ -10,7 +9,7 @@ class _ControllerBase
     protected $controller = "index";
     protected $action     = "indexAction";
     protected $request;
-    protected $i18n;
+    protected $locale;
     protected $config;
 
     public function __construct()
@@ -23,14 +22,14 @@ class _ControllerBase
         $this->view->setTemplateDir("../app/views/templates/");
         $this->view->setCompileDir("../app/views/templates_c/");
 
-        // $this->i18n
-        $this->i18n = new \i18n\i18n;
-        $this->i18n->setLocaleDir(__DIR__."/../../config/locale/");
+        // $this->locale
+        $this->locale = new \Locale\Locale;
+        $this->locale->setLocaleDir(APP_DIR."/config/locale/");
 
         // $this->config
-        $this->config = new \Config\Config(__DIR__."/../../config/general.json");
+        $this->config = new \Config\Config(APP_DIR."/config/general.json");
 
-        $this->assignLocale($this->i18n->getLocale());
+        $this->assignLocale($this->locale->getLocale());
         $this->assignHtmlConfig($this->config->data["html"]);
         $this->assignTheme();
     }
@@ -62,12 +61,12 @@ class _ControllerBase
     /**
      * assignLocale
      *
-     * @param    array   $locale
+     * @param    array   $data
      * @return   null
      */
-    public function assignLocale($locale)
+    public function assignLocale($data)
     {
-        foreach ( $locale as $key => $value ) {
+        foreach ( $data as $key => $value ) {
             $this->view->assign($key, $value);
         }
     }
@@ -75,12 +74,12 @@ class _ControllerBase
     /**
      * assignHtmlConfig
      *
-     * @param    array   $config
+     * @param    array   $data
      * @return   null
      */
-    public function assignHtmlConfig($config)
+    public function assignHtmlConfig($data)
     {
-        foreach ( $config as $key => $value ) {
+        foreach ( $data as $key => $value ) {
             $this->view->assign($key, $value);
         }
     }
@@ -93,8 +92,8 @@ class _ControllerBase
     public function assignTheme()
     {
         $theme = $this->request->getCookie("theme");
-        $defualt_theme = $this->config->data["default"]["theme"];
-        $known_themes = $this->config->data["default"]["known_themes"];
+        $defualt_theme = $this->config->data["theme"]["default"];
+        $known_themes  = $this->config->data["theme"]["known"];
 
         if ( $theme & in_array($theme, $known_themes) ) {
             $this->view->assign("theme", $theme);

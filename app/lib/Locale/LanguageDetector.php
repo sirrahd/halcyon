@@ -1,6 +1,5 @@
 <?php
-namespace i18n;
-require_once __DIR__."/../../vendor/autoload.php";
+namespace Locale;
 
 class LanguageDetector
 {
@@ -8,7 +7,7 @@ class LanguageDetector
     public function __construct()
     {
         $this->request = new \Request\Request();
-        $this->lang_config = parse_json_file(__DIR__."/../../../config/locale/_language_config.json");
+        $this->lang_config = parse_json_file(APP_DIR."/config/locale/_language_config.json");
         $this->known_languages  = $this->lang_config["known_languages"];
         $this->default_language = $this->lang_config["default_language"];
         $this->setValue();

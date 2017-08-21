@@ -17,11 +17,12 @@
             "Lib\\"         : "app/lib/",
             "Request\\"     : "app/lib/Request/",
             "Config\\"      : "app/lib/Config/",
-            "i18n\\"        : "app/lib/i18n/",
+            "Locale\\"      : "app/lib/Locale/",
             "Database\\"    : "app/lib/Database/"
         },
         "files": [
-            "app/lib/functions.php"
+            "app/lib/functions.php",
+            "app/lib/variables.php"
         ]
     }
 }

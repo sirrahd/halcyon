@@ -1,5 +1,5 @@
 <?php
-namespace i18n;
+namespace Locale;
 
 class LocaleLoader
 {
