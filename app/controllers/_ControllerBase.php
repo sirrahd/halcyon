@@ -29,9 +29,10 @@ class _ControllerBase
         // $this->config
         $this->config = new \Config\Config(APP_DIR."/config/general.json");
 
-        $this->assignArray($this->locale->getLocale());
-        $this->assignArray($this->config->data["html"]);
-        $this->setTheme();
+        $this->assignArray($this->locale->getLocale()); // set locale data
+        $this->assignArray($this->config->data["html"]); // set html config/texts
+        $this->setTheme(); // set theme css path
+
     }
 
     public function run()
@@ -68,11 +69,10 @@ class _ControllerBase
         $theme = $this->request->getCookie("theme");
         $defualt_theme = $this->config->data["theme"]["default"];
         $known_themes  = $this->config->data["theme"]["known"];
-
         if ( $theme & in_array($theme, $known_themes) ) {
-            $this->view->assign("theme", $theme);
+            assignArray(array("theme_name"=> $theme));
         } else {
-            $this->view->assign("theme", $defualt_theme);
+            assignArray(array("theme_name"=> $defualt_theme));
             setcookie("theme", $defualt_theme, time()+60*60*24*30*12);
         }
     }
@@ -81,7 +81,7 @@ class _ControllerBase
      * assignArray
      * Assign array data to Smarty class
      *
-     * @param    array   $data
+     * @param    array   $data   Like array("ASSIGN_VAR" => "VALUE").
      * @return   null
      */
     public function assignArray($data) {
