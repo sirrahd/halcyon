@@ -29,9 +29,9 @@ class _ControllerBase
         // $this->config
         $this->config = new \Config\Config(APP_DIR."/config/general.json");
 
-        $this->assignLocale($this->locale->getLocale());
-        $this->assignHtmlConfig($this->config->data["html"]);
-        $this->assignTheme();
+        $this->assignArray($this->locale->getLocale());
+        $this->assignArray($this->config->data["html"]);
+        $this->setTheme();
     }
 
     public function run()
@@ -59,37 +59,11 @@ class _ControllerBase
     }
 
     /**
-     * assignLocale
-     *
-     * @param    array   $data
-     * @return   null
-     */
-    public function assignLocale($data)
-    {
-        foreach ( $data as $key => $value ) {
-            $this->view->assign($key, $value);
-        }
-    }
-
-    /**
-     * assignHtmlConfig
-     *
-     * @param    array   $data
-     * @return   null
-     */
-    public function assignHtmlConfig($data)
-    {
-        foreach ( $data as $key => $value ) {
-            $this->view->assign($key, $value);
-        }
-    }
-
-    /**
-     * assignTheme
+     * setTheme
      *
      * @return   null
      */
-    public function assignTheme()
+    public function setTheme()
     {
         $theme = $this->request->getCookie("theme");
         $defualt_theme = $this->config->data["theme"]["default"];
@@ -100,6 +74,19 @@ class _ControllerBase
         } else {
             $this->view->assign("theme", $defualt_theme);
             setcookie("theme", $defualt_theme, time()+60*60*24*30*12);
+        }
+    }
+
+    /**
+     * assignArray
+     * Assign array data to Smarty class
+     *
+     * @param    array   $data
+     * @return   null
+     */
+    public function assignArray($data) {
+        foreach ( $data as $key => $value ) {
+            $this->view->assign($key, $value);
         }
     }
 

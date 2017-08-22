@@ -7,5 +7,4 @@ class HomeController extends _ControllerBase
     {
         $this->view->display("Home.tpl");
     }
-
 }
