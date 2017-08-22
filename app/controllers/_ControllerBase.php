@@ -41,7 +41,7 @@ class _ControllerBase
             $this->$methodName();
         #} catch (\Exception $e) {
         #    header("HTTP/1.1 500 Internal Server Error");
-        #    echo file_get_contents(__DIR__."/../../public/errors/500.html");
+        #    echo file_get_contents(APP_DIR."/public/errors/500.html");
         #}
     }
 

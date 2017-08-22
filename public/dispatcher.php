@@ -57,7 +57,7 @@ class Dispatcher
         /* IF controller doesn't exists */
         else {
             header("HTTP/1.0 404 Not Found");
-            echo file_get_contents(__DIR__."/public/errors/404.html");
+            echo file_get_contents(APP_DIR."/public/errors/404.html");
             exit;
         }
 
@@ -72,7 +72,7 @@ class Dispatcher
             /* IF action doesn't exists */
             else {
                 header("HTTP/1.0 404 Not Found");
-                echo file_get_contents(__DIR__."/public/errors/404.html");
+                echo file_get_contents(APP_DIR."/public/errors/404.html");
                 exit;
             }
 
