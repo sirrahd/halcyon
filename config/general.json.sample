@@ -17,7 +17,7 @@
 
     "default": {
         "theme": "halcyon",
-        "known_themes": [
+        "known": [
             "halcyon",
             "mastodon"
         ]

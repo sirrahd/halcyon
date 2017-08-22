@@ -1,29 +1,29 @@
 <?php
-/* Smarty version {Smarty::SMARTY_VERSION}, created on 2017-08-10 09:39:04
+/* Smarty version {Smarty::SMARTY_VERSION}, created on 2017-08-21 17:19:21
   from "/var/www/html/halcyon-dev/app/views/templates/Login.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32-dev-19',
-  'unifunc' => 'content_598c29b818be84_28530133',
+  'unifunc' => 'content_599b16197b0df6_98467591',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5118283897e6e902fa14c2bd0dfb4b0768fd2a0a' => 
     array (
       0 => '/var/www/html/halcyon-dev/app/views/templates/Login.tpl',
-      1 => 1502357895,
+      1 => 1503335893,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:common/login_header.tpl' => 1,
-    'file:common/login_footer.tpl' => 1,
+    'file:headers/header_login.tpl' => 1,
+    'file:footers/footer_login.tpl' => 1,
   ),
 ),false)) {
-function content_598c29b818be84_28530133 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->_subTemplateRender("file:common/login_header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+function content_599b16197b0df6_98467591 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:headers/header_login.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
 
@@ -148,6 +148,6 @@ $_smarty_tpl->_subTemplateRender("file:common/login_header.tpl", $_smarty_tpl->c
 
 </main>
 
-<?php $_smarty_tpl->_subTemplateRender("file:common/login_footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+<?php $_smarty_tpl->_subTemplateRender("file:footers/footer_login.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }
 }

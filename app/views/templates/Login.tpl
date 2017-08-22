@@ -1,4 +1,4 @@
-{include file="common/login_header.tpl"}
+{include file="headers/header_login.tpl"}
 
 <main id="login_main">
 
@@ -111,4 +111,4 @@
 
 </main>
 
-{include file="common/login_footer.tpl"}
+{include file="footers/footer_login.tpl"}
