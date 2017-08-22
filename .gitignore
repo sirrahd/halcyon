@@ -3,7 +3,7 @@
 
 # Caches
 .sass-cache
-template_c
+templates_c
 
 # Installation
 .bundle
