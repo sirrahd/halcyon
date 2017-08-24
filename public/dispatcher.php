@@ -54,7 +54,7 @@ class Dispatcher
         if ( isset($controllerName) ) {
             $controllerInstance = new $controllerName;
         }
-        /* IF controller doesn't exists */
+        /* IF controller doesn't exist */
         else {
             header("HTTP/1.0 404 Not Found");
             echo file_get_contents(APP_DIR."/public/errors/404.html");
@@ -69,7 +69,7 @@ class Dispatcher
             if  (method_exists($controllerInstance, $actionName)) {
                 $controllerInstance->setAction($controllerName, $actionName);
             }
-            /* IF action doesn't exists */
+            /* IF action doesn't exist */
             else {
                 header("HTTP/1.0 404 Not Found");
                 echo file_get_contents(APP_DIR."/public/errors/404.html");

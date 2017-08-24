@@ -1,12 +1,12 @@
 {include file="headers/header_login.tpl"}
 
-<main id="login_main">
+<main id="login">
 
-    <section class="login_form_wrap">
+    <section class="loginForm_wrap">
 
-        <form id="login_form" method="POST" action="login?auth">
+        <form id="loginForm" method="POST" action="login?auth">
 
-            <div class="login_form_title">
+            <div class="loginForm_title">
                 <h1>{$login_message}</h1>
                 <span>
                     <a href="https://joinmastodon.org/" target="_blank">
@@ -15,28 +15,31 @@
                 </span>
             </div>
 
-            <div class="login_form_input_wrap">
+            <div class="loginForm_input_wrap">
 
-                <div class="login_form_error_message">
-                    <span>
-                        {$login_error_message}
-                    </span>
-                </div>
+                {if $login_error_message}
+                    <div class="loginForm_error_message">
+                        <span>
+                            {$login_error_message}
+                        </span>
+                    </div>
+                {/if}
 
-                <div class="login_form_acct_wrap">
+                <div class="loginForm_acct_wrap">
                     <input
-                    name="acct" type="text" required
-                    {literal}pattern="^@(.{0,30}?)@(.+?)\.(.+?)$"{/literal}
-                    placeholder="@halcyon@mastodon.social" class="login_form_acct"
-                    maxlength="287"
+                        name="acct" type="text"
+                        required
+                        pattern={literal}"^@(.{0,30}?)@(.+?)\.(.+?)$"{/literal}
+                        placeholder="@halcyon@mastodon.social" class="loginForm_acct"
+                        maxlength="287"
                     />
-                    <label class="login_form_submit cursor-pointer">
+                    <label class="loginForm_submit cursor-pointer">
                         <input type="submit" class="invisible"/>
                         <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
                     </label>
                 </div>
 
-                <label class="login_form_agree_checkbox unselectable cursor-pointer">
+                <label class="loginForm_agree_checkbox unselectable cursor-pointer">
                     <input id="agree" type="checkbox" required checked class="invisible"/>
                     <i class="fa"><!-- fa-check-square-o --></i>
                     {$login_agreee_terms}
@@ -48,19 +51,18 @@
 
     </section>
 
-    <article class="login_article">
+    <article class="loginArticle">
 
         <h2>{$login_what_is_halcyon}</h2>
         <p>{$login_what_is_halcyon_content}</p>
-
         <h2>{$login_feedback}</h2>
         <p>{$login_feedback_content}</p>
 
-        <div class="login_contact_box">
-            <ul class="contact_list">
+        <div class="contactList_wrap">
 
-                <li class="contact_child mastodon">
-                    <a href="https://mastodon.social/@halcyon">
+            <ul class="contactList">
+                <li class="contactList_child mastodon">
+                    <a href="https://mastodon.social/@halcyon" target="_blank">
                         <h3>
                             <i class="hlicon-mastodon"></i>
                             Mastodon
@@ -68,9 +70,8 @@
                         <span>@halcyon@mastodon.social</span>
                     </a>
                 </li>
-
-                <li class="contact_child github">
-                    <a href="https://github.com/halcyon-suite/halcyon">
+                <li class="contactList_child github">
+                    <a href="https://github.com/halcyon-suite/halcyon" target="_blank">
                         <h3>
                             <i class="fa fa-github" aria-hidden="true"></i>
                             GitHub
@@ -78,9 +79,8 @@
                         <span>/halcyon-suite/halcyon</span>
                     </a>
                 </li>
-
-                <li class="contact_child email">
-                    <a href="mailto:neetshin@neetsh.in">
+                <li class="contactList_child email">
+                    <a href="mailto:neetshin@neetsh.in" target="_blank">
                         <h3>
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                             E-mail
@@ -88,23 +88,20 @@
                         <span>neetshin@neetsh.in</span>
                     </a>
                 </li>
-
             </ul>
+
         </div>
 
         <h2>{$login_help_us}</h2>
         <p>{$login_help_us_content}</p>
 
-        <ul class="donate_links">
-
-            <li class="donate_link bitcoin">
-                Bitcoin: <code>3AucsLDnY37qipYngLM5KH9heWkJ1AEArv</code>
+        <ul class="donateLinks">
+            <li class="donateLink bitcoin">
+                Bitcoin: <code>{$developers_bitcoin}</code>
             </li>
-
-            <li class="donate_link patreon">
-                Patreon: <a href="https://www.patreon.com/neetshin">https://www.patreon.com/neetshin</a>
+            <li class="donateLink patreon">
+                Patreon: <a href="{$developers_patreon}" target="_blank">{$developers_patreon}</a>
             </li>
-
         </ul>
 
     </article>

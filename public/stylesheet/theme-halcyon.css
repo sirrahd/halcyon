@@ -120,13 +120,18 @@ body.login code {
   background-color: #F6F8FA;
 }
 
+/* line 4, ../../app/stylesheet/sass/main/bodies/_i18n.scss */
+body.ja {
+  font-family: Arial,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro", Osaka,"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+}
+
 /* line 2, ../../app/stylesheet/sass/main/headers/_header_login.scss */
-#login_header {
+#loginHeader {
   color: #ffffff;
   background-color: #1f1f1f;
 }
 /* line 6, ../../app/stylesheet/sass/main/headers/_header_login.scss */
-#login_header .header_inner {
+#loginHeader .loginHeader_container {
   display: flex;
   align-items: center;
   margin: auto;
@@ -135,7 +140,7 @@ body.login code {
   height: 60px;
 }
 /* line 14, ../../app/stylesheet/sass/main/headers/_header_login.scss */
-#login_header .header_inner .header_area {
+#loginHeader .loginHeader_container .loginHeader_inner {
   display: flex;
   align-items: center;
   flex-grow: 1;
@@ -143,42 +148,42 @@ body.login code {
   height: 100%;
 }
 /* line 21, ../../app/stylesheet/sass/main/headers/_header_login.scss */
-#login_header .header_inner .header_area.header_right_area {
+#loginHeader .loginHeader_container .loginHeader_inner.loginHeader_inner_left {
   justify-content: flex-start;
 }
 /* line 25, ../../app/stylesheet/sass/main/headers/_header_login.scss */
-#login_header .header_inner .header_area.header_left_area {
+#loginHeader .loginHeader_container .loginHeader_inner.loginHeader_inner_right {
   justify-content: flex-end;
 }
 /* line 29, ../../app/stylesheet/sass/main/headers/_header_login.scss */
-#login_header .header_inner .header_area .header_title {
+#loginHeader .loginHeader_container .loginHeader_inner .loginHeader_icon {
   height: 100%;
 }
 /* line 33, ../../app/stylesheet/sass/main/headers/_header_login.scss */
-#login_header .header_inner .header_area .header_nav {
+#loginHeader .loginHeader_container .loginHeader_inner .loginHeader_nav {
   height: 100%;
   font-weight: bold;
 }
 /* line 37, ../../app/stylesheet/sass/main/headers/_header_login.scss */
-#login_header .header_inner .header_area .header_nav ul {
+#loginHeader .loginHeader_container .loginHeader_inner .loginHeader_nav ul {
   display: flex;
   align-items: baseline;
   justify-content: flex-end;
   height: 100%;
 }
 /* line 43, ../../app/stylesheet/sass/main/headers/_header_login.scss */
-#login_header .header_inner .header_area .header_nav ul li {
+#loginHeader .loginHeader_container .loginHeader_inner .loginHeader_nav ul li {
   display: block;
   flex-grow: 1;
   flex-shrink: 0;
   height: 100%;
 }
 /* line 49, ../../app/stylesheet/sass/main/headers/_header_login.scss */
-#login_header .header_inner .header_area .header_nav ul li:not(:first-child) {
+#loginHeader .loginHeader_container .loginHeader_inner .loginHeader_nav ul li:not(:first-child) {
   margin-left: 36px;
 }
 /* line 53, ../../app/stylesheet/sass/main/headers/_header_login.scss */
-#login_header .header_inner .header_area .header_nav ul li a {
+#loginHeader .loginHeader_container .loginHeader_inner .loginHeader_nav ul li a {
   display: flex;
   align-items: center;
   font-size: 0.8em;
@@ -187,7 +192,7 @@ body.login code {
 }
 
 /* line 2, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main {
+#login {
   margin: 24px auto;
   padding: 56px;
   box-sizing: border-box;
@@ -196,60 +201,60 @@ body.login code {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
 }
 /* line 10, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main > * {
+#login > * {
   padding: 24px 0;
   border-bottom: 1px solid #CCCCCC;
 }
 /* line 14, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main > *:first-child {
+#login > *:first-child {
   padding-top: 0;
 }
 /* line 18, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main > *:last-child {
+#login > *:last-child {
   padding-bottom: 0;
   border-bottom: none;
 }
-/* line 26, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form {
+/* line 27, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-/* line 31, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form > * {
+/* line 32, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm > * {
   margin-bottom: 24px;
 }
-/* line 35, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_title {
+/* line 36, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_title {
   text-align: center;
 }
-/* line 38, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_title h1 {
+/* line 39, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_title h1 {
   font-size: 38px;
   padding-bottom: 8px;
 }
-/* line 43, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_title span {
+/* line 44, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_title span {
   font-size: 0.8em;
 }
-/* line 49, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_input_wrap {
+/* line 50, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_input_wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-/* line 54, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_error_message {
+/* line 55, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_error_message {
   font-size: 0.9em;
   color: #ff5050;
   margin-bottom: 0.5em;
 }
-/* line 60, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_acct_wrap {
+/* line 61, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_acct_wrap {
   margin-bottom: 16px;
 }
-/* line 63, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_acct_wrap .login_form_acct {
+/* line 64, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_acct_wrap .loginForm_acct {
   padding: 0.5em 1em;
   width: 300px;
   border-radius: 30px;
@@ -258,21 +263,21 @@ body.login code {
   /*1em*/
   box-sizing: border-box;
 }
-/* line 71, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_acct_wrap .login_form_acct:focus, #login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_acct_wrap .login_form_acct:invalid {
+/* line 72, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_acct_wrap .loginForm_acct:focus, #login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_acct_wrap .loginForm_acct:invalid {
   outline: none;
   box-shadow: none;
 }
-/* line 76, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_acct_wrap .login_form_acct:focus:invalid {
+/* line 77, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_acct_wrap .loginForm_acct:focus:invalid {
   border-color: #ff5050;
 }
-/* line 80, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_acct_wrap .login_form_acct:focus:valid {
+/* line 81, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_acct_wrap .loginForm_acct:focus:valid {
   border-color: #1DA1F2;
 }
-/* line 85, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_acct_wrap .login_form_submit {
+/* line 86, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_acct_wrap .loginForm_submit {
   display: block;
   position: relative;
   top: calc( -19px + -0.5em);
@@ -283,77 +288,77 @@ body.login code {
   overflow: visible;
   transition: 0.15s ease-out;
 }
-/* line 96, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_acct_wrap .login_form_submit:hover, #login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_acct_wrap .login_form_submit:focus, #login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_acct_wrap .login_form_submit:active {
+/* line 97, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_acct_wrap .loginForm_submit:hover, #login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_acct_wrap .loginForm_submit:focus, #login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_acct_wrap .loginForm_submit:active {
   opacity: .5;
   transition: 0.15s ease-out;
 }
-/* line 105, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_agree_checkbox i::before {
-  content: "";
+/* line 106, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_agree_checkbox i::before {
+  content: "\f096";
 }
-/* line 109, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_form_wrap #login_form .login_form_input_wrap .login_form_agree_checkbox input[type="checkbox"]:checked + i::before {
-  content: "";
+/* line 110, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginForm_wrap #loginForm .loginForm_input_wrap .loginForm_agree_checkbox input[type="checkbox"]:checked + i::before {
+  content: "\f046";
 }
-/* line 118, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article {
+/* line 124, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle {
   line-height: 1.6;
 }
-/* line 121, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article > * {
+/* line 127, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle > * {
   margin-bottom: 24px;
 }
-/* line 125, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article h2 {
+/* line 131, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle h2 {
   margin: 4px auto;
   font-weight: bold;
   font-size: 24px;
 }
-/* line 131, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article .login_contact_box {
+/* line 137, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle .contactList_wrap {
   width: 100%;
 }
-/* line 134, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article .login_contact_box .contact_list {
+/* line 140, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle .contactList_wrap .contactList {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
-/* line 139, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article .login_contact_box .contact_list .contact_child {
+/* line 145, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle .contactList_wrap .contactList .contactList_child {
   width: calc( 100% / 3 );
   border: 1px solid #CCCCCC;
   border-radius: 5px;
   transition: 0.15s ease-out;
 }
-/* line 145, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article .login_contact_box .contact_list .contact_child:not(:last-child) {
+/* line 151, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle .contactList_wrap .contactList .contactList_child:not(:last-child) {
   margin-right: 16px;
 }
-/* line 149, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article .login_contact_box .contact_list .contact_child:hover, #login_main .login_article .login_contact_box .contact_list .contact_child:focus, #login_main .login_article .login_contact_box .contact_list .contact_child:active {
+/* line 155, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle .contactList_wrap .contactList .contactList_child:hover, #login .loginArticle .contactList_wrap .contactList .contactList_child:focus, #login .loginArticle .contactList_wrap .contactList .contactList_child:active {
   transition: 0.15s ease-out;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.26);
 }
-/* line 154, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article .login_contact_box .contact_list .contact_child a {
+/* line 160, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle .contactList_wrap .contactList .contactList_child a {
   display: block;
   padding: 16px;
   box-sizing: border-box;
   text-decoration: none;
 }
-/* line 160, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article .login_contact_box .contact_list .contact_child a h3 {
+/* line 166, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle .contactList_wrap .contactList .contactList_child a h3 {
   color: #333;
   font-size: 20px;
 }
-/* line 165, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article .login_contact_box .contact_list .contact_child a span {
+/* line 171, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle .contactList_wrap .contactList .contactList_child a span {
   font-size: 0.8em;
 }
-/* line 176, ../../app/stylesheet/sass/main/contents/_content_login.scss */
-#login_main .login_article .donate_links {
+/* line 182, ../../app/stylesheet/sass/main/contents/_content_login.scss */
+#login .loginArticle .donateLinks {
   display: block;
   list-style: disc none inside;
 }

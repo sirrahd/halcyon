@@ -94,10 +94,9 @@ location.href = '/';
             if ( $this->request->getQuery("error") & $this->request->getQuery("error_description") ) {
                 $errorText = h(str_replace("+", " ", $this->request->getQuery("error_description")));
                 $this->view->assign("login_error_message", $errorText);
-            } else {
-                $this->view->assign("login_error_message", "");
             }
-            $this->view->display("Login.tpl");
+            $this->view->assign("page_type", "login");
+            $this->view->display("login.tpl");
         }
     }
 

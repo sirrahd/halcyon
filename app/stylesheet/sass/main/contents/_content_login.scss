@@ -1,5 +1,5 @@
 
-#login_main {
+#login {
     margin: 24px auto;
     padding: 56px;
     box-sizing: border-box;
@@ -19,11 +19,12 @@
             padding-bottom: 0;
             border-bottom: none;
         }
+
     }
 
-    .login_form_wrap {
+    .loginForm_wrap {
 
-        #login_form {
+        #loginForm {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -32,7 +33,7 @@
                 margin-bottom: 24px;
             }
 
-            .login_form_title {
+            .loginForm_title {
                 text-align: center;
 
                 h1 {
@@ -46,21 +47,21 @@
 
             }
 
-            .login_form_input_wrap {
+            .loginForm_input_wrap {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
 
-                .login_form_error_message {
+                .loginForm_error_message {
                     font-size: 0.9em;
                     color: $orange;
                     margin-bottom: 0.5em;
                 }
 
-                .login_form_acct_wrap {
+                .loginForm_acct_wrap {
                     margin-bottom: 16px;
 
-                    .login_form_acct {
+                    .loginForm_acct {
                         padding: 0.5em 1em;
                         width: 300px;
                         border-radius: 30px;
@@ -82,7 +83,7 @@
                         }
                     }
 
-                    .login_form_submit {
+                    .loginForm_submit {
                         display: block;
                         position: relative;
                         top: calc( -19px + -0.5em);
@@ -100,22 +101,27 @@
                     }
                 }
 
-                .login_form_agree_checkbox {
+                .loginForm_agree_checkbox {
 
                     i::before {
-                        content: "";
+                        content: "\f096";
                     }
 
                     input[type="checkbox"]:checked + i::before {
-                        content: "";
+                        content: "\f046";
                     }
+
+                    // input[type="checkbox"]:checked + i:hover::before {
+                    //     content: "\f147";
+                    // }
+
                 }
 
             }
         }
     }
 
-    .login_article {
+    .loginArticle {
         line-height: 1.6;
 
         & > * {
@@ -128,15 +134,15 @@
             font-size: 24px;
         }
 
-        .login_contact_box {
+        .contactList_wrap {
             width: 100%;
 
-            .contact_list {
+            .contactList {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
 
-                .contact_child {
+                .contactList_child {
                     width: calc( 100% / 3 );
                     border: 1px solid $login_secondary_color;
                     border-radius: 5px;
@@ -173,7 +179,7 @@
             }
         }
 
-        .donate_links {
+        .donateLinks {
             display: block;
             list-style: disc none inside;
         }

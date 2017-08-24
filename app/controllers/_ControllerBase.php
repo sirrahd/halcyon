@@ -8,6 +8,7 @@ class _ControllerBase
     protected $view;
     protected $controller = "index";
     protected $action     = "indexAction";
+
     protected $request;
     protected $locale;
     protected $config;
@@ -15,35 +16,21 @@ class _ControllerBase
     public function __construct()
     {
         // $this->request
-        $this->request = new \Request\Request();
+        $this->request = new \Request\Request;
 
         // $this->view
-        $this->view = new \Smarty();
-        $this->view->setTemplateDir("../app/views/templates/");
-        $this->view->setCompileDir("../app/views/templates_c/");
+        $this->view = new \Smarty;
+        $this->view->setTemplateDir(APP_DIR."/app/views/templates/");
+        $this->view->setCompileDir(APP_DIR."/app/views/templates_c/");
 
         // $this->locale
         $this->locale = new \Locale\Locale;
         $this->locale->setLocaleDir(APP_DIR."/config/locale/");
 
         // $this->config
-        $this->config = new \Config\Config(APP_DIR."/config/general.json");
+        $this->config = new \Config\Config;
+        $this->config->setConfigDir(APP_DIR."/config/general.json");
 
-        $this->assignArray($this->locale->getLocale()); // set locale data
-        $this->assignArray($this->config->data["html"]); // set html config/texts
-        $this->setTheme(); // set theme css path
-
-    }
-
-    public function run()
-    {
-        #try {
-            $methodName = $this->action;
-            $this->$methodName();
-        #} catch (\Exception $e) {
-        #    header("HTTP/1.1 500 Internal Server Error");
-        #    echo file_get_contents(APP_DIR."/public/errors/500.html");
-        #}
     }
 
     /**
@@ -60,33 +47,52 @@ class _ControllerBase
     }
 
     /**
-     * setTheme
+     * run
      *
-     * @return   null
+     * @return  null
      */
-    public function setTheme()
+    public function run()
     {
-        $theme = $this->request->getCookie("theme");
-        $defualt_theme = $this->config->data["theme"]["default"];
-        $known_themes  = $this->config->data["theme"]["known"];
-        if ( $theme & in_array($theme, $known_themes) ) {
-            assignArray(array("theme_name"=> $theme));
-        } else {
-            assignArray(array("theme_name"=> $defualt_theme));
-            setcookie("theme", $defualt_theme, time()+60*60*24*30*12);
+        try {
+            $this->setValues();
+            $methodName = $this->action;
+            $this->$methodName();
+        } catch (\Exception $e) {
+            ini_set($e, APP_DIR."/log/error.log");
+            header("HTTP/1.1 500 Internal Server Error");
+            echo file_get_contents(APP_DIR."/public/errors/500.html");
         }
     }
 
     /**
-     * assignArray
-     * Assign array data to Smarty class
+     * setValues
      *
-     * @param    array   $data   Like array("ASSIGN_VAR" => "VALUE").
+     * @return  null
+     */
+    protected function setValues()
+    {
+        $this->view->assign($this->locale->getLocale());
+        $this->view->assign($this->config->data["html"]);
+        $this->applytTheme();
+    }
+
+    /**
+     * applytTheme
+     * apply the configured CSS theme to the HTML <link> element
+     *
      * @return   null
      */
-    public function assignArray($data) {
-        foreach ( $data as $key => $value ) {
-            $this->view->assign($key, $value);
+    protected function applytTheme()
+    {
+        $theme        = $this->request->getCookie("theme");
+        $defualtTheme = $this->config->data["theme"]["default"];
+        $knownThemes  = $this->config->data["theme"]["known"];
+
+        if ( $theme & in_array($theme, $knownThemes) ) {
+            $this->view->assign("theme_name", $theme);
+        } else {
+            $this->view->assign("theme_name", $defualtTheme);
+            setcookie("theme", $defualtTheme, time()+60*60*24*30*12);
         }
     }
 
