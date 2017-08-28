@@ -33,7 +33,7 @@ class LoginModel extends _ModelBase
         $this->redirect_uris = $redirect_uris;
         $this->website       = $website;
         $this->scopes        = $scopes;
-        $this->fetchinstances_table();
+        $this->fetchInstancesTable();
 
         if ( !$this->isExist($this->host) ) {
             $this->handshakeToNewHost();
@@ -49,7 +49,7 @@ class LoginModel extends _ModelBase
      *
      * @return null
      */
-    private function fetchinstances_table()
+    private function fetchInstancesTable()
     {
         $this->instances_table = array();
         $stmt = $this->database->dbExecute("select host,client_id,client_secret from instances");
