@@ -16,7 +16,7 @@ function h($char)
  * Parse JSON file to associative array
  *
  * @param     string     Path to JSON
- * @return    string     Parsed JSON
+ * @return    array      Parsed array
  */
 function parse_json_file($json_path)
 {
@@ -33,5 +33,17 @@ function parse_json_file($json_path)
  */
 function is_url($url)
 {
-    return False !== filter_var($url, FILTER_VALIDATE_URL) && preg_match('@^https?+://@i', $url);
+    return false !== filter_var($url, FILTER_VALIDATE_URL) && preg_match('@^https?+://@i', $url);
+}
+
+/**
+ * Detect whether user is logged in
+ *
+ * @param   null
+ * @return  boolean  result
+ */
+function is_logged_in()
+{
+    $request = Request\Request::getInstance();
+    return !empty($request->getCookie("access_token"));
 }

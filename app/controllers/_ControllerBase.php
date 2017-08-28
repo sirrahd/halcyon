@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 
-class _ControllerBase
+abstract class _ControllerBase
 {
 
     protected $model;
@@ -9,28 +9,43 @@ class _ControllerBase
     protected $controller = "index";
     protected $action     = "indexAction";
 
-    protected $request;
-    protected $locale;
-    protected $config;
-
     public function __construct()
     {
+
         // $this->request
-        $this->request = new \Request\Request;
+        $this->request = \Request\Request::getInstance();
+
+        // $this->locale
+        $this->locale = \Locale\Locale::getInstance();
+        $this->locale->setLocaleDir(APP_DIR."/config/locale/");
+
+        // $this->config
+        $this->config = \Config\Config::getInstance();
+        $this->config->setConfigDir(APP_DIR."/config/general.json");
 
         // $this->view
         $this->view = new \Smarty;
         $this->view->setTemplateDir(APP_DIR."/app/views/templates/");
         $this->view->setCompileDir(APP_DIR."/app/views/templates_c/");
 
-        // $this->locale
-        $this->locale = new \Locale\Locale;
-        $this->locale->setLocaleDir(APP_DIR."/config/locale/");
+    }
 
-        // $this->config
-        $this->config = new \Config\Config;
-        $this->config->setConfigDir(APP_DIR."/config/general.json");
-
+    /**
+     * run
+     *
+     * @return  null
+     */
+    public function run()
+    {
+        try {
+            $this->setValues();
+            $method_name = $this->action;
+            $this->$method_name();
+        } catch (\Exception $e) {
+            ini_set($e, APP_DIR."/log/error.log");
+            header("HTTP/1.1 500 Internal Server Error");
+            echo file_get_contents(APP_DIR."/public/errors/500.html");
+        }
     }
 
     /**
@@ -44,24 +59,6 @@ class _ControllerBase
     {
         $this->controller = $controller;
         $this->action     = $action;
-    }
-
-    /**
-     * run
-     *
-     * @return  null
-     */
-    public function run()
-    {
-        try {
-            $this->setValues();
-            $methodName = $this->action;
-            $this->$methodName();
-        } catch (\Exception $e) {
-            ini_set($e, APP_DIR."/log/error.log");
-            header("HTTP/1.1 500 Internal Server Error");
-            echo file_get_contents(APP_DIR."/public/errors/500.html");
-        }
     }
 
     /**
@@ -84,15 +81,15 @@ class _ControllerBase
      */
     protected function applytTheme()
     {
-        $theme        = $this->request->getCookie("theme");
-        $defualtTheme = $this->config->data["theme"]["default"];
-        $knownThemes  = $this->config->data["theme"]["known"];
+        $theme         = $this->request->getCookie("theme");
+        $defualt_theme = $this->config->data["theme"]["default"];
+        $known_themes  = $this->config->data["theme"]["known"];
 
-        if ( $theme & in_array($theme, $knownThemes) ) {
+        if ( $theme & in_array($theme, $known_themes) ) {
             $this->view->assign("theme_name", $theme);
         } else {
-            $this->view->assign("theme_name", $defualtTheme);
-            setcookie("theme", $defualtTheme, time()+60*60*24*30*12);
+            $this->view->assign("theme_name", $defualt_theme);
+            setcookie("theme", $defualt_theme, time()+60*60*24*30*12);
         }
     }
 

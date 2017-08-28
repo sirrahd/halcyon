@@ -2,16 +2,16 @@
 !.keep
 
 # Caches
-.sass-cache
-templates_c
+.sass-cache/
+templates_c/
 
 # Installation
-.bundle
 /app/vendor/
-/node_modules
+/node_modules/
 
 # Configs
-config/general.json
+/config/general.json
 
 # Logs
-log/
+/log/
+*.log

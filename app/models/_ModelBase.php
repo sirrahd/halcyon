@@ -1,14 +1,14 @@
 <?php
 namespace Models;
 
-class _ModelBase
+abstract class _ModelBase
 {
     protected $database;
 
-    public function __construct($dbHost, $dbUser, $dbPass, $dbName)
+    public function __construct()
     {
-        // $this->database
-        $this->database = new \Database\Database($dbHost, $dbUser, $dbPass, $dbName);
+        $this->database = \Database\Database::getInstance();
+        $this->database->setInfo(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     }
 
 }

@@ -11,15 +11,8 @@ class LoginController extends _ControllerBase
     public function __construct()
     {
         parent::__construct();
-
-        $this->model = new \Models\LoginModel(
-            $this->config->data["db"]["host"],
-            $this->config->data["db"]["user"],
-            $this->config->data["db"]["password"],
-            $this->config->data["db"]["name"]
-        );
-
-        $this->location = "https://{$this->config->data['host']}/login".
+        $this->model    = new \Models\LoginModel();
+        $this->location = "https://".APP_HOST."login".
         "?error=host&error_description=This+instance+does+not+exist.";
     }
 
@@ -27,7 +20,6 @@ class LoginController extends _ControllerBase
     {
         if ( $this->request->getPost("acct") ) {
             $this->host = explode("@", $this->request->getPost("acct"))[2];
-
             if ( is_url("https://".$this->host) ) {
                 try {
                     $this->model->setValue(
@@ -38,12 +30,12 @@ class LoginController extends _ControllerBase
                         $this->config->data["app"]["scopes"]
                     );
                     $this->location =
-                        "https://{$this->host}/oauth/authorize".
-                        "?client_id={$this->model->client_id}".
-                        "&response_type=code".
-                        "&scope=".implode("+", explode(" ", $this->model->scopes)).
-                        "&website=".urlencode($this->model->website).
-                        "&redirect_uri=".urlencode("https://{$this->config->data['host']}/login?&host={$this->host}");
+                    "https://{$this->host}/oauth/authorize".
+                    "?client_id={$this->model->client_id}".
+                    "&response_type=code".
+                    "&scope=".explode("+", $this->model->scopes).
+                    "&website=".urlencode($this->model->website).
+                    "&redirect_uri=".urlencode("https://".APP_HOST."/login?&host={$this->host}");
                 } finally {
                     header("Location: {$this->location}", true, 303);
                     die();
@@ -54,7 +46,6 @@ class LoginController extends _ControllerBase
             }
         } else if ( $this->request->getQuery("code") & $this->request->getQuery("host") ) {
             $this->host = $this->request->getQuery("host");
-
             if ( is_url("https://".$this->host) ) {
                 $this->model->setValue(
                     $this->host,
@@ -65,11 +56,11 @@ class LoginController extends _ControllerBase
                 );
                 $this->token = $this->model->fetchAuthToken(
                     $this->request->getQuery("code"),
-                    "https://{$this->config->data['host']}/login?&host={$this->host}"
+                    "https://".APP_HOST."/login?&host={$this->host}"
                 );
                 if ($this->token) {
                     echo "
-<!DOCTYPE html>
+                    <!DOCTYPE html>
 <html>
 <body>
 <script>

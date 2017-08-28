@@ -21,7 +21,11 @@
     <link rel="stylesheet" type="text/css" href="{$stylesheet_dir}/theme-{$theme_name}.css" media="all" />
 </head>
 
-<body class="{$lang} {$page_type} {$body_classes}" data-page-type="{$page_type}" >
+<body
+    class="{$lang} {$page_type} {$body_classes}"
+    data-page-type="{$page_type}"
+    role="application"
+>
 
 <header id="globalHeader" class="{$header_classes}">
 

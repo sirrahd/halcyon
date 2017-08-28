@@ -8,7 +8,7 @@ class Dispatcher
 
     public function __construct()
     {
-        $this->request = new \Request\Request();
+        $this->request = Request\Request::getInstance();
         $this->params  = $this->request->getParam();
     }
 
