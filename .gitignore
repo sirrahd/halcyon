@@ -10,8 +10,7 @@
 /public/stylesheet/*
 
 # Caches
-.sass-cache/*
-templates_c/*
+/app/views/templates_c/*
 
 # Logs
 /log/*
