@@ -20,8 +20,8 @@
             "Database\\"    : "app/lib/Database/"
         },
         "files": [
-            "app/lib/functions.php",
-            "app/lib/variables.php"
+            "app/include/functions.php",
+            "app/include/variables.php"
         ]
     }
 }
