@@ -1,54 +1,41 @@
 <?php
 
-class Dispatcher
-{
-
-    protected $request;
-    protected $params;
-
-    public function __construct()
+    function router()
     {
-        $this->request = Request\Request::getInstance();
-        $this->params  = $this->request->getParam();
-    }
+        $request = Request\Request::getInstance();
+        $params  = $request->getParam();
 
-    public function dispatch()
-    {
-
-        if ( !isset($this->params[1]) ) {
+        if ( !isset($params[1]) ) {
             $controllerName  = "\Controllers\HomeController";
         }
 
-        else if ( $this->params[1] === "local" ) {
+        else if ( $params[1] === "local" ) {
             $controllerName  = "\Controllers\LocalController";
         }
 
-        else if ( $this->params[1] === "federated" ) {
+        else if ( $params[1] === "federated" ) {
             $controllerName  = "\Controllers\FederatedController";
         }
 
-        else if ( $this->params[1] === "notifications" ) {
+        else if ( $params[1] === "notifications" ) {
             $controllerName  = "\Controllers\NotificationsController";
         }
 
-        else if ( $this->params[1] === "search" ) {
+        else if ( $params[1] === "search" ) {
             $controllerName  = "\Controllers\SeachController";
         }
 
-        else if ( preg_match("/^@(.+)@(.+)\.(.+)$/", $this->params[1]) ) {
+        else if ( preg_match("/^@(.+)@(.+)\.(.+)$/", $params[1]) ) {
             $controllerName = "\Controllers\ProfileController";
         }
 
-        else if ( $this->params[1] === "login" ) {
+        else if ( $params[1] === "login" ) {
             $controllerName = "\Controllers\LoginController";
         }
 
-        else if ( $this->params[1] === "logout" ) {
+        else if ( $params[1] === "logout" ) {
             $controllerName = "\Controllers\LogoutController";
         }
-
-
-
 
         /* Check controller's existance */
         if ( isset($controllerName) ) {
@@ -62,8 +49,8 @@ class Dispatcher
         }
 
         /* Set 2nd param as action in controller */
-        if ( isset($this->params[2]) ) {
-            $actionName = $this->params[2]."Action";
+        if ( isset($params[2]) ) {
+            $actionName = $params[2]."Action";
 
             /* Check action's existence */
             if  (method_exists($controllerInstance, $actionName)) {
@@ -82,5 +69,3 @@ class Dispatcher
         $controllerInstance->run();
 
     }
-
-}

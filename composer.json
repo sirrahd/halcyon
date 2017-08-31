@@ -21,7 +21,8 @@
         },
         "files": [
             "app/include/functions.php",
-            "app/include/variables.php"
+            "app/include/variables.php",
+            "app/include/router.php"
         ]
     }
 }
