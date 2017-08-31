@@ -1,17 +1,21 @@
-# Git keep
-!.keep
-
 # Caches
-.sass-cache/
-templates_c/
+.sass-cache/*
+templates_c/*
 
 # Installation
-/app/vendor/
-/node_modules/
+/app/vendor/*
+/node_modules/*
 
 # Configs
 /config/general.json
 
+# Distribution
+/public/javascript/*
+/public/stylesheet/*
+
 # Logs
-/log/
+/log/*
 *.log
+
+# Git keep
+!.keep

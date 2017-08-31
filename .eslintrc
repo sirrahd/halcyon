@@ -9,9 +9,6 @@
         "jquery": true,
         "es6": true
     },
-    "ecmaFeatures": {
-        "jsx": true
-    },
     "rules": {
         "no-var": "off",
         "indent": ["error", 4],

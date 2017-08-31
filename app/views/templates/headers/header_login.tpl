@@ -8,7 +8,7 @@
         {$title_login}
     </title>
     <link rel="shortcut icon" href="{$images_dir}/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="{$stylesheet_dir}/theme-{$theme_name}.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{$stylesheet_dir}/theme_{$theme_name}.css" media="all" />
 </head>
 
 <body
