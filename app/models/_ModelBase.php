@@ -8,7 +8,7 @@ abstract class _ModelBase
     public function __construct()
     {
         $this->database = \Database\Database::getInstance();
-        $this->database->setInfo(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $this->database->setDatabaseInfo(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     }
 
 }

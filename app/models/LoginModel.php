@@ -120,7 +120,7 @@ class LoginModel extends _ModelBase
      * in the argument exists in $this->instances_table
      *
      * @param   string   $host   Host name
-     * @return  boolean          Whether the instance exists in DB$
+     * @return  boolean          Whether the instance exists in DB
      */
     public function isExist($host)
     {

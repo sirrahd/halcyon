@@ -11,19 +11,26 @@ class Database
     public static function getInstance() {
         if ( is_null(static::$instance) ) {
             static::$instance = new static;
+            static::$instance->setValue();
         }
         return static::$instance;
     }
 
-    public function setInfo($dbhost, $dbuser, $dbpass, $dbname)
+    public function setValue()
     {
-        $this->dbhost     = $dbhost;
-        $this->dbuser     = $dbuser;
-        $this->dbpass     = $dbpass;
-        $this->dbname     = $dbname;
-        $this->dsn        = "mysql:dbname=".$this->dbname.";host=".$this->dbhost.";charset=utf8";
         $this->connecting = false;
-        $this->dbConnect();
+    }
+
+    public function setDatabaseInfo($dbhost, $dbuser, $dbpass, $dbname)
+    {
+        if ( !$this->connecting ) {
+            $this->dbhost     = $dbhost;
+            $this->dbuser     = $dbuser;
+            $this->dbpass     = $dbpass;
+            $this->dbname     = $dbname;
+            $this->dsn        = "mysql:dbname=".$this->dbname.";host=".$this->dbhost.";charset=utf8";
+            $this->dbConnect();
+        }
     }
 
     public function dbConnect($commit=True)
@@ -44,7 +51,7 @@ class Database
 
     public function dbClose()
     {
-        $this->dbh = Null;
+        $this->dbh = null;
         $this->connecting = false;
     }
 

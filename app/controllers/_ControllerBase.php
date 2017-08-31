@@ -37,15 +37,15 @@ abstract class _ControllerBase
      */
     public function run()
     {
-        try {
+        #try {
             $this->setValues();
             $method_name = $this->action;
             $this->$method_name();
-        } catch (\Exception $e) {
-            ini_set($e, APP_DIR."/log/error.log");
-            header("HTTP/1.1 500 Internal Server Error");
-            echo file_get_contents(APP_DIR."/public/errors/500.html");
-        }
+        #} catch (\Exception $e) {
+        #    ini_set($e, APP_DIR."/log/error.log");
+        #    header("HTTP/1.1 500 Internal Server Error");
+        #    echo file_get_contents(APP_DIR."/public/errors/500.html");
+        #}
     }
 
     /**
