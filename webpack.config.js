@@ -3,8 +3,9 @@ ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = [
     {
+        context: path.join(__dirname, "/app/javascript/"),
         entry: {
-            main: "./app/javascript/main.jsx",
+            main: "./main.jsx",
         },
         output: {
             path: path.join(__dirname, "/public/javascript/"),
@@ -26,9 +27,10 @@ module.exports = [
         },
         devtool: "source-map",
     },{
+        context: path.join(__dirname, "/app/stylesheet/"),
         entry: {
-            theme_halcyon: "./app/stylesheet/theme_halcyon.scss",
-            theme_mastodon: "./app/stylesheet/theme_mastodon.scss"
+            theme_halcyon: "./theme_halcyon.scss",
+            theme_mastodon: "./theme_mastodon.scss"
         },
         output: {
             path: path.join(__dirname, "/public/stylesheet/"),
@@ -39,11 +41,11 @@ module.exports = [
                 {
                     test: /\.scss$/,
                     use: ExtractTextPlugin.extract({
+                        fallback: "style-loader",
                         use: [
-                            "css-loader",
+                            "css-loader?sourceMap",
                             "sass-loader?outputStyle=expanded"
                         ],
-                        fallback: "style-loader"
                     })
                 }
             ],
@@ -56,4 +58,18 @@ module.exports = [
             })
         ]
     }
-]
+];
+
+/**
+
+if ( KANKYOU === "production" ) {
+    module.exports.plugins.push(
+        new UglifyJsPlugin({
+          extractComments: true,
+        })
+    )
+} else {
+    module.export.devtool = "source-map" // これ配列
+}
+
+**/

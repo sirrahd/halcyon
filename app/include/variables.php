@@ -20,7 +20,5 @@ function defineConstants()
     define("DB_NAME", $config->data["db"]["name"]);
     define("DB_USER", $config->data["db"]["user"]);
     define("DB_PASS", $config->data["db"]["password"]);
-    
-}
 
-defineConstants();
+}
