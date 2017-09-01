@@ -17,7 +17,7 @@
 
             <div class="loginForm_input_wrap">
 
-                {if $login_error_message}
+                {if isset($login_error_message)}
                     <div class="loginForm_error_message">
                         <span>
                             {$login_error_message}

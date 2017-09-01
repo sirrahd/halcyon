@@ -1,3 +1,3 @@
-{include file="headers/header.tpl"}
+{include file="headers/header_global.tpl"}
 
-{include file="footers/footer.tpl"}
+{include file="footers/footer_global.tpl"}
