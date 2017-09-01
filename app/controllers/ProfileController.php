@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 
-class UserController extends _ControllerBase
+class UserController extends ControllerBase
 {
     public function indexAction()
     {

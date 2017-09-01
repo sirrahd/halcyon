@@ -1,6 +1,6 @@
 <?php
 namespace Controllers;
 
-class NotificationsController extends _ControllerBase
+class NotificationsController extends ControllerBase
 {
 }

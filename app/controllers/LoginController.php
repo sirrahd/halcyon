@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 
-class LoginController extends _ControllerBase
+class LoginController extends ControllerBase
 {
 
     protected $host;

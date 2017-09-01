@@ -3,7 +3,7 @@ namespace Models;
 
 use PDO;
 
-class LoginModel extends _ModelBase
+class LoginModel extends ModelBase
 {
 
     protected $host;        // requested mastodon host name

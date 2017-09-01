@@ -1,6 +1,6 @@
 <?php
 namespace Controllers;
 
-class FederatedController extends _ControllerBase
+class FederatedController extends ControllerBase
 {
 }

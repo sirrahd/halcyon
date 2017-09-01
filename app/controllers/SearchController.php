@@ -1,6 +1,6 @@
 <?php
 namespace Controllers;
 
-class SearchController extends _ControllerBase
+class SearchController extends ControllerBase
 {
 }

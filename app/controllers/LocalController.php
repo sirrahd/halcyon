@@ -1,6 +1,6 @@
 <?php
 namespace Controllers;
 
-class LocalController extends _ControllerBase
+class LocalController extends ControllerBase
 {
 }

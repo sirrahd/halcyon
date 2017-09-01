@@ -1,7 +1,7 @@
 <?php
 namespace Models;
 
-abstract class _ModelBase
+abstract class ModelBase
 {
     protected $database;
 

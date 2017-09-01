@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 
-class HomeController extends _ControllerBase
+class HomeController extends ControllerBase
 {
     public function indexAction()
     {

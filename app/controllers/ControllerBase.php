@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 
-abstract class _ControllerBase
+abstract class ControllerBase
 {
 
     protected $model;
