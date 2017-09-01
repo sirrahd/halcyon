@@ -9,6 +9,14 @@ abstract class ControllerBase
     protected $controller = "index";
     protected $action     = "indexAction";
 
+    protected $body_classes   = array();
+    protected $header_classes = array();
+    protected $footer_classes = array();
+    /*
+        こんなふうにしてあとからimplode()する系かもしれない
+        普通の一次元array()をassignするとtpl側でfor文にしないといかん
+    */
+
     public function __construct()
     {
 
@@ -25,6 +33,7 @@ abstract class ControllerBase
 
         // $this->view
         $this->view = new \Smarty;
+        $this->view->loadFilter("variable", "htmlspecialchars");
         $this->view->setTemplateDir(APP_DIR."/app/views/templates/");
         $this->view->setCompileDir(APP_DIR."/app/views/templates_c/");
 
@@ -37,15 +46,15 @@ abstract class ControllerBase
      */
     public function run()
     {
-        #try {
+        try {
             $this->setValues();
             $method_name = $this->action;
             $this->$method_name();
-        #} catch (\Exception $e) {
-        #    ini_set($e, APP_DIR."/log/error.log");
-        #    header("HTTP/1.1 500 Internal Server Error");
-        #    echo file_get_contents(APP_DIR."/public/errors/500.html");
-        #}
+        } catch (\Exception $e) {
+            ini_set($e, APP_DIR."/log/error.log");
+            header("HTTP/1.1 500 Internal Server Error");
+            echo file_get_contents(APP_DIR."/public/errors/500.html");
+        }
     }
 
     /**
