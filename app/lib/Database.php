@@ -68,4 +68,13 @@ class Database
         return $stmt;
     }
 
+    final protected function __construct()
+    {
+    }
+
+    final protected function __clone()
+    {
+        throw new \Exception("Clone is not allowed");
+    }
+
 }

@@ -106,7 +106,7 @@ class Locale
 
     final protected function __clone()
     {
-        throw new \Exception("Clone is not allowd");
+        throw new \Exception("Clone is not allowed");
     }
 
 }

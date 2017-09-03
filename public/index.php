@@ -6,7 +6,7 @@
  *
  * @author    Neetshin <neetshin@neetsh.in>
  * @copyright (c) 2017 Halcyon Suite
- * @license   https://www.gnu.org/licenses/agpl-3.0.html AGPL-3.0
+ * @license   www.gnu.org/licenses/agpl-3.0.html
  */
 require_once __DIR__."/../app/vendor/autoload.php";
 

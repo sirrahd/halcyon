@@ -2,7 +2,7 @@
     "name": "halcyon",
     "title": "Halcyn for Mastodon",
     "version": "1.0.0",
-    "description": "The Another Interface of Mastodon",
+    "description": "The another web interface of Mastodon",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
