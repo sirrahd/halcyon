@@ -41,7 +41,7 @@
         if ( isset($controllerName) ) {
             $controllerInstance = new $controllerName;
         }
-        /* IF controller doesn't exist */
+        /* If controller doesn't exist */
         else {
             header("HTTP/1.0 404 Not Found");
             echo file_get_contents(APP_DIR."/public/errors/404.html");
@@ -56,7 +56,7 @@
             if  (method_exists($controllerInstance, $actionName)) {
                 $controllerInstance->setAction($controllerName, $actionName);
             }
-            /* IF action doesn't exist */
+            /* If action doesn't exist */
             else {
                 header("HTTP/1.0 404 Not Found");
                 echo file_get_contents(APP_DIR."/public/errors/404.html");
