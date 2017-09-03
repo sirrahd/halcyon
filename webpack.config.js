@@ -15,11 +15,11 @@ module.exports = [
             rules: [
                 {
                     enforce: "pre",
-                    test: /\.jsx$/,
+                    test: /\.(js|es6|jsx)$/,
                     exclude: /node_modules/,
                     use: "eslint-loader"
                 },{
-                    test: /\.jsx$/,
+                    test: /\.(js|es6|jsx)$/,
                     exclude: /node_modules/,
                     use: "babel-loader"
                 }

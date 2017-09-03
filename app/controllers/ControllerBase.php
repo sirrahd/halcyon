@@ -20,18 +20,18 @@ abstract class ControllerBase
     public function __construct()
     {
 
-        // $this->request
+        // Request instance
         $this->request = \Request\Request::getInstance();
 
-        // $this->locale
+        // Locale instance
         $this->locale = \Locale\Locale::getInstance();
         $this->locale->setLocaleDir(APP_DIR."/config/locale/");
 
-        // $this->config
+        // Config instance
         $this->config = \Config\Config::getInstance();
         $this->config->setConfigDir(APP_DIR."/config/general.json");
 
-        // $this->view
+        // Smarty instance
         $this->view = new \Smarty;
         $this->view->loadFilter("variable", "htmlspecialchars");
         $this->view->setTemplateDir(APP_DIR."/app/views/templates/");

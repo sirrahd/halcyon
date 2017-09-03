@@ -18,7 +18,7 @@
         {/if}
     </title>
     <link rel="shortcut icon" href="{$images_dir}/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="{$stylesheet_dir}/theme_{$theme_name}.css" media="all" />
+    <link rel="stylesheet" href="{$stylesheet_dir}/theme_{$theme_name}.css" />
     <script src="{$javascript_dir}/main.js" />
 </head>
 
