@@ -21,14 +21,14 @@ abstract class ControllerBase
     {
 
         // Request instance
-        $this->request = \Request\Request::getInstance();
+        $this->request = \Lib\Request::getInstance();
 
         // Locale instance
-        $this->locale = \Locale\Locale::getInstance();
+        $this->locale = \Lib\Locale::getInstance();
         $this->locale->setLocaleDir(APP_DIR."/config/locale/");
 
         // Config instance
-        $this->config = \Config\Config::getInstance();
+        $this->config = \Lib\Config::getInstance();
         $this->config->setConfigDir(APP_DIR."/config/general.json");
 
         // Smarty instance

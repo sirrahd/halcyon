@@ -14,7 +14,7 @@ function defineConstants()
     }
 
     /* Database infomations */
-    $config = Config\Config::getInstance();
+    $config = Lib\Config::getInstance();
     $config->setConfigDir(APP_DIR."/config/general.json");
     define("DB_HOST", $config->data["db"]["host"]);
     define("DB_NAME", $config->data["db"]["name"]);

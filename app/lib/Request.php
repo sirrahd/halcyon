@@ -1,5 +1,5 @@
 <?php
-namespace Request;
+namespace Lib;
 
 class Request
 {

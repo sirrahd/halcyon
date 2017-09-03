@@ -14,10 +14,7 @@
             "Controllers\\" : "app/controllers/",
             "Models\\"      : "app/models/",
             "Views\\"       : "app/views/",
-            "Request\\"     : "app/lib/Request/",
-            "Config\\"      : "app/lib/Config/",
-            "Locale\\"      : "app/lib/Locale/",
-            "Database\\"    : "app/lib/Database/"
+            "Lib\\"         : "app/lib/"
         },
         "files": [
             "app/include/functions.php",

@@ -1,5 +1,5 @@
 <?php
-namespace Locale;
+namespace Lib;
 
 class Locale
 {
@@ -54,7 +54,7 @@ class Locale
     public function detectLanguage()
     {
 
-        $request          = \Request\Request::getInstance();
+        $request          = \Lib\Request::getInstance();
         $queryLang        = $request->getQuery("lang");
         $cookieLang       = $request->getCookie("lang");
 

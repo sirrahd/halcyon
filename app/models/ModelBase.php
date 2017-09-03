@@ -7,7 +7,7 @@ abstract class ModelBase
 
     public function __construct()
     {
-        $this->database = \Database\Database::getInstance();
+        $this->database = \Lib\Database::getInstance();
         $this->database->setDatabaseInfo(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     }
 

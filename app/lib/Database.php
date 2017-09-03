@@ -1,5 +1,5 @@
 <?php
-namespace Database;
+namespace Lib;
 
 use PDO;
 

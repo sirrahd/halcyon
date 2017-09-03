@@ -2,7 +2,7 @@
 
     function router()
     {
-        $request = Request\Request::getInstance();
+        $request = Lib\Request::getInstance();
         $params  = $request->getParam();
 
         if ( !isset($params[1]) ) {
