@@ -45,5 +45,5 @@ function is_url($url)
 function is_logged_in()
 {
     $request = Request\Request::getInstance();
-    return !empty($request->getCookie("access_token"));
+    return empty($request->getCookie("logged_in") === "true");
 }

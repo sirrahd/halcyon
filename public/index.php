@@ -1,7 +1,7 @@
 <?php
 
 /**
- *               Halcyon
+ *                Halcyon
  * The another web interface of Mastodon
  *
  * @author    Neetshin <neetshin@neetsh.in>
