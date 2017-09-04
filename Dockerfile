@@ -1,6 +1,12 @@
 FROM php:fpm-alpine
 # --> PHP 7.1.9 (cli)
-MAINTAINER Neetshin <neetshin@neetsh.in>
+
+LABEL maintainer="https://github.com/halcyon-suite/halcyon" \
+description="The another web interface of Mastodon"
+
+ENV NODE_ENV=production
+
+WORKDIR /halcyon
 
 # Installation
 RUN apk -U upgrade \
@@ -9,8 +15,11 @@ RUN apk -U upgrade \
     git \
     nodejs \
  && npm install -g yarn
- && curl -s https://getcomposer.org/installer | php
- && mv composer.phar /usr/local/bin/composer
 
-RUN yarn --ignore-optional --pure-lockfile
- && composer install
+COPY composer.json composer.lock package.json yarn.lock /halcyon/
+  && composer.phar /usr/local/bin/composer
+
+RUN composer install
+ && yarn --ignore-optional --pure-lockfile
+
+COPY . /halcyon
