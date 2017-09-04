@@ -1,12 +1,13 @@
 {
     "config": {
-      "vendor-dir": "app/vendor"
+        "vendor-dir": "app/vendor"
     },
 
     "require": {
-      "php": ">=7.0.0",
-      "smarty/smarty": "dev-trunk",
-      "guzzlehttp/guzzle": "^6.2"
+        "php": ">=7.0.0",
+        "smarty/smarty": "dev-trunk",
+        "guzzlehttp/guzzle": "^6.2",
+        "gettext/gettext": "^4.4"
     },
 
     "autoload": {

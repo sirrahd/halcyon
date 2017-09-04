@@ -9,31 +9,15 @@ abstract class ControllerBase
     protected $controller = "index";
     protected $action     = "indexAction";
 
-    protected $body_classes   = array();
-    protected $header_classes = array();
-    protected $footer_classes = array();
-    /*
-        こんなふうにしてあとからimplode()する系かもしれない
-        普通の一次元array()をassignするとtpl側でfor文にしないといかん
-    */
-
     public function __construct()
     {
-
-        // Request instance
+        // Core libs
         $this->request = \Lib\Request::getInstance();
-
-        // Locale instance
         $this->locale = \Lib\Locale::getInstance();
-        $this->locale->setLocaleDir(APP_DIR."/config/locale/");
-
-        // Config instance
         $this->config = \Lib\Config::getInstance();
-        $this->config->setConfigDir(APP_DIR."/config/general.json");
 
         // Smarty instance
         $this->view = new \Smarty;
-        $this->view->loadFilter("variable", "htmlspecialchars");
         $this->view->setTemplateDir(APP_DIR."/app/views/templates/");
         $this->view->setCompileDir(APP_DIR."/app/views/templates_c/");
 
@@ -77,7 +61,6 @@ abstract class ControllerBase
      */
     protected function setValues()
     {
-        $this->view->assign($this->locale->getLocale());
         $this->view->assign($this->config->data["html"]);
         $this->applytTheme();
     }

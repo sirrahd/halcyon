@@ -6,23 +6,13 @@ class Config
     public $data;
     protected static $instance;
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if ( is_null(static::$instance) ) {
             static::$instance = new static;
+            $this->data = parse_json_file(APP_DIR."/config/general.json", true);
         }
         return static::$instance;
-    }
-
-    /**
-     * setConfigDir
-     * Set path to config file
-     *
-     * @param   string   $dir   path to config file
-     * @return  null
-     */
-    public function setConfigDir($dir)
-    {
-        $this->data = parse_json_file($dir, true);
     }
 
     final protected function __construct()

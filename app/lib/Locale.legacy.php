@@ -1,33 +1,46 @@
 <?php
 namespace Lib;
-use Gettext\GettextTranslator;
 
 class Locale
 {
+
+    protected $language;
+    protected $locale_dir;
+
     protected static $instance;
 
-    public static function getInstance()
-    {
+    public static function getInstance() {
         if ( is_null(static::$instance) ) {
             static::$instance = new static;
-            setLocale();
         }
         return static::$instance;
     }
 
     /**
-     * setLocale
-     * Set locale informations from .po file with gettext
+     * getLocale
      *
-     * @param   null
+     * @param    null
+     * @return   array     $return   locale array
+     */
+    public function getLocale()
+    {
+        if ( !$this->language ) {
+            $this->detectLanguage();
+        }
+        $return = parse_json_file($this->locale_dir.$this->language.".json");
+        return $return;
+    }
+
+    /**
+     * setLocaleDir
+     * Set path to the locale file
+     *
+     * @param   string   $path    path to the locale file
      * @return  null
      */
-    public function setLocale()
+    public function setLocaleDir($path)
     {
-        $t = new GettextTranslator();
-        $t->setLanguage(detectLanguage()); // detectLanguageの返り値から言語コードをセット
-        $t->loadDomain("messages", APP_DIR."/config/locale"); // 言語ファイルの場所を指定
-        $t->register(); // グローバル化
+        $this->locale_dir = $path;
     }
 
     /**
@@ -36,15 +49,16 @@ class Locale
      * cookie or query string.
      *
      * @param    null
-     * @return   string    $lang    Language code like "en-US"
+     * @return   null
      */
     public function detectLanguage()
     {
+
         $request          = \Lib\Request::getInstance();
         $queryLang        = $request->getQuery("lang");
         $cookieLang       = $request->getCookie("lang");
 
-        $lang_config      = parse_json_file(APP_DIR."/config/locale/locale.config.json");
+        $lang_config      = parse_json_file( $this->locale_dir."_language_config.json" );
         $known_languages  = $lang_config["known_languages"];
         $default_language = $lang_config["default_language"];
 
@@ -83,8 +97,7 @@ class Locale
             $lang = $default_language;
         }
 
-        /* $this->language = $lang; */
-        return $lang;
+        $this->language = $lang;
     }
 
     final protected function __construct()
@@ -95,4 +108,5 @@ class Locale
     {
         throw new \Exception("Clone is not allowed");
     }
+
 }

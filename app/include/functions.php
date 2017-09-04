@@ -44,6 +44,6 @@ function is_url($url)
  */
 function is_logged_in()
 {
-    $request = Request\Request::getInstance();
+    $request = Lib\Request::getInstance();
     return empty($request->getCookie("logged_in") === "true");
 }

@@ -28,6 +28,6 @@
     role="application"
 >
 
-<header id="globalHeader" class="{$header_classes}">
+<header id="globalHeader" class="{$header_classes}" role="banner">
 
 </header>
