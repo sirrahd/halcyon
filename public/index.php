@@ -1,17 +1,60 @@
 <?php
 
 /**
- *                Halcyon
- * The another web interface of Mastodon
+ * Laravel - A PHP Framework For Web Artisans
  *
- * @author    Neetshin <neetshin@neetsh.in>
- * @copyright (c) 2017 Halcyon Suite
- * @license   www.gnu.org/licenses/agpl-3.0.html
+ * @package  Laravel
+ * @author   Taylor Otwell <taylor@laravel.com>
  */
-require_once __DIR__."/../app/vendor/autoload.php";
 
-error_reporting(E_ALL);
-ini_set("error_log", __DIR__."/../log/error.log");
+define('LARAVEL_START', microtime(true));
 
-defineConstants();
-router();
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| our application. We just need to utilize it! We'll simply require it
+| into the script here so that we don't have to worry about manual
+| loading any of our classes later on. It feels great to relax.
+|
+*/
+
+require __DIR__.'/../vendor/autoload.php';
+
+/*
+|--------------------------------------------------------------------------
+| Turn On The Lights
+|--------------------------------------------------------------------------
+|
+| We need to illuminate PHP development, so let us turn on the lights.
+| This bootstraps the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight our users.
+|
+*/
+
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request
+| through the kernel, and send the associated response back to
+| the client's browser allowing them to enjoy the creative
+| and wonderful application we have prepared for them.
+|
+*/
+
+$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+
+$response = $kernel->handle(
+    $request = Illuminate\Http\Request::capture()
+);
+
+$response->send();
+
+$kernel->terminate($request, $response);

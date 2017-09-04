@@ -1,26 +1,56 @@
 {
-    "config": {
-        "vendor-dir": "app/vendor"
-    },
-
+    "name": "halcyon-suite/halcyon",
+    "description": "The another web interface of Mastodon",
+    "keywords": ["mastodon", "mastodon-app"],
+    "license": "AGPL-3.0",
     "require": {
         "php": ">=7.0.0",
-        "smarty/smarty": "dev-trunk",
-        "guzzlehttp/guzzle": "^6.2",
-        "gettext/gettext": "^4.4"
+        "fideloper/proxy": "~3.3",
+        "guzzlehttp/guzzle": "^6.3",
+        "laravel/framework": "5.5.*",
+        "laravel/tinker": "~1.0"
     },
-
+    "require-dev": {
+        "filp/whoops": "~2.0",
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~6.0"
+    },
     "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
         "psr-4": {
-            "Controllers\\" : "app/controllers/",
-            "Models\\"      : "app/models/",
-            "Views\\"       : "app/views/",
-            "Lib\\"         : "app/lib/"
-        },
-        "files": [
-            "app/include/functions.php",
-            "app/include/variables.php",
-            "app/include/router.php"
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
         ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
     }
 }
