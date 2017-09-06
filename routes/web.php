@@ -11,19 +11,19 @@
 |
 */
 
-Route::get("/",              "HomeController");
-Route::get("/local",         "LocalController");
-Route::get("/federated",     "FederatedController");
-Route::get("/notifications", "NotificationsController");
-Route::get("/login",         "LoginController");
-Route::get("/logout",        "LogoutController");
+Route::get("/",              "HomeController@index")->name("home");
+Route::get("/local",         "LocalController@index")->name("local");
+Route::get("/federated",     "FederatedController@index")->name("federated");
+Route::get("/notifications", "NotificationsController@index")->name("notifications");
 
-Route::get("/{acct}",              "ProfileController")->where("acct", "/^@(.+)@(.+)\.(.+)$/");
-Route::get("/{acct}/following",    "ProfileController@following")->where("acct", "/^@(.+)@(.+)\.(.+)$/");
-Route::get("/{acct}/followers",    "ProfileController@followers")->where("acct", "/^@(.+)@(.+)\.(.+)$/");
-Route::get("/{acct}/favourites",   "ProfileController@favourites")->where("acct", "/^@(.+)@(.+)\.(.+)$/");
-Route::get("/{acct}/with_replies", "ProfileController@withReplies")->where("acct", "/^@(.+)@(.+)\.(.+)$/");
-Route::get("/{acct}/media",        "ProfileController@media")->where("acct", "/^@(.+)@(.+)\.(.+)$/");
+Route::pattern("acct", "/^@(.+)@(.+)\.(.+)$/");
+Route::get("/{acct}",              "ProfileController@index");
+Route::get("/{acct}/following",    "ProfileController@following");
+Route::get("/{acct}/followers",    "ProfileController@followers");
+Route::get("/{acct}/favourites",   "ProfileController@favourites");
+Route::get("/{acct}/with_replies", "ProfileController@withReplies");
+Route::get("/{acct}/media",        "ProfileController@media");
 
-// Alias
-Route::redirect("/home", "/", 301);
+Route::get("/login",  "LoginController@index");
+Route::post("/login", "LoginController@auth");
+Route::get("/logout", "LoginController@logout");

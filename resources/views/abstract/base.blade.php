@@ -10,6 +10,6 @@
         <script src="/javascript/main.js"></script>
     </head>
     <body>
-        
+        @yield("content")
     </body>
 </html>

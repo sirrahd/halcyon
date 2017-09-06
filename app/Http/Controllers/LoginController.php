@@ -10,4 +10,32 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class LoginController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * index
+     * Index action
+     */
+    public function index()
+    {
+        return view("login");
+    }
+
+    /**
+     * auth
+     * Auth action
+     */
+    public function auth()
+    {
+
+    }
+
+    /**
+     * logout
+     * Logout action
+     */
+    public function logout()
+    {
+
+    }
+
 }
