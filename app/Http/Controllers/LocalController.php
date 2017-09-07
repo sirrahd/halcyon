@@ -10,4 +10,14 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class LocalController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * index
+     * Index action
+     */
+    public function index()
+    {
+        return view("local");
+    }
+
 }
