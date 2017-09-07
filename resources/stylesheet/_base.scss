@@ -1,0 +1,43 @@
+body {
+	background-color: $backgound_color;
+	font-family : "Helvetica Neue",Helvetica,Arial,sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	&.ja {
+		font-family:Arial,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,
+		"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+	}
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+// General classes
+.invisible {
+	display: none;
+}
+
+.unselectable {
+	user-select: none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.reset-input {
+	margin: 0;
+	padding: 0;
+	border-radius: 0;
+	background-color: transparent;
+	border-color: transparent;
+	outline-color: transparent;
+	appearance: none;
+}

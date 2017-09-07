@@ -3,7 +3,7 @@ ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = [
     {
-        context: path.join(__dirname, "/app/javascript/"),
+        context: path.join(__dirname, "/resources/javascript/"),
         entry: {
             main: "./main.jsx",
         },
@@ -27,7 +27,7 @@ module.exports = [
         },
         devtool: "source-map",
     },{
-        context: path.join(__dirname, "/app/stylesheet/"),
+        context: path.join(__dirname, "/resources/stylesheet/"),
         entry: {
             theme_halcyon: "./theme_halcyon.scss",
             theme_mastodon: "./theme_mastodon.scss"

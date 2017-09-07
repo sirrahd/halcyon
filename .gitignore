@@ -1,20 +1,20 @@
-# Installation
-/app/vendor/*
-/node_modules/*
-
-# Configs
-/config/general.json
-
-# Distribution
+# Compiled assets
 /public/javascript/*
 /public/stylesheet/*
 
-# Caches
-/app/views/templates_c/*
-
-# Logs
-/log/*
-*.log
+# Laravel
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor/*
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env
 
 # Git keep
 !.keep

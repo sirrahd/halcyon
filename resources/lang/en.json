@@ -1,0 +1,16 @@
+{
+    "title-base": "Haclyon",
+    "title-login": "Login / Halcyon for Mastodon",
+    "title-local": "Local / Halcyon",
+    "title-federated": "Federated / Halcyon",
+    "title-notifications": "Notifications / Halcyon",
+
+    "home-label": "Home",
+    "local-label": "Local",
+    "federated-label": "Federated",
+    "notifications-label": "Notifications",
+
+    "actions-nav-search": "Search Mastodon",
+    "actions-nav-toot": "Toot"
+
+}
