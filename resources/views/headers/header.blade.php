@@ -3,15 +3,23 @@
     <div class="top-bar__container">
 
         <div class="top-bar__child top-bar__center-area">
-            @include('headers.parts.logo')
+            @include('headers.header-parts.title')
         </div>
 
         <div class="top-bar__child top-bar__left-area">
-            @include('headers.parts.navigation')
+            @if (is_logged_in())
+                @include('headers.header-parts.navigation')
+            @else
+                @include('headers.header-parts.navigation-guest')
+            @endif
         </div>
 
         <div class="top-bar__child top-bar__right-area">
-            @include('headers.parts.actions')
+            @if (is_logged_in())
+                @include('headers.header-parts.actions-nav')
+            @else
+                @include('headers.header-parts.actions-nav-guest')
+            @endif
         </div>
 
     </div>

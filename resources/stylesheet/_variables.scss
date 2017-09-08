@@ -1,8 +1,22 @@
 
-$visible_width: 1190px;
+$breakpoints: (
+    890px,
+    936px,
+    1190px
+) !default;
 
-// Header 
-$top-bar_height: 46px;
+$breakpointsMap: (
+    "sm": 450px,
+    "md": 890px,
+    "lg": 936px,
+    "xl": 1190px
+) !default;
 
-$fonts-path:  "/fonts";
-$images-path: "/images";
+$sm: 450px !default;
+$md: 890px !default;
+$lg: 936px !default;
+$xl: 1190px !default;
+
+$top-bar-height: 46px !default;
+$fonts-path:  "/fonts" !default;
+$images-path: "/images" !default;

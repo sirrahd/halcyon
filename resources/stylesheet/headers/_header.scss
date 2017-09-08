@@ -1,20 +1,26 @@
 
 .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
     color: $secondary_color;
     background-color: $base_color;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.26);
 
     .top-bar__container {
         display: flex;
-        width: $visible_width;
-        height: $top-bar_height;
+        height: $top-bar-height;
         margin: 0 auto;
+        @include setResponsiveMaxWidth($breakpoints);
 
         .top-bar__child {
             height: 100%;
 
             &.top-bar__left-area {
                 order: 1;
-                flex-basis: $visible_width /3;
+                flex-basis: calc(100% / 3);
                 flex-shrink: 0;
 
                 .navigation {
@@ -41,7 +47,7 @@
                                 color: $secondary_color;
                                 transition: all .15s ease-in-out;
 
-                                &:hover, &:focus, &:active, &.navigation-list_current {
+                                &:hover, &:focus, &:active, &.navigation-list--current {
                                     height: calc(100% - 2px);
                                     color: $highlight_color;
                                     border-bottom: 2px solid $highlight_color;
@@ -49,14 +55,15 @@
 
                                 .navigation-list__icon {
                                     font-size: 18px;
-                                    margin-top: ($top-bar_height - 18)/2;
+                                    margin-top: ($top-bar-height - 18)/2;
                                 }
 
                                 .navigation-list__label {
                                     font-size: 13px;
                                     font-weight: 700;
                                     margin-left: 3px;
-                                    margin-top: ($top-bar_height - 13)/2;
+                                    margin-top: ($top-bar-height - 13)/2;
+                                    @include invisibleWith($sm);
                                 }
                             }
                         }
@@ -93,7 +100,7 @@
 
             &.top-bar__right-area {
                 order: 3;
-                flex-basis: $visible_width /3;
+                flex-basis: calc(100% / 3);
                 flex-shrink: 0;
 
                 .actions-nav {
@@ -109,7 +116,7 @@
 
                     .actions-nav-search {
 
-                        form {
+                        .search-form {
                             position: relative;
                             height: 100%;
 
@@ -150,7 +157,7 @@
                             border-radius: 25px;
                             box-sizing: border-box;
                             height: 100%;
-                            color: #fff;
+                            color: $white;
                             background-color: $highlight_color;
 
                             &:hover, &:focus, &:active {

@@ -1,14 +1,28 @@
+
 body {
-	background-color: $backgound_color;
 	font-family : "Helvetica Neue",Helvetica,Arial,sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	color: $primary_color;
+	background-color: $backgound_color;
 
 	&.ja {
 		font-family:Arial,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,
 		"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
 	}
+
 }
+
+
+a {
+	color: $highlight_color;
+	text-decoration: none;
+
+	&:hover, &:focus, &:active {
+		text-decoration: underline;
+	}
+}
+
 
 img {
     max-width: 100%;
@@ -16,28 +30,33 @@ img {
 }
 
 
-// General classes
-.invisible {
-	display: none;
+
+h1 {
+	font-size: 36px;
+	line-height: 1.5;
 }
 
-.unselectable {
-	user-select: none;
-	-ms-user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
+h2 {
+	font-size: 32px;
+	line-height: 1.5;
 }
 
-.cursor-pointer {
-	cursor: pointer;
+h3 {
+	font-size: 28px;
+	line-height: 1.2;
 }
 
-.reset-input {
-	margin: 0;
-	padding: 0;
-	border-radius: 0;
-	background-color: transparent;
-	border-color: transparent;
-	outline-color: transparent;
-	appearance: none;
+h4 {
+	font-size: 24px;
+	line-height: 1.2;
+}
+
+h5 {
+	font-size: 21px;
+	line-height: 1.2;
+}
+
+h6 {
+	font-size: 18px;
+	line-height: 1.2;
 }

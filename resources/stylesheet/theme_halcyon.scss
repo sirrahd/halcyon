@@ -7,10 +7,11 @@ $highlight_color: #00aced;
 $area_color:      #F5F8FA;
 $backgound_color: #E6ECF0;
 
+$white:           #ffffff;
 $green:           #17BF63;
 $yellow:          #F8B038;
 $orange:          #ff5050;
 $red:             #E0245E;
 $blue:            #1DA1F2;
 
-@import "include";
+@import "import";

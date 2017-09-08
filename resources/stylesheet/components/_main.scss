@@ -1,0 +1,22 @@
+
+.main {
+    margin: 0 auto;
+    padding-top: $top-bar-height;
+    @include setResponsiveMaxWidth($breakpoints);
+
+    .main-article {
+        width: 100%;
+        margin: 10px auto;
+        padding: 16px;
+        @include isMoreThan($md) {
+            padding: 28px;
+        }
+        box-sizing: border-box;
+        background-color: $base_color;
+        border: 1px solid $area_color;
+    }
+
+    .main-article--login {
+        max-width: 510px;
+    }
+}

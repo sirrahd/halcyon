@@ -1,0 +1,62 @@
+
+// Generate media query of max-width from breakpoint map
+// @param {Map} $breakpoints - Map of breakpoints
+//
+@mixin setResponsiveMaxWidth($breakpoints) {
+    @each $breakpoint in $breakpoints {
+        @media screen and (min-width: $breakpoint) {
+            max-width: $breakpoint;
+        }
+    }
+}
+
+// Generate media query of min-width from breakpoint map
+// @param {Map} $breakpoints - Map of breakpoints
+//
+@mixin setResponsiveMinWidth($breakpoints) {
+    @each $breakpoint in $breakpoints {
+        @media screen and (min-width: $breakpoint) {
+            min-width: $breakpoint;
+        }
+    }
+}
+
+// If visitor's screen was less than $breakpoint
+// then hide the element
+// @param {Number} $breakpoint  - Number of minimum screen
+//
+@mixin invisibleWith($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+        display: none!important;
+    }
+}
+
+// If visitor's screen was less than $breakpoint
+// then show the element
+// @param {Number} $breakpoint  - Number of minimum screen
+//
+@mixin visibleWith($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+        display: inherit!important;
+    }
+}
+
+// If visitor's screen is larger than argument
+// enable @content
+// @param {Number} $breakpoint
+//
+@mixin isMoreThan($breakpoint) {
+    @media screen and (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+// If visitor's screen is smaller than argument
+// enable @content
+// @param {Number} $breakpoint
+//
+@mixin isLessThan($breakpoint) {
+    @media screen and (min-width: $breakpoint) {
+        @content;
+    }
+}

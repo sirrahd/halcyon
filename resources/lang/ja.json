@@ -5,11 +5,31 @@
     "title-federated": "連合 / Halcyon",
     "title-notifications": "通知 / Halcyon",
 
-    "home-label": "ホーム",
-    "local-label": "ローカル",
-    "federated-label": "連合",
-    "notifications-label": "通知",
+    "navigations-home": "ホーム",
+    "navigations-local": "ローカル",
+    "navigations-federated": "連合",
+    "navigations-notifications": "通知",
+    "navigations-about": "Mastodonについて",
 
     "actions-nav-search": "Mastodonを検索",
-    "actions-nav-toot": "トゥート"
+    "actions-nav-toot": "トゥート",
+
+    "dropdown-menu-profile": "プロフィール",
+    "dropdown-menu-settings": "設定",
+    "dropdown-menu-halcyon-settings": "Halcyonの設定",
+    "dropdown-menu-about-instance": "このインスタンスについて",
+    "dropdown-menu-kbd-help": "キーボードショートカット",
+    "dropdown-menu-logout": "ログアウト",
+
+    "login-form-text": "Halcyonにログイン",
+    "login-form-submit": "ログインする",
+    "login-from-agree": "利用規約に同意",
+
+    "widget-footer-title": "Halcyon for Mastodon",
+    "widget-footer-donation": "寄付しろよ☆",
+    "widget-footer-about": "概要",
+    "widget-footer-terms": "利用規約",
+    "widget-footer-apps": "アプリ",
+    "widget-footer-source-code": "ソースコード",
+    "widget-footer-other-instances": "他のインスタンス"
 }

@@ -18,8 +18,8 @@ Route::get('/',              'HomeController@index')->name('home');
 Route::get('/local',         'LocalController@index')->name('local');
 Route::get('/federated',     'FederatedController@index')->name('federated');
 Route::get('/notifications', 'NotificationsController@index')->name('notifications');
-Route::get('/search', 'SearchController@index')->name('search');
-Route::get('/search/users', 'SearchController@users')->name('search_users');
+Route::get('/search',        'SearchController@index')->name('search');
+Route::get('/search/users',  'SearchController@users')->name('search_users');
 
 // Profile pages
 Route::get('/{acct}',              'ProfileController@index')->name('profile');
@@ -30,7 +30,6 @@ Route::get('/{acct}/with_replies', 'ProfileController@withReplies')->name('profi
 Route::get('/{acct}/media',        'ProfileController@media')->name('profile_media');
 
 // Login pages
-Route::get('/login',  'LoginController@index');
-Route::get('/logout', 'LoginController@logout');
-
+Route::get('/login',  'LoginController@index')->name('login');
+Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::post('/login', 'LoginController@auth');

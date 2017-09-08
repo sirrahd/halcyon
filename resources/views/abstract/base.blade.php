@@ -10,9 +10,13 @@
         <link rel="stylesheet" type="text/css" href="/stylesheet/theme_halcyon.css" />
         {{-- <script src="/javascript/main.js"></script> --}}
     </head>
-    <body class="
-    {{ app()->getLocale() }}
-    ">
+    <body
+    class="
+        {{ Route::currentRouteName() }}
+        {{ app()->getLocale() }}
+    "
+    role="application"
+    >
         @yield("content")
     </body>
 </html>

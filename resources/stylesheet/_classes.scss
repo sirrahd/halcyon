@@ -1,0 +1,33 @@
+
+// .invisible
+// Hide a content
+.invisible {
+	display: none;
+}
+
+// .unselectable
+// Disallow select for user
+.unselectable {
+	user-select: none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+// .cursor-pointer
+// Change cursor icon for pointer
+.cursor-pointer {
+	cursor: pointer;
+}
+
+// .reset-input
+// Reset design of input elements
+.reset-input {
+	margin: 0;
+	padding: 0;
+	border-radius: 0;
+	background-color: transparent;
+	border-color: transparent;
+	outline-color: transparent;
+	appearance: none;
+}

@@ -5,12 +5,32 @@
     "title-federated": "Federated / Halcyon",
     "title-notifications": "Notifications / Halcyon",
 
-    "home-label": "Home",
-    "local-label": "Local",
-    "federated-label": "Federated",
-    "notifications-label": "Notifications",
+    "navigations-home": "Home",
+    "navigations-local": "Local",
+    "navigations-federated": "Federated",
+    "navigations-notifications": "Notifications",
+    "navigations-about": "About",
 
     "actions-nav-search": "Search Mastodon",
-    "actions-nav-toot": "Toot"
+    "actions-nav-toot": "Toot",
+
+    "dropdown-menu-profile": "Profile",
+    "dropdown-menu-settings": "Settings",
+    "dropdown-menu-halcyon-settings": "Halcyon Settings",
+    "dropdown-menu-about-instance": "About this instance",
+    "dropdown-menu-kbd-help": "Keyborad shortcuts",
+    "dropdown-menu-logout": "Logout",
+
+    "login-form-text": "Login to Halcyon",
+    "login-form-submit": "Login",
+    "login-from-agree": "I agree with the terms of use",
+
+    "widget-footer-title": "Halcyon for Mastodon",
+    "widget-footer-donation": "Donation",
+    "widget-footer-about": "About",
+    "widget-footer-terms": "Terms of use",
+    "widget-footer-apps": "Apps",
+    "widget-footer-source-code": "Source code",
+    "widget-footer-other-instances": "Other instances"
 
 }
