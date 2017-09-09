@@ -24,6 +24,8 @@
     "login-form-text": "Login to Halcyon",
     "login-form-submit": "Login",
     "login-from-agree": "I agree with the terms of use",
+    "login-from-connection-error": "Failed to connect to the instance.",
+    "login-from-invalid-code": "The code is invalid",
 
     "widget-footer-title": "Halcyon for Mastodon",
     "widget-footer-donation": "Donation",

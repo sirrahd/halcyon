@@ -24,6 +24,8 @@
     "login-form-text": "Halcyonにログイン",
     "login-form-submit": "ログインする",
     "login-from-agree": "利用規約に同意",
+    "login-from-connection-error": "インスタンスとの接続に失敗しました",
+    "login-from-invalid-code": "コードが不正です",
 
     "widget-footer-title": "Halcyon for Mastodon",
     "widget-footer-donation": "寄付しろよ☆",

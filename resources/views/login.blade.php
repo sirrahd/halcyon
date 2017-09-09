@@ -17,6 +17,12 @@
                     @lang('login-form-text')
                 </h2>
 
+                <?php if (app('request')->input('error_description')): ?>
+                    <span class="login-error-message">
+                        {{ app('request')->input('error_description') }}
+                    </span>
+                <?php endif; ?>
+
                 <form class="login-form" method="post" action="/login">
 
                     <input

@@ -8,7 +8,7 @@ return [
     // Where the user should be redirected after authorization
     // (for no redirect, use urn:ietf:wg:oauth:2.0:oob)
     'redirect_uris' => [
-        'https://halcyon.social/login',
+        url('/login'),
         'urn:ietf:wg:oauth:2.0:oob'
     ],
 
@@ -18,5 +18,5 @@ return [
 
     // URL to the homepage of your app
     // * optional config *
-    'website' => "https://halcyon.social/",
+    'website' => url('/'),
 ];
