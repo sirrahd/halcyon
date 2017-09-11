@@ -5,14 +5,14 @@
     "title-federated": "Federated / Halcyon",
     "title-notifications": "Notifications / Halcyon",
 
-    "navigations-home": "Home",
-    "navigations-local": "Local",
-    "navigations-federated": "Federated",
-    "navigations-notifications": "Notifications",
-    "navigations-about": "About",
+    "page-nav-home": "Home",
+    "page-nav-local": "Local",
+    "page-nav-federated": "Federated",
+    "page-nav-notifications": "Notifications",
+    "page-nav-about": "About",
 
-    "actions-nav-search": "Search Mastodon",
-    "actions-nav-toot": "Toot",
+    "action-nav-search": "Search Mastodon",
+    "action-nav-toot": "Toot",
 
     "dropdown-menu-profile": "Profile",
     "dropdown-menu-settings": "Settings",
@@ -21,11 +21,19 @@
     "dropdown-menu-kbd-help": "Keyborad shortcuts",
     "dropdown-menu-logout": "Logout",
 
+    "profile-page-nav-toots": "Toots",
+    "profile-page-nav-with-replies": "Toots & replies",
+    "profile-page-nav-media": "Media",
+
     "login-form-text": "Login to Halcyon",
     "login-form-submit": "Login",
     "login-from-agree": "I agree with the terms of use",
     "login-from-connection-error": "Failed to connect to the instance.",
     "login-from-invalid-code": "The code is invalid",
+
+    "widget-profile-card-toots": "Toots",
+    "widget-profile-card-following": "Following",
+    "widget-profile-card-followers": "Followers",
 
     "widget-footer-title": "Halcyon for Mastodon",
     "widget-footer-donation": "Donation",

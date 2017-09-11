@@ -3,33 +3,30 @@ body {
 	font-family : "Helvetica Neue",Helvetica,Arial,sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	color: $primary_color;
-	background-color: $backgound_color;
+	color: $text-color;
+	background-color: $background_color;
 
 	&.ja {
 		font-family:Arial,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,
 		"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
 	}
-
 }
 
-
 a {
-	color: $highlight_color;
+	color: $secondary_color;
 	text-decoration: none;
 
-	&:hover, &:focus, &:active {
+	&:hover,
+	&:focus,
+	&:active {
 		text-decoration: underline;
 	}
 }
-
 
 img {
     max-width: 100%;
     max-height: 100%;
 }
-
-
 
 h1 {
 	font-size: 36px;

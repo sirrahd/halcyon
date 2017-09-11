@@ -4,7 +4,7 @@
 //
 @mixin setResponsiveMaxWidth($breakpoints) {
     @each $breakpoint in $breakpoints {
-        @media screen and (min-width: $breakpoint) {
+        @media all and (min-width: $breakpoint) {
             max-width: $breakpoint;
         }
     }
@@ -15,48 +15,28 @@
 //
 @mixin setResponsiveMinWidth($breakpoints) {
     @each $breakpoint in $breakpoints {
-        @media screen and (min-width: $breakpoint) {
+        @media all and (min-width: $breakpoint) {
             min-width: $breakpoint;
         }
     }
 }
 
-// If visitor's screen was less than $breakpoint
+// If visitor's display was less than or equal to $breakpoint
 // then hide the element
-// @param {Number} $breakpoint  - Number of minimum screen
+// @param {Number} $breakpoint  - Number of minimum display
 //
 @mixin invisibleWith($breakpoint) {
-    @media screen and (max-width: $breakpoint) {
-        display: none!important;
+    @media all and (max-width: $breakpoint - 1) {
+        display: none;
     }
 }
 
-// If visitor's screen was less than $breakpoint
-// then show the element
-// @param {Number} $breakpoint  - Number of minimum screen
-//
-@mixin visibleWith($breakpoint) {
-    @media screen and (max-width: $breakpoint) {
-        display: inherit!important;
-    }
-}
-
-// If visitor's screen is larger than argument
+// If visitor's display is larger than argument
 // enable @content
 // @param {Number} $breakpoint
 //
 @mixin isMoreThan($breakpoint) {
-    @media screen and (min-width: $breakpoint) {
-        @content;
-    }
-}
-
-// If visitor's screen is smaller than argument
-// enable @content
-// @param {Number} $breakpoint
-//
-@mixin isLessThan($breakpoint) {
-    @media screen and (min-width: $breakpoint) {
+    @media all and (min-width: $breakpoint) {
         @content;
     }
 }

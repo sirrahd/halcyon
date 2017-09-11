@@ -15,33 +15,34 @@ class ProfileController extends BaseController
      * index
      * Index action
      */
-    public function index()
+    public function index($acct)
     {
-        return view("profile");
+        return view("profile")
+        ->with('acct', $acct);
     }
 
-    public function following()
-    {
-
-    }
-
-    public function followers()
+    public function following($acct)
     {
 
     }
 
-    public function favourites()
+    public function followers($acct)
     {
 
     }
 
-    public function withReplies()
+    public function favourites($acct)
     {
 
     }
 
-    public function media()
+    public function withReplies($acct)
     {
-        
+
+    }
+
+    public function media($acct)
+    {
+
     }
 }

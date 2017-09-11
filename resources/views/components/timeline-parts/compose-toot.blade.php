@@ -1,0 +1,1 @@
+@include('components.toot-form')

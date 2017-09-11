@@ -1,0 +1,57 @@
+.timeline {
+    display: block;
+    height: auto;
+    width: $timeline-width;
+
+    .timeline-header {
+        background-color: $primary_color;
+        @include invisibleWith($md);
+
+        .toot-form:not(.toot-form--active) {
+            .toot-form__replying-to {
+                display: none;
+            }
+            .toot-form__toolbox-wrap {
+                display: none;
+            }
+        }
+
+        .profile-page-nav {
+            display: flex;
+            justify-content: flex-start;
+            align-items: baseline;
+            border-bottom: 1px solid $background_color;
+
+            .profile-page-nav__toggle {
+                padding: 12px 15px;
+
+                a {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: $secondary_color;
+                }
+
+                &.profile-page-nav__toggle--current {
+                    a {
+                        color: $text_color;
+                    }
+                }
+            }
+        }
+    }
+
+    .timeline-section {
+
+    }
+
+    .timeline-footer {
+        background-color: $primary_color;
+
+        .load-icon {
+            text-align: center;
+            padding: 16px 0;
+            font-size: 28px;
+            color: $secondary_color;
+        }
+    }
+}

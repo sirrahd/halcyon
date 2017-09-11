@@ -11,8 +11,6 @@
 |
 */
 
-Route::pattern('acct', '/^@(.+)@(.+)\.(.+)$/');
-
 // Main pages
 Route::get('/',              'HomeController@index')->name('home');
 Route::get('/local',         'LocalController@index')->name('local');
@@ -22,6 +20,7 @@ Route::get('/search',        'SearchController@index')->name('search');
 Route::get('/search/users',  'SearchController@users')->name('search_users');
 
 // Profile pages
+Route::pattern('acct', '^@[a-zA-Z0-9_]{1,30}@(.+?)\.(.+?)$');
 Route::get('/{acct}',              'ProfileController@index')->name('profile');
 Route::get('/{acct}/following',    'ProfileController@following')->name('profile_following');
 Route::get('/{acct}/followers',    'ProfileController@followers')->name('profile_followers');

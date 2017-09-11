@@ -1,11 +1,16 @@
-
 @import "variables";
 @import "mixins";
 @import "reset";
 @import "base";
 @import "classes";
 
-@import "headers/header";
+@import "components/header";
+@import "components/login";
+@import "components/main";
+@import "components/dashboard";
+@import "components/timeline";
+@import "components/toot-form";
+@import "components/widget-profile-card";
+@import "components/widget-footer";
+@import "components/widget-wtf";
 @import "fonts/fonts";
-@import "components/component";
-@import "widgets/widget"

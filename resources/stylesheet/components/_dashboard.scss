@@ -1,0 +1,19 @@
+.dashboard {
+    display: flex;
+    height: auto;
+    width: $dashborad-width;
+    flex-direction: column;
+    @include invisibleWith($sm);
+
+    & > *:not(:last-child) {
+        margin-bottom: 16px;
+    }
+
+    &.dashboard--left {
+        @include invisibleWith($md);
+    }
+
+    &.dashboard--right {
+        @include invisibleWith($lg);
+    }
+}

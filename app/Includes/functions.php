@@ -82,6 +82,96 @@ function is_notifications_page()
 }
 
 /**
+ * Check whether current page is profile page
+ * @return  boolean
+ */
+function is_profile_page()
+{
+    return Route::currentRouteName() === 'profile';
+}
+
+/**
+ * Check whether current page is profile_following page
+ * @return  boolean
+ */
+function is_profile_following_page()
+{
+    return Route::currentRouteName() === 'profile_following';
+}
+
+/**
+ * Check whether current page is profile_followers page
+ * @return  boolean
+ */
+function is_profile_followers_page()
+{
+    return Route::currentRouteName() === 'profile_followers';
+}
+
+/**
+ * Check whether current page is profile_favourites page
+ * @return  boolean
+ */
+function is_profile_favourites_page()
+{
+    return Route::currentRouteName() === 'profile_favourites';
+}
+
+/**
+ * Check whether current page is profile_with_replies page
+ * @return  boolean
+ */
+function is_profile_with_replies_page()
+{
+    return Route::currentRouteName() === 'profile_with_replies';
+}
+
+/**
+ * Check whether current page is profile_media page
+ * @return  boolean
+ */
+function is_profile_media_page()
+{
+    return Route::currentRouteName() === 'profile_media';
+}
+
+/**
+ * Check whether current page is one of profile page
+ * @return  boolean
+ */
+function is_in_profile_page()
+{
+    return preg_match("/^profile/", Route::currentRouteName());
+}
+
+/**
+ * Check whether current page is search page
+ * @return  boolean
+ */
+function is_search_page()
+{
+    return Route::currentRouteName() === 'search';
+}
+
+/**
+ * Check whether current page is search_users page
+ * @return  boolean
+ */
+function is_search_users_page()
+{
+    return Route::currentRouteName() === 'search_users';
+}
+
+/**
+ * Check whether current page is one of search page
+ * @return  boolean
+ */
+function is_in_search_page()
+{
+    return preg_match("/^search/", Route::currentRouteName());
+}
+
+/**
  * Check whether current page is login page
  * @return  boolean
  */

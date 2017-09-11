@@ -8,17 +8,17 @@
 
         <div class="top-bar__child top-bar__left-area">
             @if (is_logged_in())
-                @include('headers.header-parts.navigation')
+                @include('headers.header-parts.page-nav')
             @else
-                @include('headers.header-parts.navigation-guest')
+                @include('headers.header-parts.page-nav-guest')
             @endif
         </div>
 
         <div class="top-bar__child top-bar__right-area">
             @if (is_logged_in())
-                @include('headers.header-parts.actions-nav')
+                @include('headers.header-parts.action-nav')
             @else
-                @include('headers.header-parts.actions-nav-guest')
+                @include('headers.header-parts.action-nav-guest')
             @endif
         </div>
 

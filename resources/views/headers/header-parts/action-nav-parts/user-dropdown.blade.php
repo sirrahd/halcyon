@@ -1,16 +1,16 @@
-<div class="actions-nav-user-dropdown">
+<div class="action-nav-user-dropdown">
 
     <div class="user-dropdown-toggle">
-        <a>
-            <img src="" alt="" style="background-image: url('/images/omae-mona.png')"/>
-        </a>
+        <button class="user-dropdown-toggle__button reset-input cursor-pointer">
+            <img src="/images/omae-mona.png"/>
+        </button>
     </div>
 
     <ul class="user-dropdown invisible" role="menu">
 
         <li class="user-dropdown__child user-dropdown__child--user-profile">
             <a>
-                <span class="">
+                <span>
                     @lang("user-dropdown-profile")
                 </span>
             </a>

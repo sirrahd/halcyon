@@ -1,22 +1,23 @@
 
 $breakpoints: (
+    450px,
     890px,
-    936px,
     1190px
 ) !default;
 
 $breakpointsMap: (
     "sm": 450px,
     "md": 890px,
-    "lg": 936px,
-    "xl": 1190px
+    "lg": 1190px
 ) !default;
 
 $sm: 450px !default;
 $md: 890px !default;
-$lg: 936px !default;
-$xl: 1190px !default;
+$lg: 1190px !default;
 
+$timeline-width: 590px !default;
+$dashborad-width: 290px !default;
 $top-bar-height: 46px !default;
+
 $fonts-path:  "/fonts" !default;
 $images-path: "/images" !default;

@@ -1,23 +1,22 @@
 .widget-footer {
     padding: 16px;
-    margin: 16px auto;
-    background-color: $base_color;
-    border: 1px solid $area_color;
+    background-color: $primary_color;
+    border: 1px solid $primary_color_dark;
     box-sizing: border-box;
 
     .widget-footer__list {
-        font-size: 0.8rem;
+        font-size: 12px;
 
         .widget-footer__list__child {
             display: inline-block;
+            line-height: 1.5;
 
             &:not(:last-child) {
-                margin-right: 1em;
-                line-height: 1.5;
+                margin-right: .5em;
             }
 
             a {
-                color: $secondary_color;
+                color: $text_color_dark;
                 text-decoration: none;
 
                 &:hover, &:focus, &:active {

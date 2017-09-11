@@ -5,8 +5,8 @@
     left: 0;
     z-index: 1;
     width: 100%;
-    color: $secondary_color;
-    background-color: $base_color;
+    color: $text_color_dark;
+    background-color: $primary_color;
     box-shadow: 0 1px 1px rgba(0,0,0,0.26);
 
     .top-bar__container {
@@ -20,22 +20,26 @@
 
             &.top-bar__left-area {
                 order: 1;
-                flex-basis: calc(100% / 3);
+                flex-basis: 100%;
                 flex-shrink: 0;
+                @include isMoreThan($md) {
+                    flex-basis: calc(100% / 3);
+                }
 
-                .navigation {
+                .page-nav {
                     width: 100%;
                     height: 100%;
 
-                    .navigation-list-wrap {
+                    .page-nav-list-wrap {
                         display: flex;
                         height: 100%;
                         align-items: center;
                         flex-direction: row;
                         justify-content: flex-start;
 
-                        .navigation-list {
+                        .page-nav-list {
                             height: 100%;
+                            flex-grow: 1;
                             flex-shrink: 0;
 
                             a {
@@ -44,26 +48,26 @@
                                 padding: 0 16px;
                                 justify-content: center;
                                 text-decoration: none;
-                                color: $secondary_color;
+                                color: $text_color_dark;
                                 transition: all .15s ease-in-out;
 
-                                &:hover, &:focus, &:active, &.navigation-list--current {
+                                &:hover, &:focus, &:active, &.page-nav-list--current {
                                     height: calc(100% - 2px);
-                                    color: $highlight_color;
-                                    border-bottom: 2px solid $highlight_color;
+                                    color: $secondary_color;
+                                    border-bottom: 2px solid $secondary_color;
                                 }
 
-                                .navigation-list__icon {
+                                .page-nav-list__icon {
                                     font-size: 18px;
                                     margin-top: ($top-bar-height - 18)/2;
                                 }
 
-                                .navigation-list__label {
+                                .page-nav-list__label {
                                     font-size: 13px;
                                     font-weight: 700;
-                                    margin-left: 3px;
+                                    margin-left: 8px;
                                     margin-top: ($top-bar-height - 13)/2;
-                                    @include invisibleWith($sm);
+                                    @include invisibleWith($lg);
                                 }
                             }
                         }
@@ -75,6 +79,7 @@
                 order: 2;
                 flex-grow: 1;
                 flex-shrink: 1;
+                @include invisibleWith($md);
 
                 .title-wrapper {
                     display: flex;
@@ -102,63 +107,81 @@
                 order: 3;
                 flex-basis: calc(100% / 3);
                 flex-shrink: 0;
+                @include invisibleWith($md);
 
-                .actions-nav {
+                .action-nav {
                     display: flex;
                     justify-content: flex-end;
                     align-items: center;
                     height: 100%;
 
                     & > *:not(:first-child) {
-                        margin-left: 16px;
+                        margin-left: 12px;
                         height: calc(100% - 12px);
                     }
 
-                    .actions-nav-search {
+                    .action-nav-search {
 
                         .search-form {
                             position: relative;
                             height: 100%;
 
-                            .actions-nav-search__input {
+                            .action-nav-search__input {
+                                max-width: 240px;
                                 height: 100%;
                                 padding: 8px 32px 8px 12px;
                                 border-radius: 25px;
                                 box-sizing: border-box;
                                 font-size: 12px;
-                                color: $secondary_color;
-                                background-color: $area_color;
-                                border: 1px solid $backgound_color;
+                                color: $text_color_dark;
+                                background-color: $primary_color_dark;
+                                border: 1px solid $background_color;
                                 outline: none;
                                 transition: all .2s ease-in-out;
 
                                 &:focus {
-                                    box-shadow: 0 0 0 1.5px $highlight_color;
+                                    box-shadow: 0 0 0 1.5px $secondary_color;
                                 }
                             }
 
-                            .actions-nav-search__submit {
+                            .action-nav-search__submit {
                                 position: absolute;
                                 right: 13px;
                                 top: 8px;
                                 font-size: 14px;
-                                color: $secondary_color;
+                                color: $text_color_dark;
                             }
                         }
                     }
 
-                    .actions-nav-toot {
+                    .action-nav-user-dropdown {
 
-                        .actions-nav-toot__button {
+                        .user-dropdown-toggle {
+                            width: 100%;
+                            height: 100%;
+
+                            .user-dropdown-toggle__button {
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 50%;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+
+                    .action-nav-toot {
+
+                        .action-nav-toot__button {
                             height: 100%;
                             padding: 6px 16px;
                             font-size: 14px;
                             font-weight: 700;
                             border-radius: 25px;
+                            white-space: nowrap;
                             box-sizing: border-box;
                             height: 100%;
                             color: $white;
-                            background-color: $highlight_color;
+                            background-color: $secondary_color;
 
                             &:hover, &:focus, &:active {
                                 opacity: .8;

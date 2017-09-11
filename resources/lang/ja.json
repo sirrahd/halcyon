@@ -5,14 +5,19 @@
     "title-federated": "連合 / Halcyon",
     "title-notifications": "通知 / Halcyon",
 
-    "navigations-home": "ホーム",
-    "navigations-local": "ローカル",
-    "navigations-federated": "連合",
-    "navigations-notifications": "通知",
-    "navigations-about": "Mastodonについて",
+    "page-nav-home": "ホーム",
+    "page-nav-local": "ローカル",
+    "page-nav-federated": "連合",
+    "page-nav-notifications": "通知",
+    "page-nav-about": "Mastodonについて",
 
-    "actions-nav-search": "Mastodonを検索",
-    "actions-nav-toot": "トゥート",
+    "action-nav-search": "Mastodonを検索",
+    "action-nav-toot": "トゥート",
+
+    "toot-form-status": "今なにしてる?",
+    "toot-form-spoiler-text": "ここに警告を書いてください",
+    "toot-form-replying-to": "返信先",
+    "toot-form-submit": "トゥート",
 
     "dropdown-menu-profile": "プロフィール",
     "dropdown-menu-settings": "設定",
@@ -26,6 +31,14 @@
     "login-from-agree": "利用規約に同意",
     "login-from-connection-error": "インスタンスとの接続に失敗しました",
     "login-from-invalid-code": "コードが不正です",
+
+    "profile-page-nav-toots": "トゥート",
+    "profile-page-nav-with-replies": "トゥートと返信",
+    "profile-page-nav-media": "メディア",
+
+    "widget-profile-card-toots": "トゥート",
+    "widget-profile-card-following": "フォロー",
+    "widget-profile-card-followers": "フォロワー",
 
     "widget-footer-title": "Halcyon for Mastodon",
     "widget-footer-donation": "寄付しろよ☆",

@@ -18,6 +18,5 @@
                 </a>
             </li>
         @endforeach
-
     </ul>
 </footer>
