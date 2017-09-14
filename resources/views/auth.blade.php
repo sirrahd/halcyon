@@ -1,12 +1,15 @@
 @extends('abstract.body')
 
+@section('title')
+    @lang('title-authentication')
+@endsection
+
 {{-- Content --}}
 @section('content')
-    <div data-auth-info="
-        {
-            "access_token": "",
-        }
-    ">
-
+    <div
+        id="auth-info"
+        data-access-token="{{$instance_uri}}"
+        data-instance-uri="{{$access_token}}"
+    >
     </div>
 @stop

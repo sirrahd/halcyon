@@ -17,6 +17,9 @@
     </header>
 
     <section class="timeline-section">
+        <div id="toot-form">
+
+        </div>
         <ul class="js-timeline-collection">
             {{-- Statuses --}}
         </ul>

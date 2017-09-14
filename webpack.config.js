@@ -12,7 +12,7 @@ if ( process.env.NODE_ENV === "production" ) {
         {
             context: path.join(__dirname, "/resources/javascript/"),
             entry: {
-                main: "./app.jsx",
+                app: "./app.jsx",
             },
             output: {
                 path: path.join(__dirname, "/public/javascript/"),
@@ -26,12 +26,12 @@ if ( process.env.NODE_ENV === "production" ) {
                         exclude: /node_modules/,
                         use: "eslint-loader"
                     },{
+                        test: /\.json$/,
+                        use: "json-loader"
+                    },{
                         test: /\.(js|es6|jsx)$/,
                         exclude: /node_modules/,
                         use: "babel-loader"
-                    },{
-                        test: /\.json$/,
-                        loader: "json-loader"
                     }
                 ],
             },
@@ -87,7 +87,7 @@ if ( process.env.NODE_ENV === "production" ) {
         {
             context: path.join(__dirname, "/resources/javascript/"),
             entry: {
-                main: "./main.jsx",
+                app: "./app.jsx",
             },
             output: {
                 path: path.join(__dirname, "/public/javascript/"),
@@ -101,12 +101,12 @@ if ( process.env.NODE_ENV === "production" ) {
                         exclude: /node_modules/,
                         use: "eslint-loader"
                     },{
+                        test: /\.json$/,
+                        use: "json-loader"
+                    },{
                         test: /\.(js|es6|jsx)$/,
                         exclude: /node_modules/,
                         use: "babel-loader"
-                    },{
-                        test: /\.json$/,
-                        loader: "json-loader"
                     }
                 ],
             },

@@ -7,6 +7,7 @@ use GuzzleHttp\Client as HttpClient;
 
 class MastodonRegistrar
 {
+    protected $parameters;
 
     public function __construct($host)
     {
@@ -51,12 +52,15 @@ class MastodonRegistrar
      * @param   string     $code            Oauth code
      * @param   string     $redirect_uri    Redirect_uri which specified when authorize
      * @return  string     Access token
-     * @throws  Invalid code  Specified code was invalid
+     * @throws  "Invalid code"  Specified code was invalid
      */
-    public function fetchAuthToken($code, $redirect_uri)
+    public function fetchAuthToken($client_id, $client_secret, $code, $redirect_uri)
     {
-        $this->parameters['code']         = $code;
-        $this->parameters['redirect_uri'] = $redirect_uri;
+        $this->parameters['grant_type']    = 'authorization_code';
+        $this->parameters['client_id']     = $client_id;
+        $this->parameters['client_secret'] = $client_secret;
+        $this->parameters['code']          = $code;
+        $this->parameters['redirect_uri']  = $redirect_uri;
         $request  = $this->http_client->post(
             "https://".$this->host."/oauth/token",
             ["json"=>$this->parameters]

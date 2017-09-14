@@ -20,17 +20,34 @@ class LoginController extends BaseController
      */
     public function index(Request $request)
     {
-        if ( !empty($request->input('host')) && !empty($request->input('code')) ) {
+        // Login Form
+        if ( empty($request->input('code')) && empty($request->input('host'))) {
+            return view('login');
+
+        // Authentication Action
+        } else {
+            $code      = $request->input('code');
+            $host      = $request->input('host');
+            $table     = new Instances();
+            $registrar = new MastodonRegistrar($request->input('host'));
             try {
-                $registrar = new MastodonRegistrar($host);
-                $response  = $register->fetchAuthToken($request->input('code'), url('/login?&host='.$host));
-                var_dump($response['access_token']);
+                $client_info = $table->select('host', 'client_id', 'client_secret', 'count')
+                    ->where('host', '=', $host)
+                    ->first();
+                $response  = $registrar->fetchAuthToken(
+                    $client_info->client_id,
+                    $client_info->client_secret,
+                    $code,
+                    url('/login?&host='.$host)
+                );
+                return view('auth')->with([
+                   'instance_uri' => $response['access_token'],
+                   'access_token' => $host
+                ]);
             } catch(\Exception $e) {
                 return redirect('/login?error=host&error_description='.
                 str_replace(" ", "+", __('login-from-invalid-code')));
             }
-        } else {
-            return view('login');
         }
     }
 

@@ -8,12 +8,12 @@
         <title>@yield("title")</title>
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/stylesheet/theme_{{ get_user_theme() }}.bundle.css" />
-        <script src="/javascript/main.bundle.js"></script>
     </head>
     <body
         class="{{ Route::currentRouteName() }} {{ app()->getLocale() }}"
         role="application"
     >
         @yield("content")
+        <script src="/javascript/app.bundle.js"></script>
     </body>
 </html>

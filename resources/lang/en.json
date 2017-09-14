@@ -4,6 +4,7 @@
     "title-local": "Local / Halcyon",
     "title-federated": "Federated / Halcyon",
     "title-notifications": "Notifications / Halcyon",
+    "title-authentication": "Verifying credentials",
 
     "page-nav-home": "Home",
     "page-nav-local": "Local",
