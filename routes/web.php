@@ -12,23 +12,7 @@
 */
 
 // Main pages
-Route::get('/',              'HomeController@index')->name('home');
-Route::get('/local',         'LocalController@index')->name('local');
-Route::get('/federated',     'FederatedController@index')->name('federated');
-Route::get('/notifications', 'NotificationsController@index')->name('notifications');
-Route::get('/search',        'SearchController@index')->name('search');
-Route::get('/search/users',  'SearchController@users')->name('search_users');
-
-// Profile pages
-Route::pattern('acct', '^@[a-zA-Z0-9_]{1,30}@(.+?)\.(.+?)$');
-Route::get('/{acct}',              'ProfileController@index')->name('profile');
-Route::get('/{acct}/following',    'ProfileController@following')->name('profile_following');
-Route::get('/{acct}/followers',    'ProfileController@followers')->name('profile_followers');
-Route::get('/{acct}/favourites',   'ProfileController@favourites')->name('profile_favourites');
-Route::get('/{acct}/with_replies', 'ProfileController@withReplies')->name('profile_with_replies');
-Route::get('/{acct}/media',        'ProfileController@media')->name('profile_media');
-
-// Login pages
-Route::get('/login',  'LoginController@index')->name('login');
-Route::get('/logout', 'LoginController@logout')->name('logout');
-Route::post('/login', 'LoginController@auth');
+Route::get('/{any}', function () {
+    return view('index');
+})
+->where('any', '.*');

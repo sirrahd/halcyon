@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(['middleware' => 'api'], function() {
+    // 例
+    // Route::get('articles',  function() {
+    //     $articles = Article::all()->take(5);
+    //     return $articles;
+    // });
+    Route::post('login', 'LoginController@auth');
+    // Route::post('fetchAuthToken', 'LoginController@auth');
+
 });

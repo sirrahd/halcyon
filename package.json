@@ -1,63 +1,76 @@
 {
-    "name": "halcyon",
-    "title": "Halcyn for Mastodon",
-    "version": "1.0.0",
-    "description": "The another web interface of Mastodon",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "./node_modules/.bin/eslint *.js",
-        "build": "./node_modules/.bin/webpack",
-        "dev": "yarn run development",
-        "development": "env NODE_ENV=development ./node_modules/.bin/webpack",
-        "watch": "./node_modules/.bin/webpack --watch",
-        "prod": "yarn run production",
-        "production": "env NODE_ENV=production ./node_modules/.bin/webpack"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/halcyon-suite/halcyon.git"
-    },
-    "keywords": [
-        "mastodon",
-        "mastodon-app"
-    ],
-    "author": "Halcyon Suite",
-    "license": "AGPL-3.0",
-    "bugs": {
-        "url": "https://github.com/halcyon-suite/halcyon/issues"
-    },
-    "homepage": "https://github.com/halcyon-suite/halcyon#readme",
-    "dependencies": {
-        "axios": "^0.16.2",
-        "babel-core": "^6.26.0",
-        "babel-loader": "^7.1.2",
-        "babel-preset-env": "^1.6.0",
-        "babel-preset-react": "^6.24.1",
-        "css-loader": "^0.28.5",
-        "emojione": "^3.1.2",
-        "emojione-picker": "^2.2.1",
-        "extract-text-webpack-plugin": "^3.0.0",
-        "jquery": "^3.2.1",
-        "json-loader": "^0.5.7",
-        "mastodon.js": "git+https://github.com/NeetShin/mastodon.js.git",
-        "node-sass": "^4.5.3",
-        "sass-loader": "^6.0.6",
-        "style-loader": "^0.18.2",
-        "uglifyjs-webpack-plugin": "^0.4.6",
-        "webpack": "^3.5.5"
-    },
-    "devDependencies": {
-        "babel-cli": "^6.26.0",
-        "bootstrap-sass": "^3.3.7",
-        "cross-env": "^5.0.1",
-        "eslint": "^4.5.0",
-        "eslint-config-airbnb-base": "^11.3.2",
-        "eslint-loader": "^1.9.0",
-        "eslint-plugin-import": "^2.7.0",
-        "eslint-plugin-react": "^7.3.0",
-        "laravel-mix": "^1.0",
-        "url-loader": "^0.5.9",
-        "vue": "^2.1.10"
-    }
+  "name": "halcyon",
+  "title": "Halcyn for Mastodon",
+  "version": "1.0.0",
+  "description": "The another web interface of Mastodon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint *.jsx",
+    "lint:fix": "./node_modules/.bin/eslint *.jsx --fix",
+    "build": "./node_modules/.bin/webpack",
+    "dev": "yarn run development",
+    "development": "env NODE_ENV=development ./node_modules/.bin/webpack",
+    "watch": "./node_modules/.bin/webpack --watch",
+    "prod": "yarn run production",
+    "production": "env NODE_ENV=production ./node_modules/.bin/webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halcyon-suite/halcyon.git"
+  },
+  "keywords": [
+    "mastodon",
+    "mastodon-app"
+  ],
+  "author": "Halcyon Suite",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/halcyon-suite/halcyon/issues"
+  },
+  "homepage": "https://github.com/halcyon-suite/halcyon#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.5",
+    "emojione": "^3.1.2",
+    "emojione-picker": "^2.2.1",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "history": "^4.7.2",
+    "jquery": "^3.2.1",
+    "json-loader": "^0.5.7",
+    "mastodon.js": "git+https://github.com/Neetshin/mastodon.js.git",
+    "node-sass": "^4.5.3",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-intl": "^2.4.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.5.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.0",
+    "bootstrap-sass": "^3.3.7",
+    "cross-env": "^5.0.1",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.3.0",
+    "laravel-mix": "^1.0",
+    "url-loader": "^0.5.9",
+    "vue": "^2.1.10"
+  }
 }

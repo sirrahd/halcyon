@@ -1,148 +1,89 @@
-const path = require("path"),
-      ExtractTextPlugin = require("extract-text-webpack-plugin"),
-      UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const path = require('path'),
+      webpack = require('webpack'),
+      ExtractTextPlugin = require('extract-text-webpack-plugin'),
+      UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+module.exports = {
+  context: path.join(__dirname, '/resources/'),
+  // TODO: ExtractTextWebpackPlugin genelates empty JS file from each SCSS
+  entry: {
+    app: './javascript/app.jsx',
+    theme_light: './stylesheet/theme_light.scss',
+    theme_dark: './stylesheet/theme_dark.scss',
+  },
+  output: {
+    path: path.join(__dirname, '/public/'),
+    filename: './javascript/[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.(js|es6|jsx)$/,
+        exclude: /node_modules/,
+        use: 'eslint-loader'
+      },{
+        test: /\.json$/,
+        use: 'json-loader'
+      },{
+        test: /\.(js|es6|jsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      }
+    ],
+  },
+  resolve: {
+    extensions: ['.es6', '.js', '.jsx']
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery'
+    }),
+    new ExtractTextPlugin(
+      './stylesheet/[name].bundle.css',{
+      allChunks: true
+    })
+  ]
+}
 
 /*--------------------------------------------
-    Production environment (Defualt)
+  Production environment (Defualt)
 --------------------------------------------*/
-
-if ( process.env.NODE_ENV === "production" ) {
-    module.exports = [
-        /* JS configure */
-        {
-            context: path.join(__dirname, "/resources/javascript/"),
-            entry: {
-                app: "./app.jsx",
-            },
-            output: {
-                path: path.join(__dirname, "/public/javascript/"),
-                filename: "[name].bundle.js"
-            },
-            module: {
-                rules: [
-                    {
-                        enforce: "pre",
-                        test: /\.(js|es6|jsx)$/,
-                        exclude: /node_modules/,
-                        use: "eslint-loader"
-                    },{
-                        test: /\.json$/,
-                        use: "json-loader"
-                    },{
-                        test: /\.(js|es6|jsx)$/,
-                        exclude: /node_modules/,
-                        use: "babel-loader"
-                    }
-                ],
-            },
-            plugins: [
-                // JavaScript の Minify
-                new UglifyJsPlugin({
-                    filename: "[name].bundle.js",
-                    extractComments: true,
-                })
-            ]
-        /* CSS configure */
-        },{
-            context: path.join(__dirname, "/resources/stylesheet/"),
-            entry: {
-                theme_halcyon: "./theme_halcyon.scss",
-                theme_mastodon: "./theme_mastodon.scss"
-            },
-            output: {
-                path: path.join(__dirname, "/public/stylesheet/"),
-                filename: "[name].bundle.css"
-            },
-            module: {
-                rules: [
-                    {
-                        test: /\.scss$/,
-                        use: ExtractTextPlugin.extract({
-                            fallback: "style-loader",
-                            use: [
-                                "css-loader?minimize",
-                                "sass-loader"
-                            ],
-                        })
-                    }
-                ],
-            },
-            plugins: [
-                // CSS を output to the file
-                new ExtractTextPlugin({
-                    filename: "[name].bundle.css",
-                    allChunks: true
-                })
-            ]
-        }
-    ];
+if ( process.env.NODE_ENV === 'production' ) {
+  module.exports.plugins.push(
+    new UglifyJsPlugin({
+      filename: '[name].bundle.js',
+      extractComments: true,
+    })
+  );
+  module.exports.module.rules.push(
+    {
+      test: /\.scss$/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          'css-loader?minimize',
+          'sass-loader'
+        ],
+      })
+    }
+  );
 
 /*--------------------------------------------
-    Development environment
+  Development environment
 --------------------------------------------*/
-
-} else if ( process.env.NODE_ENV === "development" ) {
-    module.exports = [
-        /* JS configure */
-        {
-            context: path.join(__dirname, "/resources/javascript/"),
-            entry: {
-                app: "./app.jsx",
-            },
-            output: {
-                path: path.join(__dirname, "/public/javascript/"),
-                filename: "[name].bundle.js"
-            },
-            module: {
-                rules: [
-                    {
-                        enforce: "pre",
-                        test: /\.(js|es6|jsx)$/,
-                        exclude: /node_modules/,
-                        use: "eslint-loader"
-                    },{
-                        test: /\.json$/,
-                        use: "json-loader"
-                    },{
-                        test: /\.(js|es6|jsx)$/,
-                        exclude: /node_modules/,
-                        use: "babel-loader"
-                    }
-                ],
-            },
-            devtool: "source-map",
-        /* CSS configure */
-        },{
-            context: path.join(__dirname, "/resources/stylesheet/"),
-            entry: {
-                theme_halcyon: "./theme_halcyon.scss",
-                theme_mastodon: "./theme_mastodon.scss"
-            },
-            output: {
-                path: path.join(__dirname, "/public/stylesheet/"),
-                filename: "[name].bundle.css"
-            },
-            module: {
-                rules: [
-                    {
-                        test: /\.scss$/,
-                        use: ExtractTextPlugin.extract({
-                            fallback: "style-loader",
-                            use: [
-                                "css-loader?sourceMap",
-                                "sass-loader?outputStyle=expanded"
-                            ],
-                        })
-                    }
-                ],
-            },
-            devtool: "source-map",
-            plugins: [
-                new ExtractTextPlugin({
-                    filename: "[name].bundle.css",
-                    allChunks: true
-                })
-            ]
-        }
-    ];
+} else if ( process.env.NODE_ENV === 'development' ) {
+  module.exports.devtool = 'source-map';
+  module.exports.module.rules.push(
+    {
+      test: /\.scss$/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          'css-loader',
+          'sass-loader'
+        ],
+      })
+    }
+  );
 }
