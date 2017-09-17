@@ -6,7 +6,7 @@ import DashboardRight from './DashboardRight';
 
 class HomeComponent extends React.Component {
   render() {
-    return (
+    return(
       <main id="main" className="main main--home">
         <article className="page-container page-container--home page-container--flexbox">
           <DashboardLeft />
