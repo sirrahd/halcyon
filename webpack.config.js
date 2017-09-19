@@ -5,9 +5,9 @@ const path = require('path'),
 
 module.exports = {
   context: path.join(__dirname, '/resources/'),
-  // TODO: ExtractTextWebpackPlugin genelates empty JS file from each SCSS
+  // TODO: ExtractTextWebpackPlugin genelates empty .JS file on ./public/stylesheet
   entry: {
-    app: './javascript/app.jsx',
+    app: './javascript/Application.jsx',
     theme_light: './stylesheet/theme_light.scss',
     theme_dark: './stylesheet/theme_dark.scss',
   },
@@ -29,6 +29,10 @@ module.exports = {
         test: /\.(js|es6|jsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader'
+      },{
+        test: /\.css$/,
+        exclude: /public/,
+        use: ['style-loader', 'css-loader']
       }
     ],
   },
@@ -58,7 +62,7 @@ if ( process.env.NODE_ENV === 'production' ) {
   );
   module.exports.module.rules.push(
     {
-      test: /\.scss$/,
+      test: /\.(scss|sass)$/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: [
@@ -76,7 +80,7 @@ if ( process.env.NODE_ENV === 'production' ) {
   module.exports.devtool = 'source-map';
   module.exports.module.rules.push(
     {
-      test: /\.scss$/,
+      test: /\.(scss|sass)$/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: [
