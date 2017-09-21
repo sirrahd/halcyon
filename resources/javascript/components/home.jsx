@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 /* separeted components */
-import Timeline from '../components/Timeline';
+import Timeline from '../containers/Timeline';
+import Footer from './WidgetFooter';
 
 const Home = () => (
   <main id="main" className="main main--home">
@@ -16,7 +17,7 @@ const Home = () => (
       <Timeline header="compose" />
 
       <aside className="dashboard dashboard--right">
-        content
+        <Footer />
       </aside>
 
     </article>

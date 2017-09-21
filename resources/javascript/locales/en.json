@@ -1,0 +1,11 @@
+{
+    "test.test": "test",
+
+    "footer.title": "Halcyon for Mastodon",
+    "footer.donation": "Donation",
+    "footer.about": "About",
+    "footer.terms": "Terms",
+    "footer.apps": "Apps",
+    "footer.source-code": "Souce code",
+    "footer.other-instances": "Other instances"
+}

@@ -7,7 +7,7 @@ module.exports = {
   context: path.join(__dirname, '/resources/'),
   // TODO: ExtractTextWebpackPlugin genelates empty .JS file on ./public/stylesheet
   entry: {
-    app: './javascript/Application.jsx',
+    app: './javascript/app.jsx',
     theme_light: './stylesheet/theme_light.scss',
     theme_dark: './stylesheet/theme_dark.scss',
   },

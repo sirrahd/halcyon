@@ -21,9 +21,7 @@ class LanguageDetector
      */
     public function handle($request, Closure $next)
     {
-        $known_languages = parse_json_file(
-            base_path().'/resources/lang/known_languages.json'
-        );
+        $known_languages = ['en', 'ja']; // Known Languages
         $query_lang  = $request->input('lang');
         $cookie_lang = $request->cookie('lang');
 
