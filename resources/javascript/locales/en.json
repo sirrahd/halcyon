@@ -1,11 +1,14 @@
 {
-    "test.test": "test",
-
-    "footer.title": "Halcyon for Mastodon",
-    "footer.donation": "Donation",
-    "footer.about": "About",
-    "footer.terms": "Terms",
-    "footer.apps": "Apps",
-    "footer.source-code": "Souce code",
-    "footer.other-instances": "Other instances"
+  "halcyon": "Halcyon",
+  "page_nav.home": "Home",
+  "page_nav.local": "Local",
+  "page_nav.federated": "Federated",
+  "page_nav.notifications": "Notifications",
+  "search_form.placeholder": "Search Mastodon",
+  "search_form.recent_searches": "Recent Searches",
+  "search_form.recent_searches.clear": "Clear All",
+  "search_form.recent_searches.empty": "You haven't searched anything",
+  "search_form.saved_searches": "Saved Searches",
+  "search_form.saved_searches.empty": "You haven't saved anything",
+  "toot_form.compose": "Toot"
 }

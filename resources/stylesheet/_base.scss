@@ -12,13 +12,11 @@ body {
 	}
 }
 
-a {
-	color: $secondary_color;
+a, .link-button {
+	color: $highlight_color;
 	text-decoration: none;
 
-	&:hover,
-	&:focus,
-	&:active {
+	&:hover, &:active {
 		text-decoration: underline;
 	}
 }
@@ -56,4 +54,37 @@ h5 {
 h6 {
 	font-size: 18px;
 	line-height: 1.2;
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+	border-color: transparent;
+	outline-color: transparent;
+	appearance: none;
+}
+
+input,
+textarea,
+optgroup,
+select {
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+	border-color: transparent;
+	outline-color: transparent;
+
+	&:focus, &:invalid, &:valid {
+		box-shadow: none;
+		outline: none;
+	}
 }

@@ -25,17 +25,16 @@
 // then hide the element
 // @param {Number} $breakpoint  - Number of minimum display
 //
-@mixin invisibleWith($breakpoint) {
+@mixin invisibleFrom($breakpoint) {
     @media all and (max-width: $breakpoint - 1) {
         display: none;
     }
 }
 
-// If visitor's display is larger than argument
-// enable @content
+// If visitor's display is wider than argument enable @content
 // @param {Number} $breakpoint
 //
-@mixin isMoreThan($breakpoint) {
+@mixin isWiderThan($breakpoint) {
     @media all and (min-width: $breakpoint) {
         @content;
     }

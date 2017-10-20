@@ -1,23 +1,50 @@
 
-$breakpoints: (
-    450px,
-    890px,
-    1190px
-) !default;
+// Color schemes
+$text_color:            #000000 !default;
+$text_color_gray:       #66757F !default;
+$background_color:      #E6ECF0 !default;
+$highlight_color:       #00aced !default;
+$primary_color:         #ffffff !default;
+$secondary_color:       lighten($highlight_color, 50%) !default;
+$white:                 #ffffff !default;
+$green:                 #17BF63 !default;
+$yellow:                #F8B038 !default;
+$orange:                #ff5050 !default;
+$red:                   #E0245E !default;
+$blue:                  #1DA1F2 !default;
 
+// Mastodon color schemes
+// $text_color:            #d9e1e8;
+// $text_color_gray:       #9baec8;
+// $background_color:      #191B22;
+// $highlight_color:       #2b90d9;
+// $primary_color:         #282C37;
+// $secondary_color:       darken($primary_color, 5%);
+// $white:                 #ffffff;
+// $green:                 #79bd9a;
+// $yellow:                #ca8f04;
+// $orange:                #ff5050;
+// $red:                   #df405a;
+// $blue:                  #2b90d9;
+
+// Component
+$timeline-width: 590px !default;
+$dashborad-width: 290px !default;
+$topbar-height: 46px !default;
+
+// Breakpoints
 $breakpointsMap: (
     "sm": 450px,
     "md": 890px,
     "lg": 1190px
 ) !default;
 
-$sm: 450px !default;
-$md: 890px !default;
-$lg: 1190px !default;
+$breakpoints: (
+    map-get($breakpointsMap, "sm"),
+    map-get($breakpointsMap, "md"),
+    map-get($breakpointsMap, "lg")
+) !default;
 
-$timeline-width: 590px !default;
-$dashborad-width: 290px !default;
-$top-bar-height: 46px !default;
-
-$fonts-path:  "/fonts" !default;
-$images-path: "/images" !default;
+$sm: map-get($breakpointsMap, "sm") !default;
+$md: map-get($breakpointsMap, "md") !default;
+$lg: map-get($breakpointsMap, "lg") !default;
