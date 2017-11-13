@@ -1,6 +1,5 @@
 # Compiled assets
-/public/javascript/*
-/public/stylesheet/*
+/public/assets/*
 
 # Laravel
 /node_modules

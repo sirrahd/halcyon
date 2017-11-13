@@ -9,8 +9,9 @@ module.exports = {
     main: './javascript/main.js',
   },
   output: {
-    path: path.join(__dirname, '/public/'),
-    filename: './javascript/[name].bundle.js',
+    path: path.join(__dirname, '/public/assets/'),
+    filename: './[name].bundle.js',
+    publicPath: '/assets/',
   },
   module: {
     rules: [
@@ -66,7 +67,7 @@ module.exports = {
       },
     }),
     new ExtractTextPlugin({
-      filename: './stylesheet/[name].bundle.css',
+      filename: './[name].bundle.css',
       allChunks: true,
     }),
   ],
