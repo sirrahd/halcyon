@@ -43,12 +43,12 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif)$/,
         exclude: /public/,
-        use: 'url-loader',
+        use: 'file-loader',
       },
       {
         test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
         exclude: /public/,
-        use: 'url-loader',
+        use: 'file-loader',
       },
     ],
   },
