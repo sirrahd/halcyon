@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   context: path.join(__dirname, '/resources/'),
@@ -60,28 +60,23 @@ module.exports = {
       $: 'jquery',
       axios: 'axios',
     }),
-    new ExtractTextPlugin(
-      './stylesheet/[name].bundle.css',
-      {
-        allChunks: true,
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
       },
-    ),
-    new webpack.HotModuleReplacementPlugin(),
+    }),
+    new ExtractTextPlugin({
+        filename: './stylesheet/[name].bundle.css',
+        allChunks: true,
+    }),
   ],
-  devServer: {
-    inline: true,
-    hot: true,
-    open: true,
-    contentBase: path.resolve(__dirname, 'public'),
-    historyApiFallback: {
-      rewrites: [
-        {
-          from: /\.*/,
-          to() {
-            return 'index.html';
-          },
-        },
-      ],
-    },
-  },
 };
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.plugins.push(new UglifyJsPlugin({
+    extractComments: true,
+  }));
+} else {
+  module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
+  module.exports.devtool = 'source-map';
+}
