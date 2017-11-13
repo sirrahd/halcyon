@@ -1,24 +1,21 @@
-FROM php:fpm-alpine
-# --> PHP 7.1.9 (cli)
-
+FROM php:7.1.11-fpm-alpine3.4
+MAINTAINER Neetshin <neetshin@neetsh.in>
 LABEL maintainer="https://github.com/halcyon-suite/halcyon" \
 description="The another web interface of Mastodon"
 
-ENV NODE_ENV=production
+WORKDIR /var/www/halcyon
 
-WORKDIR /halcyon
-
-# Installation
 RUN apk -U upgrade \
  && apk add \
     curl \
     git \
+    nginx \
     nodejs \
  && npm install -g yarn \
  && rm -rf /var/cache/apk/*
 
-COPY composer.json composer.lock package.json yarn.lock /halcyon/ \
-  && composer.phar /usr/local/bin/composer
+COPY composer.json composer.lock package.json yarn.lock /var/www/halcyon/ \
+  && composer.phar /usr/local/bin/composer/
 
 RUN chmod 757 app storage \
  && npm -g cache clean \
@@ -26,4 +23,10 @@ RUN chmod 757 app storage \
  && composer install \
  && yarn --ignore-optional --pure-lockfile
 
-COPY . /halcyon
+COPY . /var/www/halcyon
+
+ENV NODE_ENV=production
+RUN yarn run build
+
+EXPOSE 80 443
+CMD ["nginx", "-g", "daemon off;"]
