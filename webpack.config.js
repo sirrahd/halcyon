@@ -66,8 +66,8 @@ module.exports = {
       },
     }),
     new ExtractTextPlugin({
-        filename: './stylesheet/[name].bundle.css',
-        allChunks: true,
+      filename: './stylesheet/[name].bundle.css',
+      allChunks: true,
     }),
   ],
 };
