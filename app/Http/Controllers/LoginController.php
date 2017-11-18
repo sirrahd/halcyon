@@ -19,7 +19,7 @@ class LoginController extends BaseController
      */
     public function authorize(Request $request)
     {
-        if ( !empty($request->input('code')) && !empty($request->input('host'))) {
+        if ( !empty($request->input('code')) && !empty($request->input('host')) ) {
             $code      = $request->input('code');
             $host      = $request->input('host');
             $table     = new Instances();
@@ -43,6 +43,11 @@ class LoginController extends BaseController
                         'access_token' => $response['access_token'],
                     ]
                 ]);
+            } catch (Exception $e) {
+                return response()->json([
+                    'error' => 'invalid_code',
+                    'error_description' => 'Failed to fetch access token from the code'
+                ], 400);
             }
         }
 
