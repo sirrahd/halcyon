@@ -15,61 +15,52 @@ class LoginController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
-     * index
-     * Index action
+     * authorize
      */
-    public function index(Request $request)
+    public function authorize(Request $request)
     {
-        // Login Form
-        if ( empty($request->input('code')) && empty($request->input('host'))) {
-            return view('login');
-
-        // Authentication Action
-        } else {
+        if ( !empty($request->input('code')) && !empty($request->input('host'))) {
             $code      = $request->input('code');
             $host      = $request->input('host');
             $table     = new Instances();
             $registrar = new MastodonRegistrar($request->input('host'));
+
             try {
                 $client_info = $table->select('host', 'client_id', 'client_secret', 'count')
                     ->where('host', '=', $host)
                     ->first();
-                $response  = $registrar->fetchAuthToken(
+
+                $response = $registrar->fetchAccessToken(
                     $client_info->client_id,
                     $client_info->client_secret,
                     $code,
                     url('/login?&host='.$host)
                 );
-                return view('auth')->with([
-                   'instance_uri' => $response['access_token'],
-                   'access_token' => $host
+
+                return response()->json([
+                    'authorize' => [
+                        'instance_uri' => $host,
+                        'access_token' => $response['access_token'],
+                    ]
                 ]);
-            } catch(\Exception $e) {
-                return redirect('/login?error=host&error_description='.
-                str_replace(" ", "+", __('login-from-invalid-code')));
             }
         }
+
+        return response()->json([
+            'error' => 'invalid_code',
+            'error_description' => 'Failed to fetch access token from the code'
+        ], 400);
     }
 
     /**
-     * logout
-     * Logout action
+     * verifyInstance
      */
-    public function logout()
-    {
-        return view('logout');
-    }
-
-    /**
-     * auth
-     * Auth action
-     */
-    public function auth(Request $request)
+    public function verifyInstance(Request $request)
     {
         $host      = explode('@', $request->input('acct'))[2];
         $registrar = new MastodonRegistrar($host);
         $table     = new Instances();
-        $auth_uri;
+        $authorization_uri;
 
         try {
             if ($table->where('host', '=', $host)->exists()) {
@@ -78,7 +69,7 @@ class LoginController extends BaseController
                     ->first();
                 $table->where('host', '=', $host)
                     ->increment('count', 1);
-                $auth_uri = $registrar->generateAuthUri($host, $client_info->client_id);
+                $authorization_uri = $registrar->generateAuthorizationUri($host, $client_info->client_id);
             } else {
                 $client_info = $registrar->handshakeToNewHost();
                 $table->host          = $host;
@@ -86,13 +77,20 @@ class LoginController extends BaseController
                 $table->client_secret = $client_info['client_secret'];
                 $table->count         = 1;
                 $table->save();
-                $auth_uri = $registrar->generateAuthUri($host, $client_info['client_id']);
+                $authorization_uri = $registrar->generateAuthorizationUri($host, $client_info['client_id']);
             }
+
+            return response()->json([
+                'authorize' => [
+                    'instance_uri' => $host,
+                    'authorization_uri' => $authorization_uri
+                ]
+            ]);
         } catch(\Exception $e) {
-            $auth_uri = '/login?error=host&error_description='.
-            str_replace(" ", "+", __('login-from-connection-error'));
-        } finally {
-            return redirect($auth_uri);
+            return response()->json([
+                'error' => 'invalid_host',
+                'error_description' => 'Failed to register the application in the host'
+            ], 400);
         }
     }
 

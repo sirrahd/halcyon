@@ -6,8 +6,8 @@ use Closure;
 
 /**
  * LanguageDetector
- * Detect language that visitor is using from query string OR
- * cookie OR accept_languages and save it in cookie
+ * Detect the language the visitor's using from query string
+ * or cookie or accept_languages and save it in cookie
  *
  */
 class LanguageDetector
@@ -21,7 +21,7 @@ class LanguageDetector
      */
     public function handle($request, Closure $next)
     {
-        $known_languages = ['en', 'ja']; // Known Languages
+        $known_languages = ['en', 'ja'];
         $query_lang  = $request->input('lang');
         $cookie_lang = $request->cookie('lang');
 

@@ -13,18 +13,18 @@ class MastodonRegistrar
     {
         $this->http_client   = new HttpClient();
         $this->host          = $host;
-        $this->parameters    = array(
+        $this->parameters    = [
             'client_name'   => config('mastodon.client_name'),
             'redirect_uris' => implode(' ', config('mastodon.redirect_uris')),
             'scopes'        => implode(' ', config('mastodon.scopes')),
             'website'       => config('mastodon.website'),
-        );
+        ];
     }
 
     /**
      * handshakeToNewHost
      * Try to register application to specified instance
-     * @return  array         Client informations
+     * @return  array         Client information
      * @throws  Invalid host  Specified instance was invalid
      */
     public function handshakeToNewHost()
@@ -47,14 +47,14 @@ class MastodonRegistrar
     }
 
     /**
-     * fetchAuthToken
+     * fetchAccessToken
      * Fetch access token with code and redirect_uri
      * @param   string     $code            Oauth code
      * @param   string     $redirect_uri    Redirect_uri which specified when authorize
      * @return  string     Access token
      * @throws  "Invalid code"  Specified code was invalid
      */
-    public function fetchAuthToken($client_id, $client_secret, $code, $redirect_uri)
+    public function fetchAccessToken($client_id, $client_secret, $code, $redirect_uri)
     {
         $this->parameters['grant_type']    = 'authorization_code';
         $this->parameters['client_id']     = $client_id;
@@ -78,22 +78,22 @@ class MastodonRegistrar
     }
 
     /**
-     * generateAuthUri
-     * Generate Authorize URI from specified informations
+     * generateAuthorizationUri
+     * Generate Authorization URI from specified information
      * @param   string     $host            Instance domain
      * @param   string     $client_id       client_id of the instance
      * @return  string     $auth_uri        Oauth URI
      */
-    public function generateAuthUri($host, $client_id)
+    public function generateAuthorizationUri($host, $client_id)
     {
         $auth_uri = "https://{$host}/oauth/authorize?".
-        http_build_query(array(
+        http_build_query([
             'client_id'     => $client_id,
             'response_type' => 'code',
             'scope'         => implode(' ', config('mastodon.scopes')),
             'website'       => config('mastodon.website'),
             'redirect_uri'  => url('/login?&host='.$host)
-        ));
+        ]);
 
         return $auth_uri;
     }
