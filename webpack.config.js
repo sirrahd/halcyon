@@ -69,6 +69,10 @@ module.exports = {
       filename: '[name].bundle.css',
       allChunks: true,
     }),
+    new HtmlWebpackPlugin({
+      filename: '../dev.html',
+      template: path.resolve(__dirname, 'resources/template.html'),
+    }),
   ],
 };
 
@@ -77,13 +81,7 @@ if (process.env.NODE_ENV === 'production') {
     extractComments: true,
   }));
 } else if (process.env.NODE_ENV === 'development') {
-  module.exports.plugins.push(
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      filename: '../dev.html',
-      template: path.resolve(__dirname, 'resources/template.html'),
-    }),
-  );
+  module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
   module.exports.devtool = 'source-map';
   module.exports.devServer = {
     hot: true,

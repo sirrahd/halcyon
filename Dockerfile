@@ -1,7 +1,9 @@
-FROM php:7.1.11-fpm-alpine3.4
-MAINTAINER Neetshin <neetshin@neetsh.in>
+FROM alpine:3.6
+
 LABEL maintainer="https://github.com/halcyon-suite/halcyon" \
-description="The another web interface of Mastodon"
+      description="The another web interface of Mastodon"
+
+ENV NODE_ENV=production
 
 WORKDIR /halcyon
 
@@ -9,24 +11,25 @@ RUN apk -U upgrade \
  && apk add \
     curl \
     git \
+    php7 \
     nginx \
     nodejs \
+    php7-fpm \
  && npm install -g yarn \
- && rm -rf /var/cache/apk/*
+ && rm -rf /var/cache/apk/* \
+ && rm -f /etc/nginx/conf.d/default.conf
 
-COPY composer.json composer.lock package.json yarn.lock /halcyon/ \
-  && composer.phar /usr/local/bin/composer/
-
-RUN chmod 757 app storage \
- && npm -g cache clean \
- && yarn cache clean \
- && composer install \
- && yarn --ignore-optional --pure-lockfile
-
+COPY composer.phar /usr/local/bin/composer
+COPY ./etc/nginx/conf.d/halcyon.conf /etc/nginx/conf.d/
 COPY . /halcyon
 
-ENV NODE_ENV=production
-RUN yarn run build
+RUN chmod +x /usr/local/bin/composer \
+ && chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache
+
+RUN composer install --no-progress \
+ && yarn --pure-lockfile --production=false \
+ && yarn run build:production
 
 EXPOSE 80 443
+
 CMD ["nginx", "-g", "daemon off;"]

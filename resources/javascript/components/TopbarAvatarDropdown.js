@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
@@ -27,7 +27,7 @@ class TopbarAvatarDropdown extends React.PureComponent {
 
     const avatar      = account.get('avatar');
     const displayName = account.get('display_name');
-    const username    = account.get('username');
+    // const username    = account.get('username');
 
     return (
       <div className="user-nav__avatar-dropdown">

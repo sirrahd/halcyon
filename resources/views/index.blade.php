@@ -6,11 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Halcyon</title>
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="stylesheet" type="text/css" href="/stylesheet/theme_light.bundle.css" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="stylesheet/theme_light.bundle.css" />
     </head>
     <body class="{{ app()->getLocale() }}" role="application">
         <div id="root" data-lang="{{ app()->getLocale() }}"></div>
-        <script src="/javascript/app.bundle.js"></script>
+        <script src="javascript/app.bundle.js"></script>
     </body>
 </html>
