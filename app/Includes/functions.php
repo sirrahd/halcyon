@@ -26,9 +26,9 @@ function parse_json_file($json_path)
 }
 
 /**
- * Detect whether fact URL
+ * Detect whether valid URL
  *
- * @param   string   URL that you want Detect
+ * @param   string   URL
  * @return  boolean  result
  */
 function is_url($url)
