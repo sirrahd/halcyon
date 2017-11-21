@@ -5,12 +5,12 @@ const UglifyJsPlugin    = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  context: path.join(__dirname, '/resources/'),
+  context: path.resolve(__dirname, 'resources'),
   entry: {
     main: './javascript/main.js',
   },
   output: {
-    path: path.join(__dirname, '/public/assets/'),
+    path: path.resolve(__dirname, 'public/assets'),
     filename: '[name].bundle.js',
   },
   module: {
