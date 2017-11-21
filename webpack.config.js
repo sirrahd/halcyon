@@ -1,7 +1,8 @@
 const webpack = require('webpack');
-const path = require('path');
+const path    = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin    = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: path.join(__dirname, '/resources/'),
@@ -10,8 +11,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '/public/assets/'),
-    filename: './[name].bundle.js',
-    publicPath: '/assets/',
+    filename: '[name].bundle.js',
   },
   module: {
     rules: [
@@ -43,12 +43,12 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif)$/,
-        exclude: /public/,
+        exclude: /public\/assets/,
         use: 'file-loader',
       },
       {
         test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        exclude: /public/,
+        exclude: /public\/assets/,
         use: 'file-loader',
       },
     ],
@@ -59,15 +59,14 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       $: 'jquery',
-      axios: 'axios',
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production'),
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
     new ExtractTextPlugin({
-      filename: './[name].bundle.css',
+      filename: '[name].bundle.css',
       allChunks: true,
     }),
   ],
@@ -77,7 +76,30 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.plugins.push(new UglifyJsPlugin({
     extractComments: true,
   }));
-} else {
-  module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
+} else if (process.env.NODE_ENV === 'development') {
+  module.exports.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      filename: '../dev.html',
+      template: path.resolve(__dirname, 'resources/template.html'),
+    }),
+  );
   module.exports.devtool = 'source-map';
+  module.exports.devServer = {
+    hot: true,
+    open: true,
+    inline: true,
+    index: 'dev.html',
+    contentBase: path.resolve(__dirname, 'public'),
+    historyApiFallback: {
+      rewrites: [
+        {
+          from: /\.*/,
+          to() {
+            return 'dev.html';
+          },
+        },
+      ],
+    },
+  };
 }
