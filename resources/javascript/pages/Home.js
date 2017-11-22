@@ -1,6 +1,6 @@
 import React from 'react';
-import Topbar from './Topbar';
-import Dashborad from './Dashborad';
+import Topbar from '../components/Topbar';
+import Dashborad from '../components/Dashborad';
 
 const Home = () => (
   <div className="app-container">

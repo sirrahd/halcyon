@@ -1,10 +1,10 @@
 import React from 'react';
-import Topbar from './Topbar';
+import Topbar from '../components/Topbar';
 
-const Search = () => (
+const Local = () => (
   <div className="app-container">
     <Topbar />
   </div>
 );
 
-export default Search;
+export default Local;
