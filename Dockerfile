@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM php:7.1.11-fpm-alpine3.4
 
 LABEL maintainer="https://github.com/halcyon-suite/halcyon" \
       description="The another web interface of Mastodon"
@@ -11,10 +11,8 @@ RUN apk -U upgrade \
  && apk add \
     curl \
     git \
-    php7 \
     nginx \
     nodejs \
-    php7-fpm \
  && npm install -g yarn \
  && rm -rf /var/cache/apk/* \
  && rm -f /etc/nginx/conf.d/default.conf

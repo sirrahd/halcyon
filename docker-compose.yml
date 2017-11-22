@@ -1,0 +1,22 @@
+version: "3"
+services:
+
+  db:
+    restart: always
+    image: postgres:alpine
+    # volumes:
+    #   - ./mysql:/var/lib/mysql
+
+  web:
+    build: .
+    image: neetshin/halcyon
+    restart: always
+    env_file: .env
+    command: nginx -g daemon off;
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    volumes:
+      - .:/halcyon
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d
