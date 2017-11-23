@@ -68,7 +68,6 @@ input[type="reset"] {
 	background-color: transparent;
 	border-color: transparent;
 	outline-color: transparent;
-	appearance: none;
 }
 
 input,
@@ -87,4 +86,15 @@ select {
 		box-shadow: none;
 		outline: none;
 	}
+}
+
+.invisible {
+	display: none !important;
+}
+
+.unselectable {
+	user-select: none !important;
+	-ms-user-select: none !important;
+	-webkit-user-select: none !important;
+	-moz-user-select: none !important;
 }
