@@ -1,11 +1,12 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import ImmutablePropTypes from 'react-immutable-proptypes';
-import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
 import { Map as ImmutableMap } from 'immutable';
+import { FormattedMessage } from 'react-intl';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import ReactTooltip from 'react-tooltip';
+import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
 import OmaeMona from '../../images/omae_mona.png';
-
 
 class TopbarAvatarDropdown extends React.PureComponent {
   // デモ用なので本番は.isRequiredを付ける
@@ -34,8 +35,9 @@ class TopbarAvatarDropdown extends React.PureComponent {
         <Dropdown className="avatar-dropdown">
 
           <DropdownTrigger className="avatar-dropdown__trigger">
-            <button className="avatar-dropdown__button">
+            <button className="avatar-dropdown__button" data-tip="Profile and settings">
               <img src={avatar} alt={displayName} />
+              <ReactTooltip effect="solid" />
             </button>
           </DropdownTrigger>
 
