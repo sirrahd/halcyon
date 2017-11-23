@@ -10,5 +10,22 @@
   "search_form.recent_searches.empty": "まだ何も検索していません",
   "search_form.saved_searches": "検索メモ",
   "search_form.saved_searches.empty": "まだ何も保存していません",
-  "toot_form.compose": "トゥート"
+  "toot_form.compose": "トゥート",
+  "login.error.access_denied": "リソースの所有者または認証サーバーが要求を拒否しました。",
+  "login.error.credential_flow_not_configured": "リソース所有者のパスワード Doorkeeper.configure.resource_owner_from_credentials が設定されていないためクレデンシャルフローに失敗しました。",
+  "login.error.invalid_client": "不明なクライアントであるか、クライアント情報が含まれていない、またはサポートされていない認証方法のため、クライアントの認証に失敗しました。",
+  "login.error.invalid_grant": "指定された認証許可は無効であるか、期限切れ、取り消されている、リダイレクトURIの不一致、または別のクライアントに発行されています。",
+  "login.error.invalid_redirect_uri": "無効なリダイレクトURIが含まれています。",
+  "login.error.invalid_request": "リクエストに必要なパラメータが欠けているか、サポートされていないパラメータが含まれている、または不正なフォーマットです。",
+  "login.error.invalid_resource_owner": "指定されたリソース所有者のクレデンシャルが無効であるか、リソース所有者が見つかりません。",
+  "login.error.invalid_scope": "要求されたアクセス権は無効であるか、不明、または不正なフォーマットです。",
+  "login.error.invalid_token.expired": "アクセストークンの有効期限が切れています",
+  "login.error.invalid_token.revoked": "アクセストークンは取り消されています。",
+  "login.error.invalid_token.unknown": "アクセストークンが無効です。",
+  "login.error.resource_owner_authenticator_not_configured": "Doorkeeper.configure.resource_owner_authenticator が設定されていないため、リソース所有者の検索に失敗しました。",
+  "login.error.server_error": "認証サーバーに予期せぬ例外が発生したため、リクエストを実行できなくなりました。",
+  "login.error.temporarily_unavailable": "現在、認証サーバーに一時的な過負荷が掛かっているか、またはメンテナンス中のため、リクエストを処理できません。",
+  "login.error.unauthorized_client": "クライアントはこのメゾットで要求を実行する権限がありません。",
+  "login.error.unsupported_grant_type": "指定された認証許可タイプは認証サーバでサポートされていません。",
+  "login.error.unsupported_response_type": "このレスポンスタイプは認証サーバでサポートされていません。"
 }

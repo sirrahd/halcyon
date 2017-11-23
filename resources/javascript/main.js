@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Halcyon from './components/Halcyon';
 import ready from './ready';
+import Halcyon from './components/Halcyon';
 import '../stylesheet/main.scss';
 
 ready(() => {

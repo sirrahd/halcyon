@@ -6,13 +6,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import configureStore from '../store/configureStore';
 
-import Home from './Home';
-import Local from './Local';
-import Federated from './Federated';
-import Notifications from './Notifications';
-import Search from './Search';
-import Profile from './Profile';
-import NotFound from './NotFound';
+import Home from '../pages/Home';
+import Local from '../pages/Local';
+import Federated from '../pages/Federated';
+import Notifications from '../pages/Notifications';
+import Search from '../pages/Search';
+import Profile from '../pages/Profile';
+import NotFound from '../pages/NotFound';
 
 import en from 'react-intl/locale-data/en';
 import ja from 'react-intl/locale-data/ja';
