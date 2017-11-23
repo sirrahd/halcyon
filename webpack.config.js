@@ -2,16 +2,18 @@ const webpack = require('webpack');
 const path    = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin    = require('uglifyjs-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, 'resources'),
   entry: {
     main: './javascript/main.js',
+    theme_light: './stylesheet/theme_light.scss',
+    theme_dark: './stylesheet/theme_dark.scss',
   },
   output: {
     path: path.resolve(__dirname, 'public/assets'),
     filename: '[name].bundle.js',
+    publicPath: '/assets/',
   },
   module: {
     rules: [
@@ -69,10 +71,6 @@ module.exports = {
       filename: '[name].bundle.css',
       allChunks: true,
     }),
-    new HtmlWebpackPlugin({
-      filename: '../dev.html',
-      template: path.resolve(__dirname, 'resources/template.html'),
-    }),
   ],
 };
 
@@ -83,21 +81,4 @@ if (process.env.NODE_ENV === 'production') {
 } else if (process.env.NODE_ENV === 'development') {
   module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
   module.exports.devtool = 'source-map';
-  module.exports.devServer = {
-    hot: true,
-    open: true,
-    inline: true,
-    index: 'dev.html',
-    contentBase: path.resolve(__dirname, 'public'),
-    historyApiFallback: {
-      rewrites: [
-        {
-          from: /\.*/,
-          to() {
-            return 'dev.html';
-          },
-        },
-      ],
-    },
-  };
 }
