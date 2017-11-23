@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ready from './ready';
 import Halcyon from './components/Halcyon';
-import '../stylesheet/main.scss';
 
 ready(() => {
   const mountNode = document.getElementById('halcyon');
