@@ -10,6 +10,7 @@ import Home from '../pages/Home';
 import Local from '../pages/Local';
 import Federated from '../pages/Federated';
 import Notifications from '../pages/Notifications';
+import Login from '../pages/Login';
 import Search from '../pages/Search';
 import Profile from '../pages/Profile';
 import NotFound from '../pages/NotFound';
@@ -39,6 +40,7 @@ export default class Halcyon extends React.PureComponent {
               <Route exact path="/local" component={Local} />
               <Route exact path="/federated" component={Federated} />
               <Route exact path="/notifications" component={Notifications} />
+              <Route exact path="/login" component={Login} />
               <Route path="/:acct(@[a-zA-Z0-9_]{1,30}@.+?\..+?)" component={Profile} />
               <Route path="/search/:filter?" component={Search} />
               <Route component={NotFound} />
