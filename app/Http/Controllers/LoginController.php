@@ -17,7 +17,7 @@ class LoginController extends BaseController
     /**
      * authorize
      */
-    public function authorize(Request $request)
+    public function authorizeAccount(Request $request)
     {
         if ( !empty($request->input('code')) && !empty($request->input('instance_domain')) ) {
             $code            = $request->input('code');
@@ -45,15 +45,19 @@ class LoginController extends BaseController
                 ]);
             } catch (Exception $e) {
                 return response()->json([
-                    'error' => 'invalid_code',
-                    'error_description' => 'Failed to fetch access token from the code'
+                    'error' => [
+                        'error' => 'invalid_code',
+                        'error_description' => 'Failed to fetch access token from the code'
+                    ]
                 ], 400);
             }
         }
 
         return response()->json([
-            'error' => 'invalid_code',
-            'error_description' => 'Failed to fetch access token from the code'
+            'error' => [
+                'error' => 'invalid_code',
+                'error_description' => 'Failed to fetch access token from the code'
+            ]
         ], 400);
     }
 
@@ -86,15 +90,16 @@ class LoginController extends BaseController
             }
 
             return response()->json([
-                'authorize' => [
-                    'instance_domain'   => $instance_domain,
+                'verified_instance' => [
                     'authorization_uri' => $authorization_uri
                 ]
             ]);
         } catch(\Exception $e) {
             return response()->json([
-                'error' => 'invalid_instance_domain',
-                'error_description' => 'Failed to register the application in the instance'
+                'error' => [
+                    'error' => 'invalid_instance_domain',
+                    'error_description' => 'Failed to register the application in the instance'
+                ]
             ], 400);
         }
     }
