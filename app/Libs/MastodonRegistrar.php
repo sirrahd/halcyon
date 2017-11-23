@@ -9,11 +9,11 @@ class MastodonRegistrar
 {
     protected $parameters;
 
-    public function __construct($host)
+    public function __construct($instance_domain)
     {
-        $this->http_client   = new HttpClient();
-        $this->host          = $host;
-        $this->parameters    = [
+        $this->http_client     = new HttpClient();
+        $this->instance_domain = $instance_domain;
+        $this->parameters      = [
             'client_name'   => config('mastodon.client_name'),
             'redirect_uris' => implode(' ', config('mastodon.redirect_uris')),
             'scopes'        => implode(' ', config('mastodon.scopes')),
@@ -22,17 +22,18 @@ class MastodonRegistrar
     }
 
     /**
-     * handshakeToNewHost
+     * handshakeToNewInstance
      * Try to register application to specified instance
-     * @return  array         Client information
-     * @throws  Invalid host  Specified instance was invalid
+     * @return  array                     Client information
+     * @throws  "Invalid instance domain" Specified instance was invalid
      */
-    public function handshakeToNewHost()
+    public function handshakeToNewInstance()
     {
         $request  = $this->http_client->post(
-            'https://'.$this->host.'/api/v1/apps',
+            "https://{$this->instance_domain}/api/v1/apps",
             ['json'=>$this->parameters]
         );
+
         $response = json_decode($request->getBody(), true);
 
         if (
@@ -42,7 +43,7 @@ class MastodonRegistrar
         ) {
             return $response;
         } else {
-            throw new \Exception('Invalid host');
+            throw new \Exception('Invalid instance domain');
         }
     }
 
@@ -61,10 +62,12 @@ class MastodonRegistrar
         $this->parameters['client_secret'] = $client_secret;
         $this->parameters['code']          = $code;
         $this->parameters['redirect_uri']  = $redirect_uri;
+
         $request  = $this->http_client->post(
-            "https://".$this->host."/oauth/token",
+            "https://{$this->instance_domain}/oauth/token",
             ["json"=>$this->parameters]
         );
+
         $response = json_decode($request->getBody(), true);
 
         if (
@@ -80,21 +83,21 @@ class MastodonRegistrar
     /**
      * generateAuthorizationUri
      * Generate Authorization URI from specified information
-     * @param   string     $host            Instance domain
+     * @param   string     $instance_domain Instance domain
      * @param   string     $client_id       client_id of the instance
-     * @return  string     $auth_uri        Oauth URI
+     * @return  string     $authorization_uri        Oauth URI
      */
-    public function generateAuthorizationUri($host, $client_id)
+    public function generateAuthorizationUri($instance_domain, $client_id)
     {
-        $auth_uri = "https://{$host}/oauth/authorize?".
+        $authorization_uri = "https://{$instance_domain}/oauth/authorize?".
         http_build_query([
             'client_id'     => $client_id,
             'response_type' => 'code',
             'scope'         => implode(' ', config('mastodon.scopes')),
             'website'       => config('mastodon.website'),
-            'redirect_uri'  => url('/login?&host='.$host)
+            'redirect_uri'  => url('/login?&instance_domain='.$instance_domain)
         ]);
 
-        return $auth_uri;
+        return $authorization_uri;
     }
 }

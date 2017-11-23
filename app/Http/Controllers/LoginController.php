@@ -19,27 +19,27 @@ class LoginController extends BaseController
      */
     public function authorize(Request $request)
     {
-        if ( !empty($request->input('code')) && !empty($request->input('host')) ) {
-            $code      = $request->input('code');
-            $host      = $request->input('host');
-            $table     = new Instances();
-            $registrar = new MastodonRegistrar($request->input('host'));
+        if ( !empty($request->input('code')) && !empty($request->input('instance_domain')) ) {
+            $code            = $request->input('code');
+            $instance_domain = $request->input('instance_domain');
+            $table           = new Instances();
+            $registrar       = new MastodonRegistrar($instance_domain);
 
             try {
-                $client_info = $table->select('host', 'client_id', 'client_secret', 'count')
-                    ->where('host', '=', $host)
+                $client_info = $table->select('instance_domain', 'client_id', 'client_secret', 'count')
+                    ->where('instance_domain', '=', $instance_domain)
                     ->first();
 
                 $response = $registrar->fetchAccessToken(
                     $client_info->client_id,
                     $client_info->client_secret,
                     $code,
-                    url('/login?&host='.$host)
+                    url('/login?&instance_domain='.$instance_domain)
                 );
 
                 return response()->json([
                     'authorize' => [
-                        'instance_uri' => $host,
+                        'instance_domain' => $instance_domain,
                         'access_token' => $response['access_token'],
                     ]
                 ]);
@@ -62,39 +62,39 @@ class LoginController extends BaseController
      */
     public function verifyInstance(Request $request)
     {
-        $host      = explode('@', $request->input('acct'))[2];
-        $registrar = new MastodonRegistrar($host);
-        $table     = new Instances();
+        $instance_domain = explode('@', $request->input('acct'))[2];
+        $registrar       = new MastodonRegistrar($instance_domain);
+        $table           = new Instances();
         $authorization_uri;
 
         try {
-            if ($table->where('host', '=', $host)->exists()) {
-                $client_info = $table->select('host', 'client_id', 'client_secret', 'count')
-                    ->where('host', '=', $host)
+            if ($table->where('instance_domain', '=', $instance_domain)->exists()) {
+                $client_info = $table->select('instance_domain', 'client_id', 'client_secret', 'count')
+                    ->where('instance_domain', '=', $instance_domain)
                     ->first();
-                $table->where('host', '=', $host)
+                $table->where('instance_domain', '=', $instance_domain)
                     ->increment('count', 1);
-                $authorization_uri = $registrar->generateAuthorizationUri($host, $client_info->client_id);
+                $authorization_uri = $registrar->generateAuthorizationUri($instance_domain, $client_info->client_id);
             } else {
-                $client_info = $registrar->handshakeToNewHost();
-                $table->host          = $host;
-                $table->client_id     = $client_info['client_id'];
-                $table->client_secret = $client_info['client_secret'];
-                $table->count         = 1;
+                $client_info = $registrar->handshakeToNewInstance();
+                $table->instance_domain = $instance_domain;
+                $table->client_id       = $client_info['client_id'];
+                $table->client_secret   = $client_info['client_secret'];
+                $table->count           = 1;
                 $table->save();
-                $authorization_uri = $registrar->generateAuthorizationUri($host, $client_info['client_id']);
+                $authorization_uri = $registrar->generateAuthorizationUri($instance_domain, $client_info['client_id']);
             }
 
             return response()->json([
                 'authorize' => [
-                    'instance_uri' => $host,
+                    'instance_domain'   => $instance_domain,
                     'authorization_uri' => $authorization_uri
                 ]
             ]);
         } catch(\Exception $e) {
             return response()->json([
-                'error' => 'invalid_host',
-                'error_description' => 'Failed to register the application in the host'
+                'error' => 'invalid_instance_domain',
+                'error_description' => 'Failed to register the application in the instance'
             ], 400);
         }
     }
