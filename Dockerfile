@@ -17,7 +17,9 @@ RUN apk -U upgrade \
  && rm -rf /var/cache/apk/* \
  && rm -f /etc/nginx/conf.d/default.conf
 
-COPY composer.phar /usr/local/bin/composer
+COPY ./composer.phar /usr/local/bin/composer
+COPY ./etc/php/php.ini /usr/local/etc/php/
+COPY ./etc/php-fpm/php-fpm.conf /usr/local/etc/php-fpm/
 COPY ./etc/nginx/conf.d/halcyon.conf /etc/nginx/conf.d/
 COPY . /halcyon
 
@@ -28,6 +30,6 @@ RUN composer install --no-progress \
  && yarn --pure-lockfile --production=false \
  && yarn run build:production
 
-EXPOSE 80 443
+EXPOSE 3050
 
 CMD ["nginx", "-g", "daemon off;"]
