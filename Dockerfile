@@ -15,12 +15,13 @@ RUN apk -U upgrade \
     nodejs \
  && npm install -g yarn \
  && rm -rf /var/cache/apk/* \
+ && mkdir -p /run/nginx \
  && rm -f /etc/nginx/conf.d/default.conf
 
-ADD ./composer.phar /usr/local/bin/composer \
- && ./etc/php/php.ini /usr/local/etc/php/ \
- && ./etc/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/ \
- && ./etc/nginx/conf.d/halcyon.conf /etc/nginx/conf.d/
+COPY ./composer.phar /usr/local/bin/composer
+COPY ./etc/php/php.ini /usr/local/etc/php
+COPY ./etc/php-fpm.d/www.conf /usr/local/etc/php-fpm.d
+COPY ./etc/nginx/conf.d/halcyon.conf /etc/nginx/conf.d
 
 COPY . /halcyon
 
