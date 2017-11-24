@@ -19,7 +19,7 @@ RUN apk -U upgrade \
 
 COPY ./composer.phar /usr/local/bin/composer
 COPY ./etc/php/php.ini /usr/local/etc/php/
-COPY ./etc/php-fpm/php-fpm.conf /usr/local/etc/php-fpm/
+COPY ./etc/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/
 COPY ./etc/nginx/conf.d/halcyon.conf /etc/nginx/conf.d/
 COPY . /halcyon
 
