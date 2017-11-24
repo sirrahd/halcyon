@@ -17,16 +17,16 @@ RUN apk -U upgrade \
  && rm -rf /var/cache/apk/* \
  && rm -f /etc/nginx/conf.d/default.conf
 
-COPY ./composer.phar /usr/local/bin/composer
-COPY ./etc/php/php.ini /usr/local/etc/php/
-COPY ./etc/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/
-COPY ./etc/nginx/conf.d/halcyon.conf /etc/nginx/conf.d/
+ADD ./composer.phar /usr/local/bin/composer \
+ && ./etc/php/php.ini /usr/local/etc/php/ \
+ && ./etc/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/ \
+ && ./etc/nginx/conf.d/halcyon.conf /etc/nginx/conf.d/
+
 COPY . /halcyon
 
 RUN chmod +x /usr/local/bin/composer \
- && chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache
-
-RUN composer install --no-progress \
+ && chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
+ && composer install --no-progress \
  && yarn --pure-lockfile --production=false \
  && yarn run build:production
 
