@@ -43,4 +43,6 @@ RUN chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
 
 EXPOSE 80
 
+VOLUME ["/halcyon", "/etc/nginx/conf.d", "/usr/local/etc/php", "/usr/local/etc/php-fpm.d"]
+
 CMD ["nginx", "-g", "daemon off;"]
