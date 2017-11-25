@@ -18,12 +18,6 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce: 'pre',
-        test: /\.(js|es6|jsx)$/,
-        exclude: /node_modules/,
-        use: 'eslint-loader',
-      },
-      {
         test: /\.(js|es6|jsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader',
@@ -81,4 +75,10 @@ if (process.env.NODE_ENV === 'production') {
 } else if (process.env.NODE_ENV === 'development') {
   module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
   module.exports.devtool = 'source-map';
+  module.exports.module.rules.push({
+    enforce: 'pre',
+    test: /\.(js|es6|jsx)$/,
+    exclude: /node_modules/,
+    use: 'eslint-loader',
+  });
 }
