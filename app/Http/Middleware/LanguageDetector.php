@@ -6,8 +6,8 @@ use Closure;
 
 /**
  * LanguageDetector
- * Detect the language the visitor's using from query string
- * or cookie or accept_languages and save it in cookie
+ * Detect the visitor's own language from query string
+ * or cookie or accept_languages and save it on cookie
  *
  */
 class LanguageDetector
@@ -21,24 +21,23 @@ class LanguageDetector
      */
     public function handle($request, Closure $next)
     {
-        $query_lang  = $request->input('lang');
-        $cookie_lang = $request->cookie('lang');
-        $known_langs = $this->getKnownLanguages('../../../resources/javascript/locales');
+        $query_lang   = $request->input('lang');
+        $cookie_lang  = $request->cookie('lang');
+        $known_langs  = $this->getKnownLanguages('../../../resources/javascript/locales');
+        $accept_langs = array_map(
+            function($tag) {
+                $exploded = explode(';', $tag );
+                $trimed   = array_map('trim', $exploded);
+                return array_shift($trimed);
+            },
+            explode(',', $request->server('HTTP_ACCEPT_LANGUAGE'))
+        );
 
         if ( $query_lang && in_array($query_lang, $known_langs) ) {
             $lang = $query_lang;
         } else if ( $cookie_lang && in_array($cookie_lang, $known_langs) ) {
             $lang = $cookie_lang;
-        } else if ( !is_null($request->server('HTTP_ACCEPT_LANGUAGE')) ) {
-            $accept_langs = array_filter(
-                array_map(function($tag) {
-                        $exploded = explode(';', $tag );
-                        $trimed   = array_map('trim', $exploded);
-                        return array_shift($trimed);
-                    },
-                    explode(',', $request->server('HTTP_ACCEPT_LANGUAGE'))
-                )
-            );
+        } else if ( !empty($accept_langs) ) {
             foreach ( $accept_langs as &$accept_lang ) {
                 if ( in_array($accept_lang, $known_langs) ) {
                     \Cookie::queue(cookie('lang', $accept_lang, time()+365*24*3600));
@@ -66,11 +65,12 @@ class LanguageDetector
     protected function getKnownLanguages($path) {
         $files = scandir($path);
         $return = [];
-        foreach ($files as $file_name) {
+        foreach ($files as &$file_name) {
             if (preg_match('/(.+?)\.json$/', $file_name, $pure_file_name)) {
                 $return[] = $pure_file_name[1];
             }
         }
+
         return $return;
     }
 }
