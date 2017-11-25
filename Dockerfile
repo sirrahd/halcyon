@@ -9,6 +9,8 @@ ENV NODE_ENV=production \
 ARG YARN_VERSION=1.1.0
 ARG YARN_DOWNLOAD_SHA256=171c1f9ee93c488c0d774ac6e9c72649047c3f896277d88d0f805266519430f3
 
+EXPOSE 80
+
 WORKDIR /halcyon
 
 RUN apk -U upgrade \
@@ -41,8 +43,10 @@ RUN chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
  && yarn cache clean \
  && yarn run build:production
 
-EXPOSE 80
+COPY docker_entrypoint.sh /usr/local/bin/run
+
+RUN chmod +x /usr/local/bin/run; sync
 
 VOLUME ["/halcyon", "/etc/nginx/conf.d", "/usr/local/etc/php", "/usr/local/etc/php-fpm.d"]
 
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["/usr/local/bin/run"]

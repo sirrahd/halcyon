@@ -5,7 +5,6 @@
   "scripts": {
     "test": "npm run test:lint",
     "test:lint": "./node_modules/.bin/eslint *.js",
-    "start": "cross-env NODE_ENV=development ./node_modules/.bin/webpack-dev-server",
     "clear": "rm -rf ./public/assets/*",
     "build:development": "cross-env NODE_ENV=development ./node_modules/.bin/webpack",
     "build:production": "cross-env NODE_ENV=production ./node_modules/.bin/webpack",
