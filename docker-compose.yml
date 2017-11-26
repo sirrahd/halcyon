@@ -4,6 +4,12 @@ services:
   db:
     restart: always
     image: mysql:8.0.3
+    env_file: .env
+    environment:
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
     # volumes:
     #   - ./mysql:/var/lib/mysql
 
