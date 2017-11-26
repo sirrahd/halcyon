@@ -1,4 +1,4 @@
-FROM php:7.2-rc-fpm-alpine3.6
+FROM php:7.1.11-fpm-alpine3.4
 
 LABEL maintainer="https://github.com/halcyon-suite/halcyon" \
       description="The another web interface of Mastodon"
@@ -19,7 +19,6 @@ RUN apk -U upgrade \
     git \
     nginx \
     nodejs \
-    nodejs-npm \
  && mkdir -p /run/nginx \
  && mkdir -p /tmp/src /opt \
  && wget -O yarn.tar.gz "https://github.com/yarnpkg/yarn/releases/download/v$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
