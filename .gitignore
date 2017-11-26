@@ -12,9 +12,8 @@ npm-debug.log
 yarn-error.log
 .env
 
-postgres
-redis
-mysql
+/redis
+/mysql
 
 !.keep
 !.gitkeep
