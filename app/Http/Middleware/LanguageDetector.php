@@ -63,9 +63,8 @@ class LanguageDetector
      * @return array  array of valid language
      */
     protected function getKnownLanguages($path) {
-        $files = scandir($path);
         $return = [];
-        foreach ($files as &$file_name) {
+        foreach ( scandir($path) as &$file_name ) {
             if (preg_match('/(.+?)\.json$/', $file_name, $pure_file_name)) {
                 $return[] = $pure_file_name[1];
             }

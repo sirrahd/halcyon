@@ -1,4 +1,4 @@
-FROM php:7.1.11-fpm-alpine3.4
+FROM php:7.2-rc-fpm-alpine3.6
 
 LABEL maintainer="https://github.com/halcyon-suite/halcyon" \
       description="The another web interface of Mastodon"
@@ -6,8 +6,8 @@ LABEL maintainer="https://github.com/halcyon-suite/halcyon" \
 ENV NODE_ENV=production \
     COMPOSER_ALLOW_SUPERUSER=true
 
-ARG YARN_VERSION=1.1.0
-ARG YARN_DOWNLOAD_SHA256=171c1f9ee93c488c0d774ac6e9c72649047c3f896277d88d0f805266519430f3
+ARG YARN_VERSION=1.3.2
+ARG YARN_DOWNLOAD_SHA256=6cfe82e530ef0837212f13e45c1565ba53f5199eec2527b85ecbcd88bf26821d
 
 EXPOSE 80
 
@@ -19,6 +19,7 @@ RUN apk -U upgrade \
     git \
     nginx \
     nodejs \
+    nodejs-npm \
  && mkdir -p /run/nginx \
  && mkdir -p /tmp/src /opt \
  && wget -O yarn.tar.gz "https://github.com/yarnpkg/yarn/releases/download/v$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
