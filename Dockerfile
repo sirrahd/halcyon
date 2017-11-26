@@ -19,6 +19,7 @@ RUN apk -U upgrade \
     git \
     nginx \
     nodejs \
+ && docker-php-ext-install pdo_mysql \
  && mkdir -p /run/nginx \
  && mkdir -p /tmp/src /opt \
  && wget -O yarn.tar.gz "https://github.com/yarnpkg/yarn/releases/download/v$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
