@@ -48,6 +48,6 @@ COPY docker_entrypoint.sh /usr/local/bin/run
 
 RUN chmod +x /usr/local/bin/run; sync
 
-VOLUME ["/halcyon", "/etc/nginx/conf.d", "/usr/local/etc/php", "/usr/local/etc/php-fpm.d"]
+VOLUME ["/halcyon", "/etc/nginx/conf.d", "/usr/local/etc/php", "/usr/local/etc/php-fpm.d", "/var/log"]
 
 ENTRYPOINT ["/usr/local/bin/run"]

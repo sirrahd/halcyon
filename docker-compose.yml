@@ -34,3 +34,4 @@ services:
       - ./etc/nginx/conf.d:/etc/nginx/conf.d
       - ./etc/php:/usr/local/etc/php
       - ./etc/php-fpm.d:/usr/local/etc/php-fpm.d
+      - ./logs:/var/log
