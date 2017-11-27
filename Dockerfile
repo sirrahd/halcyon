@@ -23,10 +23,10 @@ RUN apk -U upgrade \
  && docker-php-ext-install \
     pdo \
     pdo_pgsql \
-    openssl \
     mbstring \
     tokenizer \
     xml \
+    # openssl \
  && pecl channel-update pecl.php.net \
  && pecl install memcached \
  && docker-php-ext-enable memcached \
@@ -55,5 +55,7 @@ RUN chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
 VOLUME ["/halcyon", "/etc/nginx/conf.d", "/usr/local/etc/php", "/usr/local/etc/php-fpm.d"]
 
 COPY docker_entrypoint.sh /usr/local/bin/run
+
 RUN chmod +x /usr/local/bin/run; sync
+
 ENTRYPOINT ["/usr/local/bin/run"]
