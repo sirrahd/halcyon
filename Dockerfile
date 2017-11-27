@@ -23,7 +23,7 @@ RUN apk -U upgrade \
  && docker-php-ext-install \
     pdo \
     pdo_pgsql \
-    php_openssl \
+    openssl \
     mbstring \
     tokenizer \
     xml \
