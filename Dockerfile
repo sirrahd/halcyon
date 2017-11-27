@@ -27,7 +27,6 @@ RUN apk -U upgrade \
     autoconf \
     cyrus-sasl-dev \
     libgsasl-dev \
-    supervisor \
     postgresql-dev \
  && docker-php-ext-install \
     pdo \
