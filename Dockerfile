@@ -21,10 +21,9 @@ RUN apk -U upgrade \
     nodejs \
     postgresql-dev \
  && docker-php-ext-install \
-    mysqli \
-    mcrypt \
     pdo \
     pdo_pgsql \
+    php_openssl \
     mbstring \
     tokenizer \
     xml \
