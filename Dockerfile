@@ -19,6 +19,15 @@ RUN apk -U upgrade \
     git \
     nginx \
     nodejs \
+    build-base \
+    libmemcached-dev \
+    libmcrypt-dev \
+    libxml2-dev \
+    zlib-dev \
+    autoconf \
+    cyrus-sasl-dev \
+    libgsasl-dev \
+    supervisor \
     postgresql-dev \
  && docker-php-ext-install \
     pdo \
@@ -26,7 +35,6 @@ RUN apk -U upgrade \
     mbstring \
     tokenizer \
     xml \
-    # openssl \
  && pecl channel-update pecl.php.net \
  && pecl install memcached \
  && docker-php-ext-enable memcached \
