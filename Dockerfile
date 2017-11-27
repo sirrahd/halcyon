@@ -19,8 +19,19 @@ RUN apk -U upgrade \
     git \
     nginx \
     nodejs \
- && docker-php-ext-install pdo_mysql \
- && mkdir -p /run/nginx \
+ && docker-php-ext-install \
+    mysqli \
+    mcrypt \
+    pdo \
+    pdo_mysql \
+    mbstring \
+    tokenizer \
+    xml \
+ && pecl channel-update pecl.php.net \
+ && pecl install memcached \
+ && docker-php-ext-enable memcached
+
+RUN mkdir -p /run/nginx \
  && mkdir -p /var/log/nginx \
  && mkdir -p /tmp/src /opt \
  && wget -O yarn.tar.gz "https://github.com/yarnpkg/yarn/releases/download/v$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
