@@ -50,7 +50,7 @@ RUN apk -U upgrade \
 COPY ./composer.phar /usr/local/bin/composer
 COPY ./etc/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./etc/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d
-COPY ./etc/supervisor.conf /etc
+COPY ./etc/supervisor/conf.d/supervisor.conf /etc/supervisor/conf.d
 COPY . /halcyon
 
 RUN chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
