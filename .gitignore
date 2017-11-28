@@ -14,7 +14,7 @@ yarn-error.log
 .env
 
 /redis
-/mysql
+/postgres
 
 !.keep
 !.gitkeep
