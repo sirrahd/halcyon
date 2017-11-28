@@ -1,3 +1,3 @@
 #!/bin/sh
-php-fpm restart
+php-fpm -D
 nginx
