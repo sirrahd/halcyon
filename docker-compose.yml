@@ -19,7 +19,7 @@ services:
     restart: always
     env_file: .env
     ports:
-      - "8080:80"
+      - "2800:2800"
     depends_on:
       - db
       - redis
