@@ -28,6 +28,7 @@ RUN apk -U upgrade \
     cyrus-sasl-dev \
     libgsasl-dev \
     postgresql-dev \
+    supervisor \
  && docker-php-ext-install \
     pdo \
     pdo_pgsql \
@@ -47,9 +48,8 @@ RUN apk -U upgrade \
  && rm -rf /tmp/* /var/cache/apk/*
 
 COPY ./composer.phar /usr/local/bin/composer
-COPY ./etc/php/php.ini /usr/local/etc/php
-COPY ./etc/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d
 COPY ./etc/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./etc/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d
 COPY . /halcyon
 
 RUN chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
@@ -61,8 +61,4 @@ RUN chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
 
 VOLUME ["/halcyon"]
 
-COPY docker_entrypoint.sh /usr/local/bin/run
-
-RUN chmod +x /usr/local/bin/run; sync
-
-ENTRYPOINT ["/usr/local/bin/run"]
+ENTRYPOINT ["supervisord"]
