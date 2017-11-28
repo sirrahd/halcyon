@@ -59,7 +59,7 @@ RUN chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
  && yarn cache clean \
  && yarn run build:production
 
-VOLUME ["/halcyon", "/etc/nginx/nginx.conf", "/usr/local/etc/php/php.ini", "/usr/local/etc/php-fpm.d/zzz-www.conf"]
+VOLUME ["/halcyon"]
 
 COPY docker_entrypoint.sh /usr/local/bin/run
 
