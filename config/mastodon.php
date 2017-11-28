@@ -7,7 +7,10 @@ return [
     'client_name' => env('MASTODON_CLIENT_NAME', 'Haclyon'),
 
     // Path to redirect after authorization
-    'redirect_uris' => [env('APP_URL').'/login', 'urn:ietf:wg:oauth:2.0:oob'],
+    'redirect_uris' => [
+        rtrim(env('APP_URL'), '/').'/login',
+        'urn:ietf:wg:oauth:2.0:oob'
+    ],
 
     // Scopes app requests
     'scopes' => ['read', 'write', 'follow'],
