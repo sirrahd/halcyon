@@ -1,5 +1,5 @@
 #!/bin/sh
-grep -E '^APP_KEY=base64:.+?=' /halcyon/.env
+grep -E '^APP_KEY=base64:.+?=$' /halcyon/.env
 
 if [ $? -eq 1 ]; then
     php artisan key:generate
