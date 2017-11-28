@@ -10,7 +10,9 @@
         <link rel="stylesheet" type="text/css" href="stylesheet/theme_light.bundle.css" />
     </head>
     <body class="{{ app()->getLocale() }}" role="application">
-        <div id="root" data-lang="{{ app()->getLocale() }}"></div>
+        <div id="root" data-props="{{json_decode([
+            'lang' => app()->getLocale()
+        ])}}"></div>
         <script src="javascript/app.bundle.js"></script>
     </body>
 </html>
