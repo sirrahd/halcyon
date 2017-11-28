@@ -48,7 +48,7 @@ RUN apk -U upgrade \
 
 COPY ./composer.phar /usr/local/bin/composer
 COPY ./etc/php/php.ini /usr/local/etc/php
-COPY ./etc/php-fpm.d/www.conf /usr/local/etc/php-fpm.d
+COPY ./etc/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d
 COPY ./etc/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY . /halcyon
 
@@ -59,7 +59,7 @@ RUN chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
  && yarn cache clean \
  && yarn run build:production
 
-VOLUME ["/halcyon", "/etc/nginx", "/usr/local/etc/php", "/usr/local/etc/php-fpm.d"]
+VOLUME ["/halcyon", "/etc/nginx/nginx.conf", "/usr/local/etc/php/php.ini", "/usr/local/etc/php-fpm.d/zzz-www.conf"]
 
 COPY docker_entrypoint.sh /usr/local/bin/run
 
