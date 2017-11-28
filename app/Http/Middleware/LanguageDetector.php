@@ -23,7 +23,7 @@ class LanguageDetector
     {
         $query_lang   = $request->input('lang');
         $cookie_lang  = $request->cookie('lang');
-        $known_langs  = $this->getKnownLanguages('../../../resources/javascript/locales');
+        $known_langs  = $this->getKnownLanguages(resource_path('javascript/locales'));
         $accept_langs = array_map(
             function($tag) {
                 $exploded = explode(';', $tag );
