@@ -25,6 +25,6 @@ services:
       - redis
     volumes:
       - .:/halcyon
-      - ./etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./etc/nginx:/etc/nginx
       - ./etc/php:/usr/local/etc/php
       - ./etc/php-fpm.d:/usr/local/etc/php-fpm.d
