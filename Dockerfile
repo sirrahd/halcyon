@@ -62,4 +62,4 @@ RUN chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
 
 VOLUME ["/halcyon"]
 
-ENTRYPOINT ["supervisord"]
+CMD ["supervisord"]
