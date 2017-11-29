@@ -57,8 +57,7 @@ RUN mkdir -p /halcyon/storage /halcyon/bootstrap/cache \
  && chmod +x /usr/local/bin/composer; sync \
  && composer install --no-progress \
  && yarn --pure-lockfile \
- && yarn cache clean \
- && yarn run build:production
+ && yarn cache clean
 
 VOLUME ["/halcyon"]
 
