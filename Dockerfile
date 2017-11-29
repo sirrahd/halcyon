@@ -52,7 +52,8 @@ COPY ./etc/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./etc/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d
 COPY . /halcyon
 
-RUN chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
+RUN mkdir -p /halcyon/storage /halcyon/bootstrap/cache \
+ && chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
  && chmod +x /usr/local/bin/composer; sync \
  && composer install --no-progress \
  && yarn --pure-lockfile \
