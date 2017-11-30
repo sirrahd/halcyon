@@ -7,12 +7,12 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Halcyon</title>
         <link rel="shortcut icon" href="favicon.ico" />
-        <link rel="stylesheet" href="/assets/theme_light.bundle.css" />
+        <link rel="stylesheet" href="{{ mix('/stylesheet/theme_light.css') }}" />
     </head>
     <body class="{{ app()->getLocale() }}" role="application">
         <div id="halcyon" data-props="{{json_encode([
             'locale' => app()->getLocale()
         ])}}"></div>
-        <script src="/assets/main.bundle.js"></script>
+        <script src="{{ mix('/javascript/main.js') }}"></script>
     </body>
 </html>

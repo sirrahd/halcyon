@@ -5,9 +5,13 @@
   "scripts": {
     "test": "npm run test:lint",
     "test:lint": "./node_modules/.bin/eslint *.js",
-    "clear": "rm -rf ./public/assets/*",
-    "build:development": "cross-env NODE_ENV=development ./node_modules/.bin/webpack",
-    "build:production": "cross-env NODE_ENV=production ./node_modules/.bin/webpack",
+    "clear": "rm -rf ./public/fonts/* ./public/images/* ./public/javascript/* ./public/stylesheet/*",
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "postinstall": "npm rebuild node-sass"
   },
   "repository": {
@@ -36,6 +40,7 @@
     "immutable": "^3.8.2",
     "jquery": "^3.2.1",
     "json-loader": "^0.5.7",
+    "laravel-mix": "^1.6.1",
     "node-sass": "^4.7.2",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",

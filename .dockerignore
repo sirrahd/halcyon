@@ -1,9 +1,13 @@
 bootstrap/cache
 node_modules
 
-public/assets
 public/hot
 public/storage
+public/fonts
+public/images
+public/javascript
+public/stylesheet
+public/mix-manifest.json
 
 storage/app
 storage/framework/cache
