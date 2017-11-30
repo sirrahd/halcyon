@@ -7,7 +7,7 @@ use Closure;
 /**
  * LanguageDetector
  * Detect the visitor's own language from query string
- * or cookie or accept_languages and save it on cookie
+ * or session or accept_languages and save it on session
  *
  */
 class LanguageDetector
@@ -21,9 +21,8 @@ class LanguageDetector
      */
     public function handle($request, Closure $next)
     {
-        $query_lang   = $request->input('lang');
-        $cookie_lang  = $request->cookie('lang');
-        $known_langs  = $this->getKnownLanguages(resource_path('javascript/locales'));
+        $query_lang = $request->input('lang');
+        $session_lang = $request->session()->get('lang');
         $accept_langs = array_map(
             function($tag) {
                 $exploded = explode(';', $tag );
@@ -33,14 +32,16 @@ class LanguageDetector
             explode(',', $request->server('HTTP_ACCEPT_LANGUAGE'))
         );
 
+        $known_langs = $this->getKnownLanguages(resource_path('javascript/locales'));
+
         if ( $query_lang && in_array($query_lang, $known_langs) ) {
             $lang = $query_lang;
-        } else if ( $cookie_lang && in_array($cookie_lang, $known_langs) ) {
-            $lang = $cookie_lang;
+        } else if ( $session_lang && in_array($session_lang, $known_langs) ) {
+            $lang = $session_lang;
         } else if ( !empty($accept_langs) ) {
             foreach ( $accept_langs as &$accept_lang ) {
                 if ( in_array($accept_lang, $known_langs) ) {
-                    \Cookie::queue(cookie('lang', $accept_lang, time()+365*24*3600));
+                    $request->session()->put('lang', $accept_lang);
                     $lang = $accept_lang;
                     break;
                 }
