@@ -38,7 +38,7 @@ RUN apk -U upgrade \
  && pecl channel-update pecl.php.net \
  && pecl install memcached \
  && docker-php-ext-enable memcached \
- && mkdir -p /run/nginx /var/log/nginx /tmp/src /opt \
+ && mkdir -p /var/log/nginx /var/log/supervisor /tmp/src /opt \
  && wget -O yarn.tar.gz "https://github.com/yarnpkg/yarn/releases/download/v$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
  && echo "$YARN_DOWNLOAD_SHA256 *yarn.tar.gz" | sha256sum -c - \
  && tar -xzf yarn.tar.gz -C /tmp/src \
@@ -53,7 +53,7 @@ COPY ./deploy/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d
 COPY ./deploy/supervisord.conf /etc
 COPY . /halcyon
 
-RUN mkdir -p /halcyon/storage /halcyon/bootstrap/cache /var/log/supervisor \
+RUN mkdir -p /halcyon/storage /halcyon/bootstrap/cache \
  && chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
  && chmod +x /usr/local/bin/composer; sync \
  && composer install --no-progress \
