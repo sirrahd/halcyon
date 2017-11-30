@@ -53,7 +53,7 @@ COPY ./deploy/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d
 COPY ./deploy/supervisord.conf /etc
 COPY . /halcyon
 
-RUN mkdir -p /halcyon/storage /halcyon/bootstrap/cache \
+RUN mkdir -p /halcyon/storage /halcyon/bootstrap/cache /var/log/supervisor \
  && chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
  && chmod +x /usr/local/bin/composer; sync \
  && composer install --no-progress \
