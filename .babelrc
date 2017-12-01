@@ -21,12 +21,6 @@
       {
         "useBuiltIns": true
       }
-    ],
-    [
-      "react-intl",
-      {
-        "messagesDir": "./build/messages"
-      }
     ]
   ],
 
