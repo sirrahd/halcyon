@@ -6,7 +6,7 @@ const Home = () => (
     <Topbar />
     <main className="page-container">
       <div>
-        <h1>ログインフォーム</h1>
+        <h1>ログインフォーム！</h1>
       </div>
     </main>
   </div>

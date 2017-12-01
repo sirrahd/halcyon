@@ -38,30 +38,30 @@ const initialState = ImmutableMap({
 
 export default function search(state = initialState, action) {
   switch (action.type) {
-    case SEARCH_RECENT_PUSH:
-      if (!state.get('recentSearches').includes(action.q)) {
-        return state.withMutations((map) => {
-          map.update('recentSearches', val => val.unshift(action.q));
-          if (map.get('recentSearches').size > RECENT_SEARCHES_MAX_LENGTH) {
-            map.update('recentSearches', val => val.setSize(RECENT_SEARCHES_MAX_LENGTH));
-          }
-        });
-      }
-      return state;
-    case SEARCH_RECENT_DELETE:
-      return state.update('recentSearches', val => val.delete(action.index));
-    case SEARCH_RECENT_CLEAR:
-      return state.update('recentSearches', val => val.clear());
-    case SEARCH_SAVED_PUSH:
-      if (!state.get('savedSearches').includes(action.q)) {
-        return state.update('savedSearches', val => val.unshift(action.q));
-      }
-      return state;
-    case SEARCH_SAVED_DELETE:
-      return state.update('savedSearches', val => val.delete(action.index));
-    case SEARCH_SAVED_CLEAR:
-      return state.update('savedSearches', val => val.clear());
-    default:
-      return state;
+  case SEARCH_RECENT_PUSH:
+    if (!state.get('recentSearches').includes(action.q)) {
+      return state.withMutations((map) => {
+        map.update('recentSearches', val => val.unshift(action.q));
+        if (map.get('recentSearches').size > RECENT_SEARCHES_MAX_LENGTH) {
+          map.update('recentSearches', val => val.setSize(RECENT_SEARCHES_MAX_LENGTH));
+        }
+      });
+    }
+    return state;
+  case SEARCH_RECENT_DELETE:
+    return state.update('recentSearches', val => val.delete(action.index));
+  case SEARCH_RECENT_CLEAR:
+    return state.update('recentSearches', val => val.clear());
+  case SEARCH_SAVED_PUSH:
+    if (!state.get('savedSearches').includes(action.q)) {
+      return state.update('savedSearches', val => val.unshift(action.q));
+    }
+    return state;
+  case SEARCH_SAVED_DELETE:
+    return state.update('savedSearches', val => val.delete(action.index));
+  case SEARCH_SAVED_CLEAR:
+    return state.update('savedSearches', val => val.clear());
+  default:
+    return state;
   }
 }

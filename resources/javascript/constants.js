@@ -1,5 +1,7 @@
 export const RECENT_SEARCHES_MAX_LENGTH = 4;
 
+export const ACCT_REGEXP = '@[a-zA-Z0-9_]{1,30}@.+?\..+?';
+
 // LocalStorage
 export const LS_API_ACCESS_TOKEN = 'api_access_token';
 export const LS_API_BASE_URI     = 'api_base_uri';
