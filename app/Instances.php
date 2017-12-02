@@ -11,4 +11,5 @@ class Instances extends Model
      * @var  string  $table
      */
     protected $table = 'instances';
+    protected $primaryKey = 'instance_domain';
 }
