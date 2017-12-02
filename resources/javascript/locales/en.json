@@ -1,20 +1,21 @@
 {
-  "halcyon": "Halcyon",
-  "page_nav.home": "Home",
-  "page_nav.local": "Local",
-  "page_nav.federated": "Federated",
-  "page_nav.notifications": "Notifications",
+  "topbar.page_nav.home": "Home",
+  "topbar.page_nav.local": "Local",
+  "topbar.page_nav.federated": "Federated",
+  "topbar.page_nav.notifications": "Notifications",
 
-  "search_form.placeholder": "Search Mastodon",
-  "search_form.recent_searches": "Recent Searches",
-  "search_form.recent_searches.clear": "Clear All",
-  "search_form.recent_searches.empty": "You haven't searched anything",
-  "search_form.saved_searches": "Saved Searches",
-  "search_form.saved_searches.empty": "You haven't saved anything",
+  "topbar.title.halcyon": "Halcyon",
 
-  "user_nav.avatar.tooltip": "Profile and Settings",
+  "topbar.search_form.placeholder": "Search Mastodon",
+  "topbar.search_form.recent_searches": "Recent Searches",
+  "topbar.search_form.recent_searches.clear": "Clear All",
+  "topbar.search_form.recent_searches.empty": "You haven't searched anything",
+  "topbar.search_form.saved_searches": "Saved Searches",
+  "topbar.search_form.saved_searches.empty": "You haven't saved anything",
 
-  "toot_form.compose": "Toot",
+  "topbar.user_nav.avatar.tooltip": "Profile and Settings",
+
+  "topbar.toot_form.compose": "Toot",
 
   "login.error.access_denied": "The resource owner or authorization server denied the request.",
   "login.error.credential_flow_not_configured": "Resource Owner Password Credentials flow failed due to Doorkeeper.configure.resource_owner_from_credentials being unconfigured.",

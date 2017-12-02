@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
-import TopbarTitle from '../components/TopbarTitle';
-import TopbarPageNav from '../components/TopbarPageNav';
-import TopbarUserNav from '../components/TopbarUserNav';
+
+import Title from './components/title';
+import PageNav from './components/page_nav';
+import UserNav from './components/user_nav';
 
 export default class TopBar extends PureComponent {
+
   componentWillMount() {
     console.log('topbarがマウントされたよ');
   }
@@ -14,23 +16,24 @@ export default class TopBar extends PureComponent {
 
   render() {
     return (
-      <header className="topbar" role="banner">
-        <div className="topbar__container unselectable">
+      <header className='topbar' role='banner'>
+        <div className='topbar__container unselectable'>
 
-          <div className="topbar__item topbar__item--center">
-            <TopbarTitle />
+          <div className='topbar__item topbar__item--center'>
+            <Title />
           </div>
 
-          <div className="topbar__item topbar__item--left">
-            <TopbarPageNav />
+          <div className='topbar__item topbar__item--left'>
+            <PageNav />
           </div>
 
-          <div className="topbar__item topbar__item--right">
-            <TopbarUserNav />
+          <div className='topbar__item topbar__item--right'>
+            <UserNav />
           </div>
 
         </div>
       </header>
     );
   }
+
 }

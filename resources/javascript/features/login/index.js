@@ -1,15 +1,19 @@
 import React from 'react';
-import Topbar from '../components/Topbar';
+import Topbar from '../topbar';
+import LoginFormContainer from './containers/login_form_container';
+// import WizardContainer from './containers/wizard_container';
 
-const Home = () => (
-  <div className="app-container">
+const Login = () => (
+  <div className='app-container'>
     <Topbar />
-    <main className="page-container">
-      <div>
-        <h1>ログインフォーム！</h1>
-      </div>
+
+    <main className='page-container'>
+      <article className='login'>
+        <LoginFormContainer />
+      </article>
     </main>
+
   </div>
 );
 
-export default Home;
+export default Login;

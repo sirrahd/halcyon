@@ -6,8 +6,8 @@ import {
   deleteRecentSearches,
   clearRecentSearches,
   deleteSavedSearches,
-} from '../actions/search';
-import SearchForm from '../components/SearchForm';
+} from '../../../actions/search';
+import SearchForm from '../components/search_form';
 
 const mapStateToProps = state => ({
   recentSearches: state.getIn(['search', 'recentSearches']),
