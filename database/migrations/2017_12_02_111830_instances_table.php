@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstancesTable extends Migration
+class InstancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateInstancesTable extends Migration
     {
         /**
          * CREATE TABLE `instances` (
-         *   `host` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+         *   `instance_domain` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
          *   `client_id` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
          *   `client_secret` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
          *   `count` int(11) NOT NULL,
@@ -24,7 +24,7 @@ class CreateInstancesTable extends Migration
          * ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
          */
         Schema::create('instances', function (Blueprint $table) {
-            $table->string('host', 254);
+            $table->string('instance_domain', 254);
             $table->string('client_id', 64);
             $table->string('client_secret', 64);
             $table->integer('count');
