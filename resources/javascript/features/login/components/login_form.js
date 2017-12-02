@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import api from '../../../api/halcyon';
 import { ACCT_REGEXP } from '../../../constants';
 
@@ -29,7 +30,9 @@ export default class LoginForm extends React.PureComponent {
           onSubmit={this.handleSubmit}
         >
 
-          <h2>Login to Halcyon</h2>
+          <h2 className='login-form__title'>
+            <FormattedMessage id='login.login_form.title' defaultMessage='Login to Halcton' />
+          </h2>
 
           <input
             className='login-form__input'
@@ -41,7 +44,7 @@ export default class LoginForm extends React.PureComponent {
           />
 
           <button className='login-form__submit'>
-            ボタンです
+            <FormattedMessage id='login.login_form.submit' defaultMessage='Login' />
           </button>
 
         </form>

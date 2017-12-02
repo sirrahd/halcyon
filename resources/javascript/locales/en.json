@@ -14,8 +14,10 @@
   "topbar.search_form.saved_searches.empty": "You haven't saved anything",
 
   "topbar.user_nav.avatar.tooltip": "Profile and Settings",
-
   "topbar.toot_form.compose": "Toot",
+
+  "login.login_form.title": "Login to Halcyon",
+  "login.login_form.submit": "Login",
 
   "login.error.access_denied": "The resource owner or authorization server denied the request.",
   "login.error.credential_flow_not_configured": "Resource Owner Password Credentials flow failed due to Doorkeeper.configure.resource_owner_from_credentials being unconfigured.",

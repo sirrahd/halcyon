@@ -16,6 +16,9 @@
   "topbar.user_nav.avatar.tooltip": "プロフィールと設定",
   "topbar.toot_form.compose": "トゥート",
 
+  "login.login_form.title": "Halcyonにログイン",
+  "login.login_form.submit": "ログイン",
+
   "login.error.access_denied": "リソースの所有者または認証サーバーが要求を拒否しました。",
   "login.error.credential_flow_not_configured": "リソース所有者のパスワード Doorkeeper.configure.resource_owner_from_credentials が設定されていないためクレデンシャルフローに失敗しました。",
   "login.error.invalid_client": "不明なクライアントであるか、クライアント情報が含まれていない、またはサポートされていない認証方法のため、クライアントの認証に失敗しました。",
