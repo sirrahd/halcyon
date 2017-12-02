@@ -12,7 +12,7 @@ export function verifyInstance(acct) {
   return (dispatch, getState) => {
     dispatch(verifyInstanceRequest(acct));
 
-    api(getState).get('/api/login/verify_instance').then((response) => {
+    api(getState).post('/api/login/verify_instance', { acct }).then((response) => {
       dispatch(verifyInstanceSuccess(response.data));
     }).catch((error) => {
       dispatch(verifyInstanceRequest(acct, error));

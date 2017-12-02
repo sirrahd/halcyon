@@ -4,6 +4,7 @@ namespace App\Libs;
 
 use Closure;
 use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\ClientException as ClientException;
 
 class MastodonRegistrar
 {
@@ -29,21 +30,14 @@ class MastodonRegistrar
      */
     public function handshakeToNewInstance()
     {
-        $request  = $this->http_client->post(
-            "https://{$this->instance_domain}/api/v1/apps",
-            ['json'=>$this->parameters]
-        );
-
-        $response = json_decode($request->getBody(), true);
-
-        if (
-            isset($response['client_id'], $response['client_secret']) &
-            strlen($response['client_id'])     === 64 &
-            strlen($response['client_secret']) === 64
-        ) {
-            return $response;
-        } else {
-            throw new \Exception('Invalid instance domain');
+        try {
+            $request  = $this->http_client->post(
+                "https://{$this->instance_domain}/api/v1/apps",
+                ['json'=>$this->parameters]
+            );
+            return json_decode($request->getBody(), true);
+        } catch (ClientException $e) {
+            return json_decode($e->getResponse()->getBody(), true);
         }
     }
 
@@ -63,20 +57,14 @@ class MastodonRegistrar
         $this->parameters['code']          = $code;
         $this->parameters['redirect_uri']  = $redirect_uri;
 
-        $request  = $this->http_client->post(
-            "https://{$this->instance_domain}/oauth/token",
-            ["json"=>$this->parameters]
-        );
-
-        $response = json_decode($request->getBody(), true);
-
-        if (
-            isset($response['access_token']) &
-            strlen($response['access_token']) === 64
-        ) {
-            return $response;
-        } else {
-            throw new \Exception('Invalid code');
+        try {
+            $request  = $this->http_client->post(
+                "https://{$this->instance_domain}/oauth/token",
+                ["json"=>$this->parameters]
+            );
+            return json_decode($request->getBody(), true);
+        } catch (ClientException $e) {
+            return json_decode($e->getResponse()->getBody(), true);
         }
     }
 

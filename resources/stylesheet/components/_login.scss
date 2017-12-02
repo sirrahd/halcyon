@@ -29,6 +29,27 @@
                 box-shadow: 0 0 0 1.5px $highlight_color;
                 background-color: $primary_color;
             }
+
+            &:invalid {
+                box-shadow: 0 0 0 1.5px $red;
+            }
+        }
+
+        .login-form__submit {
+            height: 100%;
+            padding: 6px 18px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 25px;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            color: $white;
+            background-color: $highlight_color;
+
+            &:hover, &:active {
+                background-color: darken($highlight_color, 5%);
+            }
         }
     }
 }
