@@ -1,16 +1,15 @@
 import React from 'react';
 import Topbar from '../topbar';
-import LoginFormContainer from './containers/login_form_container';
-// import WizardContainer from './containers/wizard_container';
+import LoginForm from './components/login_form';
+import LoginFormFooter from './components/login_from_footer';
 
 const Login = () => (
   <div className='app-container'>
     <Topbar />
 
-    <main className='page-container'>
-      <article className='login'>
-        <LoginFormContainer />
-      </article>
+    <main className='page-container login-page'>
+      <LoginForm />
+      <LoginFormFooter />
     </main>
 
   </div>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { intlShape, FormattedMessage } from 'react-intl';
 import Dropdown, { DropdownContent } from 'react-simple-dropdown';
 
-const RenderDropdownItem = (item, index, onDelete) => {
+const DropdownItem = (item, index, onDelete) => {
   const location = {
     pathname: '/search',
     search: `?q=${encodeURIComponent(item)}`,
@@ -36,7 +36,7 @@ const RenderDropdownItem = (item, index, onDelete) => {
 const RecentSearchesContent = (recentSearches, onDelete, onClear) => {
   const recentSearchesContent = recentSearches.size ? (
     recentSearches.map((item, index) => (
-      <RenderDropdownItem
+      <DropdownItem
         item={item}
         index={index}
         onDelete={onDelete}
@@ -69,7 +69,7 @@ const RecentSearchesContent = (recentSearches, onDelete, onClear) => {
 const SavedSearchesContent = (savedSearches, onDelete) => {
   const savedSearchesContent = savedSearches.size ? (
     savedSearches.map((item, index) => (
-      <RenderDropdownItem
+      <DropdownItem
         item={item}
         index={index}
         onDelete={onDelete}

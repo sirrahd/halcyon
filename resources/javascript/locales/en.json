@@ -19,6 +19,13 @@
   "login.login_form.title": "Login to Halcyon",
   "login.login_form.submit": "Login",
 
+  "login.login_form.create-account": "or create an account",
+
+  "login.login_form.footer.mastodon": "About Mastodon",
+  "login.login_form.footer.feedback": "Feedback",
+  "login.login_form.footer.source_code": "Source code",
+  "login.login_form.footer.donation": "Become a patron",
+
   "login.error.access_denied": "The resource owner or authorization server denied the request.",
   "login.error.credential_flow_not_configured": "Resource Owner Password Credentials flow failed due to Doorkeeper.configure.resource_owner_from_credentials being unconfigured.",
   "login.error.invalid_client": "Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.",

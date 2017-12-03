@@ -98,3 +98,7 @@ select {
 	-webkit-user-select: none !important;
 	-moz-user-select: none !important;
 }
+
+.unsubmittable {
+	pointer-events : none;
+}
