@@ -18,6 +18,7 @@
 
   "login.login_form.title": "Login to Halcyon",
   "login.login_form.submit": "Login",
+  "login.login_form.verify": "Verifying credentials",
 
   "login.login_form.create-account": "or create an account",
 

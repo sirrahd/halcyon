@@ -63,7 +63,7 @@ export default class Halcyon extends React.PureComponent {
         <Provider store={store} >
           <BrowserRouter>
             <Switch>
-              <Route exact path='/login' component={Login} />
+              <Route path='/login' component={Login} />
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>

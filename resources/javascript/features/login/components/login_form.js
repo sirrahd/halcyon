@@ -16,8 +16,8 @@ export default class LoginForm extends React.PureComponent {
     e.preventDefault();
     if (this.input.value) {
       this.setState({ requesting: true });
-      api().post('/api/login/verify_instance', { acct: this.input.value }).then((response) => {
-        location.href = response.data.verified_instance.authorization_uri;
+      api().post('/api/login/confirm_instance', { acct: this.input.value }).then((response) => {
+        location.href = response.data.authorization_uri;
       });
     } else {
       return;
@@ -43,7 +43,7 @@ export default class LoginForm extends React.PureComponent {
             type='text'
             spellCheck='false'
             placeholder='@halcyon@mastodon.social'
-            pattern='@[a-zA-Z0-9_]{1,30}@.+?\\..+?'
+            pattern='@[a-zA-Z0-9_]{1,30}@.+?\..+?'
             ref={this.setRef}
           />
 
