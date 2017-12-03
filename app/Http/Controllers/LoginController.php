@@ -15,50 +15,9 @@ class LoginController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
-     * authorize
+     * confirmInstance
      */
-    public function authorizeAccount(Request $request)
-    {
-        if ( empty($request->input('code')) || empty($request->input('instance_domain')) ) {
-            return response()->json(['error' => 'Code or instance domain were empty'], 500);
-        }
-
-        $code            = $request->input('code');
-        $instance_domain = $request->input('instance_domain');
-        $table           = new Instances();
-        $registrar       = new MastodonRegistrar($instance_domain);
-
-        try {
-            $client_info = $table->select('instance_domain', 'client_id', 'client_secret', 'count')
-                ->where('instance_domain', '=', $instance_domain)
-                ->first();
-
-            $response = $registrar->fetchAccessToken(
-                $client_info->client_id,
-                $client_info->client_secret,
-                $code,
-                url('/login?&instance_domain='.$instance_domain)
-            );
-
-            if ( isset($response['access_token']) ) {
-                return response()->json([
-                    'authorize' => [
-                        'instance_domain' => $instance_domain,
-                        'access_token' => $response['access_token'],
-                    ]
-                ]);
-            } else {
-                return response()->json(['error' => 'Failed to fetch access token from the code.'], 500);
-            }
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Failed to fetch access token from the code or domain did not exist'], 500);
-        }
-    }
-
-    /**
-     * verifyInstance
-     */
-    public function verifyInstance(Request $request)
+    public function confirmInstance(Request $request)
     {
         if ( !explode('@', $request->input('acct'))[2] ) {
             return response()->json(['error' => 'Invalid account'], 500);
@@ -102,10 +61,47 @@ class LoginController extends BaseController
         }
 
         return response()->json([
-            'verified_instance' => [
-                'authorization_uri' => $authorization_uri
-            ]
+            'authorization_uri' => $authorization_uri
         ]);
+    }
+
+    /**
+     * verifyResponse
+     */
+    public function verifyResponse(Request $request)
+    {
+        if ( empty($request->input('code')) || empty($request->input('instance_domain')) ) {
+            return response()->json(['error' => 'Code or instance domain were empty'], 500);
+        }
+
+        $code            = $request->input('code');
+        $instance_domain = $request->input('instance_domain');
+        $table           = new Instances();
+        $registrar       = new MastodonRegistrar($instance_domain);
+
+        try {
+            $client_info = $table->select('instance_domain', 'client_id', 'client_secret', 'count')
+                ->where('instance_domain', '=', $instance_domain)
+                ->first();
+
+            $response = $registrar->fetchAccessToken(
+                $client_info->client_id,
+                $client_info->client_secret,
+                $code,
+                url('/login?&instance_domain='.$instance_domain)
+            );
+
+            if ( isset($response['access_token']) ) {
+                return response()->json([
+                    'instance_domain' => $instance_domain,
+                    'access_token' => $response['access_token'],
+                ]);
+            } else {
+                return response()->json(['error' => 'Failed to fetch access token from the code.'], 500);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to fetch access token from the code or domain did not exist'], 500);
+        }
     }
 
 }

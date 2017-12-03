@@ -8,7 +8,7 @@ return [
 
     // Path to redirect after authorization
     'redirect_uris' => [
-        rtrim(env('APP_URL'), '/').'/login',
+        rtrim(env('APP_URL'), '/').'/login/verify_response',
         'urn:ietf:wg:oauth:2.0:oob'
     ],
 
