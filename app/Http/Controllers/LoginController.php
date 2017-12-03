@@ -85,7 +85,7 @@ class LoginController extends BaseController
             try {
                 $response = $registrar->handshakeToNewInstance();
 
-                if ( $response['error'] || !isset($response['client_id'], $response['client_secret']) ) {
+                if ( isset($response['error']) || !isset($response['client_id'], $response['client_secret']) ) {
                     return response()->json(['error' => $response['error']], 500);
                 }
 
