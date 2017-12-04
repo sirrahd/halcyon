@@ -45,6 +45,7 @@ export default class LoginForm extends React.PureComponent {
             placeholder='@halcyon@mastodon.social'
             pattern='@[a-zA-Z0-9_]{1,30}@.+?\..+?'
             ref={this.setRef}
+            autoFocus
           />
 
           <button className={`login-form__submit ${sendingClass}`}>

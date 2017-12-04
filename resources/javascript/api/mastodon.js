@@ -12,7 +12,7 @@ export const getLinks = (response) => {
 };
 
 export default getState => axios.create({
-  baseURL: getState().getIn(['meta', 'host']),
+  baseURL: `https://${getState().getIn(['meta', 'domain'])}`,
   headers: {
     Authorization: `Bearer ${getState().getIn(['meta', 'access_token'], '')}`,
   },

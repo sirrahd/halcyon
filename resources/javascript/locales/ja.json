@@ -18,7 +18,8 @@
 
   "login.login_form.title": "Halcyonにログイン",
   "login.login_form.submit": "ログイン",
-  "login.login_form.verify": "資格情報を認証中",
+  "login.login_from_verify_response.fetching_access_token": "アクセストークンを取得中",
+  "login.login_from_verify_response.verifying_credentials": "資格情報を認証中",
 
   "login.login_form.create-account": "または、アカウントを作成",
 
