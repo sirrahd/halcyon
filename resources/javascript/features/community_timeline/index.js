@@ -1,10 +1,19 @@
 import React from 'react';
-import Topbar from '../components/Topbar';
+import Topbar from '../topbar';
+import { me } from '../../initial_state';
 
-const Local = () => (
-  <div className="app-container">
-    <Topbar />
-  </div>
-);
+export default class CommunityTimeline extends React.PureComponent {
 
-export default Local;
+  componentDidMount() {
+    console.log(me);
+  }
+
+  render() {
+    return (
+      <div className='app-container'>
+        <Topbar />
+      </div>
+    );
+  }
+
+}

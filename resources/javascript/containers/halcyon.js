@@ -7,8 +7,9 @@ import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import ja from 'react-intl/locale-data/ja';
 import configureStore from '../store/configureStore';
+import { hydrateStore } from '../actions/store';
+import initialState from '../initial_state';
 
-// import HomeTimeline from '../features/home_timeline';
 // import CommunityTimeline from '../features/community_timeline';
 // import PublicTimeline from '../features/public_timeline';
 // import SearchHashtag from '../features/search_hashtag';
@@ -22,6 +23,9 @@ import configureStore from '../store/configureStore';
 // import AccountWithReplies from '../features/account_with_replies';
 // import Notifications from '../features/notifications';
 
+import HomeTimeline from '../features/home_timeline';
+import CommunityTimeline from '../features/community_timeline/index';
+
 import Login from '../features/login';
 import NotFound from '../features/not_found';
 
@@ -30,6 +34,10 @@ const messages = require.context('../locales/', false, /\.json$/);
 const messagesForLocale = locale => messages(`./${locale}.json`);
 
 const store = configureStore();
+const hydrateAction = hydrateStore(initialState);
+store.dispatch(hydrateAction);
+
+console.log(initialState);
 
 export default class Halcyon extends React.PureComponent {
 
@@ -40,7 +48,6 @@ export default class Halcyon extends React.PureComponent {
   render() {
     const { locale } = this.props;
 
-    // <Route exact path='/' component={HomeTimeline} />
     // <Route exact path='/local' component={CommunityTimeline} />
     // <Route exact path='/federated' component={PublicTimeline} />
 
@@ -63,6 +70,8 @@ export default class Halcyon extends React.PureComponent {
         <Provider store={store} >
           <BrowserRouter>
             <Switch>
+              <Route exact path='/' component={HomeTimeline} />
+              <Route exact path='/local' component={CommunityTimeline} />
               <Route path='/login' component={Login} />
               <Route component={NotFound} />
             </Switch>

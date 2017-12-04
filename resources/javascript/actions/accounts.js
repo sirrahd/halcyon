@@ -74,27 +74,27 @@ export function fetchAccount(id) {
 
     dispatch(fetchAccountRequest(id));
 
-    api(getState).get(`/api/v1/accounts/${id}`).then((response) => {
+    api(getState).get(`/api/v1/accounts/${id}`).then(response => {
       dispatch(fetchAccountSuccess(response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(fetchAccountFail(id, error));
     });
   };
-}
+};
 
 export function fetchAccountRequest(id) {
   return {
     type: ACCOUNT_FETCH_REQUEST,
     id,
   };
-}
+};
 
 export function fetchAccountSuccess(account) {
   return {
     type: ACCOUNT_FETCH_SUCCESS,
     account,
   };
-}
+};
 
 export function fetchAccountFail(id, error) {
   return {
@@ -103,106 +103,106 @@ export function fetchAccountFail(id, error) {
     error,
     skipAlert: true,
   };
-}
+};
 
 export function followAccount(id) {
   return (dispatch, getState) => {
     dispatch(followAccountRequest(id));
 
-    api(getState).post(`/api/v1/accounts/${id}/follow`).then((response) => {
+    api(getState).post(`/api/v1/accounts/${id}/follow`).then(response => {
       dispatch(followAccountSuccess(response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(followAccountFail(error));
     });
   };
-}
+};
 
 export function unfollowAccount(id) {
   return (dispatch, getState) => {
     dispatch(unfollowAccountRequest(id));
 
-    api(getState).post(`/api/v1/accounts/${id}/unfollow`).then((response) => {
-      dispatch(unfollowAccountSuccess(response.data));
-    }).catch((error) => {
+    api(getState).post(`/api/v1/accounts/${id}/unfollow`).then(response => {
+      dispatch(unfollowAccountSuccess(response.data, getState().get('statuses')));
+    }).catch(error => {
       dispatch(unfollowAccountFail(error));
     });
   };
-}
+};
 
 export function followAccountRequest(id) {
   return {
     type: ACCOUNT_FOLLOW_REQUEST,
     id,
   };
-}
+};
 
 export function followAccountSuccess(relationship) {
   return {
     type: ACCOUNT_FOLLOW_SUCCESS,
     relationship,
   };
-}
+};
 
 export function followAccountFail(error) {
   return {
     type: ACCOUNT_FOLLOW_FAIL,
     error,
   };
-}
+};
 
 export function unfollowAccountRequest(id) {
   return {
     type: ACCOUNT_UNFOLLOW_REQUEST,
     id,
   };
-}
+};
 
-export function unfollowAccountSuccess(relationship) {
+export function unfollowAccountSuccess(relationship, statuses) {
   return {
     type: ACCOUNT_UNFOLLOW_SUCCESS,
     relationship,
+    statuses,
   };
-}
+};
 
 export function unfollowAccountFail(error) {
   return {
     type: ACCOUNT_UNFOLLOW_FAIL,
     error,
   };
-}
+};
 
 export function blockAccount(id) {
   return (dispatch, getState) => {
     dispatch(blockAccountRequest(id));
 
-    api(getState).post(`/api/v1/accounts/${id}/block`).then((response) => {
-      // Pass in entire statuses map so we can use it to filter stuff in
-      // different parts of the reducers
+    api(getState).post(`/api/v1/accounts/${id}/block`).then(response => {
+      // Pass in entire statuses map so we can use it to filter stuff in different parts of the reducers
       dispatch(blockAccountSuccess(response.data, getState().get('statuses')));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(blockAccountFail(id, error));
     });
   };
-}
+};
 
 export function unblockAccount(id) {
   return (dispatch, getState) => {
     dispatch(unblockAccountRequest(id));
 
-    api(getState).post(`/api/v1/accounts/${id}/unblock`).then((response) => {
+    api(getState).post(`/api/v1/accounts/${id}/unblock`).then(response => {
       dispatch(unblockAccountSuccess(response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(unblockAccountFail(id, error));
     });
   };
-}
+};
 
 export function blockAccountRequest(id) {
   return {
     type: ACCOUNT_BLOCK_REQUEST,
     id,
   };
-}
+};
 
 export function blockAccountSuccess(relationship, statuses) {
   return {
@@ -210,69 +210,68 @@ export function blockAccountSuccess(relationship, statuses) {
     relationship,
     statuses,
   };
-}
+};
 
 export function blockAccountFail(error) {
   return {
     type: ACCOUNT_BLOCK_FAIL,
     error,
   };
-}
+};
 
 export function unblockAccountRequest(id) {
   return {
     type: ACCOUNT_UNBLOCK_REQUEST,
     id,
   };
-}
+};
 
 export function unblockAccountSuccess(relationship) {
   return {
     type: ACCOUNT_UNBLOCK_SUCCESS,
     relationship,
   };
-}
+};
 
 export function unblockAccountFail(error) {
   return {
     type: ACCOUNT_UNBLOCK_FAIL,
     error,
   };
-}
+};
 
 
-export function muteAccount(id) {
+export function muteAccount(id, notifications) {
   return (dispatch, getState) => {
     dispatch(muteAccountRequest(id));
 
-    api(getState).post(`/api/v1/accounts/${id}/mute`).then((response) => {
-      // Pass in entire statuses map so we can use it to filter stuff in
-      // different parts of the reducers
+    api(getState).post(`/api/v1/accounts/${id}/mute`, { notifications }).then(response => {
+      // Pass in entire statuses map so we can use it to filter stuff in different parts of the reducers
       dispatch(muteAccountSuccess(response.data, getState().get('statuses')));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(muteAccountFail(id, error));
     });
   };
-}
+};
 
 export function unmuteAccount(id) {
   return (dispatch, getState) => {
     dispatch(unmuteAccountRequest(id));
 
-    api(getState).post(`/api/v1/accounts/${id}/unmute`).then((response) => {
+    api(getState).post(`/api/v1/accounts/${id}/unmute`).then(response => {
       dispatch(unmuteAccountSuccess(response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(unmuteAccountFail(id, error));
     });
   };
-}
+};
 
 export function muteAccountRequest(id) {
   return {
     type: ACCOUNT_MUTE_REQUEST,
     id,
   };
-}
+};
 
 export function muteAccountSuccess(relationship, statuses) {
   return {
@@ -280,58 +279,58 @@ export function muteAccountSuccess(relationship, statuses) {
     relationship,
     statuses,
   };
-}
+};
 
 export function muteAccountFail(error) {
   return {
     type: ACCOUNT_MUTE_FAIL,
     error,
   };
-}
+};
 
 export function unmuteAccountRequest(id) {
   return {
     type: ACCOUNT_UNMUTE_REQUEST,
     id,
   };
-}
+};
 
 export function unmuteAccountSuccess(relationship) {
   return {
     type: ACCOUNT_UNMUTE_SUCCESS,
     relationship,
   };
-}
+};
 
 export function unmuteAccountFail(error) {
   return {
     type: ACCOUNT_UNMUTE_FAIL,
     error,
   };
-}
+};
 
 
 export function fetchFollowers(id) {
   return (dispatch, getState) => {
     dispatch(fetchFollowersRequest(id));
 
-    api(getState).get(`/api/v1/accounts/${id}/followers`).then((response) => {
+    api(getState).get(`/api/v1/accounts/${id}/followers`).then(response => {
       const next = getLinks(response).refs.find(link => link.rel === 'next');
 
       dispatch(fetchFollowersSuccess(id, response.data, next ? next.uri : null));
       dispatch(fetchRelationships(response.data.map(item => item.id)));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(fetchFollowersFail(id, error));
     });
   };
-}
+};
 
 export function fetchFollowersRequest(id) {
   return {
     type: FOLLOWERS_FETCH_REQUEST,
     id,
   };
-}
+};
 
 export function fetchFollowersSuccess(id, accounts, next) {
   return {
@@ -340,7 +339,7 @@ export function fetchFollowersSuccess(id, accounts, next) {
     accounts,
     next,
   };
-}
+};
 
 export function fetchFollowersFail(id, error) {
   return {
@@ -348,7 +347,7 @@ export function fetchFollowersFail(id, error) {
     id,
     error,
   };
-}
+};
 
 export function expandFollowers(id) {
   return (dispatch, getState) => {
@@ -360,23 +359,23 @@ export function expandFollowers(id) {
 
     dispatch(expandFollowersRequest(id));
 
-    api(getState).get(url).then((response) => {
+    api(getState).get(url).then(response => {
       const next = getLinks(response).refs.find(link => link.rel === 'next');
 
       dispatch(expandFollowersSuccess(id, response.data, next ? next.uri : null));
       dispatch(fetchRelationships(response.data.map(item => item.id)));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(expandFollowersFail(id, error));
     });
   };
-}
+};
 
 export function expandFollowersRequest(id) {
   return {
     type: FOLLOWERS_EXPAND_REQUEST,
     id,
   };
-}
+};
 
 export function expandFollowersSuccess(id, accounts, next) {
   return {
@@ -385,7 +384,7 @@ export function expandFollowersSuccess(id, accounts, next) {
     accounts,
     next,
   };
-}
+};
 
 export function expandFollowersFail(id, error) {
   return {
@@ -393,29 +392,29 @@ export function expandFollowersFail(id, error) {
     id,
     error,
   };
-}
+};
 
 export function fetchFollowing(id) {
   return (dispatch, getState) => {
     dispatch(fetchFollowingRequest(id));
 
-    api(getState).get(`/api/v1/accounts/${id}/following`).then((response) => {
+    api(getState).get(`/api/v1/accounts/${id}/following`).then(response => {
       const next = getLinks(response).refs.find(link => link.rel === 'next');
 
       dispatch(fetchFollowingSuccess(id, response.data, next ? next.uri : null));
       dispatch(fetchRelationships(response.data.map(item => item.id)));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(fetchFollowingFail(id, error));
     });
   };
-}
+};
 
 export function fetchFollowingRequest(id) {
   return {
     type: FOLLOWING_FETCH_REQUEST,
     id,
   };
-}
+};
 
 export function fetchFollowingSuccess(id, accounts, next) {
   return {
@@ -424,7 +423,7 @@ export function fetchFollowingSuccess(id, accounts, next) {
     accounts,
     next,
   };
-}
+};
 
 export function fetchFollowingFail(id, error) {
   return {
@@ -432,7 +431,7 @@ export function fetchFollowingFail(id, error) {
     id,
     error,
   };
-}
+};
 
 export function expandFollowing(id) {
   return (dispatch, getState) => {
@@ -444,23 +443,23 @@ export function expandFollowing(id) {
 
     dispatch(expandFollowingRequest(id));
 
-    api(getState).get(url).then((response) => {
+    api(getState).get(url).then(response => {
       const next = getLinks(response).refs.find(link => link.rel === 'next');
 
       dispatch(expandFollowingSuccess(id, response.data, next ? next.uri : null));
       dispatch(fetchRelationships(response.data.map(item => item.id)));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(expandFollowingFail(id, error));
     });
   };
-}
+};
 
 export function expandFollowingRequest(id) {
   return {
     type: FOLLOWING_EXPAND_REQUEST,
     id,
   };
-}
+};
 
 export function expandFollowingSuccess(id, accounts, next) {
   return {
@@ -469,7 +468,7 @@ export function expandFollowingSuccess(id, accounts, next) {
     accounts,
     next,
   };
-}
+};
 
 export function expandFollowingFail(id, error) {
   return {
@@ -477,7 +476,7 @@ export function expandFollowingFail(id, error) {
     id,
     error,
   };
-}
+};
 
 export function fetchRelationships(accountIds) {
   return (dispatch, getState) => {
@@ -490,13 +489,13 @@ export function fetchRelationships(accountIds) {
 
     dispatch(fetchRelationshipsRequest(newAccountIds));
 
-    api(getState).get(`/api/v1/accounts/relationships?${newAccountIds.map(id => `id[]=${id}`).join('&')}`).then((response) => {
+    api(getState).get(`/api/v1/accounts/relationships?${newAccountIds.map(id => `id[]=${id}`).join('&')}`).then(response => {
       dispatch(fetchRelationshipsSuccess(response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(fetchRelationshipsFail(error));
     });
   };
-}
+};
 
 export function fetchRelationshipsRequest(ids) {
   return {
@@ -504,7 +503,7 @@ export function fetchRelationshipsRequest(ids) {
     ids,
     skipLoading: true,
   };
-}
+};
 
 export function fetchRelationshipsSuccess(relationships) {
   return {
@@ -512,7 +511,7 @@ export function fetchRelationshipsSuccess(relationships) {
     relationships,
     skipLoading: true,
   };
-}
+};
 
 export function fetchRelationshipsFail(error) {
   return {
@@ -520,24 +519,24 @@ export function fetchRelationshipsFail(error) {
     error,
     skipLoading: true,
   };
-}
+};
 
 export function fetchFollowRequests() {
   return (dispatch, getState) => {
     dispatch(fetchFollowRequestsRequest());
 
-    api(getState).get('/api/v1/follow_requests').then((response) => {
+    api(getState).get('/api/v1/follow_requests').then(response => {
       const next = getLinks(response).refs.find(link => link.rel === 'next');
       dispatch(fetchFollowRequestsSuccess(response.data, next ? next.uri : null));
     }).catch(error => dispatch(fetchFollowRequestsFail(error)));
   };
-}
+};
 
 export function fetchFollowRequestsRequest() {
   return {
     type: FOLLOW_REQUESTS_FETCH_REQUEST,
   };
-}
+};
 
 export function fetchFollowRequestsSuccess(accounts, next) {
   return {
@@ -545,14 +544,14 @@ export function fetchFollowRequestsSuccess(accounts, next) {
     accounts,
     next,
   };
-}
+};
 
 export function fetchFollowRequestsFail(error) {
   return {
     type: FOLLOW_REQUESTS_FETCH_FAIL,
     error,
   };
-}
+};
 
 export function expandFollowRequests() {
   return (dispatch, getState) => {
@@ -564,18 +563,18 @@ export function expandFollowRequests() {
 
     dispatch(expandFollowRequestsRequest());
 
-    api(getState).get(url).then((response) => {
+    api(getState).get(url).then(response => {
       const next = getLinks(response).refs.find(link => link.rel === 'next');
       dispatch(expandFollowRequestsSuccess(response.data, next ? next.uri : null));
     }).catch(error => dispatch(expandFollowRequestsFail(error)));
   };
-}
+};
 
 export function expandFollowRequestsRequest() {
   return {
     type: FOLLOW_REQUESTS_EXPAND_REQUEST,
   };
-}
+};
 
 export function expandFollowRequestsSuccess(accounts, next) {
   return {
@@ -583,14 +582,14 @@ export function expandFollowRequestsSuccess(accounts, next) {
     accounts,
     next,
   };
-}
+};
 
 export function expandFollowRequestsFail(error) {
   return {
     type: FOLLOW_REQUESTS_EXPAND_FAIL,
     error,
   };
-}
+};
 
 export function authorizeFollowRequest(id) {
   return (dispatch, getState) => {
@@ -601,21 +600,21 @@ export function authorizeFollowRequest(id) {
       .then(() => dispatch(authorizeFollowRequestSuccess(id)))
       .catch(error => dispatch(authorizeFollowRequestFail(id, error)));
   };
-}
+};
 
 export function authorizeFollowRequestRequest(id) {
   return {
     type: FOLLOW_REQUEST_AUTHORIZE_REQUEST,
     id,
   };
-}
+};
 
 export function authorizeFollowRequestSuccess(id) {
   return {
     type: FOLLOW_REQUEST_AUTHORIZE_SUCCESS,
     id,
   };
-}
+};
 
 export function authorizeFollowRequestFail(id, error) {
   return {
@@ -623,7 +622,7 @@ export function authorizeFollowRequestFail(id, error) {
     id,
     error,
   };
-}
+};
 
 
 export function rejectFollowRequest(id) {
@@ -635,21 +634,21 @@ export function rejectFollowRequest(id) {
       .then(() => dispatch(rejectFollowRequestSuccess(id)))
       .catch(error => dispatch(rejectFollowRequestFail(id, error)));
   };
-}
+};
 
 export function rejectFollowRequestRequest(id) {
   return {
     type: FOLLOW_REQUEST_REJECT_REQUEST,
     id,
   };
-}
+};
 
 export function rejectFollowRequestSuccess(id) {
   return {
     type: FOLLOW_REQUEST_REJECT_SUCCESS,
     id,
   };
-}
+};
 
 export function rejectFollowRequestFail(id, error) {
   return {
@@ -657,4 +656,4 @@ export function rejectFollowRequestFail(id, error) {
     id,
     error,
   };
-}
+};

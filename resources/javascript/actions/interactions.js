@@ -33,166 +33,165 @@ export const UNPIN_SUCCESS = 'UNPIN_SUCCESS';
 export const UNPIN_FAIL    = 'UNPIN_FAIL';
 
 export function reblog(status) {
-  return (dispatch, getState) => {
+  return function (dispatch, getState) {
     dispatch(reblogRequest(status));
 
-    api(getState).post(`/api/v1/statuses/${status.get('id')}/reblog`).then((response) => {
-      // The reblog API method returns a new status wrapped around the original.
-      // In this case we are only
+    api(getState).post(`/api/v1/statuses/${status.get('id')}/reblog`).then(function (response) {
+      // The reblog API method returns a new status wrapped around the original. In this case we are only
       // interested in how the original is modified, hence passing it skipping the wrapper
       dispatch(reblogSuccess(status, response.data.reblog));
-    }).catch((error) => {
+    }).catch(function (error) {
       dispatch(reblogFail(status, error));
     });
   };
-}
+};
 
 export function unreblog(status) {
   return (dispatch, getState) => {
     dispatch(unreblogRequest(status));
 
-    api(getState).post(`/api/v1/statuses/${status.get('id')}/unreblog`).then((response) => {
+    api(getState).post(`/api/v1/statuses/${status.get('id')}/unreblog`).then(response => {
       dispatch(unreblogSuccess(status, response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(unreblogFail(status, error));
     });
   };
-}
+};
 
 export function reblogRequest(status) {
   return {
     type: REBLOG_REQUEST,
-    status,
+    status: status,
   };
-}
+};
 
 export function reblogSuccess(status, response) {
   return {
     type: REBLOG_SUCCESS,
-    status,
-    response,
+    status: status,
+    response: response,
   };
-}
+};
 
 export function reblogFail(status, error) {
   return {
     type: REBLOG_FAIL,
-    status,
-    error,
+    status: status,
+    error: error,
   };
-}
+};
 
 export function unreblogRequest(status) {
   return {
     type: UNREBLOG_REQUEST,
-    status,
+    status: status,
   };
-}
+};
 
 export function unreblogSuccess(status, response) {
   return {
     type: UNREBLOG_SUCCESS,
-    status,
-    response,
+    status: status,
+    response: response,
   };
-}
+};
 
 export function unreblogFail(status, error) {
   return {
     type: UNREBLOG_FAIL,
-    status,
-    error,
+    status: status,
+    error: error,
   };
-}
+};
 
 export function favourite(status) {
-  return (dispatch, getState) => {
+  return function (dispatch, getState) {
     dispatch(favouriteRequest(status));
 
-    api(getState).post(`/api/v1/statuses/${status.get('id')}/favourite`).then((response) => {
+    api(getState).post(`/api/v1/statuses/${status.get('id')}/favourite`).then(function (response) {
       dispatch(favouriteSuccess(status, response.data));
-    }).catch((error) => {
+    }).catch(function (error) {
       dispatch(favouriteFail(status, error));
     });
   };
-}
+};
 
 export function unfavourite(status) {
   return (dispatch, getState) => {
     dispatch(unfavouriteRequest(status));
 
-    api(getState).post(`/api/v1/statuses/${status.get('id')}/unfavourite`).then((response) => {
+    api(getState).post(`/api/v1/statuses/${status.get('id')}/unfavourite`).then(response => {
       dispatch(unfavouriteSuccess(status, response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(unfavouriteFail(status, error));
     });
   };
-}
+};
 
 export function favouriteRequest(status) {
   return {
     type: FAVOURITE_REQUEST,
-    status,
+    status: status,
   };
-}
+};
 
 export function favouriteSuccess(status, response) {
   return {
     type: FAVOURITE_SUCCESS,
-    status,
-    response,
+    status: status,
+    response: response,
   };
-}
+};
 
 export function favouriteFail(status, error) {
   return {
     type: FAVOURITE_FAIL,
-    status,
-    error,
+    status: status,
+    error: error,
   };
-}
+};
 
 export function unfavouriteRequest(status) {
   return {
     type: UNFAVOURITE_REQUEST,
-    status,
+    status: status,
   };
-}
+};
 
 export function unfavouriteSuccess(status, response) {
   return {
     type: UNFAVOURITE_SUCCESS,
-    status,
-    response,
+    status: status,
+    response: response,
   };
-}
+};
 
 export function unfavouriteFail(status, error) {
   return {
     type: UNFAVOURITE_FAIL,
-    status,
-    error,
+    status: status,
+    error: error,
   };
-}
+};
 
 export function fetchReblogs(id) {
   return (dispatch, getState) => {
     dispatch(fetchReblogsRequest(id));
 
-    api(getState).get(`/api/v1/statuses/${id}/reblogged_by`).then((response) => {
+    api(getState).get(`/api/v1/statuses/${id}/reblogged_by`).then(response => {
       dispatch(fetchReblogsSuccess(id, response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(fetchReblogsFail(id, error));
     });
   };
-}
+};
 
 export function fetchReblogsRequest(id) {
   return {
     type: REBLOGS_FETCH_REQUEST,
     id,
   };
-}
+};
 
 export function fetchReblogsSuccess(id, accounts) {
   return {
@@ -200,33 +199,33 @@ export function fetchReblogsSuccess(id, accounts) {
     id,
     accounts,
   };
-}
+};
 
 export function fetchReblogsFail(id, error) {
   return {
     type: REBLOGS_FETCH_FAIL,
     error,
   };
-}
+};
 
 export function fetchFavourites(id) {
   return (dispatch, getState) => {
     dispatch(fetchFavouritesRequest(id));
 
-    api(getState).get(`/api/v1/statuses/${id}/favourited_by`).then((response) => {
+    api(getState).get(`/api/v1/statuses/${id}/favourited_by`).then(response => {
       dispatch(fetchFavouritesSuccess(id, response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(fetchFavouritesFail(id, error));
     });
   };
-}
+};
 
 export function fetchFavouritesRequest(id) {
   return {
     type: FAVOURITES_FETCH_REQUEST,
     id,
   };
-}
+};
 
 export function fetchFavouritesSuccess(id, accounts) {
   return {
@@ -234,33 +233,33 @@ export function fetchFavouritesSuccess(id, accounts) {
     id,
     accounts,
   };
-}
+};
 
 export function fetchFavouritesFail(id, error) {
   return {
     type: FAVOURITES_FETCH_FAIL,
     error,
   };
-}
+};
 
 export function pin(status) {
   return (dispatch, getState) => {
     dispatch(pinRequest(status));
 
-    api(getState).post(`/api/v1/statuses/${status.get('id')}/pin`).then((response) => {
+    api(getState).post(`/api/v1/statuses/${status.get('id')}/pin`).then(response => {
       dispatch(pinSuccess(status, response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(pinFail(status, error));
     });
   };
-}
+};
 
 export function pinRequest(status) {
   return {
     type: PIN_REQUEST,
     status,
   };
-}
+};
 
 export function pinSuccess(status, response) {
   return {
@@ -268,7 +267,7 @@ export function pinSuccess(status, response) {
     status,
     response,
   };
-}
+};
 
 export function pinFail(status, error) {
   return {
@@ -276,26 +275,26 @@ export function pinFail(status, error) {
     status,
     error,
   };
-}
+};
 
-export function unpin(status) {
+export function unpin (status) {
   return (dispatch, getState) => {
     dispatch(unpinRequest(status));
 
-    api(getState).post(`/api/v1/statuses/${status.get('id')}/unpin`).then((response) => {
+    api(getState).post(`/api/v1/statuses/${status.get('id')}/unpin`).then(response => {
       dispatch(unpinSuccess(status, response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(unpinFail(status, error));
     });
   };
-}
+};
 
 export function unpinRequest(status) {
   return {
     type: UNPIN_REQUEST,
     status,
   };
-}
+};
 
 export function unpinSuccess(status, response) {
   return {
@@ -303,7 +302,7 @@ export function unpinSuccess(status, response) {
     status,
     response,
   };
-}
+};
 
 export function unpinFail(status, error) {
   return {
@@ -311,4 +310,4 @@ export function unpinFail(status, error) {
     status,
     error,
   };
-}
+};

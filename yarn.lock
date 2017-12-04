@@ -2265,6 +2265,10 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+emoji-mart@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/emoji-mart/-/emoji-mart-2.2.1.tgz#02dc2192b85eb901a6446b8f302d8669147ceea8"
+
 emoji-regex@^6.1.0:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-6.5.1.tgz#9baea929b155565c11ea41c6626eaa65cef992c2"
@@ -2413,7 +2417,7 @@ es6-weak-map@^2.0.1:
     es6-iterator "^2.0.1"
     es6-symbol "^3.1.1"
 
-escape-html@~1.0.3:
+escape-html@^1.0.3, escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
 
@@ -3733,7 +3737,7 @@ intl-messageformat-parser@1.4.0, intl-messageformat-parser@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-1.4.0.tgz#b43d45a97468cadbe44331d74bb1e8dea44fc075"
 
-intl-messageformat@^2.0.0, intl-messageformat@^2.1.0:
+intl-messageformat@^2.0.0, intl-messageformat@^2.1.0, intl-messageformat@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-2.2.0.tgz#345bcd46de630b7683330c2e52177ff5eab484fc"
   dependencies:
@@ -6841,6 +6845,10 @@ style-loader@^0.18.1:
   dependencies:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
+
+substring-trie@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/substring-trie/-/substring-trie-1.0.2.tgz#7b42592391628b4f2cb17365c6cce4257c7b7af5"
 
 sum-up@^1.0.1:
   version "1.0.3"

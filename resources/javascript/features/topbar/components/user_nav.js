@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchFormContainer from '../containers/search_form_container';
-import AvatarDropdown from './avatar_dropdown';
+import AvatarDropdownContainer from '../containers/avatar_dropdown_container';
 import TootButton from './toot_button';
 
 const UserNav = () => (
@@ -12,7 +12,7 @@ const UserNav = () => (
       </li>
 
       <li className='user-nav__list-item'>
-        <AvatarDropdown />
+        <AvatarDropdownContainer />
       </li>
 
       <li className='user-nav__list-item'>

@@ -12,20 +12,20 @@ export function fetchFavouritedStatuses() {
   return (dispatch, getState) => {
     dispatch(fetchFavouritedStatusesRequest());
 
-    api(getState).get('/api/v1/favourites').then((response) => {
+    api(getState).get('/api/v1/favourites').then(response => {
       const next = getLinks(response).refs.find(link => link.rel === 'next');
       dispatch(fetchFavouritedStatusesSuccess(response.data, next ? next.uri : null));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(fetchFavouritedStatusesFail(error));
     });
   };
-}
+};
 
 export function fetchFavouritedStatusesRequest() {
   return {
     type: FAVOURITED_STATUSES_FETCH_REQUEST,
   };
-}
+};
 
 export function fetchFavouritedStatusesSuccess(statuses, next) {
   return {
@@ -33,14 +33,14 @@ export function fetchFavouritedStatusesSuccess(statuses, next) {
     statuses,
     next,
   };
-}
+};
 
 export function fetchFavouritedStatusesFail(error) {
   return {
     type: FAVOURITED_STATUSES_FETCH_FAIL,
     error,
   };
-}
+};
 
 export function expandFavouritedStatuses() {
   return (dispatch, getState) => {
@@ -52,20 +52,20 @@ export function expandFavouritedStatuses() {
 
     dispatch(expandFavouritedStatusesRequest());
 
-    api(getState).get(url).then((response) => {
+    api(getState).get(url).then(response => {
       const next = getLinks(response).refs.find(link => link.rel === 'next');
       dispatch(expandFavouritedStatusesSuccess(response.data, next ? next.uri : null));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(expandFavouritedStatusesFail(error));
     });
   };
-}
+};
 
 export function expandFavouritedStatusesRequest() {
   return {
     type: FAVOURITED_STATUSES_EXPAND_REQUEST,
   };
-}
+};
 
 export function expandFavouritedStatusesSuccess(statuses, next) {
   return {
@@ -73,11 +73,11 @@ export function expandFavouritedStatusesSuccess(statuses, next) {
     statuses,
     next,
   };
-}
+};
 
 export function expandFavouritedStatusesFail(error) {
   return {
     type: FAVOURITED_STATUSES_EXPAND_FAIL,
     error,
   };
-}
+};

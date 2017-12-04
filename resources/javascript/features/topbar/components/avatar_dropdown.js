@@ -1,32 +1,22 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Map as ImmutableMap } from 'immutable';
+// import { Map as ImmutableMap } from 'immutable';
 // import { FormattedMessage } from 'react-intl';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ReactTooltip from 'react-tooltip';
 import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
-import OmaeMona from '../../../../images/omae_mona.png';
+// import OmaeMona from '../../../../images/omae_mona.png';
 
 class AvatarDropdown extends React.PureComponent {
 
   // デモ用なので本番は.isRequiredを付ける
   static propTypes = {
-    account: ImmutablePropTypes.map,
-  }
-
-  // デモ用Props
-  static defaultProps = {
-    account: ImmutableMap({
-      display_name: '新都心',
-      usename: '@neet',
-      avatar: OmaeMona,
-    }),
+    account: ImmutablePropTypes.map.isRequired,
   }
 
   render() {
     const { account } = this.props;
-
     const avatar      = account.get('avatar');
     const displayName = account.get('display_name');
     // const username    = account.get('username');

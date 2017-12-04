@@ -1,4 +1,4 @@
-import api, { getLinks } from '../api';
+import api, { getLinks } from '../api/mastodon';
 import { List as ImmutableList } from 'immutable';
 import IntlMessageFormat from 'intl-messageformat';
 import { fetchRelationships } from './accounts';
@@ -31,6 +31,7 @@ const fetchRelatedRelationships = (dispatch, notifications) => {
 
 const unescapeHTML = (html) => {
   const wrapper = document.createElement('div');
+  html = html.replace(/<br \/>|<br>|\n/, ' ');
   wrapper.innerHTML = html;
   return wrapper.textContent;
 };

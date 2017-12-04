@@ -18,18 +18,18 @@ export function blockDomain(domain, accountId) {
 
     api(getState).post('/api/v1/domain_blocks', { domain }).then(() => {
       dispatch(blockDomainSuccess(domain, accountId));
-    }).catch((err) => {
+    }).catch(err => {
       dispatch(blockDomainFail(domain, err));
     });
   };
-}
+};
 
 export function blockDomainRequest(domain) {
   return {
     type: DOMAIN_BLOCK_REQUEST,
     domain,
   };
-}
+};
 
 export function blockDomainSuccess(domain, accountId) {
   return {
@@ -37,7 +37,7 @@ export function blockDomainSuccess(domain, accountId) {
     domain,
     accountId,
   };
-}
+};
 
 export function blockDomainFail(domain, error) {
   return {
@@ -45,7 +45,7 @@ export function blockDomainFail(domain, error) {
     domain,
     error,
   };
-}
+};
 
 export function unblockDomain(domain, accountId) {
   return (dispatch, getState) => {
@@ -53,18 +53,18 @@ export function unblockDomain(domain, accountId) {
 
     api(getState).delete('/api/v1/domain_blocks', { params: { domain } }).then(() => {
       dispatch(unblockDomainSuccess(domain, accountId));
-    }).catch((err) => {
+    }).catch(err => {
       dispatch(unblockDomainFail(domain, err));
     });
   };
-}
+};
 
 export function unblockDomainRequest(domain) {
   return {
     type: DOMAIN_UNBLOCK_REQUEST,
     domain,
   };
-}
+};
 
 export function unblockDomainSuccess(domain, accountId) {
   return {
@@ -72,7 +72,7 @@ export function unblockDomainSuccess(domain, accountId) {
     domain,
     accountId,
   };
-}
+};
 
 export function unblockDomainFail(domain, error) {
   return {
@@ -80,26 +80,26 @@ export function unblockDomainFail(domain, error) {
     domain,
     error,
   };
-}
+};
 
 export function fetchDomainBlocks() {
   return (dispatch, getState) => {
     dispatch(fetchDomainBlocksRequest());
 
-    api(getState).get().then((response) => {
+    api(getState).get().then(response => {
       const next = getLinks(response).refs.find(link => link.rel === 'next');
       dispatch(fetchDomainBlocksSuccess(response.data, next ? next.uri : null));
-    }).catch((err) => {
+    }).catch(err => {
       dispatch(fetchDomainBlocksFail(err));
     });
   };
-}
+};
 
 export function fetchDomainBlocksRequest() {
   return {
     type: DOMAIN_BLOCKS_FETCH_REQUEST,
   };
-}
+};
 
 export function fetchDomainBlocksSuccess(domains, next) {
   return {
@@ -107,11 +107,11 @@ export function fetchDomainBlocksSuccess(domains, next) {
     domains,
     next,
   };
-}
+};
 
 export function fetchDomainBlocksFail(error) {
   return {
     type: DOMAIN_BLOCKS_FETCH_FAIL,
     error,
   };
-}
+};

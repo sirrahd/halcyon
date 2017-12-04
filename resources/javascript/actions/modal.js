@@ -1,7 +1,16 @@
+export const MODAL_OPEN  = 'MODAL_OPEN';
+export const MODAL_CLOSE = 'MODAL_CLOSE';
 
-export const MODAL_OPEN_COMPOSE_TOOT = 'MODAL_OPEN_COMPOSE_TOOT';
-export const MODAL_OPEN_DELETE_TOOT  = 'MODAL_OPEN_DELETE_TOOT';
-export const MODAL_OPEN_STATUS       = 'MODAL_OPEN_STATUS';
-export const MODAL_OPEN_MEDIA        = 'MODAL_OPEN_MEDIA';
-export const MODAL_OPEN_MEDIA_STATUS = 'MODAL_OPEN_MEDIA_STATUS';
-export const MODAL_OPEN_LOGOUT       = 'MODAL_OPEN_LOGOUT';
+export function openModal(type, props) {
+  return {
+    type: MODAL_OPEN,
+    modalType: type,
+    modalProps: props,
+  };
+};
+
+export function closeModal() {
+  return {
+    type: MODAL_CLOSE,
+  };
+};

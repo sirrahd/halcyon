@@ -12,7 +12,7 @@ export const REPORT_STATUS_TOGGLE  = 'REPORT_STATUS_TOGGLE';
 export const REPORT_COMMENT_CHANGE = 'REPORT_COMMENT_CHANGE';
 
 export function initReport(account, status) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: REPORT_INIT,
       account,
@@ -21,13 +21,13 @@ export function initReport(account, status) {
 
     dispatch(openModal('REPORT'));
   };
-}
+};
 
 export function cancelReport() {
   return {
     type: REPORT_CANCEL,
   };
-}
+};
 
 export function toggleStatusReport(statusId, checked) {
   return {
@@ -35,7 +35,7 @@ export function toggleStatusReport(statusId, checked) {
     statusId,
     checked,
   };
-}
+};
 
 export function submitReport() {
   return (dispatch, getState) => {
@@ -45,36 +45,36 @@ export function submitReport() {
       account_id: getState().getIn(['reports', 'new', 'account_id']),
       status_ids: getState().getIn(['reports', 'new', 'status_ids']),
       comment: getState().getIn(['reports', 'new', 'comment']),
-    }).then((response) => {
+    }).then(response => {
       dispatch(closeModal());
       dispatch(submitReportSuccess(response.data));
     }).catch(error => dispatch(submitReportFail(error)));
   };
-}
+};
 
 export function submitReportRequest() {
   return {
     type: REPORT_SUBMIT_REQUEST,
   };
-}
+};
 
 export function submitReportSuccess(report) {
   return {
     type: REPORT_SUBMIT_SUCCESS,
     report,
   };
-}
+};
 
 export function submitReportFail(error) {
   return {
     type: REPORT_SUBMIT_FAIL,
     error,
   };
-}
+};
 
 export function changeReportComment(comment) {
   return {
     type: REPORT_COMMENT_CHANGE,
     comment,
   };
-}
+};

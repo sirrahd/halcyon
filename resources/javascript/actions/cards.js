@@ -12,17 +12,17 @@ export function fetchStatusCard(id) {
 
     dispatch(fetchStatusCardRequest(id));
 
-    api(getState).get(`/api/v1/statuses/${id}/card`).then((response) => {
+    api(getState).get(`/api/v1/statuses/${id}/card`).then(response => {
       if (!response.data.url) {
         return;
       }
 
       dispatch(fetchStatusCardSuccess(id, response.data));
-    }).catch((error) => {
+    }).catch(error => {
       dispatch(fetchStatusCardFail(id, error));
     });
   };
-}
+};
 
 export function fetchStatusCardRequest(id) {
   return {
@@ -30,7 +30,7 @@ export function fetchStatusCardRequest(id) {
     id,
     skipLoading: true,
   };
-}
+};
 
 export function fetchStatusCardSuccess(id, card) {
   return {
@@ -39,7 +39,7 @@ export function fetchStatusCardSuccess(id, card) {
     card,
     skipLoading: true,
   };
-}
+};
 
 export function fetchStatusCardFail(id, error) {
   return {
@@ -49,4 +49,4 @@ export function fetchStatusCardFail(id, error) {
     skipLoading: true,
     skipAlert: true,
   };
-}
+};
