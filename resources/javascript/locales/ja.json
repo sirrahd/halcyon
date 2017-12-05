@@ -13,7 +13,14 @@
   "topbar.search_form.saved_searches": "検索メモ",
   "topbar.search_form.saved_searches.empty": "まだ何も保存していません",
 
-  "topbar.user_nav.avatar.tooltip": "プロフィールと設定",
+  "topbar.user_nav.avatar_dropdown.tooltip": "プロフィールと設定",
+
+  "topbar.user_nav.avatar_dropdown.profile": "プロフィール",
+  "topbar.user_nav.avatar_dropdown.list": "リスト",
+  "topbar.user_nav.avatar_dropdown.settings": "設定",
+  "topbar.user_nav.avatar_dropdown.keyborad_shortcuts": "キーボードショートカット",
+  "topbar.user_nav.avatar_dropdown.logout": "ログアウト",
+
   "topbar.toot_form.compose": "トゥート",
 
   "login.login_form.title": "Halcyonにログイン",

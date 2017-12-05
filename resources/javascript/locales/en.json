@@ -13,7 +13,13 @@
   "topbar.search_form.saved_searches": "Saved Searches",
   "topbar.search_form.saved_searches.empty": "You haven't saved anything",
 
-  "topbar.user_nav.avatar.tooltip": "Profile and Settings",
+  "topbar.user_nav.avatar_dropdown.tooltip": "Profile and Settings",
+  "topbar.user_nav.avatar_dropdown.profile": "Profile",
+  "topbar.user_nav.avatar_dropdown.list": "Lists",
+  "topbar.user_nav.avatar_dropdown.settings": "Settings",
+  "topbar.user_nav.avatar_dropdown.keyborad_shortcuts": "Keyborad shortcuts",
+  "topbar.user_nav.avatar_dropdown.logout": "Log out",
+
   "topbar.toot_form.compose": "Toot",
 
   "login.login_form.title": "Login to Halcyon",

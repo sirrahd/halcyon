@@ -272,13 +272,17 @@
                                 .avatar-dropdown {
                                     height: 100%;
 
-                                    .avatar-dropdown__trigger {
+                                    .avatar-dropdown__button {
                                         height: 100%;
+                                        border-radius: 50%;
+                                        overflow: hidden;
+                                    }
 
+                                    &.dropdown--active {
                                         .avatar-dropdown__button {
-                                            height: 100%;
-                                            border-radius: 50%;
-                                            overflow: hidden;
+                                            [data-id="tooltip"] {
+                                                display: none;
+                                            }
                                         }
                                     }
                                 }
