@@ -1,13 +1,12 @@
 import React from 'react';
-import { defineMessages, FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import normalizeAcct from '../../../normalize_acct';
-import Tooltip from 'react-tooltip';
 
 @injectIntl
-export default class ProfileStats extends ImmutablePureComponent {
+export default class ProfileCardStats extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,

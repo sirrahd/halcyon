@@ -4,19 +4,61 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
-import replaceUrl from '../../replace_url';
 import Avatar from '../../components/avatar';
-import ProfileStats from './components/profile_stats';
+import ProfileCardStats from './components/profile_card_stats';
+import ProfileCardRelationship from './components/profile_card_relationship';
 import normalizeAcct from '../../normalize_acct';
+import replaceUrl from '../../replace_url';
+// import {
+//   followAccount,
+//   unfollowAccount,
+//   blockAccount,
+//   unblockAccount,
+//   unmuteAccount,
+// } from '../../actions/accounts';
+
+// const mapDispatchToProps = (dispatch, {intl}) => ({
+//   onFollow (account) {
+//     if (account.getIn(['relationship', 'following']) || account.getIn(['relationship', 'requested'])) {
+//       if (unfollowModal) {
+//         dispatch(openModal('CONFIRM', {
+//           message: <FormattedMessage id='confirmations.unfollow.message' defaultMessage='Are you sure you want to unfollow {name}?' values={{ name: <strong>@{account.get('acct')}</strong> }} />,
+//           confirm: intl.formatMessage(messages.unfollowConfirm),
+//           onConfirm: () => dispatch(unfollowAccount(account.get('id'))),
+//         }));
+//       } else {
+//         dispatch(unfollowAccount(account.get('id')));
+//       }
+//     } else {
+//       dispatch(followAccount(account.get('id')));
+//     }
+//   },
+
+//   onBlock (account) {
+//     if (account.getIn(['relationship', 'blocking'])) {
+//       dispatch(unblockAccount(account.get('id')));
+//     } else {
+//       dispatch(blockAccount(account.get('id')));
+//     }
+//   },
+
+//   onMute (account) {
+//     if (account.getIn(['relationship', 'muting'])) {
+//       dispatch(unmuteAccount(account.get('id')));
+//     } else {
+//       dispatch(initMuteModal(account));
+//     }
+//   },
+// });
 
 @injectIntl
 export default class ProfileCard extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
-    // onFollow: PropTypes.func.isRequired,
-    // onBlock: PropTypes.func.isRequired,
-    // onMute: PropTypes.func.isRequired,
+    onFollow: PropTypes.func.isRequired,
+    onBlock: PropTypes.func.isRequired,
+    onMute: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
     hideStats: PropTypes.bool,
     hideNote: PropTypes.bool,
@@ -62,7 +104,9 @@ export default class ProfileCard extends ImmutablePureComponent {
 
         </div>
 
-        <ProfileStats account={account} />
+        <ProfileCardStats account={account} />
+        <ProfileCardRelationship account={account} />
+
       </div>
     );
   }
