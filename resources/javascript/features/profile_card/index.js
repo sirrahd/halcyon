@@ -41,7 +41,7 @@ export default class ProfileCard extends ImmutablePureComponent {
 
           <Link to={`/${normalizeAcct(account.get('acct'), true)}`}>
 
-            <Avatar account={account} size='80' />
+            <Avatar account={account} size={80} />
 
             <div className='profile-card-account__meta'>
               <h4 className='profile-card-account__display-name'>

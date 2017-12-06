@@ -7,8 +7,8 @@ import halcyon from '../../../api/halcyon';
 import mastodon from '../../../api/mastodon';
 
 const messages = defineMessages({
-  fetching_access_token: { id: 'login.login_from_verify_response.fetching_access_token', defaultMessage: 'Fetching access token' },
-  verifying_credentials: { id: 'login.login_from_verify_response.verifying_credentials', defaultMessage: 'Verifying credentials' },
+  fetching_access_token: { id: 'login_form.fetching_access_token', defaultMessage: 'Fetching access token' },
+  verifying_credentials: { id: 'login_form.verifying_credentials', defaultMessage: 'Verifying credentials' },
 });
 
 @injectIntl

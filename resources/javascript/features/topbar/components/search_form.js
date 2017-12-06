@@ -44,7 +44,7 @@ const RecentSearchesContent = (recentSearches, onDelete, onClear) => {
     ))
   ) : (
     <li className='search-form-dropdown__empty-message'>
-      <FormattedMessage id='topbar.search_form.recent_searches.empty' defaultMessage="You haven't searched anythig" />
+      <FormattedMessage id='search_form.recent_searches.empty' defaultMessage="You haven't searched anythig" />
     </li>
   );
 
@@ -52,10 +52,10 @@ const RecentSearchesContent = (recentSearches, onDelete, onClear) => {
     <div>
       <header className='search-form-dropdown__header'>
         <h3 className='search-form-dropdown__title'>
-          <FormattedMessage id='topbar.search_form.recent_searches' defaultMessage='Recent searches' />
+          <FormattedMessage id='search_form.recent_searches' defaultMessage='Recent searches' />
         </h3>
         <button className='search-form-dropdown__clear-button link-button' onClick={onClear}>
-          <FormattedMessage id='topbar.search_form.recent_searches.clear' defaultMessage='Clear All' />
+          <FormattedMessage id='search_form.recent_searches.clear' defaultMessage='Clear All' />
         </button>
       </header>
 
@@ -77,7 +77,7 @@ const SavedSearchesContent = (savedSearches, onDelete) => {
     ))
   ) : (
     <li className='search-form-dropdown__empty-message'>
-      <FormattedMessage id='topbar.search_form.saved_searches.empty' defaultMessage="You haven't saved anything" />
+      <FormattedMessage id='search_form.saved_searches.empty' defaultMessage="You haven't saved anything" />
     </li>
   );
 
@@ -85,7 +85,7 @@ const SavedSearchesContent = (savedSearches, onDelete) => {
     <div>
       <header className='search-form-dropdown__header'>
         <h3 className='search-form-dropdown__title'>
-          <FormattedMessage id='topbar.search_form.saved_searches' defaultMessage='Saved searches' />
+          <FormattedMessage id='search_form.saved_searches' defaultMessage='Saved searches' />
         </h3>
       </header>
 
@@ -185,7 +185,7 @@ class SearchForm extends React.PureComponent {
               type='text'
               spellCheck='false'
               ref={this.setInputRef}
-              placeholder={intl.formatMessage({ id: 'topbar.search_form.placeholder', defaultMessage: 'Search Mastodon' })}
+              placeholder={intl.formatMessage({ id: 'search_form.placeholder', defaultMessage: 'Search Mastodon' })}
               aria-autocomplete='list'
             />
 

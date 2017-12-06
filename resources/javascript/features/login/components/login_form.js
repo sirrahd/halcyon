@@ -31,7 +31,7 @@ export default class LoginForm extends React.PureComponent {
       <section className='login-form-contaienr'>
 
         <h2 className='login-form-contaienr__title'>
-          <FormattedMessage id='login.login_form.title' defaultMessage='Login to Halcton' />
+          <FormattedMessage id='login_form.title' defaultMessage='Login to Halcton' />
         </h2>
 
         <form
@@ -49,12 +49,12 @@ export default class LoginForm extends React.PureComponent {
           />
 
           <button className={`login-form__submit ${sendingClass}`}>
-            { this.state.requesting ? <i className='fa fa-circle-o-notch fa-spin' /> : <FormattedMessage id='login.login_form.submit' defaultMessage='Login' /> }
+            { this.state.requesting ? <i className='fa fa-circle-o-notch fa-spin' /> : <FormattedMessage id='login_form.submit' defaultMessage='Login' /> }
           </button>
         </form>
 
         <a className='login-form-contaienr__create-account' href='https://joinmastodon.org' target='_blank'>
-          <FormattedMessage id='login.login_form.create-account' defaultMessage='or create an account' />
+          <FormattedMessage id='login_form.create_account' defaultMessage='or create an account' />
         </a>
 
       </section>

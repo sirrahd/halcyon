@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import Title from './components/title';
-import PageNav from './components/page_nav';
-import UserNav from './components/user_nav';
+import PageNavigation from './components/page_navigation';
+import UserNavigation from './components/user_navigation';
 
-export default class TopBar extends PureComponent {
+export default class TopBar extends React.PureComponent {
 
   componentWillMount() {
     console.log('topbarがマウントされたよ');
@@ -24,11 +24,11 @@ export default class TopBar extends PureComponent {
           </div>
 
           <div className='topbar__item topbar__item--left'>
-            <PageNav />
+            <PageNavigation />
           </div>
 
           <div className='topbar__item topbar__item--right'>
-            <UserNav />
+            <UserNavigation />
           </div>
 
         </div>

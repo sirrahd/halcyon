@@ -7,7 +7,7 @@ const Title = () => (
     <Link to='/'>
       <div className='topbar__title'>
         <h1 className='invisible'>
-          <FormattedMessage id='topbar.title.halcyon' defaultMessage='halcyon' />
+          <FormattedMessage id='title.halcyon' defaultMessage='halcyon' />
         </h1>
       </div>
     </Link>

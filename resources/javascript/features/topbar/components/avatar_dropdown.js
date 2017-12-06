@@ -9,7 +9,7 @@ import { intlShape, FormattedMessage, defineMessages } from 'react-intl';
 import normalizeAcct from '../../../normalize_acct';
 
 const messages = defineMessages({
-  tooltip: { id: 'topbar.user_nav.avatar_dropdown.tooltip', defaultMessage: 'Profile and Settings' },
+  tooltip: { id: 'user_navigation.tooltip', defaultMessage: 'Profile and Settings' },
 });
 
 export default class AvatarDropdown extends ImmutablePureComponent {
@@ -66,13 +66,13 @@ export default class AvatarDropdown extends ImmutablePureComponent {
 
               <li className='dropdown__list-item'>
                 <Link to={`/${acct}`}>
-                  <FormattedMessage id='topbar.user_nav.avatar_dropdown.profile' defaultMessage='Profile' />
+                  <FormattedMessage id='user_navigation.profile' defaultMessage='Profile' />
                 </Link>
               </li>
 
               <li className='dropdown__list-item'>
                 <Link to={`/${acct}/lists`}>
-                  <FormattedMessage id='topbar.user_nav.avatar_dropdown.list' defaultMessage='Lists' />
+                  <FormattedMessage id='user_navigation.list' defaultMessage='Lists' />
                 </Link>
               </li>
 
@@ -80,19 +80,19 @@ export default class AvatarDropdown extends ImmutablePureComponent {
 
               <li className='dropdown__list-item'>
                 <Link to='/settings'>
-                  <FormattedMessage id='topbar.user_nav.avatar_dropdown.settings' defaultMessage='Settings' />
+                  <FormattedMessage id='user_navigation.settings' defaultMessage='Settings' />
                 </Link>
               </li>
 
               <li className='dropdown__list-item'>
                 <Link to=''>
-                  <FormattedMessage id='topbar.user_nav.avatar_dropdown.keyborad_shortcuts' defaultMessage='Keyborad shortcuts' />
+                  <FormattedMessage id='user_navigation.keyborad_shortcuts' defaultMessage='Keyborad shortcuts' />
                 </Link>
               </li>
 
               <li className='dropdown__list-item'>
                 <Link to=''>
-                  <FormattedMessage id='topbar.user_nav.avatar_dropdown.logout' defaultMessage='Log out' />
+                  <FormattedMessage id='user_navigation.logout' defaultMessage='Log out' />
                 </Link>
               </li>
 

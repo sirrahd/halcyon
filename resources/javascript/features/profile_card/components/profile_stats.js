@@ -21,10 +21,10 @@ export default class ProfileStats extends ImmutablePureComponent {
       <div className='profile-card-stats'>
         <ul className='profile-card-stats__list'>
 
-          <li className='profile-card-stats__list-item' data-tip={intl.formatMessage({ id: 'profile_card.profile_stats.followers_tip', defaultMessage: '{count} followers' }, { count: account.get('followers_count').toString() } )}>
+          <li className='profile-card-stats__list-item' data-tip={intl.formatMessage({ id: 'account.followers.tip', defaultMessage: '{count} followers' }, { count: account.get('followers_count').toString() } )}>
             <Link to={`/${normalizeAcct(account.get('acct'), true)}/followers`}>
               <span className='profile-card-stats__item-label'>
-                <FormattedMessage id='profile_card.profile_stats.followers' defaultMessage='Followers' />
+                <FormattedMessage id='account.followers' defaultMessage='Followers' />
               </span>
               <span className='profile-card-stats__item-count'>
                 { account.get('followers_count') }
@@ -32,10 +32,10 @@ export default class ProfileStats extends ImmutablePureComponent {
             </Link>
           </li>
 
-          <li className='profile-card-stats__list-item' data-tip={intl.formatMessage({ id: 'profile_card.profile_stats.following_tip', defaultMessage: '{count} following' }, { count: account.get('following_count').toString() } )}>
+          <li className='profile-card-stats__list-item' data-tip={intl.formatMessage({ id: 'account.following.tip', defaultMessage: '{count} following' }, { count: account.get('following_count').toString() } )}>
             <Link to={`/${normalizeAcct(account.get('acct'), true)}/following`}>
               <span className='profile-card-stats__item-label'>
-                <FormattedMessage id='profile_card.profile_stats.following' defaultMessage='Following' />
+                <FormattedMessage id='account.following' defaultMessage='Following' />
               </span>
               <span className='profile-card-stats__item-count'>
                 { account.get('following_count') }
@@ -43,10 +43,10 @@ export default class ProfileStats extends ImmutablePureComponent {
             </Link>
           </li>
 
-          <li className='profile-card-stats__list-item' data-tip={intl.formatMessage({ id: 'profile_card.profile_stats.toots_tip', defaultMessage: '{count} toots' }, { count: account.get('statuses_count').toString() })}>
+          <li className='profile-card-stats__list-item' data-tip={intl.formatMessage({ id: 'account.toots.tip', defaultMessage: '{count} toots' }, { count: account.get('statuses_count').toString() })}>
             <Link to={`/${normalizeAcct(account.get('acct'), true)}`}>
               <span className='profile-card-stats__item-label'>
-                <FormattedMessage id='profile_card.profile_stats.toots' defaultMessage='Toots' />
+                <FormattedMessage id='account.toots' defaultMessage='Toots' />
               </span>
               <span className='profile-card-stats__item-count'>
                 { account.get('statuses_count') }
