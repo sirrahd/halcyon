@@ -1,15 +1,12 @@
 import React from 'react';
-import Topbar from '../topbar';
+import AppContainer from '../app';
 
 const NotFound = () => (
-  <div className='app-container'>
-    <Topbar />
-    <main className='page-container'>
-      <article className='not-found'>
-        <p>404 page not found</p>
-      </article>
-    </main>
-  </div>
+  <AppContainer>
+    <article className='not-found'>
+      <p>404 page not found</p>
+    </article>
+  </AppContainer>
 );
 
 export default NotFound;

@@ -22,6 +22,14 @@
 
   "topbar.toot_form.compose": "Toot",
 
+  "profile_card.profile_stats.followers": "Followers",
+  "profile_card.profile_stats.following": "Following",
+  "profile_card.profile_stats.toots": "Toots",
+
+  "profile_card.profile_stats.followers_tip": "{count} followers",
+  "profile_card.profile_stats.following_tip": "{count} following",
+  "profile_card.profile_stats.toots_tip": "{count} toots",
+
   "login.login_form.title": "Login to Halcyon",
   "login.login_form.submit": "Login",
   "login.login_from_verify_response.fetching_access_token": "Fetching access token",

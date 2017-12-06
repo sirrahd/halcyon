@@ -23,6 +23,14 @@
 
   "topbar.toot_form.compose": "トゥート",
 
+  "profile_card.profile_stats.followers": "フォロワー",
+  "profile_card.profile_stats.following": "フォロー",
+  "profile_card.profile_stats.toots": "トゥート",
+
+  "profile_card.profile_stats.followers_tip": "{count}人のフォロワー",
+  "profile_card.profile_stats.following_tip": "{count}人をフォロー中",
+  "profile_card.profile_stats.toots_tip": "{count}トゥート",
+
   "login.login_form.title": "Halcyonにログイン",
   "login.login_form.submit": "ログイン",
   "login.login_from_verify_response.fetching_access_token": "アクセストークンを取得中",

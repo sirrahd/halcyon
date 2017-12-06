@@ -31,7 +31,7 @@
             flex-grow: 1;
             flex-shrink: 0;
 
-            &.topbar__item--left {
+            &--left {
                 order: 1;
                 flex-basis: 100%;
 
@@ -101,7 +101,7 @@
                 }
             }
 
-            &.topbar__item--center {
+            &--center {
                 order: 2;
 
                 @media screen and (max-width: 890px) {
@@ -130,7 +130,7 @@
                 }
             }
 
-            &.topbar__item--right {
+            &--right {
                 order: 3;
                 flex-basis: calc(100% / 3);
 
@@ -276,14 +276,6 @@
                                         height: 100%;
                                         border-radius: 50%;
                                         overflow: hidden;
-                                    }
-
-                                    &.dropdown--active {
-                                        .avatar-dropdown__button {
-                                            [data-id="tooltip"] {
-                                                display: none;
-                                            }
-                                        }
                                     }
                                 }
                             }

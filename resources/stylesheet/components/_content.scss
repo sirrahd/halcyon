@@ -1,4 +1,7 @@
 .page-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
     margin: auto;
     padding-top: $topbar-height + 8;
 

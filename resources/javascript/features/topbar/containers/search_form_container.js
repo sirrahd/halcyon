@@ -8,10 +8,13 @@ import {
   deleteSavedSearches,
 } from '../../../actions/search';
 import SearchForm from '../components/search_form';
+import { List } from 'immutable';
 
 const mapStateToProps = state => ({
-  recentSearches: state.getIn(['search', 'recentSearches']),
-  savedSearches: state.getIn(['search', 'savedSearches']),
+  recentSearches: List(),
+  savedSearches: List(),
+  // recentSearches: state.getIn(['search', 'recentSearches']),
+  // savedSearches: state.getIn(['search', 'savedSearches']),
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({

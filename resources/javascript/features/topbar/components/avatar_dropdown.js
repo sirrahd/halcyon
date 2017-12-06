@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { intlShape, FormattedMessage, defineMessages } from 'react-intl';
+import classnames from 'classnames';
+// import Tooltip from 'react-tooltip';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import ReactTooltip from 'react-tooltip';
-import Dropdown, { DropdownContent } from 'react-simple-dropdown';
-// import ImmutablePureComponent from 'react-immutable-pure-component';
+import Dropdown, { DropdownContent, DropdownTrigger } from 'react-simple-dropdown';
+import ImmutablePureComponent from 'react-immutable-pure-component';
+import { intlShape, FormattedMessage, defineMessages } from 'react-intl';
 import normalizeAcct from '../../../normalize_acct';
 
 const messages = defineMessages({
   tooltip: { id: 'topbar.user_nav.avatar_dropdown.tooltip', defaultMessage: 'Profile and Settings' },
 });
 
-export default class AvatarDropdown extends React.Component {
+export default class AvatarDropdown extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map.isRequired,
@@ -20,13 +21,6 @@ export default class AvatarDropdown extends React.Component {
 
   state = {
     expanded: false,
-  }
-
-  shouldComponentUpdate (nextProps, nextState) {
-    if ( this.state.expanded !== nextState.expanded || this.props.account !== nextProps.account ) {
-      return true;
-    }
-    return false;
   }
 
   handleToggle = () => {
@@ -42,16 +36,13 @@ export default class AvatarDropdown extends React.Component {
 
     return (
       <div className='user-nav__avatar-dropdown'>
-        <Dropdown className='avatar-dropdown' active={expanded}>
+        <Dropdown className='avatar-dropdown' onShow={this.handleToggle} onHide={this.handleToggle}>
 
-          <button
-            className='avatar-dropdown__button'
-            data-tip={intl.formatMessage(messages.tooltip)}
-            onClick={this.handleToggle}
-          >
-            <img src={avatar} alt={displayName} />
-            <ReactTooltip effect='solid' disable={expanded} />
-          </button>
+          <DropdownTrigger>
+            <button className='avatar-dropdown__button' data-tip={intl.formatMessage(messages.tooltip)}>
+              <img src={avatar} alt={displayName} />
+            </button>
+          </DropdownTrigger>
 
           <DropdownContent>
 
@@ -106,6 +97,7 @@ export default class AvatarDropdown extends React.Component {
               </li>
 
             </ul>
+
           </DropdownContent>
 
         </Dropdown>

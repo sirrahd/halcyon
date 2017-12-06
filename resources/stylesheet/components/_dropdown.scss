@@ -1,12 +1,6 @@
 .dropdown {
     display: inline-block;
 
-    &.dropdown--active {
-        .dropdown__content {
-            display: block;
-        }
-    }
-
     .dropdown__content {
         display: none;
         position: absolute;
@@ -70,6 +64,12 @@
                 margin: 8px 0;
                 border-bottom: 1px solid $background_color;
             }
+        }
+    }
+
+    &--active {
+        .dropdown__content {
+            display: block;
         }
     }
 }

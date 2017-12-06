@@ -1,6 +1,6 @@
 import React from 'react';
-import Topbar from '../topbar';
 import { me } from '../../initial_state';
+import AppContainer from '../app';
 
 export default class CommunityTimeline extends React.PureComponent {
 
@@ -10,9 +10,9 @@ export default class CommunityTimeline extends React.PureComponent {
 
   render() {
     return (
-      <div className='app-container'>
-        <Topbar />
-      </div>
+      <AppContainer>
+        <main className='page-container' />
+      </AppContainer>
     );
   }
 
