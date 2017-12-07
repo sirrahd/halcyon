@@ -23,13 +23,16 @@
                 text-decoration: none;
             }
 
-            .account__avatar {
-                position: absolute;
-                top: -21px;
-                left: 0;
-                background-color: $primary_color;
-                border: 3px solid $primary_color;
-                box-sizing: border-box;
+            .profile-card-account__avatar {
+                .account__avatar {
+                    position: absolute;
+                    top: -21px;
+                    left: 0;
+                    background-size: 74px !important;
+                    background-color: $primary_color;
+                    border: 3px solid $primary_color;
+                    box-sizing: border-box;
+                }
             }
 
             .profile-card-account__meta {

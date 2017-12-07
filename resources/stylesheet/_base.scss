@@ -56,10 +56,10 @@ h6 {
 	line-height: 1.2;
 }
 
-button,
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
+button[class],
+input[type="button"][class],
+input[type="submit"][class],
+input[type="reset"][class] {
 	cursor: pointer;
 	margin: 0;
 	padding: 0;
@@ -70,10 +70,10 @@ input[type="reset"] {
 	outline-color: transparent;
 }
 
-input,
-textarea,
-optgroup,
-select {
+input[class],
+textarea[class],
+optgroup[class],
+select[class] {
 	margin: 0;
 	padding: 0;
 	border: none;

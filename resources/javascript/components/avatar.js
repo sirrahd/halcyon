@@ -36,6 +36,7 @@ export default class Avatar extends React.PureComponent {
       ...this.props.style,
       width: `${size}px`,
       height: `${size}px`,
+      backgroundSize: `${size}px`,
     };
 
     if (animate) {

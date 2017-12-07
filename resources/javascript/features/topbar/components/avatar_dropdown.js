@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import classnames from 'classnames';
-// import Tooltip from 'react-tooltip';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import Dropdown, { DropdownContent, DropdownTrigger } from 'react-simple-dropdown';
 import ImmutablePureComponent from 'react-immutable-pure-component';
+import { Link } from 'react-router-dom';
+import Dropdown, { DropdownContent, DropdownTrigger } from 'react-simple-dropdown';
 import { intlShape, FormattedMessage, defineMessages } from 'react-intl';
 import normalizeAcct from '../../../normalize_acct';
 
@@ -19,16 +17,11 @@ export default class AvatarDropdown extends ImmutablePureComponent {
     intl: intlShape.isRequired,
   }
 
-  state = {
-    expanded: false,
-  }
-
   handleToggle = () => {
     this.setState({ expanded: !this.state.expanded });
   }
 
   render() {
-    const { expanded } = this.state;
     const { account, intl } = this.props;
     const avatar      = account.get('avatar');
     const displayName = account.get('display_name');
@@ -36,7 +29,7 @@ export default class AvatarDropdown extends ImmutablePureComponent {
 
     return (
       <div className='user-nav__avatar-dropdown'>
-        <Dropdown className='avatar-dropdown' onShow={this.handleToggle} onHide={this.handleToggle}>
+        <Dropdown className='avatar-dropdown'>
 
           <DropdownTrigger>
             <button className='avatar-dropdown__button' data-tip={intl.formatMessage(messages.tooltip)}>
