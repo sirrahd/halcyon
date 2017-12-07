@@ -15,14 +15,9 @@
 
   "plugins": [
     "syntax-dynamic-import",
-    "transform-class-properties",
+    ["transform-object-rest-spread", {"useBuiltIns": true}],
     "transform-decorators-legacy",
-    [
-      "transform-object-rest-spread",
-      {
-        "useBuiltIns": true
-      }
-    ]
+    "transform-class-properties"
   ],
 
   "env": {
@@ -37,7 +32,6 @@
     "production": {
       "plugins": [
         "lodash",
-        "transform-react-inline-elements",
         [
           "transform-react-remove-prop-types",
           {
@@ -47,7 +41,8 @@
               "react-immutable-proptypes"
             ]
           }
-        ]
+        ],
+        "transform-react-inline-elements"
       ]
     }
 
