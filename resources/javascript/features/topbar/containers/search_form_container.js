@@ -21,8 +21,7 @@ const mapDispatchToProps = (dispatch, { history }) => ({
   onSearch(q) {
     const trimmedQuery = q.trim();
     const location    = {
-      pathname: '/search',
-      search: `?q=${encodeURIComponent(trimmedQuery)}`,
+      pathname: `/timelines/tag/${encodeURIComponent(trimmedQuery)}`,
     };
 
     dispatch(pushRecentSearches(trimmedQuery));

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Federated = () => (
+const AccountPinned = () => (
   <main className='page-container' />
 );
 
-export default Federated;
+export default AccountPinned;

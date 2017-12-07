@@ -4,15 +4,7 @@ import Title from './components/title';
 import PageNavigation from './components/page_navigation';
 import UserNavigation from './components/user_navigation';
 
-export default class TopBar extends React.PureComponent {
-
-  componentWillMount() {
-    console.log('topbarがマウントされたよ');
-  }
-
-  componentWillUnmount() {
-    console.log('topbarがアンマウントされたよ');
-  }
+export default class Topbar extends React.Component {
 
   render() {
     return (

@@ -9,5 +9,4 @@ const mapStateToProps = state => ({
 
 export default injectIntl(connect(
   mapStateToProps,
-  null
 )(AvatarDropdown));

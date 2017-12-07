@@ -55,11 +55,11 @@ import replaceUrl from '../../replace_url';
 export default class ProfileCard extends ImmutablePureComponent {
 
   static propTypes = {
+    intl: PropTypes.object.isRequired,
     account: ImmutablePropTypes.map,
-    onFollow: PropTypes.func.isRequired,
-    onBlock: PropTypes.func.isRequired,
-    onMute: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
+    // onFollow: PropTypes.func.isRequired,
+    // onBlock: PropTypes.func.isRequired,
+    // onMute: PropTypes.func.isRequired,
     hideStats: PropTypes.bool,
     hideNote: PropTypes.bool,
     hideRelationship: PropTypes.bool,
@@ -81,9 +81,11 @@ export default class ProfileCard extends ImmutablePureComponent {
 
         <div className='profile-card-account'>
 
-          <Link to={`/${normalizeAcct(account.get('acct'), true)}`}>
+          <Link to={`/accounts/${account.get('id')}`}>
 
-            <Avatar account={account} size={80} />
+            <div className='profile-card-account__avatar'>
+              <Avatar account={account} size={80} />
+            </div>
 
             <div className='profile-card-account__meta'>
               <h4 className='profile-card-account__display-name'>

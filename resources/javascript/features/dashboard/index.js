@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Dashborad extends React.PureComponent {
+export default class Dashboard extends React.Component {
 
   static propTypes = {
     direction: PropTypes.string.isRequired,
@@ -10,10 +10,10 @@ class Dashborad extends React.PureComponent {
 
   render() {
     const { direction, children } = this.props;
-    const directionClass = (direction === 'left') ? 'dashborad--left' : 'dashborad--right';
+    const directionClassName = (direction === 'left') ? 'dashborad--left' : 'dashborad--right';
 
     return (
-      <aside className={`dashborad ${directionClass}`}>
+      <aside className={`dashborad ${directionClassName}`}>
         { children }
       </aside>
     );
@@ -21,4 +21,3 @@ class Dashborad extends React.PureComponent {
 
 }
 
-export default Dashborad;
