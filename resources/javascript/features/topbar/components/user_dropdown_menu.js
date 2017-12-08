@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Dropdown, { DropdownContent, DropdownTrigger } from 'react-simple-dropdown';
 import { intlShape, FormattedMessage, defineMessages } from 'react-intl';
 import normalizeAcct from '../../../normalize_acct';
+import Avatar from '../../../components/avatar';
 
 const messages = defineMessages({
   tooltip: { id: 'user_navigation.tooltip', defaultMessage: 'Profile and Settings' },
@@ -20,7 +21,6 @@ export default class UserDropdownMenu extends ImmutablePureComponent {
   render() {
     const { account, intl } = this.props;
     const id          = account.get('id');
-    const avatar      = account.get('avatar');
     const displayName = account.get('display_name');
     const acct        = normalizeAcct(account.get('acct'), true);
 
@@ -30,7 +30,7 @@ export default class UserDropdownMenu extends ImmutablePureComponent {
 
           <DropdownTrigger>
             <button className='user-dropdown-menu__button' data-tip={intl.formatMessage(messages.tooltip)}>
-              <img src={avatar} alt={displayName} />
+              <Avatar account={account} size={34} />
             </button>
           </DropdownTrigger>
 
