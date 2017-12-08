@@ -8,7 +8,6 @@ import Avatar from '../../components/avatar';
 import ProfileCardStats from './components/profile_card_stats';
 import ProfileCardRelationship from './components/profile_card_relationship';
 import normalizeAcct from '../../normalize_acct';
-import replaceUrl from '../../replace_url';
 // import {
 //   followAccount,
 //   unfollowAccount,
@@ -77,7 +76,7 @@ export default class ProfileCard extends ImmutablePureComponent {
     const id           = account.get('id');
     const display_name = account.get('display_name');
     const acct         = normalizeAcct(account.get('acct'), true);
-    const note         = { __html: replaceUrl(account.get('note')) };
+    const note         = { __html: account.get('note') };
 
     return (
       <div className='profile-card'>
