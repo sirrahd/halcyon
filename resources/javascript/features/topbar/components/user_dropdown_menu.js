@@ -44,7 +44,7 @@ export default class UserDropdownMenu extends ImmutablePureComponent {
             <ul className='dropdown__list'>
 
               <li className='dropdown__list-item dropdown-list-account'>
-                <Link to={`/account/${id}`}>
+                <Link to={`/accounts/${id}`}>
                   <h3 className='dropdown-account__display-name'>
                     {displayName}
                   </h3>
@@ -57,7 +57,7 @@ export default class UserDropdownMenu extends ImmutablePureComponent {
               <li className='dropdown__sep' />
 
               <li className='dropdown__list-item'>
-                <Link to={`/account/${id}`}>
+                <Link to={`/accounts/${id}`}>
                   <FormattedMessage id='user_navigation.profile' defaultMessage='Profile' />
                 </Link>
               </li>
