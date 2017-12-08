@@ -1,5 +1,6 @@
 .dropdown {
-    display: inline-block;
+    display: block;
+    position: relative;
 
     .dropdown__content {
         display: none;
@@ -14,7 +15,8 @@
         .dropdown__caret {
             position: absolute;
             top: -10px;
-            left: 16px;
+            left: 8px;
+            right: auto;
 
             .dropdown__caret-outer {
                 position: absolute;
@@ -70,6 +72,30 @@
     &--active {
         .dropdown__content {
             display: block;
+        }
+    }
+
+    &--right {
+        .dropdown__content {
+            left: auto;
+            right: 0;
+
+            .dropdown__caret {
+                left: auto;
+                right: 28px;
+            }
+        }
+    }
+
+    &--left {
+        .dropdown__content {
+            left: 0;
+            right: auto;
+
+            .dropdown__caret {
+                left: 8px;
+                right: auto;
+            }
         }
     }
 }

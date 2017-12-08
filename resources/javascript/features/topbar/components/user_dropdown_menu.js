@@ -10,29 +10,26 @@ const messages = defineMessages({
   tooltip: { id: 'user_navigation.tooltip', defaultMessage: 'Profile and Settings' },
 });
 
-export default class AvatarDropdown extends ImmutablePureComponent {
+export default class UserDropdownMenu extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map.isRequired,
     intl: intlShape.isRequired,
   }
 
-  handleToggle = () => {
-    this.setState({ expanded: !this.state.expanded });
-  }
-
   render() {
     const { account, intl } = this.props;
+    const id          = account.get('id');
     const avatar      = account.get('avatar');
     const displayName = account.get('display_name');
     const acct        = normalizeAcct(account.get('acct'), true);
 
     return (
-      <div className='user-nav__avatar-dropdown'>
-        <Dropdown className='avatar-dropdown'>
+      <div className='user-nav__user-dropdown-menu'>
+        <Dropdown className='user-dropdown-menu dropdown--right'>
 
           <DropdownTrigger>
-            <button className='avatar-dropdown__button' data-tip={intl.formatMessage(messages.tooltip)}>
+            <button className='user-dropdown-menu__button' data-tip={intl.formatMessage(messages.tooltip)}>
               <img src={avatar} alt={displayName} />
             </button>
           </DropdownTrigger>
@@ -46,25 +43,27 @@ export default class AvatarDropdown extends ImmutablePureComponent {
 
             <ul className='dropdown__list'>
 
-              <li className='dropdown__list-item dropdown-account'>
-                <h3 className='dropdown-account__displayName'>
-                  {displayName}
-                </h3>
-                <span className='dropdown-account__username'>
-                  {acct}
-                </span>
+              <li className='dropdown__list-item dropdown-list-account'>
+                <Link to={`/account/${id}`}>
+                  <h3 className='dropdown-account__display-name'>
+                    {displayName}
+                  </h3>
+                  <span className='dropdown-account__username'>
+                    {acct}
+                  </span>
+                </Link>
               </li>
 
               <li className='dropdown__sep' />
 
               <li className='dropdown__list-item'>
-                <Link to={`/${acct}`}>
+                <Link to={`/account/${id}`}>
                   <FormattedMessage id='user_navigation.profile' defaultMessage='Profile' />
                 </Link>
               </li>
 
               <li className='dropdown__list-item'>
-                <Link to={`/${acct}/lists`}>
+                <Link to='/lists'>
                   <FormattedMessage id='user_navigation.list' defaultMessage='Lists' />
                 </Link>
               </li>

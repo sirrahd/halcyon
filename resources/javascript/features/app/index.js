@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Tooltip from 'react-tooltip';
 import { Route, Switch, Redirect } from 'react-router';
 import { isMobile } from '../../is_mobile';
-import initialState from '../../initial_state';
 import Topbar from '../topbar';
 
 import HomeTimeline from '../home_timeline';
@@ -52,7 +50,7 @@ export default class App extends React.PureComponent {
           <Route component={NotFound} />
         </Switch>
 
-        <Tooltip effect='solid' disable={isMobile(window.innerWidth)} />
+        <Tooltip effect='solid' disable={!!isMobile(window.innerWidth)} />
       </div>
     );
   }

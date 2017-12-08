@@ -33,68 +33,64 @@ const DropdownItem = (item, index, onDelete) => {
   );
 };
 
-const RecentSearchesContent = (recentSearches, onDelete, onClear) => {
-  const recentSearchesContent = recentSearches.size ? (
-    recentSearches.map((item, index) => (
-      <DropdownItem
-        item={item}
-        index={index}
-        onDelete={onDelete}
-      />
-    ))
-  ) : (
-    <li className='search-form-dropdown__empty-message'>
-      <FormattedMessage id='search_form.recent_searches.empty' defaultMessage="You haven't searched anythig" />
-    </li>
-  );
+const RecentSearchesContent = (recentSearches, onDelete, onClear) => (
+  <div>
+    <header className='search-form-dropdown__header'>
+      <h3 className='search-form-dropdown__title'>
+        <FormattedMessage id='search_form.recent_searches' defaultMessage='Recent searches' />
+      </h3>
+      <button className='search-form-dropdown__clear-button link-button' onClick={onClear}>
+        <FormattedMessage id='search_form.recent_searches.clear' defaultMessage='Clear All' />
+      </button>
+    </header>
 
-  return (
-    <div>
-      <header className='search-form-dropdown__header'>
-        <h3 className='search-form-dropdown__title'>
-          <FormattedMessage id='search_form.recent_searches' defaultMessage='Recent searches' />
-        </h3>
-        <button className='search-form-dropdown__clear-button link-button' onClick={onClear}>
-          <FormattedMessage id='search_form.recent_searches.clear' defaultMessage='Clear All' />
-        </button>
-      </header>
+    <ul className='search-form-dropdown__list dropdown__list'>
+      {
+        recentSearches.size ?
+          (
+            recentSearches.map((item, index) => (
+              <DropdownItem
+                item={item}
+                index={index}
+                onDelete={onDelete}
+              />
+            ))
+          ) : (
+            <li className='search-form-dropdown__empty-message'>
+              <FormattedMessage id='search_form.recent_searches.empty' defaultMessage="You haven't searched anythig" />
+            </li>
+          )
+      }
+    </ul>
+  </div>
+);
 
-      <ul className='search-form-dropdown__list dropdown__list'>
-        {recentSearchesContent}
-      </ul>
-    </div>
-  );
-};
-
-const SavedSearchesContent = (savedSearches, onDelete) => {
-  const savedSearchesContent = savedSearches.size ? (
-    savedSearches.map((item, index) => (
-      <DropdownItem
-        item={item}
-        index={index}
-        onDelete={onDelete}
-      />
-    ))
-  ) : (
-    <li className='search-form-dropdown__empty-message'>
-      <FormattedMessage id='search_form.saved_searches.empty' defaultMessage="You haven't saved anything" />
-    </li>
-  );
-
-  return (
-    <div>
-      <header className='search-form-dropdown__header'>
-        <h3 className='search-form-dropdown__title'>
-          <FormattedMessage id='search_form.saved_searches' defaultMessage='Saved searches' />
-        </h3>
-      </header>
-
-      <ul className='search-form-dropdown__list dropdown__list'>
-        {savedSearchesContent}
-      </ul>
-    </div>
-  );
-};
+const SavedSearchesContent = (savedSearches, onDelete) => (
+  <div>
+    <header className='search-form-dropdown__header'>
+      <h3 className='search-form-dropdown__title'>
+        <FormattedMessage id='search_form.saved_searches' defaultMessage='Saved searches' />
+      </h3>
+    </header>
+    <ul className='search-form-dropdown__list dropdown__list'>
+      {
+        savedSearches.size ?
+          ( savedSearches.map((item, index) => (
+            <DropdownItem
+              item={item}
+              index={index}
+              onDelete={onDelete}
+            />
+          ))
+          ) : (
+            <li className='search-form-dropdown__empty-message'>
+              <FormattedMessage id='search_form.saved_searches.empty' defaultMessage="You haven't saved anything" />
+            </li>
+          )
+      }
+    </ul>
+  </div>
+);
 
 class SearchForm extends React.PureComponent {
 
@@ -132,10 +128,11 @@ class SearchForm extends React.PureComponent {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
     if (this.input.value) {
       this.props.onSearch(this.input.value);
       this.input.value = '';
-      document.activeElement.blur(); // Unfocus
+      document.activeElement.blur();      // Unfocus
       this.setState({ expanded: false }); // Hide dropdown content
     }
   }

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { me } from '../../../initial_state';
 import { injectIntl } from 'react-intl';
-import AvatarDropdown from '../components/avatar_dropdown';
+import { me } from '../../../initial_state';
+import UserDropdownMenu from '../components/user_dropdown_menu';
 
 const mapStateToProps = state => ({
   account: state.getIn(['accounts', me]),
@@ -9,4 +9,4 @@ const mapStateToProps = state => ({
 
 export default injectIntl(connect(
   mapStateToProps,
-)(AvatarDropdown));
+)(UserDropdownMenu));

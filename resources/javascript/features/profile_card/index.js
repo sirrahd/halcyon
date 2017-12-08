@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import Avatar from '../../components/avatar';
 import ProfileCardStats from './components/profile_card_stats';
@@ -73,42 +73,38 @@ export default class ProfileCard extends ImmutablePureComponent {
 
   render() {
     const { account, hideNote } = this.props;
-    const note = { __html: replaceUrl(account.get('note')) };
+    const header       = account.get('header');
+    const id           = account.get('id');
+    const display_name = account.get('display_name');
+    const acct         = normalizeAcct(account.get('acct'), true);
+    const note         = { __html: replaceUrl(account.get('note')) };
 
     return (
       <div className='profile-card'>
-        <div className='profile-card-header' style={{ backgroundImage: `url(${account.get('header')})` }} />
-
+        <div className='profile-card-header' style={{ backgroundImage: `url(${header})` }} />
         <div className='profile-card-account'>
 
-          <Link to={`/accounts/${account.get('id')}`}>
-
+          <Link to={`/accounts/${id}`}>
             <div className='profile-card-account__avatar'>
               <Avatar account={account} size={80} />
             </div>
 
             <div className='profile-card-account__meta'>
               <h4 className='profile-card-account__display-name'>
-                { account.get('display_name') }
+                { display_name }
               </h4>
 
               <span className='profile-card-account__acct'>
-                { normalizeAcct(account.get('acct'), true) }
+                { acct }
               </span>
             </div>
-
           </Link>
 
-          <div
-            className={`profile-card__note ${ hideNote ? 'invisible' : '' }`}
-            dangerouslySetInnerHTML={note}
-          />
-
+          <div className={`profile-card__note ${ hideNote ? 'invisible' : '' }`} dangerouslySetInnerHTML={note} />
         </div>
 
         <ProfileCardStats account={account} />
         <ProfileCardRelationship account={account} />
-
       </div>
     );
   }

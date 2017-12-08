@@ -266,16 +266,49 @@
                                 }
                             }
 
-                            .user-nav__avatar-dropdown {
+                            .user-nav__user-dropdown-menu {
                                 height: 100%;
 
-                                .avatar-dropdown {
+                                .user-dropdown-menu {
                                     height: 100%;
 
-                                    .avatar-dropdown__button {
+                                    .user-dropdown-menu__button {
                                         height: 100%;
                                         border-radius: 50%;
                                         overflow: hidden;
+                                    }
+
+                                    .dropdown__list {
+                                        max-width: 200px;
+
+                                        .dropdown__list-item {
+                                            &.dropdown-list-account {
+                                                a {
+                                                    &:hover {
+                                                        color: inherit;
+                                                        background-color: inherit;
+                                                    }
+
+                                                    .dropdown-account__display-name {
+                                                        display: block;
+                                                        width: 100%;
+                                                        overflow: hidden;
+                                                        text-overflow: ellipsis;
+                                                        color: $text_color;
+                                                        font-size: 18px;
+                                                        font-weight: bold;
+                                                    }
+
+                                                    .dropdown-account__username {
+                                                        display: block;
+                                                        width: 100%;
+                                                        overflow: hidden;
+                                                        text-overflow: ellipsis;
+                                                        color: $text_color_gray;
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }

@@ -26,9 +26,7 @@ export default class HomeTimeline extends ImmutablePureComponent {
           <ProfileCard account={me} hideNote />
         </Dashborad>
 
-        <Dashborad direction='right'>
-          <button>てすと</button>
-        </Dashborad>
+        <Dashborad direction='right' />
       </main>
     );
   }
