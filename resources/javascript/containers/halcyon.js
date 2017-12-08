@@ -8,7 +8,6 @@ import configureStore from '../store/configureStore';
 import { hydrateStore } from '../actions/store';
 import initialState from '../initial_state';
 import AppContainer from '../features/app';
-import Login from '../features/login';
 
 import en from 'react-intl/locale-data/en';
 import ja from 'react-intl/locale-data/ja';
@@ -17,7 +16,7 @@ addLocaleData([...en, ...ja]);
 const messages = require.context('../locales/', false, /\.json$/);
 const messagesForLocale = locale => messages(`./${locale}.json`);
 
-const store = configureStore();
+export const store = configureStore();
 const hydrateAction = hydrateStore(initialState);
 store.dispatch(hydrateAction);
 
@@ -35,7 +34,6 @@ export default class Halcyon extends React.PureComponent {
         <Provider store={store} >
           <BrowserRouter>
             <Switch>
-              <Route path='/login' component={Login} />
               <Route path='/' component={AppContainer} />
             </Switch>
           </BrowserRouter>

@@ -22,7 +22,7 @@ import AccountSearch from '../account_search';
 import Notifications from '../notifications';
 import NotFound from '../not_found';
 
-export default class App extends React.PureComponent {
+export default class App extends React.Component {
 
   render() {
     return (
