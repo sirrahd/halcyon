@@ -72,34 +72,29 @@ export default class ProfileCard extends ImmutablePureComponent {
 
   render() {
     const { account, hideNote } = this.props;
-    const header       = account.get('header');
-    const id           = account.get('id');
-    const display_name = account.get('display_name');
-    const acct         = normalizeAcct(account.get('acct'), true);
-    const note         = { __html: account.get('note') };
+    const header          = account.get('header');
+    const id              = account.get('id');
+    const displayNameHtml = { __html: account.get('display_name') };
+    const acct            = normalizeAcct(account.get('acct'), true);
+    const noteHtml        = { __html: account.get('note') };
 
     return (
       <div className='profile-card'>
         <div className='profile-card-header' style={{ backgroundImage: `url(${header})` }} />
-        <div className='profile-card-account'>
 
+        <div className='profile-card-account'>
           <Link to={`/accounts/${id}`}>
             <div className='profile-card-account__avatar'>
               <Avatar account={account} size={80} />
             </div>
 
             <div className='profile-card-account__meta'>
-              <h4 className='profile-card-account__display-name'>
-                { display_name }
-              </h4>
-
-              <span className='profile-card-account__acct'>
-                { acct }
-              </span>
+              <h4 className='profile-card-account__display-name' dangerouslySetInnerHTML={displayNameHtml} />
+              <span className='profile-card-account__acct'>{ acct }</span>
             </div>
           </Link>
 
-          <div className={`profile-card__note ${ hideNote ? 'invisible' : '' }`} dangerouslySetInnerHTML={note} />
+          <div className={`profile-card__note ${ hideNote ? 'invisible' : '' }`} dangerouslySetInnerHTML={noteHtml} />
         </div>
 
         <ProfileCardStats account={account} />

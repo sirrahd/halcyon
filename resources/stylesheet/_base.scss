@@ -3,8 +3,12 @@ body {
 	color: $text-color;
 	background-color: $background_color;
 	font-family : "Helvetica Neue",Helvetica,Arial,sans-serif;
+	text-rendering: optimizelegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
 
 	&.ja {
 		font-family: Arial,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,

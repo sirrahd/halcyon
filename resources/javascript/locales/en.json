@@ -14,9 +14,11 @@
   "user_navigation.logout": "Log out",
 
   "compose_form.toot": "Toot",
+  "compose_form.placeholder": "What's happening?",
   "compose_form.media_attachment": "Add photos or a video",
   "compose_form.spoiler": "Hide text behind warning",
   "compose_form.sensitive": "Mark media as sensitive",
+  "compose_form.publish": "Toot!",
 
   "search_form.placeholder": "Search Mastodon",
   "search_form.recent_searches": "Recent Searches",
@@ -31,6 +33,8 @@
   "account.followers.tip": "{count} followers",
   "account.following.tip": "{count} following",
   "account.toots.tip": "{count} toots",
+
+  "modal.compose_form": "Compose new toot",
 
   "information.mastodon": "About Mastodon",
   "information.feedback": "Feedback",

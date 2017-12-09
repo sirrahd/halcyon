@@ -3,6 +3,7 @@ import Tooltip from 'react-tooltip';
 import { Route, Switch, Redirect } from 'react-router';
 import { isMobile } from '../../is_mobile';
 import Topbar from '../topbar';
+import ModalRoot from './components/modal_root';
 
 import HomeTimeline from '../home_timeline';
 import CommunityTimeline from '../community_timeline';
@@ -51,6 +52,7 @@ export default class App extends React.Component {
         </Switch>
 
         <Tooltip effect='solid' disable={!!isMobile(window.innerWidth)} />
+        <ModalRoot />
       </div>
     );
   }

@@ -1,0 +1,75 @@
+.compose-form {
+    .compose-form__text-area-wrapper {
+        .compose-form__text-area {
+            width: 100%;
+            min-height: 70px;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            background-color: $primary_color;
+            border: 1px solid darken($secondary_color, 20%);
+            font-size: 14px;
+            font-family: inherit;
+            color: $text_color_gray;
+            resize: none;
+            outline: none;
+
+            &:focus {
+                box-shadow: 0 0 0 1px darken($secondary_color, 20%);
+                background-color: $primary_color;
+            }
+
+            &:focus, &:invalid, &:valid {
+                outline: none;
+            }
+        }
+    }
+
+    .compose-form__buttons-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        .compose-form__buttons {
+            flex-grow: 1;
+
+            .compose-form__button {
+                color: $highlight_color;
+                font-size: 21px;
+                padding: 4px 8px;
+                box-sizing: border-box;
+                border-radius: 4px;
+                border: 1px solid transparent;
+
+                &:not(:last-child) {
+                    margin-right: 8px;
+                }
+
+                &:hover, &:focus, &:active {
+                    border-color: darken($secondary_color, 20%);
+                }
+            }
+        }
+
+        .compose-form__publish {
+            .compose-form__publish-button {
+                height: 100%;
+                padding: 8px 18px;
+                font-size: 14px;
+                font-weight: 700;
+                border-radius: 25px;
+                overflow: hidden;
+                white-space: nowrap;
+                box-sizing: border-box;
+                color: $white;
+                background-color: $highlight_color;
+
+                &:hover, &:active {
+                    background-color: darken($highlight_color, 5%);
+                }
+            }
+        }
+    }
+}

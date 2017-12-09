@@ -3,13 +3,15 @@
 @import "mixins";
 @import "base";
 
-@import "components/topbar";
-@import "components/content";
-@import "components/dropdown";
 @import "components/avatar";
+@import "components/content";
+@import "components/compose_form";
 @import "components/dashborad";
-@import "components/profile_card";
-@import "components/login";
+@import "components/dropdown";
 @import "components/emojione_picker";
+@import "components/login";
+@import "components/modal";
+@import "components/profile_card";
+@import "components/topbar";
 
 @import "fonts/halcyon-font";
