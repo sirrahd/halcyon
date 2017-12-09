@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}" id="csrf-token">
         <title>Halcyon</title>
-        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="stylesheet" href="{{ mix('/stylesheet/theme_light.css') }}" />
     </head>
     <body class="{{ app()->getLocale() }}" role="application">
