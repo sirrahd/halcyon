@@ -1,5 +1,7 @@
 export const RECENT_SEARCHES_MAX_LENGTH = 4;
 
+export const DEFAULT_STATUS_MAX_LENGTH = 500;
+
 // LocalStorage
 export const LS_API_ACCESS_TOKEN = 'api_access_token';
 export const LS_API_BASE_URI     = 'api_base_uri';

@@ -51,8 +51,8 @@ export default class App extends React.Component {
           <Route component={NotFound} />
         </Switch>
 
-        <Tooltip effect='solid' disable={!!isMobile(window.innerWidth)} />
         <ModalRoot />
+        <Tooltip effect='solid' disable={!!isMobile(window.innerWidth)} />
       </div>
     );
   }

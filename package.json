@@ -69,6 +69,7 @@
     "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
+    "stringz": "^0.4.0",
     "substring-trie": "^1.0.2",
     "webpack": "^3.10.0",
     "websocket.js": "^0.1.12"

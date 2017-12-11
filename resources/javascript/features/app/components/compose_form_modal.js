@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import ComposeFrom from '../../../components/compose_form';
+import ComposeFromContainer from '../../compose/containers/compose_form_container';
 
 export default class ComposeFormModal extends React.PureComponent {
 
@@ -13,7 +13,7 @@ export default class ComposeFormModal extends React.PureComponent {
           </h3>
         </header>
 
-        <ComposeFrom />
+        <ComposeFromContainer />
       </div>
     );
   }

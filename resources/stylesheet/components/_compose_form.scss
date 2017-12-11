@@ -1,27 +1,125 @@
 .compose-form {
-    .compose-form__text-area-wrapper {
-        .compose-form__text-area {
-            width: 100%;
-            min-height: 70px;
+
+    .compose-form__spoiler-text-wrapper {
+
+        .compose-form__spoiler-text {
+            display: none;
             padding: 8px;
-            margin-bottom: 12px;
+            width: 100%;
             box-sizing: border-box;
-            border-radius: 8px;
+            border-radius: 6px;
             background-color: $primary_color;
-            border: 1px solid darken($secondary_color, 20%);
+            border: 1px solid lighten($highlight_color, 5%);
             font-size: 14px;
             font-family: inherit;
             color: $text_color_gray;
             resize: none;
             outline: none;
+            transition: 0.3s ease-out;
 
-            &:focus {
-                box-shadow: 0 0 0 1px darken($secondary_color, 20%);
-                background-color: $primary_color;
+            &--visible {
+                display: block;
+                margin-bottom: 8px;
             }
 
             &:focus, &:invalid, &:valid {
                 outline: none;
+            }
+        }
+    }
+    .compose-form__autosuggest-wrapper {
+        position: relative;
+        width: 100%;
+        margin-bottom: 12px;
+        padding: 8px 32px 8px 8px;
+        box-sizing: border-box;
+        border-radius: 6px;
+        background-color: $primary_color;
+        border: 1px solid lighten($highlight_color, 5%);
+
+        &:focus {
+            box-shadow: 0 0 0 1px lighten($highlight_color, 5%);
+            background-color: $primary_color;
+        }
+
+        .autosuggest-textarea {
+            position: relative;
+
+            .autosuggest-textarea__suggestions {
+                display: none;
+                position: absolute;
+                padding: 6px;
+                top: calc(100% + 8px);
+                left: -8px;
+                z-index: 99;
+                font-size: 14px;
+                border-radius: 6px;
+                background-color: $primary_color;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.26);
+
+                &--visible {
+                    display: block;
+                }
+
+                .autosuggest-textarea__suggestions__item {
+                    padding: 10px;
+                    cursor: pointer;
+                    border-radius: 6px;
+
+                    .autosuggest-account,
+                    .autosuggest-emoji {
+                        display: flex;
+
+                        .autosuggest-account-icon,
+                        &.autosuggest-emoji > img {
+                          display: block;
+                          margin-right: 8px;
+                          width: 16px;
+                          height: 16px;
+                        }
+
+                        .display-name__account {
+                            color: $text_color_gray;
+                        }
+                    }
+
+                    &.selected {
+                        color: $highlight_color;
+                        background-color: $secondary_color;
+                    }
+                }
+            }
+
+            .autosuggest-textarea__textarea {
+                width: 100%;
+                font-size: 14px;
+                font-family: inherit;
+                color: $text_color_gray;
+                resize: none;
+                outline: none;
+
+                &:focus, &:invalid, &:valid {
+                    outline: none;
+                }
+            }
+        }
+
+        .compose-form__emoji-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1.2em;
+            height: auto;
+            margin: 8px 8px 0 0;
+
+            .emoji-picker-dropdown {
+                cursor: pointer;
+                filter: grayscale(100%);
+                transition: 0.15s ease-out;
+
+                &:hover, &:focus {
+                    filter: grayscale(0);
+                }
             }
         }
     }
@@ -34,21 +132,67 @@
 
         .compose-form__buttons {
             flex-grow: 1;
+            display: flex;
+            align-items: center;
 
             .compose-form__button {
-                color: $highlight_color;
-                font-size: 21px;
-                padding: 4px 8px;
-                box-sizing: border-box;
-                border-radius: 4px;
-                border: 1px solid transparent;
-
                 &:not(:last-child) {
                     margin-right: 8px;
                 }
 
-                &:hover, &:focus, &:active {
-                    border-color: darken($secondary_color, 20%);
+                .compose-form__button-icon {
+                    color: $highlight_color;
+                    font-size: 21px;
+                    padding: 4px 8px;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    border: 1px solid transparent;
+
+                    &:hover, &:focus, &:active {
+                        border-color: lighten($highlight_color, 5%);
+                    }
+                }
+
+                .privacy-dropdown {
+                    .privacy-dropdown__list-item {
+                        .privacy-dropdown__option {
+                            display: flex;
+                            align-items: center;
+
+                            .privacy-dropdown__icon {
+                                font-size: 18px;
+                                margin-right: 8px;
+                                width: 1em;
+                                text-align: center;
+                            }
+
+                            .privacy-dropdown__content {
+                                .privacy-dropdown__text {
+                                    display: block;
+                                    font-weight: bold;
+                                    margin-bottom: 4px;
+                                }
+
+                                .privacy-dropdown__meta {
+                                    display: block;
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .compose-form__character-counter {
+            margin-right: 8px;
+
+            .character-counter {
+                font-size: 14px;
+                color: $text_color_gray;
+
+                &--over {
+                    color: $red;
                 }
             }
         }
@@ -66,8 +210,8 @@
                 color: $white;
                 background-color: $highlight_color;
 
-                &:hover, &:active {
-                    background-color: darken($highlight_color, 5%);
+                &:hover, &:active, &[disabled] {
+                    background-color: lighten($highlight_color, 20%);
                 }
             }
         }
