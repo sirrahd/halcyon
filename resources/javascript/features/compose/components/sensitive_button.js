@@ -10,19 +10,28 @@ const messages = defineMessages({
 export default class SensitiveButton extends React.PureComponent {
 
   static propTypes = {
+    visible: PropTypes.bool.isRequired,
+    active: PropTypes.bool.isRequired,
+    disabled: PropTypes.bool.isRequired,
     intl: intlShape.isRequired,
   }
 
+  handleClick = (e) => {
+    e.preventDefault();
+    this.props.onClick();
+  }
+
   render() {
-    const { intl } = this.props;
+    const { intl, visible, disabled } = this.props;
 
     return (
       <div
         className='compose-form__button compose-form__button--sensitive-button'
         data-tip={intl.formatMessage(messages.sensitive)}
         aria-label={intl.formatMessage(messages.sensitive)}
+        style={{ display: visible ? 'block' : 'none' }}
       >
-        <button className='compose-form__button-icon'>
+        <button className='compose-form__button-icon' disabled={disabled} onClick={this.handleClick}>
           <i className='icon-nsfw' />
         </button>
       </div>

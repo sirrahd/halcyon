@@ -8,6 +8,7 @@ import { length } from 'stringz';
 import AutosuggestTextarea from './autosuggest_textarea';
 import EmojiPickerDropdown from '../containers/emoji_picker_dropdown_container';
 import CharacterCounter from './character_counter';
+import UploadFormContainer from '../containers/upload_form_container';
 
 import UploadButtonContainer from '../containers/upload_button_container';
 import PrivacyDropdownContaienr from '../containers/privacy_dropdown_container';
@@ -177,7 +178,11 @@ export default class ComposeForm extends ImmutablePureComponent {
             className='compose-form__emoji-button'
             data-tip={intl.formatMessage(messages.emoji)}
           >
-            <EmojiPickerDropdown />
+            <EmojiPickerDropdown onPickEmoji={this.handleEmojiPick} />
+          </div>
+
+          <div className='compose-form__upload'>
+            <UploadFormContainer />
           </div>
         </div>
 

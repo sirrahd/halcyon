@@ -22,6 +22,12 @@
   "compose_form.emoji": "Add emoji",
   "compose_form.publish": "Toot!",
 
+  "upload_area.title": "Drag & drop to upload",
+  "upload_button.label": "Add media",
+  "upload_form.description": "Describe for the visually impaired",
+  "upload_form.undo": "Undo",
+  "upload_progress.label": "Uploading...",
+
   "emoji_button.activity": "Activity",
   "emoji_button.custom": "Custom",
   "emoji_button.flags": "Flags",

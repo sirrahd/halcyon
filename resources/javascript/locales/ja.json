@@ -22,6 +22,12 @@
   "compose_form.emoji": "絵文字を追加",
   "compose_form.publish": "トゥート！",
 
+  "upload_area.title": "ドラッグ＆ドロップでアップロード",
+  "upload_button.label": "メディアを追加",
+  "upload_form.description": "視覚障害者のための説明",
+  "upload_form.undo": "やり直す",
+  "upload_progress.label": "アップロード中...",
+
   "emoji_button.activity": "活動",
   "emoji_button.custom": "カスタム絵文字",
   "emoji_button.flags": "国旗",

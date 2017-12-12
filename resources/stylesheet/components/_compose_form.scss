@@ -45,6 +45,19 @@
         .autosuggest-textarea {
             position: relative;
 
+            .autosuggest-textarea__textarea {
+                width: 100%;
+                font-size: 14px;
+                font-family: inherit;
+                color: $text_color_gray;
+                resize: none;
+                outline: none;
+
+                &:focus, &:invalid, &:valid {
+                    outline: none;
+                }
+            }
+
             .autosuggest-textarea__suggestions {
                 display: none;
                 position: absolute;
@@ -89,19 +102,6 @@
                     }
                 }
             }
-
-            .autosuggest-textarea__textarea {
-                width: 100%;
-                font-size: 14px;
-                font-family: inherit;
-                color: $text_color_gray;
-                resize: none;
-                outline: none;
-
-                &:focus, &:invalid, &:valid {
-                    outline: none;
-                }
-            }
         }
 
         .compose-form__emoji-button {
@@ -122,6 +122,15 @@
                 }
             }
         }
+
+        .compose-form__upload {
+            padding: 8px;
+            margin: 8px -32px -8px -8px;
+            border-top: 1px solid lighten($highlight_color, 5%);
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            background-color: $background_color;
+        }
     }
 
     .compose-form__buttons-wrapper {
@@ -138,6 +147,10 @@
             .compose-form__button {
                 &:not(:last-child) {
                     margin-right: 8px;
+                }
+
+                &:active {
+                    color: $text_color_gray;
                 }
 
                 .compose-form__button-icon {
