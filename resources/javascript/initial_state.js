@@ -28,4 +28,9 @@ api(() => (fromJS(initialState))).get('/api/v1/custom_emojis').then(response => 
   localStorage.setItem('initial_state', JSON.stringify(initialState));
   const hydrateAction = hydrateStore(initialState);
   store.dispatch(hydrateAction);
+}).catch(() => {
+  initialState.custom_emojis = [];
+  localStorage.setItem('initial_state', JSON.stringify(initialState));
+  const hydrateAction = hydrateStore(initialState);
+  store.dispatch(hydrateAction);
 });

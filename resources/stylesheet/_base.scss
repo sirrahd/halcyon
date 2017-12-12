@@ -60,10 +60,10 @@ h6 {
 	line-height: 1.2;
 }
 
-button[class],
-input[type="button"][class],
-input[type="submit"][class],
-input[type="reset"][class] {
+button:not(.defalut-css),
+input[type="button"]:not(.defalut-css),
+input[type="submit"]:not(.defalut-css),
+input[type="reset"]:not(.defalut-css) {
 	cursor: pointer;
 	margin: 0;
 	padding: 0;
@@ -74,10 +74,10 @@ input[type="reset"][class] {
 	outline-color: transparent;
 }
 
-input[class],
-textarea[class],
-optgroup[class],
-select[class] {
+input:not(.defalut-css),
+textarea:not(.defalut-css),
+optgroup:not(.defalut-css),
+select:not(.defalut-css) {
 	margin: 0;
 	padding: 0;
 	border: none;

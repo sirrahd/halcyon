@@ -174,16 +174,13 @@ export default class ComposeForm extends ImmutablePureComponent {
             autoFocus={!isMobile(window.innerWidth)}
           />
 
-          <div
-            className='compose-form__emoji-button'
-            data-tip={intl.formatMessage(messages.emoji)}
-          >
+          <div className='compose-form__emoji-button' data-tip={intl.formatMessage(messages.emoji)}>
             <EmojiPickerDropdown onPickEmoji={this.handleEmojiPick} />
           </div>
+        </div>
 
-          <div className='compose-form__upload'>
-            <UploadFormContainer />
-          </div>
+        <div className='compose-form__modifiers'>
+          <UploadFormContainer />
         </div>
 
         <div className='compose-form__buttons-wrapper'>

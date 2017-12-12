@@ -38,13 +38,13 @@ export default class UploadButton extends React.PureComponent {
 
     return (
       <div
-        className='compose-form__button compose-form__button--upload-button'
+        className='compose-form__button'
         aria-label={intl.formatMessage(messages.media_attachment)}
         data-tip={intl.formatMessage(messages.media_attachment)}
       >
         <label>
           <button className='compose-form__button-icon' onClick={this.handleClick}>
-            <i className='icon-photo' />
+            <i className='icon-photo' aria-hidden='true' />
           </button>
 
           <input

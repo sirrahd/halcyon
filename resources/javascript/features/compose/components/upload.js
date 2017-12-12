@@ -3,7 +3,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { defineMessages, injectIntl } from 'react-intl';
-import classNames from 'classnames';
+import Overlay from 'react-overlays/lib/Overlay';
 
 const messages = defineMessages({
   undo: { id: 'upload_form.undo', defaultMessage: 'Undo' },
@@ -24,10 +24,15 @@ export default class Upload extends ImmutablePureComponent {
     hovered: false,
     focused: false,
     dirtyDescription: null,
+    showDiscription: false,
   };
 
   handleUndoClick = () => {
     this.props.onUndo(this.props.media.get('id'));
+  }
+
+  handleDescriptionClick = () => {
+    this.setState({ showDiscription: !this.state.showDiscription });
   }
 
   handleInputChange = e => {
@@ -49,29 +54,42 @@ export default class Upload extends ImmutablePureComponent {
   handleInputBlur = () => {
     const { dirtyDescription } = this.state;
 
-    this.setState({ focused: false, dirtyDescription: null });
+    this.setState({ focused: false, dirtyDescription: null, showDiscription: false });
 
     if (dirtyDescription !== null) {
       this.props.onDescriptionChange(this.props.media.get('id'), dirtyDescription);
     }
   }
 
+  setTargetRef = c => {
+    this.target = c;
+  }
+
+  findTarget = () => {
+    return this.target;
+  }
+
   render () {
     const { intl, media } = this.props;
-    const active          = this.state.hovered || this.state.focused;
+    const { showDiscription } = this.state;
     const description     = this.state.dirtyDescription || media.get('description') || '';
 
     return (
       <div className='compose-form__upload' onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
         <div className='compose-form__upload-thumbnail' style={{ backgroundImage: `url(${media.get('preview_url')})` }}>
-          <button data-tip={intl.formatMessage(messages.undo)} onClick={this.handleUndoClick}>
-            <i className='icon-time' aria-hidden='true' />
-          </button>
 
-          <div className={classNames('compose-form__upload-description', { active })}>
-            <label>
-              <span style={{ display: 'none' }}>{intl.formatMessage(messages.description)}</span>
+          <div className='compose-form__upload-buttons'>
+            <button aria-label={intl.formatMessage(messages.undo)} onClick={this.handleUndoClick}>
+              <i className='icon-time' aria-hidden='true' />
+            </button>
 
+            <button aria-label={intl.formatMessage(messages.description)} onClick={this.handleDescriptionClick} ref={this.setTargetRef}>
+              <i className='fa fa-font' aria-hidden='true' />
+            </button>
+          </div>
+
+          <Overlay show={showDiscription} placement='bottom' target={this.findTarget}>
+            <div className='compose-form__upload-description'>
               <input
                 placeholder={intl.formatMessage(messages.description)}
                 type='text'
@@ -81,8 +99,8 @@ export default class Upload extends ImmutablePureComponent {
                 onChange={this.handleInputChange}
                 onBlur={this.handleInputBlur}
               />
-            </label>
-          </div>
+            </div>
+          </Overlay>
         </div>
       </div>
     );

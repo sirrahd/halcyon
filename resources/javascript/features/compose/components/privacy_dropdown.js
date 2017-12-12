@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, intlShape, defineMessages } from 'react-intl';
 import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
+import classnames from 'classnames';
 
 const messages = defineMessages({
   change: { id: 'privacy.change', defaultMessage: 'Adjust status privacy' },
@@ -77,34 +78,33 @@ export default class PrivacyDropdown extends React.PureComponent {
       },
     ];
 
+    const iconClassName = options.find((item) => {
+      return item.value === value;
+    }).iconClassName;
+
     return (
-      <div
-        className='compose-form__button compose-form__button--privacy-dropdown'
-        data-tip={intl.formatMessage(messages.change)}
-        aria-label={intl.formatMessage(messages.change)}
-      >
-        <Dropdown className='privacy-dropdown'>
+      <Dropdown className='privacy-dropdown'>
+        <DropdownTrigger className='compose-form__button'>
+          <div
+            className='compose-form__button-icon'
+            data-tip={intl.formatMessage(messages.change)}
+            aria-label={intl.formatMessage(messages.change)}
+          >
+            <i className={`${iconClassName} `} aria-hidden='true' />
+          </div>
+        </DropdownTrigger>
 
-          <DropdownTrigger className='compose-form__button-icon'>
-            <i
-              className={options.find((item) => {
-                return item.value === value;
-              }).iconClassName} aria-hidden='true'
-            />
-          </DropdownTrigger>
+        <DropdownContent className='privacy-dropdown__content'>
+          <div className='dropdown__caret' >
+            <div className='dropdown__caret-outer' />
+            <div className='dropdown__caret-inner' />
+          </div>
 
-          <DropdownContent className='privacy-dropdown__content'>
-            <div className='dropdown__caret' >
-              <div className='dropdown__caret-outer' />
-              <div className='dropdown__caret-inner' />
-            </div>
-
-            <ul className='dropdown__list'>
-              { options.map(item => this.renderOption(item)) }
-            </ul>
-          </DropdownContent>
-        </Dropdown>
-      </div>
+          <ul className='dropdown__list'>
+            { options.map(item => this.renderOption(item)) }
+          </ul>
+        </DropdownContent>
+      </Dropdown>
     );
   }
 
