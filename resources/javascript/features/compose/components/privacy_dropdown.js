@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Overlay from 'react-overlays/lib/Overlay';
 import { injectIntl, intlShape, defineMessages } from 'react-intl';
-import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
+import detectPassiveEvents from 'detect-passive-events';
 import classnames from 'classnames';
 
 const messages = defineMessages({
@@ -16,42 +17,147 @@ const messages = defineMessages({
   unlisted_short: { id: 'privacy.unlisted.short', defaultMessage: 'Unlisted' },
 });
 
+const listenerOptions = detectPassiveEvents.hasSupport ? { passive: true } : false;
+
+class PrivacyDropdownMenu extends React.PureComponent {
+
+  static propTypes = {
+    style: PropTypes.object,
+    items: PropTypes.array.isRequired,
+    value: PropTypes.string.isRequired,
+    onClose: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+  };
+
+  handleDocumentClick = e => {
+    if (this.node && !this.node.contains(e.target)) {
+      this.props.onClose();
+    }
+  }
+
+  handleClick = e => {
+    if (e.key === 'Escape') {
+      this.props.onClose();
+    } else if (!e.key || e.key === 'Enter') {
+      const value = e.currentTarget.getAttribute('data-index');
+
+      e.preventDefault();
+
+      this.props.onClose();
+      this.props.onChange(value);
+    }
+  }
+
+  componentDidMount () {
+    document.addEventListener('click', this.handleDocumentClick, false);
+    document.addEventListener('touchend', this.handleDocumentClick, listenerOptions);
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('click', this.handleDocumentClick, false);
+    document.removeEventListener('touchend', this.handleDocumentClick, listenerOptions);
+  }
+
+  setRef = c => {
+    this.node = c;
+  }
+
+  render() {
+    const { items, value } = this.props;
+
+    return(
+      <div className='privacy-dropdown-menu'>
+        <div className='privacy-dropdown-menu__caret' >
+          <div className='privacy-dropdown-menu__caret-outer' />
+          <div className='privacy-dropdown-menu__caret-inner' />
+        </div>
+
+        <div className='privacy-dropdown-menu__options-wrapper' ref={this.setRef}>
+          { items.map(item => (
+            <a key={item.value} data-index={item.value} onClick={this.handleClick} className={classnames('privacy-dropdown-menu__option', { 'privacy-dropdown-menu__option--active': item.value === value })} >
+
+              <div className='privacy-dropdown-menu__icon'>
+                <i className={`${item.iconClassName} `} aria-hidden='true' />
+              </div>
+
+              <div className='privacy-dropdown-menu__content'>
+                <strong className='privacy-dropdown-menu__text'>{item.text}</strong>
+                <span className='privacy-dropdown-menu__meta'>{item.meta}</span>
+              </div>
+
+            </a>
+          )) }
+        </div>
+      </div>
+    );
+  }
+
+}
+
 @injectIntl
 export default class PrivacyDropdown extends React.PureComponent {
 
   static propTypes = {
+    isUserTouching: PropTypes.func,
+    isModalOpen: PropTypes.bool.isRequired,
+    onModalOpen: PropTypes.func,
+    onModalClose: PropTypes.func,
     value: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
     onChange: PropTypes.func.isRequired,
+    intl: intlShape.isRequired,
   }
 
-  handleClick = (e) => {
-    const value = e.currentTarget.getAttribute('data-index');
+  state = {
+    open: false,
+  }
+
+  handleToggle = () => {
+    // if (this.props.isUserTouching()) {
+    //   if (this.state.open) {
+    //     this.props.onModalClose();
+    //   } else {
+    //     this.props.onModalOpen({
+    //       actions: this.options.map(option => ({ ...option, active: option.value === this.props.value })),
+    //       onClick: this.handleModalActionClick,
+    //     });
+    //   }
+    // } else {
+    this.setState({ open: !this.state.open });
+    // }
+  }
+
+  handleModalActionClick = (e) => {
     e.preventDefault();
+
+    const { value } = e.currentTarget.getAttribute('data-index');
+
+    // this.props.onModalClose();
     this.props.onChange(value);
   }
 
-  renderOption(item) {
-    const { value, text, meta, iconClassName } = item;
-
-    return (
-      <li className='dropdown__list-item privacy-dropdown__list-item' key={value}>
-        <a className='privacy-dropdown__option' data-index={value} onClick={this.handleClick} >
-          <div className='privacy-dropdown__icon'>
-            <i className={`${iconClassName} `} aria-hidden='true' />
-          </div>
-          <div className='privacy-dropdown__content'>
-            <strong className='privacy-dropdown__text'>{text}</strong>
-            <span className='privacy-dropdown__meta'>{meta}</span>
-          </div>
-        </a>
-      </li>
-    );
+  handleKeyDown = e => {
+    switch(e.key) {
+    case 'Enter':
+      this.handleToggle();
+      break;
+    case 'Escape':
+      this.handleClose();
+      break;
+    }
   }
 
-  render() {
-    const { intl, value } = this.props;
-    const options  = [
+  handleClose = () => {
+    this.setState({ open: false });
+  }
+
+  handleChange = value => {
+    this.props.onChange(value);
+  }
+
+  componentWillMount () {
+    const { intl } = this.props;
+
+    this.options = [
       {
         value: 'public',
         text: intl.formatMessage(messages.public_short),
@@ -77,34 +183,34 @@ export default class PrivacyDropdown extends React.PureComponent {
         iconClassName: 'fa fa-envelope',
       },
     ];
+  }
 
-    const iconClassName = options.find((item) => {
-      return item.value === value;
-    }).iconClassName;
+  render() {
+    const { value, intl } = this.props;
+    const { open } = this.state;
+    const valueOption = this.options.find(item => item.value === value);
 
     return (
-      <Dropdown className='privacy-dropdown'>
-        <DropdownTrigger className='compose-form__button'>
-          <div
+      <div className={classnames('privacy-dropdown', { 'privacy-dropdown--active': open })} onKeyDown={this.handleKeyDown}>
+        <div className='compose-form__button'>
+          <button
             className='compose-form__button-icon'
             data-tip={intl.formatMessage(messages.change)}
-            aria-label={intl.formatMessage(messages.change)}
+            onClick={this.handleToggle}
           >
-            <i className={`${iconClassName} `} aria-hidden='true' />
-          </div>
-        </DropdownTrigger>
+            <i className={`${valueOption.iconClassName} `} aria-hidden='true' />
+          </button>
+        </div>
 
-        <DropdownContent className='privacy-dropdown__content'>
-          <div className='dropdown__caret' >
-            <div className='dropdown__caret-outer' />
-            <div className='dropdown__caret-inner' />
-          </div>
-
-          <ul className='dropdown__list'>
-            { options.map(item => this.renderOption(item)) }
-          </ul>
-        </DropdownContent>
-      </Dropdown>
+        <Overlay show={open} placement='bottom' target={this} container={this}>
+          <PrivacyDropdownMenu
+            items={this.options}
+            value={value}
+            onClose={this.handleClose}
+            onChange={this.handleChange}
+          />
+        </Overlay>
+      </div>
     );
   }
 

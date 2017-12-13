@@ -52,7 +52,7 @@ export default class App extends React.Component {
         </Switch>
 
         <ModalRoot />
-        <Tooltip effect='solid' disable={!!isMobile(window.innerWidth)} />
+        <Tooltip effect='solid' disable={isMobile(window.innerWidth)} />
       </div>
     );
   }

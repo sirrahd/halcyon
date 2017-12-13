@@ -61,18 +61,10 @@ export default class Upload extends ImmutablePureComponent {
     }
   }
 
-  setTargetRef = c => {
-    this.target = c;
-  }
-
-  findTarget = () => {
-    return this.target;
-  }
-
   render () {
-    const { intl, media } = this.props;
+    const { intl, media }     = this.props;
+    const description         = this.state.dirtyDescription || (this.state.dirtyDescription !== '' && media.get('description')) || '';
     const { showDiscription } = this.state;
-    const description     = this.state.dirtyDescription || media.get('description') || '';
 
     return (
       <div className='compose-form__upload' onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
@@ -83,12 +75,16 @@ export default class Upload extends ImmutablePureComponent {
               <i className='icon-time' aria-hidden='true' />
             </button>
 
-            <button aria-label={intl.formatMessage(messages.description)} onClick={this.handleDescriptionClick} ref={this.setTargetRef}>
+            <button aria-label={intl.formatMessage(messages.description)} onClick={this.handleDescriptionClick}>
               <i className='fa fa-font' aria-hidden='true' />
             </button>
           </div>
 
-          <Overlay show={showDiscription} placement='bottom' target={this.findTarget}>
+          <div className={`compose-form__upload-description-preview ${ description ? 'compose-form__upload-description-preview--visible' : '' }`}>
+            <span>{description}</span>
+          </div>
+
+          <Overlay show={showDiscription} placement='bottom' target={this}>
             <div className='compose-form__upload-description'>
               <input
                 placeholder={intl.formatMessage(messages.description)}
