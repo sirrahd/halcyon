@@ -2284,9 +2284,9 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-emoji-mart@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/emoji-mart/-/emoji-mart-2.2.1.tgz#02dc2192b85eb901a6446b8f302d8669147ceea8"
+emoji-mart@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/emoji-mart/-/emoji-mart-2.3.0.tgz#b0b0a5d89cd32fa30dbfc484f0c26f298f10e2b7"
 
 emoji-regex@^6.1.0:
   version "6.5.1"
@@ -2510,9 +2510,9 @@ eslint-scope@^3.7.1:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@^4.12.1:
-  version "4.12.1"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.12.1.tgz#5ec1973822b4a066b353770c3c6d69a2a188e880"
+eslint@^4.13.1:
+  version "4.13.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.13.1.tgz#0055e0014464c7eb7878caf549ef2941992b444f"
   dependencies:
     ajv "^5.3.0"
     babel-code-frame "^6.22.0"
