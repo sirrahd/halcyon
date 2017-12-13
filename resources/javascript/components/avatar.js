@@ -21,6 +21,16 @@ export default class Avatar extends React.PureComponent {
     round: false,
   };
 
+  handleMouseEnter = () => {
+    if (this.props.animate) return;
+    this.setState({ hovering: true });
+  }
+
+  handleMouseLeave = () => {
+    if (this.props.animate) return;
+    this.setState({ hovering: false });
+  }
+
   render () {
     const { account, size, animate, inline, round } = this.props;
     const src = account.get('avatar');
@@ -39,7 +49,7 @@ export default class Avatar extends React.PureComponent {
       backgroundSize: `${size}px`,
     };
 
-    if (animate) {
+    if (animate || animate) {
       style.backgroundImage = `url(${src})`;
     } else {
       style.backgroundImage = `url(${staticSrc})`;
@@ -48,6 +58,8 @@ export default class Avatar extends React.PureComponent {
     return (
       <div
         className={className}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
         style={style}
       />
     );
