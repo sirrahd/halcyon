@@ -128,7 +128,7 @@ export default class AutosuggestTextarea extends ImmutablePureComponent {
 
   onKeyUp = e => {
     if (e.key === 'Escape' && this.state.suggestionsHidden) {
-      document.querySelector('.ui').parentElement.focus();
+      document.querySelector('.app-container').parentElement.focus();
     }
 
     if (this.props.onKeyUp) {

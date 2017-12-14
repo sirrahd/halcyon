@@ -1,12 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-const TootButton = () => (
-  <div className='user-nav__toot-button'>
-    <button className='toot-button'>
-      <FormattedMessage id='compose_form.toot' defaultMessage='Toot' />
-    </button>
-  </div>
-);
+export default class TootButton extends React.PureComponent {
 
-export default TootButton;
+  static propTypes = {
+    onClick: PropTypes.func.isRequired,
+  }
+
+  render() {
+    const { onClick } = this.props;
+
+    return (
+      <div className='user-nav__toot-button'>
+        <button className='toot-button' onClick={onClick}>
+          <FormattedMessage id='compose_form.toot' defaultMessage='Toot' />
+        </button>
+      </div>
+    );
+  }
+
+}

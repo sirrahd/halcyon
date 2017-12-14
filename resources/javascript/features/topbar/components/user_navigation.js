@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchFormContainer from '../containers/search_form_container';
 import UserDropdownMenuContainer from '../containers/user_dropdown_menu_container';
-import TootButton from './toot_button';
+import TootButtonContainer from '../containers/toot_button_container';
 
 const UserNav = () => (
   <div className='user-nav'>
@@ -16,7 +16,7 @@ const UserNav = () => (
       </li>
 
       <li className='user-nav__list-item'>
-        <TootButton />
+        <TootButtonContainer />
       </li>
 
     </ul>

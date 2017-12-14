@@ -75,8 +75,8 @@ export default class ProfileCard extends ImmutablePureComponent {
     const header          = account.get('header');
     const id              = account.get('id');
     const displayNameHtml = { __html: account.get('display_name') };
-    const acct            = normalizeAcct(account.get('acct'), true);
     const noteHtml        = { __html: account.get('note') };
+    const acct            = normalizeAcct(account.get('acct'), true);
 
     return (
       <div className='profile-card'>
