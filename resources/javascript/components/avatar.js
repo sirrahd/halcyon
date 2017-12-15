@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
+const mapStateToProps = (state) => ({
+  round: state.getIn(['settings', 'halcyonRoundAvatar']),
+});
+
+@connect(mapStateToProps)
 export default class Avatar extends React.PureComponent {
 
   static propTypes = {

@@ -10,6 +10,8 @@ const initialState = ImmutableMap({
 
   skinTone: 1,
 
+  halcyonRoundAvatar: false,
+
   home: ImmutableMap({
     shows: ImmutableMap({
       reblog: true,
