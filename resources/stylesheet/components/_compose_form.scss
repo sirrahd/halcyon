@@ -104,9 +104,14 @@
             position: absolute;
             top: 0;
             right: 0;
-            width: 1.2em;
-            height: auto;
+            width: 16px;
+            height: 16px;
             margin: 8px 8px 0 0;
+            color: $text_color_gray;
+
+            &:hover {
+                color: lighten($highlight_color, 5%);
+            }
 
             .emoji-picker-dropdown {
                 cursor: pointer;
