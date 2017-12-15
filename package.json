@@ -37,8 +37,6 @@
     "cross-env": "^5.1.1",
     "detect-passive-events": "^1.0.4",
     "emoji-mart": "^2.3.0",
-    "emojione": "^3.1.2",
-    "emojione-picker": "^2.2.1",
     "escape-html": "^1.0.3",
     "font-awesome": "^4.7.0",
     "fuzzysearch": "^1.0.3",
