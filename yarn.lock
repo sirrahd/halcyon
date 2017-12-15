@@ -2284,9 +2284,9 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-emoji-mart@^2.3.0:
+emoji-mart@halcyon-suite/emoji-mart#build:
   version "2.3.0"
-  resolved "https://registry.yarnpkg.com/emoji-mart/-/emoji-mart-2.3.0.tgz#b0b0a5d89cd32fa30dbfc484f0c26f298f10e2b7"
+  resolved "https://codeload.github.com/halcyon-suite/emoji-mart/tar.gz/cd00ade894d234fe589a2b6fd4e1e83d19128a38"
 
 emoji-regex@^6.1.0:
   version "6.5.1"
