@@ -65,7 +65,7 @@
   "account.toots": "トゥート",
   "account.followers.tip": "{count}人のフォロワー",
   "account.following.tip": "{count}人をフォロー中",
-  "account.toots.tip": "{count}トゥート",
+  "account.toots.tip": "{count}件のトゥート",
 
   "modal.compose_form": "新しいトゥート",
 
