@@ -36,7 +36,7 @@
     "classnames": "^2.2.5",
     "cross-env": "^5.1.1",
     "detect-passive-events": "^1.0.4",
-    "emoji-mart": "halcyon-suite/emoji-mart#build",
+    "emoji-mart": "^2.4.0",
     "escape-html": "^1.0.3",
     "font-awesome": "^4.7.0",
     "fuzzysearch": "^1.0.3",

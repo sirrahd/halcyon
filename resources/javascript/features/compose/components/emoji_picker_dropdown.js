@@ -258,7 +258,6 @@ class EmojiPickerMenu extends React.PureComponent {
           recent={frequentlyUsedEmojis}
           skin={skinTone}
           showPreview={false}
-          emojiTooltip
         />
 
         <ModifierPicker
