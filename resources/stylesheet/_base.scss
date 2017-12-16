@@ -1,28 +1,28 @@
 
 body {
-	color: $text-color;
-	background-color: $background_color;
-	font-family : "Helvetica Neue",Helvetica,Arial,sans-serif;
-	text-rendering: optimizelegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-moz-text-size-adjust: none;
-	-ms-text-size-adjust: none;
-	-webkit-text-size-adjust: none;
+  color: $text-color;
+  background-color: $background_color;
+  font-family : "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
 
-	&.ja {
-		font-family: Arial,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,
-		"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
-	}
+  &.ja {
+    font-family: Arial,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,
+    "メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+  }
 }
 
 a, .link-button {
-	color: $highlight_color;
-	text-decoration: none;
+  color: $highlight_color;
+  text-decoration: none;
 
-	&:hover, &:active {
-		text-decoration: underline;
-	}
+  &:hover, &:active {
+    text-decoration: underline;
+  }
 }
 
 img {
@@ -31,96 +31,96 @@ img {
 }
 
 h1 {
-	font-size: 36px;
-	line-height: 1.5;
+  font-size: 36px;
+  line-height: 1.5;
 }
 
 h2 {
-	font-size: 32px;
-	line-height: 1.5;
+  font-size: 32px;
+  line-height: 1.5;
 }
 
 h3 {
-	font-size: 28px;
-	line-height: 1.2;
+  font-size: 28px;
+  line-height: 1.2;
 }
 
 h4 {
-	font-size: 24px;
-	line-height: 1.2;
+  font-size: 24px;
+  line-height: 1.2;
 }
 
 h5 {
-	font-size: 21px;
-	line-height: 1.2;
+  font-size: 21px;
+  line-height: 1.2;
 }
 
 h6 {
-	font-size: 18px;
-	line-height: 1.2;
+  font-size: 18px;
+  line-height: 1.2;
 }
 
 button:not(.defalut-css),
 input[type="button"]:not(.defalut-css),
 input[type="submit"]:not(.defalut-css),
 input[type="reset"]:not(.defalut-css) {
-	cursor: pointer;
-	margin: 0;
-	padding: 0;
-	border: none;
-	border-radius: 0;
-	background: none;
-	border: none;
-	outline: none;
-	box-shadow: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
 
-	&:focus, &:active {
-		box-shadow: none;
-		outline: none;
-	}
+  &:focus, &:active {
+    box-shadow: none;
+    outline: none;
+  }
 }
 
 input:not(.defalut-css),
 textarea:not(.defalut-css),
 optgroup:not(.defalut-css),
 select:not(.defalut-css) {
-	margin: 0;
-	padding: 0;
-	border: none;
-	border-radius: 0;
-	background: none;
-	border: none;
-	outline: none;
-	box-shadow: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
 
-	&:focus, &:invalid, &:valid {
-		box-shadow: none;
-		outline: none;
-	}
+  &:focus, &:invalid, &:valid {
+    box-shadow: none;
+    outline: none;
+  }
 }
 
 .invisible {
-	display: none !important;
+  display: none !important;
 }
 
 .unselectable {
-	user-select: none !important;
-	-ms-user-select: none !important;
-	-webkit-user-select: none !important;
-	-moz-user-select: none !important;
+  user-select: none !important;
+  -ms-user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
 }
 
 .unsubmittable {
-	pointer-events : none;
+  pointer-events : none;
 }
 
 .emojione {
-	display: inline-block;
-	font-family: object-fit\:contain,inherit;
-	vertical-align: middle;
-	-o-object-fit: contain;
-	object-fit: contain;
-	margin: -.2ex .15em .2ex;
-	width: 16px;
-	height: 16px;
+  display: inline-block;
+  font-family: object-fit\:contain,inherit;
+  vertical-align: middle;
+  -o-object-fit: contain;
+  object-fit: contain;
+  margin: -.2ex .15em .2ex;
+  width: 16px;
+  height: 16px;
 }

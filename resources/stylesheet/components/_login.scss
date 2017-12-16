@@ -1,97 +1,97 @@
 .login-page {
 
-    .login-form-contaienr {
-        max-width: 700px;
-        margin: 0 auto 8px;
-        padding: 24px 36px;
-        box-sizing: border-box;
-        background-color: $primary_color;
-        text-align: center;
+  .login-form-contaienr {
+    max-width: 700px;
+    margin: 0 auto 8px;
+    padding: 24px 36px;
+    box-sizing: border-box;
+    background-color: $primary_color;
+    text-align: center;
 
-        .login-form-contaienr__title {
-            margin-bottom: 8px;
-            font-weight: bold;
-            font-size: 24px;
-        }
-
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            margin: 0 auto 24px;
-            width: 360px;
-
-            .login-form__input {
-                margin-bottom: 8px;
-                padding: 8px 12px;
-                box-sizing: border-box;
-                border-radius: 25px;
-                overflow: hidden;
-                font-size: 14px;
-                color: $text_color_gray;
-                background-color: darken($primary_color, 2.5%);
-                border: 1px solid $background_color;
-                outline: none;
-                transition: all .3s ease-in-out;
-
-                &:focus {
-                    box-shadow: 0 0 0 1.5px $highlight_color;
-                    background-color: $primary_color;
-                }
-
-                &:invalid {
-                    box-shadow: 0 0 0 1.5px $red;
-                }
-            }
-
-            .login-form__submit {
-                padding: 8px 18px;
-                font-size: 14px;
-                font-weight: 700;
-                border-radius: 25px;
-                overflow: hidden;
-                white-space: nowrap;
-                box-sizing: border-box;
-                color: $white;
-                background-color: $highlight_color;
-
-                &:hover, &:active {
-                    background-color: darken($highlight_color, 5%);
-                }
-
-                &.login-form__submit--sending {
-                    opacity: 0.8;
-                    background-color: $highlight_color;
-                }
-            }
-        }
-
-        .login-form-contaienr__create-account {
-            display: block;
-            font-size: 14px;
-        }
+    .login-form-contaienr__title {
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 24px;
     }
 
-    .login-form-footer {
-        max-width: 700px;
-        margin: 0 auto 8px;
-        padding: 16px 36px;
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto 24px;
+      width: 360px;
+
+      .login-form__input {
+        margin-bottom: 8px;
+        padding: 8px 12px;
         box-sizing: border-box;
-        background-color: $primary_color;
-        font-size: 12px;
-        text-align: center;
+        border-radius: 25px;
+        overflow: hidden;
+        font-size: 14px;
+        color: $text_color_gray;
+        background-color: darken($primary_color, 2.5%);
+        border: 1px solid $background_color;
+        outline: none;
+        transition: all .3s ease-in-out;
 
-        ul {
-            display: flex;
-
-            li:not(:last-child) {
-                margin-right: 16px;
-            }
-
-            li {
-                a {
-                    color: $text_color_gray;
-                }
-            }
+        &:focus {
+          box-shadow: 0 0 0 1.5px $highlight_color;
+          background-color: $primary_color;
         }
+
+        &:invalid {
+          box-shadow: 0 0 0 1.5px $red;
+        }
+      }
+
+      .login-form__submit {
+        padding: 8px 18px;
+        font-size: 14px;
+        font-weight: 700;
+        border-radius: 25px;
+        overflow: hidden;
+        white-space: nowrap;
+        box-sizing: border-box;
+        color: $white;
+        background-color: $highlight_color;
+
+        &:hover, &:active {
+          background-color: darken($highlight_color, 5%);
+        }
+
+        &.login-form__submit--sending {
+          opacity: 0.8;
+          background-color: $highlight_color;
+        }
+      }
     }
+
+    .login-form-contaienr__create-account {
+      display: block;
+      font-size: 14px;
+    }
+  }
+
+  .login-form-footer {
+    max-width: 700px;
+    margin: 0 auto 8px;
+    padding: 16px 36px;
+    box-sizing: border-box;
+    background-color: $primary_color;
+    font-size: 12px;
+    text-align: center;
+
+    ul {
+      display: flex;
+
+      li:not(:last-child) {
+        margin-right: 16px;
+      }
+
+      li {
+        a {
+          color: $text_color_gray;
+        }
+      }
+    }
+  }
 }
