@@ -60,10 +60,10 @@ h6 {
   line-height: 1.2;
 }
 
-button:not(.defalut-css),
-input[type="button"]:not(.defalut-css),
-input[type="submit"]:not(.defalut-css),
-input[type="reset"]:not(.defalut-css) {
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
   cursor: pointer;
   margin: 0;
   padding: 0;
@@ -80,10 +80,10 @@ input[type="reset"]:not(.defalut-css) {
   }
 }
 
-input:not(.defalut-css),
-textarea:not(.defalut-css),
-optgroup:not(.defalut-css),
-select:not(.defalut-css) {
+input,
+textarea,
+optgroup,
+select {
   margin: 0;
   padding: 0;
   border: none;

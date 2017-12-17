@@ -33,31 +33,42 @@
   left: auto;
   width: 360px;
   height: auto;
+  border-radius: 6px;
+  background-color: $primary_color;
   box-shadow: 0 1px 4px rgba(0,0,0,0.26);
   pointer-events: auto;
   z-index: 998;
 }
 
-.compose-form-modal {
-  width: 590px;
-
-  .compose-form {
-    padding: 14px 12px;
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
-    background-color: $secondary_color;
-  }
-}
-
-.compose-form-modal__header {
+.modal-root__modal__header {
   padding: 14px 12px;
-  border-top-right-radius: 6px;
-  border-top-left-radius: 6px;
-  background-color: $primary_color;
+  border-bottom: 1px solid $background_color;
 
-  .compose-form-modal__title {
+  h3 {
     font-size: 18px;
     font-weight: bold;
     text-align: center;
+  }
+}
+
+.modal-root__modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 12px;
+  line-height: 21px;
+  color: $text_color_gray;
+}
+
+.compose-form-modal,
+.keyboard-shortcuts-modal {
+  width: 590px;
+}
+
+.compose-form-modal {
+  .compose-form {
+    padding: 14px 12px;
+    border-radius: 0 0 6px 6px;
+    background-color: $secondary_color;
   }
 }

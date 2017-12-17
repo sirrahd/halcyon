@@ -1,0 +1,29 @@
+.settings {
+  display: flex;
+  padding: 12px 14px;
+  box-sizing: border-box;
+}
+
+.settings__tabs {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 120px;
+  height: 100%;
+  background-color: $background_color;
+}
+
+.settings__tabs-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings__tabs-list-item {
+  padding: 8px 16px;
+}
+
+.settings__wrapper {
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 12px 14px;
+  box-sizing: border-box;
+}

@@ -80,7 +80,7 @@
     flex-grow: 0;
   }
 
-  a {
+  .page-nav__navlink {
     display: flex;
     height: 100%;
     padding: 0 16px;
@@ -286,32 +286,30 @@
     .dropdown__list {
       max-width: 200px;
 
-      .dropdown__list-item {
-        &.dropdown-list-account {
-          a {
-            &:hover {
-              color: inherit;
-              background-color: inherit;
-            }
+      .dropdown__list-item.dropdown-list-account {
+        a {
+          &:hover {
+            color: inherit;
+            background-color: inherit;
+          }
 
-            .dropdown-account__display-name {
-              display: block;
-              margin-bottom: 2.5px;
-              width: 100%;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              color: $text_color;
-              font-size: 18px;
-              font-weight: bold;
-            }
+          .dropdown-account__display-name {
+            display: block;
+            margin-bottom: 2.5px;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: $text_color;
+            font-size: 18px;
+            font-weight: bold;
+          }
 
-            .dropdown-account__username {
-              display: block;
-              width: 100%;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              color: $text_color_gray;
-            }
+          .dropdown-account__username {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: $text_color_gray;
           }
         }
       }

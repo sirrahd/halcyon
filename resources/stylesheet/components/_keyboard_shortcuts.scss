@@ -1,0 +1,60 @@
+.keyboard-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 14px 12px;
+}
+
+.keyboard-shortcuts__table {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.keyboard-shortcuts__thead {
+  font-size: 14px;
+  font-weight: bold;
+  padding-bottom: 8px;
+
+  & > tr > th {
+    text-align: left;
+
+    span {
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.keyboard-shortcuts__tbody .keyboard-shortcuts__row {
+  padding-bottom: 8px;
+  color: $text_color_gray;
+
+  .keyboard-shortcuts__row__keys {
+    display: flex;
+    flex-direction: row;
+
+    kbd {
+      display: inline-block;
+      flex-grow: 0;
+      flex-shrink: 0;
+      padding: 2px 4px;
+      box-sizing: border-box;
+      border-radius: 2px;
+      font-size: 10px;
+      font-family: monospace,'Courier';
+      border: 1px solid $text_color_gray;
+      background-color: rgba($text_color_gray, 0.1);
+
+      &:not(:last-child) {
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .keyboard-shortcuts__row__label > span {
+    display: block;
+    font-size: 12px;
+    margin: 0 8px 8px 4px;
+    line-height: 20px;
+  }
+}
