@@ -1,8 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Tooltip from 'react-tooltip';
+import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { HotKeys } from 'react-hotkeys';
 import { isMobile } from '../../is_mobile';
 import { openModal } from '../../actions/modal';
@@ -34,20 +35,23 @@ const keyMap = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onOpenComposeFormModal() {
-    dispatch(openModal('COMPOSE_FORM', {}));
+  onOpenModal(type, props) {
+    dispatch(openModal(type, props));
   },
 });
 
 @connect(null, mapDispatchToProps)
+@withRouter
 export default class App extends React.Component {
 
   static propTypes = {
-    onOpenComposeFormModal: PropTypes.func.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    onOpenModal: PropTypes.func.isRequired,
   }
 
   handleHotkeyOpenComposeFormModal = () => {
-    this.props.onOpenComposeFormModal();
+    this.props.onOpenModal('COMPOSE_FORM', {});
   }
 
   render() {
@@ -79,6 +83,7 @@ export default class App extends React.Component {
 
             <Route exact path='/notifications' component={AccountFavourites} />
             <Route exact path='/follow_requests' component={Notifications} />
+
             <Route component={NotFound} />
           </Switch>
 
