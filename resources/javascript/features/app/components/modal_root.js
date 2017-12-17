@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ComposeFormModal from './compose_form_modal';
+import KeyboardShortcutsModal from './keyboard_shortcuts_modal';
+import SettingsModal from './settings_modal';
 
 const MODAL_COMPONENTS = {
   'COMPOSE_FORM': ComposeFormModal,
+  'SETTINGS': SettingsModal,
+  'KEYBOARD_SHORTCUTS': KeyboardShortcutsModal,
 };
 
 export default class ModalRoot extends React.PureComponent {

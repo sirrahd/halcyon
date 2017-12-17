@@ -1,30 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import ComposeFromContainer from '../../compose/containers/compose_form_container';
+import SettingsForm from '../../settings';
 
-export default class ComposeFormModal extends React.PureComponent {
+export default class SettingsModal extends React.PureComponent {
 
   static propTypes = {
     onClose: PropTypes.func.isRequired,
   }
 
+  handleKeyDown = e => {
+    switch(e.key) {
+    case 'Enter':
+      this.props.onClose();
+      break;
+    }
+  }
+
   render() {
+    const { onClose } = this.props;
+
     return(
       <div className='modal-root__modal compose-form-modal'>
         <header className='modal-root__modal__header'>
           <h3>
-            <FormattedMessage id='modal.compose_form' defaultMessage='Compose new toot' />
+            <FormattedMessage id='modal.settings' defaultMessage='Settings' />
           </h3>
         </header>
 
-        <button className='modal-root__modal__close' onClick={this.onClose}>
+        <button className='modal-root__modal__close' onClick={onClose} onKeyDown={this.handleKeyDown}>
           <i className='icon-time' aria-hidden='true' />
         </button>
 
-        <div className='modal-root__modal__content'>
-          <ComposeFromContainer />
-        </div>
+        <SettingsForm />
       </div>
     );
   }
