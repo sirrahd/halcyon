@@ -1,30 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
-const mapStateToProps = (state) => ({
-  round: state.getIn(['settings', 'halcyonRoundAvatar']),
-});
-
-@connect(mapStateToProps)
 export default class Avatar extends React.PureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map.isRequired,
     size: PropTypes.number.isRequired,
+    round: PropTypes.bool.isRequired,
     style: PropTypes.object,
     animate: PropTypes.bool,
     inline: PropTypes.bool,
-    round: PropTypes.bool,
   };
 
   static defaultProps = {
     animate: false,
     size: 20,
     inline: false,
-    round: false,
   };
 
   handleMouseEnter = () => {
@@ -42,11 +35,13 @@ export default class Avatar extends React.PureComponent {
     const src = account.get('avatar');
     const staticSrc = account.get('avatar_static');
 
-    const className = classnames({
-      'account__avatar': true,
-      'account__avatar--inline': inline,
-      'account__avatar--round': round,
-    });
+    const className = classNames(
+      'account__avatar',
+      {
+        'account__avatar--inline': inline,
+        'account__avatar--round': round,
+      }
+    );
 
     const style = {
       ...this.props.style,
