@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Overlay from 'react-overlays/lib/Overlay';
 import { injectIntl, intlShape, defineMessages } from 'react-intl';
 import detectPassiveEvents from 'detect-passive-events';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 const messages = defineMessages({
   change: { id: 'privacy.change', defaultMessage: 'Adjust status privacy' },
@@ -74,7 +74,7 @@ class PrivacyDropdownMenu extends React.PureComponent {
 
         <div className='privacy-dropdown-menu__options-wrapper' ref={this.setRef}>
           { items.map(item => (
-            <a key={item.value} data-index={item.value} onClick={this.handleClick} className={classnames('privacy-dropdown-menu__option', { 'privacy-dropdown-menu__option--active': item.value === value })} >
+            <a key={item.value} data-index={item.value} onClick={this.handleClick} className={classNames('privacy-dropdown-menu__option', { 'privacy-dropdown-menu__option--active': item.value === value })} >
 
               <div className='privacy-dropdown-menu__icon'>
                 <i className={`${item.iconClassName} `} aria-hidden='true' />
@@ -185,13 +185,13 @@ export default class PrivacyDropdown extends React.PureComponent {
     ];
   }
 
-  render() {
+  render () {
     const { value, intl } = this.props;
     const { open } = this.state;
     const valueOption = this.options.find(item => item.value === value);
 
     return (
-      <div className={classnames('privacy-dropdown', { 'privacy-dropdown--active': open })} onKeyDown={this.handleKeyDown}>
+      <div className={classNames('privacy-dropdown', { 'privacy-dropdown--active': open })} onKeyDown={this.handleKeyDown}>
         <div className='compose-form__button'>
           <button
             className='compose-form__button-icon'

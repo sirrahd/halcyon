@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchFormContainer from '../containers/search_form_container';
-import UserDropdownMenuContainer from '../containers/user_dropdown_menu_container';
+// import SearchFormContainer from '../containers/search_form_container';
+import UserDropdownContainer from '../containers/user_dropdown_container';
 import TootButtonContainer from '../containers/toot_button_container';
 
 const UserNav = () => (
@@ -8,11 +8,11 @@ const UserNav = () => (
     <ul className='user-nav__list'>
 
       <li className='user-nav__list-item'>
-        <SearchFormContainer />
+        {/* <SearchFormContainer /> */}
       </li>
 
       <li className='user-nav__list-item'>
-        <UserDropdownMenuContainer />
+        <UserDropdownContainer />
       </li>
 
       <li className='user-nav__list-item'>

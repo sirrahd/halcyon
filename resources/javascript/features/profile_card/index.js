@@ -4,7 +4,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
-import Avatar from '../../components/avatar';
+import Avatar from '../../containers/avatar_container';
 import ProfileCardStats from './components/profile_card_stats';
 import ProfileCardRelationship from './components/profile_card_relationship';
 import normalizeAcct from '../../normalize_acct';

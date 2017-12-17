@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { openModal } from '../../../actions/modal';
+import { withRouter } from 'react-router-dom';
 import TootButton from '../components/toot_button';
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, props) => ({
   onClick() {
-    dispatch(openModal('COMPOSE_FORM', {}));
+    props.history.push('/compose');
   },
 });
 
-export default connect(
+export default withRouter(connect(
   null,
   mapDispatchToProps
-)(TootButton);
+)(TootButton));
