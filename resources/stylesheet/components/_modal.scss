@@ -5,7 +5,7 @@
 }
 
 .modal-root__overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -63,6 +63,10 @@
 .compose-form-modal,
 .keyboard-shortcuts-modal {
   width: 590px;
+}
+
+.settings-modal {
+  width: 690px;
 }
 
 .compose-form-modal {

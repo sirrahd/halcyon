@@ -34,7 +34,7 @@ const keyMap = {
   back: 'backspace',
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onOpenModal(type, props) {
     dispatch(openModal(type, props));
   },
@@ -48,6 +48,11 @@ export default class App extends React.Component {
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     onOpenModal: PropTypes.func.isRequired,
+    isModalOpened: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    isModalOpened: false,
   }
 
   handleHotkeyOpenComposeFormModal = () => {

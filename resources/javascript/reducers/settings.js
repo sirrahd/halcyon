@@ -10,7 +10,24 @@ const initialState = ImmutableMap({
 
   skinTone: 1,
 
-  halcyonRoundAvatar: false,
+  halcyon: ImmutableMap({
+    meta: ImmutableMap({
+      unfollowModal: false,
+      boostModal: false,
+      deleteModal: false,
+      autoPlayGif: false,
+      reduceMotion: false,
+    }),
+
+    compose: ImmutableMap({
+      defaultPrivacy: 'public',
+      defaultSensitive: false,
+      maxLength: 500,
+    }),
+
+    roundAvatar: false,
+    showNavigationLabels: false,
+  }),
 
   home: ImmutableMap({
     shows: ImmutableMap({

@@ -35,10 +35,11 @@ export default class ModalRoot extends React.PureComponent {
 
   componentWillReceiveProps (nextProps) {
     if (!!nextProps.type && !this.props.type) {
+      document.body.style.overflow = 'hidden';
       this.activeElement = document.activeElement;
-
       this.getSiblings().forEach(sibling => sibling.setAttribute('inert', true));
     } else if (!nextProps.type) {
+      document.body.style.overflow = 'scroll';
       this.setState({ revealed: false });
     }
   }

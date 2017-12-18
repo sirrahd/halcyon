@@ -93,7 +93,8 @@
 
   "settings.account": "アカウント",
   "settings.compose": "投稿設定",
-  "settings.ui": "ユーザーインターフェイス",
+  "settings.timeline": "タイムライン",
+  "settings.ui": "表示設定",
   "settings.a11y": "アクセシビリティ",
 
   "information.mastodon": "Mastodonについて",

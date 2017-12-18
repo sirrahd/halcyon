@@ -7,8 +7,8 @@ export default class Avatar extends React.PureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map.isRequired,
-    size: PropTypes.number.isRequired,
     round: PropTypes.bool.isRequired,
+    size: PropTypes.number,
     style: PropTypes.object,
     animate: PropTypes.bool,
     inline: PropTypes.bool,

@@ -1,83 +1,108 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape, defineMessages } from 'react-intl';
+import classNames from 'classnames';
 
-import AccountSettingsContainer from './containers/account_settings_container';
+import AccountsSettingsContainer from './containers/accounts_settings_container';
 import ComposeSettingsContainer from './containers/compose_settings_container';
+import TimelinesSettingsContainer from './containers/timelines_settings_container';
 import UISettingsContainer from './containers/ui_settings_container';
 import A11ySettingsContainer from './containers/a11y_settings_container';
 
-const tabsMap = [
-  'account',
-  'compose',
-  'ui',
-  'a11y',
-];
+const messages = defineMessages({
+  account: { id: 'settings.account', defaultMessage: 'Account' },
+  compose: { id: 'settings.compose', defaultMessage: 'Staus' },
+  timeline: { id: 'settings.timeline', defaultMessage: 'Timelines' },
+  ui: { id: 'settings.ui', defaultMessage: 'User interface' },
+  a11y: { id: 'settings.a11y', defaultMessage: 'Accessibility' },
+});
 
+class SettingsMenu extends React.PureComponent {
+
+  static propTypes = {
+    items: PropTypes.array.isRequired,
+    active: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired,
+  }
+
+  handleClick = e => {
+    const i = Number(e.currentTarget.getAttribute('data-index'));
+    e.preventDefault();
+    this.props.onChange(i);
+  }
+
+  renderItem(option, i) {
+    const { id, label, iconClassName } = option;
+    const { active } = this.props;
+
+    return (
+      <li className='settings__menu-list-item' key={`${i}-${id}`}>
+        <a className={classNames('settings__menu-link', { active: active === i })} href='#' data-index={i} onClick={this.handleClick} onKeyDown={this.handleKetDown} autoFocus={(i === 0)}>
+          <i className={`${iconClassName} settings__menu-icon`} aria-hidden='true' />
+          <span>{label}</span>
+        </a>
+      </li>
+    );
+  }
+
+  render () {
+    const { items } = this.props;
+
+    return (
+      <aside className='settings__menu'>
+        <ul className='settings__menu-list'>
+          { items.map((option, i) => this.renderItem(option, i)) }
+        </ul>
+      </aside>
+    );
+  }
+
+}
+
+@injectIntl
 export default class Settings extends React.PureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map.isRequired,
     settings: ImmutablePropTypes.map.isRequired,
-    initialTab: PropTypes.string,
-  }
-
-  static defaultProps = {
-    initialTab: 'account',
+    intl: intlShape.isRequired,
   }
 
   state = {
-    currentTab: tabsMap.indexOf(this.props.initialTab),
+    active: 0,
   }
 
-  handleToggleTab = e => {
-    const i = Number(e.currentTarget.getAttribute('data-index'));
-    e.preventDefault();
+  componentWillMount () {
+    const { formatMessage } = this.props.intl;
 
-    if ( tabsMap.length >= i ) {
-      this.setState({ currentTab: i });
-    }
+    this.menu = [
+      { id: 'accounts', component: AccountsSettingsContainer, label: formatMessage(messages.account), iconClassName: 'fa fa-address-book' },
+      { id: 'compose', component: ComposeSettingsContainer, label: formatMessage(messages.compose), iconClassName: 'fa fa-pencil-square-o' },
+      { id: 'timelines', component: TimelinesSettingsContainer, label: formatMessage(messages.timeline), iconClassName: 'fa fa-globe' },
+      { id: 'ui', component: UISettingsContainer, label: formatMessage(messages.ui), iconClassName: 'fa fa-desktop' },
+      { id: 'a11y', component: A11ySettingsContainer, label: formatMessage(messages.a11y), iconClassName: 'fa fa-universal-access' },
+    ];
+  }
+
+  handleChange = i => {
+    this.setState({ active: i });
   }
 
   render () {
-    const { currentTab } = this.state;
+    const { active } = this.state;
+    const ActiveComponent = this.menu[active].component;
 
     return (
       <div className='settings'>
-        <asie className='settings__tabs'>
-          <ul className='settings__tabs-list'>
-            <li className='settings__tabs-list-item'>
-              <a data-index={0} onClick={this.handleToggleTab}>
-                <FormattedMessage id='settings.account' defaultMessage='Account' />
-              </a>
-            </li>
+        <SettingsMenu
+          items={this.menu}
+          active={active}
+          onChange={this.handleChange}
+        />
 
-            <li className='settings__tabs-list-item'>
-              <a data-index={1} onClick={this.handleToggleTab}>
-                <FormattedMessage id='settings.compose' defaultMessage='Status' />
-              </a>
-            </li>
-
-            <li className='settings__tabs-list-item'>
-              <a data-index={2} onClick={this.handleToggleTab}>
-                <FormattedMessage id='settings.ui' defaultMessage='User interface' />
-              </a>
-            </li>
-
-            <li className='settings__tabs-list-item'>
-              <a data-index={3} onClick={this.handleToggleTab}>
-                <FormattedMessage id='settings.a11y' defaultMessage='Accessibility' />
-              </a>
-            </li>
-          </ul>
-        </asie>
-
-        <section className='settings__wrapper'>
-          <AccountSettingsContainer visible={(currentTab === 0)} />
-          <ComposeSettingsContainer visible={(currentTab === 1)} />
-          <UISettingsContainer visible={(currentTab === 2)} />
-          <A11ySettingsContainer visible={(currentTab === 3)} />
+        <section className='settings__categories-wrapper'>
+          <ActiveComponent />
         </section>
       </div>
     );

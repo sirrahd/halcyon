@@ -21,7 +21,7 @@ export default class SettingsModal extends React.PureComponent {
     const { onClose } = this.props;
 
     return(
-      <div className='modal-root__modal compose-form-modal'>
+      <div className='modal-root__modal settings-modal'>
         <header className='modal-root__modal__header'>
           <h3>
             <FormattedMessage id='modal.settings' defaultMessage='Settings' />
