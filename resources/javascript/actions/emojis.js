@@ -1,5 +1,3 @@
-import { saveSettings } from './settings';
-
 export const EMOJI_USE = 'EMOJI_USE';
 
 export function useEmoji(emoji) {
@@ -8,7 +6,5 @@ export function useEmoji(emoji) {
       type: EMOJI_USE,
       emoji,
     });
-
-    dispatch(saveSettings());
   };
 };

@@ -1,33 +1,10 @@
-import { SETTING_CHANGE, SETTING_SAVE } from '../actions/settings';
+import { SETTING_CHANGE } from '../actions/settings';
 import { STORE_HYDRATE } from '../actions/store';
 import { EMOJI_USE } from '../actions/emojis';
 import { Map as ImmutableMap } from 'immutable';
 
 const initialState = ImmutableMap({
-  saved: true,
-
-  onboarded: false,
-
   skinTone: 1,
-
-  halcyon: ImmutableMap({
-    meta: ImmutableMap({
-      unfollowModal: false,
-      boostModal: false,
-      deleteModal: false,
-      autoPlayGif: false,
-      reduceMotion: false,
-    }),
-
-    compose: ImmutableMap({
-      defaultPrivacy: 'public',
-      defaultSensitive: false,
-      maxLength: 500,
-    }),
-
-    roundAvatar: false,
-    showNavigationLabels: false,
-  }),
 
   home: ImmutableMap({
     shows: ImmutableMap({
@@ -40,28 +17,28 @@ const initialState = ImmutableMap({
     }),
   }),
 
-  notifications: ImmutableMap({
-    alerts: ImmutableMap({
-      follow: true,
-      favourite: true,
-      reblog: true,
-      mention: true,
-    }),
+  // notifications: ImmutableMap({
+  //   alerts: ImmutableMap({
+  //     follow: true,
+  //     favourite: true,
+  //     reblog: true,
+  //     mention: true,
+  //   }),
 
-    shows: ImmutableMap({
-      follow: true,
-      favourite: true,
-      reblog: true,
-      mention: true,
-    }),
+  //   shows: ImmutableMap({
+  //     follow: true,
+  //     favourite: true,
+  //     reblog: true,
+  //     mention: true,
+  //   }),
 
-    sounds: ImmutableMap({
-      follow: true,
-      favourite: true,
-      reblog: true,
-      mention: true,
-    }),
-  }),
+  //   sounds: ImmutableMap({
+  //     follow: true,
+  //     favourite: true,
+  //     reblog: true,
+  //     mention: true,
+  //   }),
+  // }),
 
   community: ImmutableMap({
     regex: ImmutableMap({
@@ -74,6 +51,12 @@ const initialState = ImmutableMap({
       body: '',
     }),
   }),
+
+
+  halcyon: ImmutableMap({
+    roundAvatars: false,
+    showNavigationLabels: false,
+  }),
 });
 
 const hydrate = (state, settings) => state.mergeDeep(settings);
@@ -85,13 +68,9 @@ export default function settings(state = initialState, action) {
   case STORE_HYDRATE:
     return hydrate(state, action.state.get('settings'));
   case SETTING_CHANGE:
-    return state
-      .setIn(action.key, action.value)
-      .set('saved', false);
+    return state.setIn(action.key, action.value);
   case EMOJI_USE:
     return updateFrequentEmojis(state, action.emoji);
-  case SETTING_SAVE:
-    return state.set('saved', true);
   default:
     return state;
   }
