@@ -16,12 +16,12 @@ export default class AccountsSettings extends React.PureComponent {
     const { account } = this.props;
 
     return(
-      <div className='settings__section'>
+      <div className='settings__content'>
         <h3><FormattedMessage id='settings.accounts' defaultMessage='Accounts' /></h3>
 
         <form className='account-setting-form'>
           <div>
-            <Avatar size='50' account={account} />
+            <Avatar size={50} account={account} />
             <DispalyName account={account} />
           </div>
         </form>

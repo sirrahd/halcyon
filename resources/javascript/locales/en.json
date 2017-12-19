@@ -91,11 +91,26 @@
   "modal.settings": "Settings",
   "modal.keyboard_shortcuts": "Keyboard Shortcuts",
 
-  "settings.account": "Accounts",
-  "settings.compose": "Status",
-  "settings.timeline": "Timelines",
+  "settings.accounts": "Accounts",
+  "settings.publishing": "Publishing",
+  "settings.timelines": "Timelines",
   "settings.ui": "User interface",
   "settings.a11y": "Accessibility",
+
+  "settings.publishing.default_privacy": "Post Privacy",
+  "settings.publishing.default_sensitive": "Always mark media as sensitive",
+  "settings.publishing.max_length": "Max status length",
+
+  "settings.ui.language": "Language",
+  "settings.ui.theme": "Theme",
+  "settings.ui.round_avatars": "Round avatars",
+  "settings.ui.navigations_label": "Show labels in the navigation bar",
+
+  "settings.a11y.unfollow_modal": "Show confirmation dialog before unfollowing someone",
+  "settings.a11y.boost_modal": "Show confirmation dialog before boosting",
+  "settings.a11y.delete_modal": "Show confirmation dialog deleting a toot",
+  "settings.a11y.auto_play_gif": "Auto-play animated GIFs",
+  "settings.a11y.reduce_motion": "Reduce motion in animations",
 
   "information.mastodon": "About Mastodon",
   "information.feedback": "Feedback",

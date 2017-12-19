@@ -47,32 +47,47 @@
   }
 }
 
-.settings__categories-wrapper {
+.settings__contents-wrapper {
   flex-grow: 1;
   padding: 0 18px;
   box-sizing: border-box;
   overflow-y: scroll;
+}
 
-  .settings__section {
-    height: 100%;
+.settings__content {
+  height: 100%;
+  font-size: 14px;
+  line-height: 1.6;
 
-    h3 {
-      font-size: 21px;
-      font-weight: bold;
-      line-height: 1.6;
-      margin-bottom: 8px;
-    }
+  h3 {
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
 
-    h4 {
-      font-size: 18px;
-      font-weight: bold;
-      line-height: 1.6;
-      margin-bottom: 8px;
-    }
+  h4 {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
 
-    p {
-      line-height: 1.2;
-      margin-bottom: 24px;
-    }
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 6px;
+  }
+
+  select,
+  textarea,
+  optgroup,
+  input {
+    font-size: 14px;
+  }
+
+  input[type="number"],
+  input[type="text"],
+  select {
+    float: right;
   }
 }

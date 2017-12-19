@@ -5,15 +5,15 @@ import { injectIntl, intlShape, defineMessages } from 'react-intl';
 import classNames from 'classnames';
 
 import AccountsSettingsContainer from './containers/accounts_settings_container';
-import ComposeSettingsContainer from './containers/compose_settings_container';
+import PublishingSettingsContainer from './containers/publishing_settings_container';
 import TimelinesSettingsContainer from './containers/timelines_settings_container';
 import UISettingsContainer from './containers/ui_settings_container';
 import A11ySettingsContainer from './containers/a11y_settings_container';
 
 const messages = defineMessages({
-  account: { id: 'settings.account', defaultMessage: 'Account' },
-  compose: { id: 'settings.compose', defaultMessage: 'Staus' },
-  timeline: { id: 'settings.timeline', defaultMessage: 'Timelines' },
+  accounts: { id: 'settings.accounts', defaultMessage: 'Accounts' },
+  publishing: { id: 'settings.publishing', defaultMessage: 'Publishing' },
+  timelines: { id: 'settings.timelines', defaultMessage: 'Timelines' },
   ui: { id: 'settings.ui', defaultMessage: 'User interface' },
   a11y: { id: 'settings.a11y', defaultMessage: 'Accessibility' },
 });
@@ -77,9 +77,9 @@ export default class Settings extends React.PureComponent {
     const { formatMessage } = this.props.intl;
 
     this.menu = [
-      { id: 'accounts', component: AccountsSettingsContainer, label: formatMessage(messages.account), iconClassName: 'fa fa-address-book' },
-      { id: 'compose', component: ComposeSettingsContainer, label: formatMessage(messages.compose), iconClassName: 'fa fa-pencil-square-o' },
-      { id: 'timelines', component: TimelinesSettingsContainer, label: formatMessage(messages.timeline), iconClassName: 'fa fa-globe' },
+      { id: 'accounts', component: AccountsSettingsContainer, label: formatMessage(messages.accounts), iconClassName: 'fa fa-address-book' },
+      { id: 'publishing', component: PublishingSettingsContainer, label: formatMessage(messages.publishing), iconClassName: 'fa fa-pencil-square-o' },
+      { id: 'timelines', component: TimelinesSettingsContainer, label: formatMessage(messages.timelines), iconClassName: 'fa fa-globe' },
       { id: 'ui', component: UISettingsContainer, label: formatMessage(messages.ui), iconClassName: 'fa fa-desktop' },
       { id: 'a11y', component: A11ySettingsContainer, label: formatMessage(messages.a11y), iconClassName: 'fa fa-universal-access' },
     ];
@@ -101,9 +101,9 @@ export default class Settings extends React.PureComponent {
           onChange={this.handleChange}
         />
 
-        <section className='settings__categories-wrapper'>
+        <div className='settings__contents-wrapper'>
           <ActiveComponent />
-        </section>
+        </div>
       </div>
     );
   }

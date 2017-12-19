@@ -1,66 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape, defineMessages, FormattedMessage } from 'react-intl';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import SettingCheckbox from '../../../components/setting_checkbox';
+import { LANUAGES, THEMES } from '../../../constants';
 
+const messages = defineMessages({
+  round_avatars: { id: 'settings.ui.round_avatars', defaultMessage: 'Round avatars' },
+  navigations_label: { id: 'settings.ui.navigations_label', defaultMessage: 'Show labels in the navigation bar' },
+});
+
+@injectIntl
 export default class UISettings extends React.PureComponent {
 
   static propTypes = {
-    roundAvatar: PropTypes.bool,
-    showNavigationLabels: PropTypes.bool,
+    settings: ImmutablePropTypes.map.isRequired,
     onChange: PropTypes.func.isRequired,
-  }
-
-  state = {
-    defaultRoundAvatar: false,
-    defaultshowNavigationLabels: false,
-  }
-
-  componentDidMount () {
-    if ( this.props.roundAvatar ) {
-      this.setState({ defaultRoundAvatar: true });
-    }
-
-    if ( this.props.showNavigationLabels ) {
-      this.setState({ defaultshowNavigationLabels: true });
-    }
-  }
-
-  handleChangeRoundAvatar = e => {
-    console.log(e.currentTarget.getAttribute('checked'));
-    const value = e.currentTarget.getAttribute('checked');
-    this.props.onChange(['halcyon', 'roundAvatar'], value);
+    intl: intlShape.isRequired,
   }
 
   render () {
-    const {
-      defaultRoundAvatar,
-      defaultShowNavigationLabels,
-    } = this.state;
+    const { settings, onChange, intl } = this.props;
 
     return(
-      <div className='settings__section'>
+      <div className='settings__content'>
         <h3><FormattedMessage id='settings.ui' defaultMessage='User interface' /></h3>
 
         <div>
-          Theme
+          <FormattedMessage id='settings.ui.language' defaultMessage='Language' />
           <select className='default-css'>
-            <option>Light</option>
-            <option>Dark</option>
+            { LANUAGES.map((data, i) => <option key={`${i}-${data.value}`} value={data.value}>{data.name}</option>)}
           </select>
         </div>
 
         <div>
-          <label>
-            <input type='checkbox' checked='checked' onChange={this.handleChangeRoundAvatar} />
-            Round avatar
-          </label>
+          <FormattedMessage id='settings.ui.theme' defaultMessage='Theme' />
+          <select className='default-css'>
+            { THEMES.map((data, i) => <option key={`${i}-${data.value}`} value={data.value}>{data.name}</option>)}
+          </select>
         </div>
 
         <div>
-          <label>
-            <input type='checkbox' onChange={this.handleChange} />
-            Show labels in the navigation bar
-          </label>
+          <SettingCheckbox settings={settings} settingKey={['halcyon', 'roundAvatars']} label={intl.formatMessage(messages.round_avatars)} onChange={onChange} />
+        </div>
+
+        <div>
+          <SettingCheckbox settings={settings} settingKey={['halcyon', 'showNavigationLabels']} label={intl.formatMessage(messages.navigations_label)} onChange={onChange} />
         </div>
 
       </div>

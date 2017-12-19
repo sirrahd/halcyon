@@ -3,8 +3,7 @@ import { changeSetting } from '../../../actions/settings';
 import UISettings from '../components/ui_settings';
 
 const mapStateToProps = state => ({
-  roundAvatar: state.getIn(['settings', 'halcyon', 'roundAvatar']),
-  showNavigationLabels: state.getIn(['settings', 'halcyon', 'showNavigationLabels']),
+  settings: state.get('settings'),
 });
 
 const mapDispatchToProps = dispatch => ({

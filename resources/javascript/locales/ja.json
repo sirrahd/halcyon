@@ -91,16 +91,31 @@
   "modal.settings": "設定",
   "modal.keyboard_shortcuts": "キーボードショートカット",
 
-  "settings.account": "アカウント",
-  "settings.compose": "投稿設定",
-  "settings.timeline": "タイムライン",
-  "settings.ui": "表示設定",
-  "settings.a11y": "アクセシビリティ",
-
   "information.mastodon": "Mastodonについて",
   "information.feedback": "フィードバック",
   "information.source_code": "ソースコード",
   "information.donation": "開発を支援",
+
+  "settings.accounts": "アカウント",
+  "settings.publishing": "投稿設定",
+  "settings.timelines": "タイムライン",
+  "settings.ui": "表示設定",
+  "settings.a11y": "アクセシビリティ",
+
+  "settings.publishing.default_privacy": "デフォルト投稿範囲",
+  "settings.publishing.default_sensitive": "メディアを常に閲覧注意としてマークする",
+  "settings.publishing.max_length": "最大文字数",
+
+  "settings.ui.language": "言語",
+  "settings.ui.theme": "テーマ",
+  "settings.ui.round_avatars": "アバターを丸める",
+  "settings.ui.navigations_label": "ナビゲーションバーにラベルを表示",
+
+  "settings.a11y.unfollow_modal": "フォロー解除する前に確認ダイアログを表示する",
+  "settings.a11y.boost_modal": "ブーストする前に確認ダイアログを表示する",
+  "settings.a11y.delete_modal": "トゥートを削除する前に確認ダイアログを表示する",
+  "settings.a11y.auto_play_gif": "アニメーションGIFを自動再生する",
+  "settings.a11y.reduce_motion": "アニメーションの動きを減らす",
 
   "login_form.title": "Halcyonにログイン",
   "login_form.submit": "ログイン",

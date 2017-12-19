@@ -1,13 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { NavLink, withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
+const mapStateToProps = state => ({
+  showNavigationLabels: state.getIn(['settings', 'halcyon', 'showNavigationLabels']),
+});
+
+@connect(mapStateToProps)
 @withRouter
 export default class PageNavigation extends React.Component {
 
   static propTypes = {
     location: PropTypes.object.isRequired,
+    showNavigationLabels: PropTypes.bool.isRequired,
   }
 
   shouldComponentUpdate(nextProps) {
