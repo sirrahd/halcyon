@@ -1,5 +1,6 @@
 import { List as ImmutableList } from 'immutable';
 import { STORE_HYDRATE } from '../actions/store';
+import { CUSTOM_EMOJIS_FETCH_SUCCESS } from '../actions/custom_emojis';
 import { search as emojiSearch } from '../features/emoji/emoji_mart_search_light';
 import { buildCustomEmojis } from '../features/emoji/emoji';
 
@@ -10,6 +11,9 @@ export default function custom_emojis(state = initialState, action) {
   case STORE_HYDRATE:
     emojiSearch('', { custom: buildCustomEmojis(action.state.get('custom_emojis', [])) });
     return action.state.get('custom_emojis');
+  case CUSTOM_EMOJIS_FETCH_SUCCESS:
+    emojiSearch('', { custom: buildCustomEmojis(action.emojis || ImmutableList()) });
+    return action.emojis;
   default:
     return state;
   }

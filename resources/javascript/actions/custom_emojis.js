@@ -1,8 +1,8 @@
 import { api } from '../api/mastodon';
 
-export const CUSTUM_EMOJIS_FETCH_REQUEST = 'CUSTUM_EMOJIS_FETCH_REQUEST';
-export const CUSTUM_EMOJIS_FETCH_SUCCESS = 'CUSTUM_EMOJIS_FETCH_SUCCESS';
-export const CUSTUM_EMOJIS_FETCH_FAIL    = 'CUSTUM_EMOJIS_FETCH_FAIL';
+export const CUSTOM_EMOJIS_FETCH_REQUEST = 'CUSTOM_EMOJIS_FETCH_REQUEST';
+export const CUSTOM_EMOJIS_FETCH_SUCCESS = 'CUSTOM_EMOJIS_FETCH_SUCCESS';
+export const CUSTOM_EMOJIS_FETCH_FAIL    = 'CUSTOM_EMOJIS_FETCH_FAIL';
 
 export function fetchCustumEmojis() {
   return (dispatch, getState) => {
@@ -18,20 +18,20 @@ export function fetchCustumEmojis() {
 
 export function fetchCustumEmojisRequest() {
   return {
-    type: CUSTUM_EMOJIS_FETCH_REQUEST,
+    type: CUSTOM_EMOJIS_FETCH_REQUEST,
   };
 }
 
 export function fetchCustumEmojisSuccess(emojis) {
   return {
-    type: CUSTUM_EMOJIS_FETCH_SUCCESS,
+    type: CUSTOM_EMOJIS_FETCH_SUCCESS,
     emojis,
   };
 }
 
 export function fetchCustumEmojisFail(error) {
   return {
-    type: CUSTUM_EMOJIS_FETCH_FAIL,
+    type: CUSTOM_EMOJIS_FETCH_FAIL,
     error,
   };
 }
