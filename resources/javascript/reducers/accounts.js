@@ -55,6 +55,7 @@ const normalizeAccount = (state, account) => {
   delete account.followers_count;
   delete account.following_count;
   delete account.statuses_count;
+  delete account.source;
 
   const displayName = account.display_name.length === 0 ? account.username : account.display_name;
   account.display_name_html = emojify(escapeTextContentForBrowser(displayName));
@@ -102,9 +103,8 @@ export default function accounts(state = initialState, action) {
     return state.merge(action.state.get('accounts'));
   case ACCOUNT_FETCH_SUCCESS:
   case NOTIFICATIONS_UPDATE:
-    return normalizeAccount(state, action.account);
   case CREDENTIALS_VERIFY_SUCCESS:
-    return normalizeAccount(state, action.account.filter((_, key) => key !== 'source'));
+    return normalizeAccount(state, action.account);
   case FOLLOWERS_FETCH_SUCCESS:
   case FOLLOWERS_EXPAND_SUCCESS:
   case FOLLOWING_FETCH_SUCCESS:
