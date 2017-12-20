@@ -7,6 +7,8 @@ import { withRouter } from 'react-router-dom';
 import { HotKeys } from 'react-hotkeys';
 import { isMobile } from '../../is_mobile';
 import { openModal } from '../../actions/modal';
+import { verifyCredentials } from '../../actions/credentials';
+import { fetchCustomEmojis } from '../../actions/custom_emojis';
 
 import Topbar from '../topbar';
 import ModalContaienr from './containers/modal_contaienr';
@@ -35,6 +37,11 @@ const keyMap = {
 };
 
 const mapDispatchToProps = dispatch => ({
+  onUpdateState() {
+    dispatch(verifyCredentials());
+    dispatch(fetchCustomEmojis());
+  },
+
   onOpenModal(type, props) {
     dispatch(openModal(type, props));
   },
@@ -48,11 +55,16 @@ export default class App extends React.Component {
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     onOpenModal: PropTypes.func.isRequired,
+    onUpdateState: PropTypes.func.isRequired,
     isModalOpened: PropTypes.bool,
   }
 
   static defaultProps = {
     isModalOpened: false,
+  }
+
+  componentWillMount () {
+    this.props.onUpdateState();
   }
 
   handleHotkeyOpenComposeFormModal = () => {

@@ -1,4 +1,5 @@
 import { STORE_HYDRATE } from '../actions/store';
+import { META_SETTING_CHANGE } from '../actions/meta';
 import { Map as ImmutableMap } from 'immutable';
 
 const initialState = ImmutableMap({
@@ -15,6 +16,8 @@ export default function meta(state = initialState, action) {
   switch(action.type) {
   case STORE_HYDRATE:
     return state.merge(action.state.get('meta'));
+  case META_SETTING_CHANGE:
+    return state.setIn(action.key, action.value);
   default:
     return state;
   }

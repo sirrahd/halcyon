@@ -13,4 +13,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalRoot);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ModalRoot);

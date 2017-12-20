@@ -64,8 +64,6 @@ class SettingsMenu extends React.PureComponent {
 export default class Settings extends React.PureComponent {
 
   static propTypes = {
-    account: ImmutablePropTypes.map.isRequired,
-    settings: ImmutablePropTypes.map.isRequired,
     intl: intlShape.isRequired,
   }
 

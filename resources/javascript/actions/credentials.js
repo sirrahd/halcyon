@@ -1,4 +1,4 @@
-import { api } from '../api/mastodon';
+import api from '../api/mastodon';
 
 export const CREDENTIALS_VERIFY_REQUEST = 'CREDENTIALS_VERIFY_REQUEST';
 export const CREDENTIALS_VERIFY_SUCCESS = 'CREDENTIALS_VERIFY_SUCCESS';
@@ -12,7 +12,7 @@ export function verifyCredentials() {
   return (dispatch, getState) => {
     dispatch(verifyCredentialsRequest());
 
-    api(getState).get('/api/v1/accounts/credentials').then(response => {
+    api(getState).get('/api/v1/accounts/verify_credentials').then(response => {
       dispatch(verifyCredentialsSuccess(response));
     }).catch(error => {
       dispatch(verifyCredentialsFail(error));

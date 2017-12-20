@@ -1,28 +1,28 @@
-import { api } from '../api/mastodon';
+import api from '../api/mastodon';
 
 export const CUSTOM_EMOJIS_FETCH_REQUEST = 'CUSTOM_EMOJIS_FETCH_REQUEST';
 export const CUSTOM_EMOJIS_FETCH_SUCCESS = 'CUSTOM_EMOJIS_FETCH_SUCCESS';
 export const CUSTOM_EMOJIS_FETCH_FAIL    = 'CUSTOM_EMOJIS_FETCH_FAIL';
 
-export function fetchCustumEmojis() {
+export function fetchCustomEmojis() {
   return (dispatch, getState) => {
-    dispatch(fetchCustumEmojisRequest());
+    dispatch(fetchCustomEmojisRequest());
 
     api(getState).get('/api/v1/custom_emojis').then(response => {
-      dispatch(fetchCustumEmojisSuccess(response));
+      dispatch(fetchCustomEmojisSuccess(response));
     }).catch(error => {
       dispatch(fetchCustumEmojisFail(error));
     });
   };
 }
 
-export function fetchCustumEmojisRequest() {
+export function fetchCustomEmojisRequest() {
   return {
     type: CUSTOM_EMOJIS_FETCH_REQUEST,
   };
 }
 
-export function fetchCustumEmojisSuccess(emojis) {
+export function fetchCustomEmojisSuccess(emojis) {
   return {
     type: CUSTOM_EMOJIS_FETCH_SUCCESS,
     emojis,
