@@ -29,6 +29,7 @@ import {
 } from '../actions/compose';
 import { TIMELINE_DELETE } from '../actions/timelines';
 import { STORE_HYDRATE } from '../actions/store';
+import { CREDENTIALS_VERIFY_SUCCESS } from '../actions/credentials';
 import { Map as ImmutableMap, List as ImmutableList, OrderedSet as ImmutableOrderedSet, fromJS } from 'immutable';
 import uuid from '../uuid';
 import { me } from '../initial_state';
@@ -270,6 +271,10 @@ export default function compose(state = initialState, action) {
 
         return item;
       }));
+  case CREDENTIALS_VERIFY_SUCCESS:
+    return state
+      .set('default_privacy',   action.account.source.privacy)
+      .set('default_sensitive', action.account.source.sensitive);
   default:
     return state;
   }
