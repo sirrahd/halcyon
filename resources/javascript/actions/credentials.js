@@ -41,21 +41,22 @@ export function verifyCredentialsFail(error) {
 }
 
 
-// export function updateCredentials() {
-//   return (dispatch, getState) => {
-//     dispatch(updateCredentialsRequest());
+export function updateCredentials(data) {
+  return (dispatch, getState) => {
+    dispatch(updateCredentialsRequest(data));
 
-//     api(getState).get('/api/v1/accounts/credentials').then(response => {
-//       dispatch(updateCredentialsSuccess(response));
-//     }).catch(error => {
-//       dispatch(updateCredentialsFail(error));
-//     });
-//   };
-// }
+    api(getState).patch('/api/v1/accounts/update_credentials', { data }).then(response => {
+      dispatch(updateCredentialsSuccess(response));
+    }).catch(error => {
+      dispatch(updateCredentialsFail(error, data));
+    });
+  };
+}
 
-export function updateCredentialsRequest() {
+export function updateCredentialsRequest(data) {
   return {
     type: CREDENTIALS_UPDATE_REQUEST,
+    data,
   };
 }
 
@@ -66,9 +67,10 @@ export function updateCredentialsSuccess(account) {
   };
 }
 
-export function updateCredentialsFail(error) {
+export function updateCredentialsFail(error, data) {
   return {
     type: CREDENTIALS_UPDATE_FAIL,
     error,
+    data,
   };
 }
