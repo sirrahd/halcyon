@@ -44,6 +44,7 @@ import {
   FAVOURITED_STATUSES_EXPAND_SUCCESS,
 } from '../actions/favourites';
 import { STORE_HYDRATE } from '../actions/store';
+import { VERIFY_CREDENTIALS_SUCCESS } from '../actions/verify_credentials';
 import emojify from '../features/emoji/emoji';
 import { Map as ImmutableMap, fromJS } from 'immutable';
 import escapeTextContentForBrowser from 'escape-html';
@@ -102,6 +103,8 @@ export default function accounts(state = initialState, action) {
   case ACCOUNT_FETCH_SUCCESS:
   case NOTIFICATIONS_UPDATE:
     return normalizeAccount(state, action.account);
+  case VERIFY_CREDENTIALS_SUCCESS:
+    return normalizeAccount(state, action.account.filter((_, key) => key !== 'source'));
   case FOLLOWERS_FETCH_SUCCESS:
   case FOLLOWERS_EXPAND_SUCCESS:
   case FOLLOWING_FETCH_SUCCESS:
