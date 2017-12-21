@@ -43,8 +43,11 @@ import {
   FAVOURITED_STATUSES_FETCH_SUCCESS,
   FAVOURITED_STATUSES_EXPAND_SUCCESS,
 } from '../actions/favourites';
+import {
+  CREDENTIALS_VERIFY_SUCCESS,
+  CREDENTIALS_UPDATE_SUCCESS,
+} from '../actions/credentials';
 import { STORE_HYDRATE } from '../actions/store';
-import { CREDENTIALS_VERIFY_SUCCESS } from '../actions/credentials';
 import emojify from '../features/emoji/emoji';
 import { Map as ImmutableMap, fromJS } from 'immutable';
 import escapeTextContentForBrowser from 'escape-html';
@@ -104,6 +107,7 @@ export default function accounts(state = initialState, action) {
   case ACCOUNT_FETCH_SUCCESS:
   case NOTIFICATIONS_UPDATE:
   case CREDENTIALS_VERIFY_SUCCESS:
+  case CREDENTIALS_UPDATE_SUCCESS:
     return normalizeAccount(state, action.account);
   case FOLLOWERS_FETCH_SUCCESS:
   case FOLLOWERS_EXPAND_SUCCESS:
