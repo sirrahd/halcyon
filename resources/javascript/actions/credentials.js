@@ -13,7 +13,7 @@ export function verifyCredentials() {
     dispatch(verifyCredentialsRequest());
 
     api(getState).get('/api/v1/accounts/verify_credentials').then(response => {
-      dispatch(verifyCredentialsSuccess(response));
+      dispatch(verifyCredentialsSuccess(response.data));
     }).catch(error => {
       dispatch(verifyCredentialsFail(error));
     });
@@ -46,7 +46,7 @@ export function updateCredentials(data) {
     dispatch(updateCredentialsRequest(data));
 
     api(getState).patch('/api/v1/accounts/update_credentials', { data }).then(response => {
-      dispatch(updateCredentialsSuccess(response));
+      dispatch(updateCredentialsSuccess(response.data));
     }).catch(error => {
       dispatch(updateCredentialsFail(error, data));
     });

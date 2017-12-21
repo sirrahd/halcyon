@@ -58,7 +58,6 @@ const normalizeAccount = (state, account) => {
   delete account.followers_count;
   delete account.following_count;
   delete account.statuses_count;
-  delete account.source;
 
   const displayName = account.display_name.length === 0 ? account.username : account.display_name;
   account.display_name_html = emojify(escapeTextContentForBrowser(displayName));
