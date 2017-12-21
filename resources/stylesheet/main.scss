@@ -3,6 +3,7 @@
 @import "mixins";
 @import "base";
 
+@import "components/account";
 @import "components/avatar";
 @import "components/compose_form";
 @import "components/content";
@@ -12,8 +13,10 @@
 @import "components/keyboard_shortcuts";
 @import "components/login";
 @import "components/modal";
+@import "components/not_found";
 @import "components/profile_card";
 @import "components/settings";
+@import "components/site_footer";
 @import "components/topbar";
 
 @import "fonts/halcyon-font";

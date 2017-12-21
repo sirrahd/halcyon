@@ -15,15 +15,16 @@ export default class ProfileCardStats extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
+    account_counters: ImmutablePropTypes.map,
     intl: intlShape,
   }
 
   render() {
-    const { account, intl } = this.props;
+    const { account, account_counters, intl } = this.props;
     const id = account.get('id');
-    const followers_count = account.get('followers_count');
-    const following_count = account.get('following_count');
-    const statuses_count  = account.get('statuses_count');
+    const followers_count = account_counters.get('followers_count');
+    const following_count = account_counters.get('following_count');
+    const statuses_count  = account_counters.get('statuses_count');
 
     return (
       <div className='profile-card-stats'>

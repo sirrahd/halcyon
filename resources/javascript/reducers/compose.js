@@ -275,7 +275,7 @@ export default function compose(state = initialState, action) {
     return state
       .set('privacy', action.account.source.privacy)
       .set('sensitive', action.account.source.sensitive)
-      .set('default_privacy',   action.account.source.privacy)
+      .set('default_privacy', action.account.source.privacy)
       .set('default_sensitive', action.account.source.sensitive);
   default:
     return state;

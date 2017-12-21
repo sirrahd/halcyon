@@ -18,7 +18,7 @@ export default class PageNavigation extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if ( this.props.location !== nextProps.location ) {
+    if ( this.props.location.pathname !== nextProps.location.pathname ) {
       return true;
     }
     return false;

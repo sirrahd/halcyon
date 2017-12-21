@@ -56,6 +56,7 @@ export default class ProfileCard extends ImmutablePureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     account: ImmutablePropTypes.map,
+    account_counters: ImmutablePropTypes.map,
     // onFollow: PropTypes.func.isRequired,
     // onBlock: PropTypes.func.isRequired,
     // onMute: PropTypes.func.isRequired,
@@ -71,7 +72,7 @@ export default class ProfileCard extends ImmutablePureComponent {
   }
 
   render() {
-    const { account, hideNote } = this.props;
+    const { account, account_counters, hideNote } = this.props;
     const header          = account.get('header');
     const id              = account.get('id');
     const displayNameHtml = { __html: account.get('display_name') };
@@ -97,7 +98,10 @@ export default class ProfileCard extends ImmutablePureComponent {
           <div className={`profile-card__note ${ hideNote ? 'invisible' : '' }`} dangerouslySetInnerHTML={noteHtml} />
         </div>
 
-        <ProfileCardStats account={account} />
+        <ProfileCardStats
+          account={account}
+          account_counters={account_counters}
+        />
         <ProfileCardRelationship account={account} />
       </div>
     );

@@ -18,7 +18,7 @@ export default class ComposeFormModal extends React.PureComponent {
           </h3>
         </header>
 
-        <button className='modal-root__modal__close' onClick={this.onClose}>
+        <button className='modal-root__modal__close' onClick={this.props.onClose}>
           <i className='icon-time' aria-hidden='true' />
         </button>
 
