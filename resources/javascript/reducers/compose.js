@@ -273,6 +273,8 @@ export default function compose(state = initialState, action) {
       }));
   case CREDENTIALS_VERIFY_SUCCESS:
     return state
+      .set('privacy', action.account.source.privacy)
+      .set('sensitive', action.account.source.sensitive)
       .set('default_privacy',   action.account.source.privacy)
       .set('default_sensitive', action.account.source.sensitive);
   default:

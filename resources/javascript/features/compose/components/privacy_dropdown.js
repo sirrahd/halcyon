@@ -187,8 +187,8 @@ export default class PrivacyDropdown extends React.PureComponent {
 
   render () {
     const { value, intl } = this.props;
-    const { open } = this.state;
-    const valueOption = this.options.find(item => item.value === value);
+    const { open }        = this.state;
+    const valueOption     = this.options.find(item => item.value === value);
 
     return (
       <div className={classNames('privacy-dropdown', { 'privacy-dropdown--active': open })} onKeyDown={this.handleKeyDown}>
