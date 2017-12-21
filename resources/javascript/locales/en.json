@@ -123,6 +123,8 @@
   "login_from.fetching_access_token": "Fetching access token",
   "login_from.verifying_credentials": "Verifying credentials",
 
+  "not_found.generic": "Sorry, Page not found",
+
   "login_form.error.access_denied": "The resource owner or authorization server denied the request.",
   "login_form.error.credential_flow_not_configured": "Resource Owner Password Credentials flow failed due to Doorkeeper.configure.resource_owner_from_credentials being unconfigured.",
   "login_form.error.invalid_client": "Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.",

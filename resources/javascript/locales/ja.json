@@ -123,6 +123,8 @@
   "login_form.fetching_access_token": "アクセストークンを取得中",
   "login_form.verifying_credentials": "資格情報を認証中",
 
+  "not_found.generic": "お探しのページは見つかりませんでした",
+
   "login_form.error.access_denied": "リソースの所有者または認証サーバーが要求を拒否しました。",
   "login_form.error.credential_flow_not_configured": "リソース所有者のパスワード Doorkeeper.configure.resource_owner_from_credentials が設定されていないためクレデンシャルフローに失敗しました。",
   "login_form.error.invalid_client": "不明なクライアントであるか、クライアント情報が含まれていない、またはサポートされていない認証方法のため、クライアントの認証に失敗しました。",
