@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Overlay from 'react-overlays/lib/Overlay';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { intlShape, defineMessages } from 'react-intl';
-
 import normalizeAcct from '../../../normalize_acct';
+import { DropdownMenu } from '../../../components/dropdown_menu';
 import Avatar from '../../../containers/avatar_container';
-import DropdownMenu from '../../../containers/dropmenu_menu_container';
 
 const messages = defineMessages({
   tooltip: { id: 'user_navigation.tooltip', defaultMessage: 'Profile and Settings' },
@@ -17,46 +17,107 @@ const messages = defineMessages({
   logout: { id: 'user_navigation.logout', defaultMessage: 'Log out' },
 });
 
+
 export default class UserDropdown extends ImmutablePureComponent {
 
+  static contextTypes = {
+    router: PropTypes.object,
+  };
+
   static propTypes = {
-    account: ImmutablePropTypes.map.isRequired,
+    account: ImmutablePropTypes.map,
     intl: intlShape.isRequired,
-    onModalOpen: PropTypes.func.isRequired,
-    onModalClose: PropTypes.func.isRequired,
+    isUserTouching: PropTypes.func,
+    isModalOpen: PropTypes.bool.isRequired,
+    onModalOpen: PropTypes.func,
+    onModalClose: PropTypes.func,
   }
 
-  renderButton() {
-    return (
-      <button className='user-dropdown-menu__button' onClick={this.handleToggle} ref={this.setTargetRef} data-tip={intl.formatMessage(messages.tooltip)}>
-        <Avatar account={account} size={34} />
-      </button>
-    );
+  static defaultProps = {
+    direction: 'left',
+    placement: 'bottom',
   }
 
-  handleOpenSettingsModal = () => {
-    this.props.onModalOpen('SETTINGS', {});
+  state = {
+    expanded: false,
   }
 
-  handleOpenKeyboardShortcutsModal = () => {
-    this.props.onModalOpen('KEYBOARD_SHORTCUTS', {});
+  handleClick = () => {
+    if (!this.state.expanded && this.props.isUserTouching() && this.props.onModalOpen) {
+      const { status, items } = this.props;
+
+      this.props.onModalOpen({
+        status,
+        actions: items,
+        onClick: this.handleItemClick,
+      });
+
+      return;
+    }
+
+    this.setState({ expanded: !this.state.expanded });
+  }
+
+  handleClose = () => {
+    if (this.props.onModalClose) {
+      this.props.onModalClose();
+    }
+
+    this.setState({ expanded: false });
+  }
+
+  handleKeyDown = e => {
+    switch(e.key) {
+    case 'Enter':
+      this.handleClick();
+      break;
+    case 'Escape':
+      this.handleClose();
+      break;
+    }
+  }
+
+  handleItemClick = e => {
+    const i = Number(e.currentTarget.getAttribute('data-index'));
+    const { action, to } = this.props.items[i];
+
+    this.handleClose();
+
+    if (typeof action === 'function') {
+      e.preventDefault();
+      action();
+    } else if (to) {
+      e.preventDefault();
+      this.context.router.history.push(to);
+    }
+  }
+
+  setTargetRef = c => {
+    this.target = c;
+  }
+
+  findTarget = () => {
+    return this.target;
   }
 
   render() {
-    const { intl, account } = this.props;
-    const id          = account.get('id');
-    const acct        = normalizeAcct(account.get('acct'), true);
-    const displayName = account.get('display_name');
+    const { intl, account, onModalOpen } = this.props;
+    const { expanded } = this.state;
+
+    if ( account === null ) {
+      return null;
+    }
+
+    const id              = account.get('id');
+    const acct            = normalizeAcct(account.get('acct'), true);
+    const displayNameHtml = { __html: account.get('display_name_html') };
+
     const items = [
       {
         text: (
           <div>
-            <h3 className='user-dropdown-menu__display-name'>
-              {displayName}
-            </h3>
-            <span className='user-dropdown-menu__username'>
-              {acct}
-            </span>
+            <h3 className='user-dropdown-menu__display-name' dangerouslySetInnerHTML={displayNameHtml} />
+            <span className='user-dropdown-menu__username'>{ acct }</span>
           </div>
         ),
         to: `/accounts/${id}`,
@@ -73,11 +134,11 @@ export default class UserDropdown extends ImmutablePureComponent {
       null,
       {
         text: intl.formatMessage(messages.settings),
-        action: this.handleOpenSettingsModal,
+        action: () => onModalOpen('SETTINGS', {}),
       },
       {
         text: intl.formatMessage(messages.keyboardShortcuts),
-        action: this.handleOpenKeyboardShortcutsModal,
+        action: () => onModalOpen('KEYBOARD_SHORTCUTS', {}),
       },
       {
         text: intl.formatMessage(messages.logout),
@@ -86,8 +147,23 @@ export default class UserDropdown extends ImmutablePureComponent {
     ];
 
     return (
-      <div className='user-navigation__user-dropdown-menu'>
-        <DropdownMenu items={items} />
+      <div className='user-navigation__use2r-dropdown-menu'>
+        <button
+          title={intl.formatMessage(messages.tooltip)}
+          ref={this.setTargetRef}
+          onClick={this.handleClick}
+        >
+          <Avatar account={account} size={32} />
+        </button>
+
+        <Overlay show={expanded} placement='bottom' target={this.findTarget}>
+          <DropdownMenu
+            items={items}
+            placement='bottom'
+            direction='right'
+            onClose={this.handleClose}
+          />
+        </Overlay>
       </div>
     );
   }

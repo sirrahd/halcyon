@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 import Overlay from 'react-overlays/lib/Overlay';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import detectPassiveEvents from 'detect-passive-events';
+import classNames from 'classnames';
 
 const listenerOptions = detectPassiveEvents.hasSupport ? { passive: true } : false;
 
-const DropdownMenuCaret = (style, className) => {
+const DropdownMenuCaret = style => {
   return (
-    <div className={`dropdown-menu__caret ${className}`} style={style} >
+    <div className='dropdown-menu__caret' style={style} >
       <div className='dropdown-menu__caret-outer' />
       <div className='dropdown-menu__caret-inner' />
     </div>
   );
 };
 
-class DropdownMenu extends React.PureComponent {
+export class DropdownMenu extends React.PureComponent {
 
   static contextTypes = {
     router: PropTypes.object,
@@ -33,7 +34,10 @@ class DropdownMenu extends React.PureComponent {
 
   static defaultProps = {
     style: {},
+    direction: 'right',
     placement: 'bottom',
+    arrowOffsetLeft: 'auto',
+    arrowOffsetTop: 'auto',
   };
 
   handleDocumentClick = e => {
@@ -88,11 +92,11 @@ class DropdownMenu extends React.PureComponent {
   }
 
   render () {
-    const { items, style, placement, direction, arrowOffsetLeft, arrowOffsetTop } = this.props;
+    const { items, style, direction, arrowOffsetLeft, arrowOffsetTop } = this.props;
 
     return (
-      <div className='dropdown-menu' style={style} ref={this.setRef}>
-        <DropdownMenuCaret className={`${placement} ${direction}`} style={{ top: arrowOffsetTop, left: arrowOffsetLeft }} />
+      <div className={classNames('dropdown-menu', { 'dropdown-menu--right': direction === 'right', 'dorpdown-menu--left': direction === 'left' })} style={style} ref={this.setRef}>
+        <DropdownMenuCaret style={{ top: arrowOffsetTop, left: arrowOffsetLeft }} />
 
         <ul className='dropdown-menu__list'>
           {items.map((option, i) => this.renderItem(option, i))}

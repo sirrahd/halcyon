@@ -1,6 +1,10 @@
 import initialState from './initial_state';
 
 export default function replaceLink(text) {
+  if (!text) {
+    return null;
+  }
+
   const { domain } = initialState.meta;
   const baseURL = `${location.href.split('/')[0]}//${location.href.split('/')[2]}`;
 

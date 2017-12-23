@@ -97,6 +97,12 @@ export default class App extends React.Component {
             <Route exact path='/accounts/:accountId/with_replies' component={AccountWithReplies} />
             <Route exact path='/accounts/:accountId/pinned' component={AccountPinned} />
 
+            {/*
+            <Route exact path='/search/statuses' component={SearchStatuses} />
+            <Route exact path='/search/accounts' component={SearchAccounts} />
+            <Route exact path='/search/hashtags' component={SearchHashtags} />
+            */}
+
             <Route exact path='/notifications' component={AccountFavourites} />
             <Route exact path='/follow_requests' component={Notifications} />
 

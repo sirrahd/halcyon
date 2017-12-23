@@ -21,8 +21,8 @@ export default class AccountLetterhead extends React.PureComponent {
 
     const id              = account.get('id');
     const acct            = normalizeAcct(account.get('acct'), true);
-    const displayNameHtml = { __html: account.get('display_name') };
-    const noteHtml        = { __html: replaceLink(account.get('note')) };
+    const displayNameHtml = { __html: account.get('display_name_html') };
+    const noteHtml        = { __html: replaceLink(account.get('note_emojified')) };
 
     return (
       <div className='account-letterhead'>
