@@ -32,16 +32,9 @@ export default class Avatar extends React.PureComponent {
 
   render () {
     const { account, size, animate, inline, round } = this.props;
-    const src = account.get('avatar');
+    const src       = account.get('avatar');
     const staticSrc = account.get('avatar_static');
-
-    const className = classNames(
-      'account__avatar',
-      {
-        'account__avatar--inline': inline,
-        'account__avatar--round': round,
-      }
-    );
+    const className = classNames('account__avatar', { 'account__avatar--inline': inline, 'account__avatar--round': round });
 
     const style = {
       ...this.props.style,
@@ -50,7 +43,7 @@ export default class Avatar extends React.PureComponent {
       backgroundSize: `${size}px`,
     };
 
-    if (animate || animate) {
+    if (animate) {
       style.backgroundImage = `url(${src})`;
     } else {
       style.backgroundImage = `url(${staticSrc})`;

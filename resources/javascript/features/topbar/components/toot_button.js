@@ -12,7 +12,7 @@ export default class TootButton extends React.PureComponent {
     const { onClick } = this.props;
 
     return (
-      <div className='user-nav__toot-button'>
+      <div className='user-navigation__toot-button'>
         <button className='toot-button' onClick={onClick}>
           <FormattedMessage id='compose_form.toot' defaultMessage='Toot' />
         </button>

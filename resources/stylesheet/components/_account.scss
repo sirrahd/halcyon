@@ -5,14 +5,135 @@
   &:first-child {
     margin-top: $topbar-height;
   }
+}
 
-  .account-header__header {
-    background-color: $highlight-color;
-    background-size: cover;
-    background-repeat: no-repeat;
+.account-header__header {
+  width: 100%;
+  height: 460px;
+  background-color: $highlight-color;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.account-header__banner {
+  width: 100%;
+  height: 60px;
+  background-color: $primary-color;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.26);
+}
+
+.account-header__banner-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+
+  @media screen and (min-width: 450px) {
+    max-width: 450px;
   }
 
-  .account-header__banner {
-    background-color: $primary-color;
+  @media screen and (min-width: 890px) {
+    max-width: 890px;
   }
+
+  @media screen and (min-width: 1190px) {
+    max-width: 1190px;
+  }
+}
+
+.account-header-counter {
+  height: 100%;
+  flex-basis: $timeline-width;
+  margin-left: $dashborad-width;
+}
+
+.account-header-counter__list {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.account-header-counter__list-item {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 100%;
+}
+
+.account-header-counter__link {
+  display: block;
+  height: 100%;
+  padding: 14px 16px 7px;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: $text-color-gray;
+  transition: all .15s ease-in-out;
+
+  &:hover, &:active, &--current {
+    text-decoration: none;
+    color: $highlight-color;
+    border-bottom: 2px solid $highlight-color;
+  }
+}
+
+.account-header-counter__label {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.account-header-counter__counter {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.account-letterhead {
+  position: relative;
+  top: -183px;
+  left: 0;
+  padding: 0 10px;
+}
+
+.account-letterhead__avatar .account__avatar {
+  margin-bottom: 4px;
+  border: 5px solid $primary-color;
+}
+
+.account-letterhead__link {
+  display: block;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.account-letterhead__display-name {
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1.6;
+  color: $text-color;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.account-letterhead__acct {
+  display: block;
+  font-size: 14px;
+  color: $text-color-gray;
+  margin-bottom: 14px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.account-letterhead__note {
+  font-size: 14px;
+  line-height: 1.2;
+  word-wrap: break-word;
+  margin-bottom: 12px;
 }

@@ -1,4 +1,7 @@
 .modal-root {
+  position: fixed;
+  top: 0;
+  left: 0;
   transition: opacity 0.3s linear;
   will-change: opacity;
   z-index: 998;
@@ -30,7 +33,7 @@
 .modal-root__modal {
   position: relative;
   top: 20vh;
-  left: auto;
+  left: 50vw;
   width: 360px;
   height: auto;
   border-radius: 6px;

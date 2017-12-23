@@ -43,7 +43,7 @@ export default class LoginForm extends React.PureComponent {
             type='text'
             spellCheck='false'
             placeholder='@halcyon@mastodon.social'
-            pattern='@[a-zA-Z0-9_]{1,30}@.+?\..+?'
+            pattern="@[a-zA-Z0-9_]{1,30}@[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+"
             ref={this.setRef}
             autoFocus
           />

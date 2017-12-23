@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Tooltip from 'react-tooltip';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router';
 import { withRouter } from 'react-router-dom';
@@ -9,16 +8,15 @@ import { isMobile } from '../../is_mobile';
 import { openModal } from '../../actions/modal';
 import { verifyCredentials } from '../../actions/credentials';
 import { fetchCustomEmojis } from '../../actions/custom_emojis';
+import api from '../../api/mastodon';
 
 import Topbar from '../topbar';
-import ModalContaienr from './containers/modal_contaienr';
 
 import HomeTimeline from '../home_timeline';
 import CommunityTimeline from '../community_timeline';
 import PublicTimeline from '../public_timeline';
 import HashtagTimeline from '../hashtag_timeline';
 import ListTimeline from '../list_timeline';
-
 import AccountTimeline from '../account_timeline';
 import AccountFollowers from '../account_followers';
 import AccountFollowing from '../account_following';
@@ -26,10 +24,12 @@ import AccountGallery from '../account_gallery';
 import AccountWithReplies from '../account_with_replies';
 import AccountFavourites from '../account_favourites';
 import AccountPinned from '../account_pinned';
-import AccountSearch from '../account_search';
-
 import Notifications from '../notifications';
+import AcctToAccount from '../acct_to_account';
 import NotFound from '../not_found';
+
+import ModalContaienr from '../app/containers/modal_contaienr';
+import Tooltip from 'react-tooltip';
 
 const keyMap = {
   new: 'n',
@@ -79,7 +79,7 @@ export default class App extends React.Component {
 
     return (
       <HotKeys keyMap={keyMap} handlers={handlers} >
-        <div className='app-container'>
+        <div className='app'>
           <Topbar />
 
           <Switch>
@@ -96,10 +96,11 @@ export default class App extends React.Component {
             <Route exact path='/accounts/:accountId/media' component={AccountGallery} />
             <Route exact path='/accounts/:accountId/with_replies' component={AccountWithReplies} />
             <Route exact path='/accounts/:accountId/pinned' component={AccountPinned} />
-            <Route exact path='/accounts/search/:query' component={AccountSearch} />
 
             <Route exact path='/notifications' component={AccountFavourites} />
             <Route exact path='/follow_requests' component={Notifications} />
+
+            <Route path='/:acct(@[a-zA-Z0-9_]{1,30}@.+?\..+?)/:page?' component={AcctToAccount} />
 
             <Route component={NotFound} />
           </Switch>

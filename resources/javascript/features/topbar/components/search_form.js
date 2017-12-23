@@ -167,7 +167,7 @@ class SearchForm extends React.PureComponent {
     const { expanded } = this.state;
 
     return (
-      <div className='user-nav__search-form' ref={this.setRef}>
+      <div className='user-navigation__search-form' ref={this.setRef}>
         <Dropdown active={expanded}>
 
           <form

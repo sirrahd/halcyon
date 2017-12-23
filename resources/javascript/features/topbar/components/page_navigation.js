@@ -25,9 +25,9 @@ export default class PageNavigation extends React.Component {
   }
 
   renderItem = (itemName, linkTo, iconClass, messageId) => (
-    <li key={itemName} className='page-nav__list-item'>
-      <NavLink exact to={linkTo} className='page-nav__navlink' activeClassName='page-nav__navlink--current'>
-        <i className={`page-nav__icon ${iconClass}`} />
+    <li key={itemName} className='page-navigation__list-item'>
+      <NavLink exact to={linkTo} className='page-navigation__link' activeClassName='page-navigation__link--current'>
+        <i className={`page-navigation__icon ${iconClass}`} />
         <FormattedMessage id={messageId} defaultMessage={itemName} />
       </NavLink>
     </li>
@@ -42,8 +42,8 @@ export default class PageNavigation extends React.Component {
     ];
 
     return (
-      <nav className='page-nav'>
-        <ul className='page-nav__list'>
+      <nav className='page-navigation'>
+        <ul className='page-navigation__list'>
           { items.map(item => this.renderItem(...item)) }
         </ul>
       </nav>

@@ -4,18 +4,18 @@ import UserDropdownContainer from '../containers/user_dropdown_container';
 import TootButtonContainer from '../containers/toot_button_container';
 
 const UserNav = () => (
-  <div className='user-nav'>
-    <ul className='user-nav__list'>
+  <div className='user-navigation'>
+    <ul className='user-navigation__list'>
 
-      <li className='user-nav__list-item'>
+      <li className='user-navigation__list-item'>
         {/* <SearchFormContainer /> */}
       </li>
 
-      <li className='user-nav__list-item'>
+      <li className='user-navigation__list-item'>
         <UserDropdownContainer />
       </li>
 
-      <li className='user-nav__list-item'>
+      <li className='user-navigation__list-item'>
         <TootButtonContainer />
       </li>
 

@@ -86,7 +86,7 @@ export default class UserDropdown extends ImmutablePureComponent {
     ];
 
     return (
-      <div className='user-nav__user-dropdown-menu'>
+      <div className='user-navigation__user-dropdown-menu'>
         <DropdownMenu items={items} />
       </div>
     );
