@@ -11,7 +11,7 @@ const messages = defineMessages({
 });
 
 @injectIntl
-export default class ProfileCardStats extends ImmutablePureComponent {
+export default class ProfileCardCounters extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
@@ -27,40 +27,40 @@ export default class ProfileCardStats extends ImmutablePureComponent {
     const statuses_count  = account_counters.get('statuses_count');
 
     return (
-      <div className='profile-card-stats'>
-        <ul className='profile-card-stats__list'>
+      <div className='profile-card-counters'>
+        <ul className='profile-card-counters__list'>
 
-          <li className='profile-card-stats__list-item'>
+          <li className='profile-card-counters__list-item'>
             <Link to={`/accounts/${id}/followers`} data-tip={intl.formatMessage(messages.followers_tip, { count: followers_count })}>
-              <span className='profile-card-stats__item-label'>
+              <span className='profile-card-counters__item-label'>
                 <FormattedMessage id='account.followers' defaultMessage='Followers' />
               </span>
 
-              <span className='profile-card-stats__item-count'>
+              <span className='profile-card-counters__item-count'>
                 { followers_count }
               </span>
             </Link>
           </li>
 
-          <li className='profile-card-stats__list-item'>
+          <li className='profile-card-counters__list-item'>
             <Link to={`/accounts/${id}/following`} data-tip={intl.formatMessage(messages.following_tip, { count: following_count } )}>
-              <span className='profile-card-stats__item-label'>
+              <span className='profile-card-counters__item-label'>
                 <FormattedMessage id='account.following' defaultMessage='Following' />
               </span>
 
-              <span className='profile-card-stats__item-count'>
+              <span className='profile-card-counters__item-count'>
                 { following_count }
               </span>
             </Link>
           </li>
 
-          <li className='profile-card-stats__list-item'>
+          <li className='profile-card-counters__list-item'>
             <Link to={`/accounts/${id}`} data-tip={intl.formatMessage(messages.toots_tip, { count: statuses_count })}>
-              <span className='profile-card-stats__item-label'>
+              <span className='profile-card-counters__item-label'>
                 <FormattedMessage id='account.toots' defaultMessage='Toots' />
               </span>
 
-              <span className='profile-card-stats__item-count'>
+              <span className='profile-card-counters__item-count'>
                 { statuses_count }
               </span>
             </Link>

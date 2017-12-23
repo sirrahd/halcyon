@@ -5,7 +5,7 @@
     margin: 0 auto 8px;
     padding: 24px 36px;
     box-sizing: border-box;
-    background-color: $primary_color;
+    background-color: $primary-color;
     text-align: center;
 
     .login-form-contaienr__title {
@@ -27,15 +27,15 @@
         border-radius: 25px;
         overflow: hidden;
         font-size: 14px;
-        color: $text_color_gray;
-        background-color: darken($primary_color, 2.5%);
-        border: 1px solid $background_color;
+        color: $text-color-gray;
+        background-color: darken($primary-color, 2.5%);
+        border: 1px solid $background-color;
         outline: none;
         transition: all .3s ease-in-out;
 
         &:focus {
-          box-shadow: 0 0 0 1.5px $highlight_color;
-          background-color: $primary_color;
+          box-shadow: 0 0 0 1.5px $highlight-color;
+          background-color: $primary-color;
         }
 
         &:invalid {
@@ -52,15 +52,15 @@
         white-space: nowrap;
         box-sizing: border-box;
         color: $white;
-        background-color: $highlight_color;
+        background-color: $highlight-color;
 
         &:hover, &:active {
-          background-color: darken($highlight_color, 5%);
+          background-color: darken($highlight-color, 5%);
         }
 
         &.login-form__submit--sending {
           opacity: 0.8;
-          background-color: $highlight_color;
+          background-color: $highlight-color;
         }
       }
     }
@@ -76,7 +76,7 @@
     margin: 0 auto 8px;
     padding: 16px 36px;
     box-sizing: border-box;
-    background-color: $primary_color;
+    background-color: $primary-color;
     font-size: 12px;
     text-align: center;
 
@@ -89,7 +89,7 @@
 
       li {
         a {
-          color: $text_color_gray;
+          color: $text-color-gray;
         }
       }
     }

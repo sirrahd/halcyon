@@ -1,7 +1,7 @@
 
 body {
   color: $text-color;
-  background-color: $background_color;
+  background-color: $background-color;
   font-family : "Helvetica Neue",Helvetica,Arial,sans-serif;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
@@ -17,7 +17,7 @@ body {
 }
 
 a, .link-button {
-  color: $highlight_color;
+  color: $highlight-color;
   text-decoration: none;
 
   &:hover, &:active {

@@ -3,8 +3,8 @@
   margin: 12px auto;
   border-radius: 5px;
   box-sizing: border-box;
-  color: $text_color_gray;
-  background-color: $primary_color;
+  color: $text-color-gray;
+  background-color: $primary-color;
   box-shadow: 0 1px 4px rgba(0,0,0,0.26);
 
   &--active {
@@ -46,14 +46,14 @@
 
   .dropdown-menu__caret-outer {
     position: absolute;
-    border-bottom: 10px solid $text_color_gray;
+    border-bottom: 10px solid $text-color-gray;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
   }
 
   .dropdown-menu__caret-inner {
     position: absolute;
-    border-bottom: 10px solid $primary_color;
+    border-bottom: 10px solid $primary-color;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
   }
@@ -76,12 +76,12 @@
       display: block;
       padding: 8px 16px;
       box-sizing: border-box;
-      color: $text_color_gray;
+      color: $text-color-gray;
 
       &:hover, &:active {
         text-decoration: none;
         color: $white;
-        background-color: $highlight_color;
+        background-color: $highlight-color;
       }
     }
   }
@@ -90,6 +90,6 @@
     display: block;
     padding: 0;
     margin: 8px 0;
-    border-bottom: 1px solid $background_color;
+    border-bottom: 1px solid $background-color;
   }
 }

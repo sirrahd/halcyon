@@ -27,7 +27,7 @@
 
 .keyboard-shortcuts__tbody .keyboard-shortcuts__row {
   padding-bottom: 8px;
-  color: $text_color_gray;
+  color: $text-color-gray;
 
   .keyboard-shortcuts__row__keys {
     display: flex;
@@ -42,8 +42,8 @@
       border-radius: 2px;
       font-size: 10px;
       font-family: monospace,'Courier';
-      border: 1px solid $text_color_gray;
-      background-color: rgba($text_color_gray, 0.1);
+      border: 1px solid $text-color-gray;
+      background-color: rgba($text-color-gray, 0.1);
 
       &:not(:last-child) {
         margin-right: 4px;

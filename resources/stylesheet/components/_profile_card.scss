@@ -1,6 +1,6 @@
 .profile-card {
   position: relative;
-  background-color: $primary_color;
+  background-color: $primary-color;
 }
 
 .profile-card-header {
@@ -18,7 +18,7 @@
 
   a {
     position: relative;
-    color: $text_color;
+    color: $text-color;
 
     &:hover {
       text-decoration: none;
@@ -32,8 +32,8 @@
     top: -21px;
     left: 0;
     background-size: 74px !important;
-    background-color: $primary_color;
-    border: 3px solid $primary_color;
+    background-color: $primary-color;
+    border: 3px solid $primary-color;
     box-sizing: border-box;
   }
 }
@@ -61,7 +61,7 @@
 .profile-card-account__acct {
   display: block;
   font-size: 14px;
-  color: $text_color_gray;
+  color: $text-color-gray;
   white-space: nowrap;
   overflow: hidden;
   width: 100%;
@@ -77,13 +77,13 @@
   line-height: 1.2;
 }
 
-.profile-card-stats__list {
+.profile-card-counters__list {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
 }
 
-.profile-card-stats__list-item {
+.profile-card-counters__list-item {
   flex-basis: calc(100% / 3);
   flex-grow: 1;
   flex-shrink: 0;
@@ -96,23 +96,23 @@
     &:hover {
       text-decoration: none;
 
-      .profile-card-stats__item-label {
-        color: $highlight_color;
+      .profile-card-counters__item-label {
+        color: $highlight-color;
       }
     }
   }
 }
 
-.profile-card-stats__item-label {
+.profile-card-counters__item-label {
   display: block;
   padding-bottom: 4px;
   font-size: 12px;
-  color: $text_color_gray;
+  color: $text-color-gray;
   font-weight: bold;
   transition: 0.15s ease-out;
 }
 
-.profile-card-stats__item-count {
+.profile-card-counters__item-count {
   display: block;
   font-size: 18px;
   font-weight: bold;

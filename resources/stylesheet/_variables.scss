@@ -3,12 +3,12 @@ $timeline-width: 590px !default;
 $dashborad-width: 290px !default;
 $topbar-height: 46px !default;
 
-$text_color:       #000000 !default;
-$text_color_gray:  #66757F !default;
-$background_color: #E6ECF0 !default;
-$highlight_color:  #00aced !default;
-$primary_color:    #ffffff !default;
-$secondary_color:  lighten($highlight_color, 50%) !default;
+$text-color:       #000000 !default;
+$text-color-gray:  #66757F !default;
+$background-color: #E6ECF0 !default;
+$highlight-color:  #00aced !default;
+$primary-color:    #ffffff !default;
+$secondary-color:  lighten($highlight-color, 50%) !default;
 $white:            #ffffff !default;
 $green:            #17BF63 !default;
 $yellow:           #F8B038 !default;

@@ -34,7 +34,7 @@
   width: 360px;
   height: auto;
   border-radius: 6px;
-  background-color: $primary_color;
+  background-color: $primary-color;
   box-shadow: 0 1px 4px rgba(0,0,0,0.26);
   pointer-events: auto;
   z-index: 998;
@@ -42,7 +42,7 @@
 
 .modal-root__modal__header {
   padding: 14px 12px;
-  border-bottom: 1px solid $background_color;
+  border-bottom: 1px solid $background-color;
 
   h3 {
     font-size: 18px;
@@ -57,7 +57,7 @@
   right: 14px;
   font-size: 12px;
   line-height: 21px;
-  color: $text_color_gray;
+  color: $text-color-gray;
 }
 
 .compose-form-modal,
@@ -73,6 +73,6 @@
   .compose-form {
     padding: 14px 12px;
     border-radius: 0 0 6px 6px;
-    background-color: $secondary_color;
+    background-color: $secondary-color;
   }
 }

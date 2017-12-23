@@ -1,9 +1,12 @@
-.page-container {
+.content {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   margin: auto;
-  padding-top: $topbar-height + 8;
+
+  &:first-child {
+    padding-top: $topbar-height + 8;
+  }
 
   @media screen and (min-width: 450px) {
     max-width: 450px;
