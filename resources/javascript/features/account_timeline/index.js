@@ -6,11 +6,7 @@ import { refreshAccountTimeline } from '../../actions/timelines';
 import { List as ImmutableList } from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
-import Page from '../app/components/page';
-import Content from '../app/components/content';
 import Dashborad from '../app/components/dashboard';
-import AccountHeaderContainer from '../account/containers/account_header_container';
-import AccountLetterheadContainer from '../account/containers/account_letterhead_container';
 
 const mapStateToProps = (state, props) => ({
   statusIds: state.getIn(['timelines', `account:${props.match.params.accountId}`, 'items'], ImmutableList()),
@@ -43,17 +39,7 @@ export default class AccountTimeline extends React.PureComponent {
 
   render() {
     return (
-      <Page>
-        <AccountHeaderContainer accountId={this.props.match.params.accountId} />
-
-        <Content>
-          <Dashborad position='left'>
-            <AccountLetterheadContainer accountId={this.props.match.params.accountId} />
-          </Dashborad>
-
-          <Dashborad position='right' />
-        </Content>
-      </Page>
+      <Dashborad position='right' />
     );
   }
 

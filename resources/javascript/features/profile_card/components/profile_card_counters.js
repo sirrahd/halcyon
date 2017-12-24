@@ -28,15 +28,14 @@ export default class ProfileCardCounters extends ImmutablePureComponent {
     return (
       <div className='profile-card-counters'>
         <ul className='profile-card-counters__list'>
-
           <li className='profile-card-counters__list-item'>
-            <Link to={`/accounts/${id}/followers`} data-tip={intl.formatMessage(messages.followers_tip, { count: followers_count })}>
+            <Link to={`/accounts/${id}`} data-tip={intl.formatMessage(messages.toots_tip, { count: statuses_count })}>
               <span className='profile-card-counters__item-label'>
-                <FormattedMessage id='account.followers' defaultMessage='Followers' />
+                <FormattedMessage id='account.toots' defaultMessage='Toots' />
               </span>
 
               <span className='profile-card-counters__item-count'>
-                { followers_count }
+                { statuses_count }
               </span>
             </Link>
           </li>
@@ -54,13 +53,13 @@ export default class ProfileCardCounters extends ImmutablePureComponent {
           </li>
 
           <li className='profile-card-counters__list-item'>
-            <Link to={`/accounts/${id}`} data-tip={intl.formatMessage(messages.toots_tip, { count: statuses_count })}>
+            <Link to={`/accounts/${id}/followers`} data-tip={intl.formatMessage(messages.followers_tip, { count: followers_count })}>
               <span className='profile-card-counters__item-label'>
-                <FormattedMessage id='account.toots' defaultMessage='Toots' />
+                <FormattedMessage id='account.followers' defaultMessage='Followers' />
               </span>
 
               <span className='profile-card-counters__item-count'>
-                { statuses_count }
+                { followers_count }
               </span>
             </Link>
           </li>

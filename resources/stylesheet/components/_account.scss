@@ -44,7 +44,7 @@
 .account-header-counter {
   height: 100%;
   flex-basis: $timeline-width;
-  margin-left: $dashborad-width;
+  margin-left: $dashboard-width;
 }
 
 .account-header-counter__list {
@@ -136,4 +136,21 @@
   line-height: 1.4;
   word-wrap: break-word;
   margin-bottom: 12px;
+}
+
+.accounts-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  width: calc( #{$timeline-width} + #{$dashboard-width} );
+
+  & > .profile-card {
+      width: calc( 100% / 3 - 12px );
+      flex-grow: 0;
+      flex-shrink: 0;
+      margin: 0 12px 12px 0;
+  }
 }

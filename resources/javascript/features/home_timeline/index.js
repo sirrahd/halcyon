@@ -20,7 +20,7 @@ export default class HomeTimeline extends React.Component {
         <Content>
 
           <Dashborad position='left'>
-            <ProfileCard accountId={me} hideNote />
+            <ProfileCard accountId={me} withCounters />
           </Dashborad>
 
           <Dashborad position='right' />

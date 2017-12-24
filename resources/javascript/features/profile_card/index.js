@@ -24,21 +24,21 @@ const makeMapStateToProps = () => {
 export default class ProfileCard extends ImmutablePureComponent {
 
   static propTypes = {
-    intl: PropTypes.object.isRequired,
     account: ImmutablePropTypes.map,
-    hideNote: PropTypes.bool,
-    hideCounters: PropTypes.bool,
-    hideRelationship: PropTypes.bool,
+    withNote: PropTypes.bool,
+    withCounters: PropTypes.bool,
+    withRelationship: PropTypes.bool,
   }
 
   static defaultProps = {
-    hideNote: false,
-    hideCounters: false,
-    hideRelationship: false,
+    withNote: false,
+    withCounters: false,
+    withFollowButton: false,
+    withRelationship: false,
   }
 
   render() {
-    const { account, hideNote } = this.props;
+    const { account } = this.props;
 
     if (account === null) {
       return null;
@@ -55,7 +55,7 @@ export default class ProfileCard extends ImmutablePureComponent {
         <div className='profile-card-header' style={{ backgroundImage: `url(${header})` }} />
 
         <div className='profile-card-account'>
-          <Link to={`/accounts/${id}`}>
+          <Link to={`/accounts/${id}`} className='profile-card-account__link'>
             <div className='profile-card-account__avatar'>
               <Avatar account={account} size={80} />
             </div>
@@ -66,11 +66,10 @@ export default class ProfileCard extends ImmutablePureComponent {
             </div>
           </Link>
 
-          <div className={`profile-card__note ${ hideNote ? 'invisible' : '' }`} dangerouslySetInnerHTML={noteHtml} />
+          { this.props.withNote ? <div className='profile-card__note' dangerouslySetInnerHTML={noteHtml} /> : <div /> }
+          { this.props.withCounters ? <ProfileCardCounters account={account} /> : <div /> }
+          { this.props.withRelationship ?  <ProfileCardRelationship account={account} /> : <div /> }
         </div>
-
-        <ProfileCardCounters account={account} />
-        <ProfileCardRelationship account={account} />
       </div>
     );
   }
