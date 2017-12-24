@@ -1,6 +1,13 @@
 .profile-card {
   position: relative;
   background-color: $primary-color;
+
+  &--with-follow-button {
+    .profile-card-account__meta {
+      margin-left: 0;
+      margin-top: 42px;
+    }
+  }
 }
 
 .profile-card-header {

@@ -4,11 +4,14 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { Link } from 'react-router-dom';
+import normalizeAcct from '../../normalize_acct';
+import { makeGetAccount } from '../../selectors';
+import classNames from 'classnames';
+import { autoPlayGif } from '../../initial_state';
+
 import Avatar from '../../containers/avatar_container';
 import ProfileCardCounters from './components/profile_card_counters';
 import ProfileCardRelationship from './components/profile_card_relationship';
-import normalizeAcct from '../../normalize_acct';
-import { makeGetAccount } from '../../selectors';
 
 const makeMapStateToProps = () => {
   const getAccount = makeGetAccount();
@@ -38,20 +41,20 @@ export default class ProfileCard extends ImmutablePureComponent {
   }
 
   render() {
-    const { account } = this.props;
+    const { account, withNote, withCounters, withFollowButton, withRelationship } = this.props;
 
     if (account === null) {
       return null;
     }
 
-    const header          = account.get('header');
+    const header          = autoPlayGif ? account.get('header') : account.get('header_static');
     const id              = account.get('id');
     const displayNameHtml = { __html: account.get('display_name_html') };
     const noteHtml        = { __html: account.get('note_emojified') };
     const acct            = normalizeAcct(account.get('acct'), true);
 
     return (
-      <div className='profile-card'>
+      <div className={classNames('profile-card', { 'profile-card--with-follow-button' : withFollowButton })}>
         <div className='profile-card-header' style={{ backgroundImage: `url(${header})` }} />
 
         <div className='profile-card-account'>
@@ -66,9 +69,9 @@ export default class ProfileCard extends ImmutablePureComponent {
             </div>
           </Link>
 
-          { this.props.withNote ? <div className='profile-card__note' dangerouslySetInnerHTML={noteHtml} /> : <div /> }
-          { this.props.withCounters ? <ProfileCardCounters account={account} /> : <div /> }
-          { this.props.withRelationship ?  <ProfileCardRelationship account={account} /> : <div /> }
+          { withNote ? <div className='profile-card__note' dangerouslySetInnerHTML={noteHtml} /> : <div /> }
+          { withCounters ? <ProfileCardCounters account={account} /> : <div /> }
+          { withRelationship ?  <ProfileCardRelationship account={account} /> : <div /> }
         </div>
       </div>
     );
