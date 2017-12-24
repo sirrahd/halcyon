@@ -2,7 +2,7 @@ import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { Link } from 'react-router-dom';
-import { FormattedMessage, injectIntl, intlShape, defineMessages } from 'react-intl';
+import { FormattedMessage, FormattedNumber, injectIntl, intlShape, defineMessages } from 'react-intl';
 
 const messages = defineMessages({
   followers_tip: { id: 'account.followers.tip', defaultMessage: '{count} followers' },
@@ -35,7 +35,7 @@ export default class ProfileCardCounters extends ImmutablePureComponent {
               </span>
 
               <span className='profile-card-counters__item-count'>
-                { statuses_count }
+                <FormattedNumber value={followers_count} />
               </span>
             </Link>
           </li>
@@ -47,7 +47,7 @@ export default class ProfileCardCounters extends ImmutablePureComponent {
               </span>
 
               <span className='profile-card-counters__item-count'>
-                { following_count }
+                <FormattedNumber value={following_count} />
               </span>
             </Link>
           </li>
@@ -59,7 +59,7 @@ export default class ProfileCardCounters extends ImmutablePureComponent {
               </span>
 
               <span className='profile-card-counters__item-count'>
-                { followers_count }
+                <FormattedNumber value={statuses_count} />
               </span>
             </Link>
           </li>

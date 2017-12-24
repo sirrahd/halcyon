@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, FormattedNumber } from 'react-intl';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 export default class AccountHeaderCounters extends React.PureComponent {
@@ -25,7 +25,7 @@ export default class AccountHeaderCounters extends React.PureComponent {
               </div>
 
               <div className='account-header-counter__counter'>
-                { account.get('statuses_count') }
+                <FormattedNumber value={account.get('statuses_count')} />
               </div>
             </NavLink>
           </li>
@@ -37,7 +37,7 @@ export default class AccountHeaderCounters extends React.PureComponent {
               </div>
 
               <div className='account-header-counter__counter'>
-                { account.get('following_count') }
+                <FormattedNumber value={account.get('following_count')} />
               </div>
             </NavLink>
           </li>
@@ -49,7 +49,7 @@ export default class AccountHeaderCounters extends React.PureComponent {
               </div>
 
               <div className='account-header-counter__counter'>
-                { account.get('followers_count') }
+                <FormattedNumber value={account.get('followers_count')} />
               </div>
             </NavLink>
           </li>
