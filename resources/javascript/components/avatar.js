@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import { autoPlayGif } from '../initial_state';
 
 export default class Avatar extends React.PureComponent {
 
@@ -15,7 +16,7 @@ export default class Avatar extends React.PureComponent {
   };
 
   static defaultProps = {
-    animate: false,
+    animate: autoPlayGif,
     size: 20,
     inline: false,
   };
