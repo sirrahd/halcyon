@@ -1,13 +1,15 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from '../reducers';
+import requestsMiddleware from '../middlewares/requests';
 import thunk from 'redux-thunk';
 
 function configureStore() {
   return createStore(
     reducers,
-    applyMiddleware(
+    compose(applyMiddleware(
       thunk,
-    )
+      requestsMiddleware({ promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAIL'] }),
+    ))
   );
 }
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
-import { Link } from 'react-router-dom';
-import normalizeAcct from '../../normalize_acct';
-import { makeGetAccount } from '../../selectors';
 import classNames from 'classnames';
+import { makeGetAccount } from '../../selectors';
 import { autoPlayGif } from '../../initial_state';
+import normalizeAcct from '../../normalize_acct';
 
 import Avatar from '../../containers/avatar_container';
 import ProfileCardCounters from './components/profile_card_counters';
@@ -44,7 +44,7 @@ export default class ProfileCard extends ImmutablePureComponent {
     const { account, withNote, withCounters, withFollowButton, withRelationship } = this.props;
 
     if (account === null) {
-      return null;
+      return <div />;
     }
 
     const header          = autoPlayGif ? account.get('header') : account.get('header_static');

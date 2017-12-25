@@ -139,6 +139,11 @@
       background-size: contain;
       background-image: url("../images/logo.png");
     }
+
+    .topbar__spinner {
+      font-size: 21px;
+      color: $highlight_color;
+    }
   }
 }
 
