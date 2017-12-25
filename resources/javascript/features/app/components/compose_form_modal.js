@@ -16,11 +16,11 @@ export default class ComposeFormModal extends React.PureComponent {
           <h3>
             <FormattedMessage id='modal.compose_form' defaultMessage='Compose new toot' />
           </h3>
-        </header>
 
-        <button className='modal-root__modal__close' onClick={this.props.onClose}>
-          <i className='icon-time' aria-hidden='true' />
-        </button>
+          <button className='modal-root__modal__close' onClick={this.props.onClose}>
+            <i className='icon-time' aria-hidden='true' />
+          </button>
+        </header>
 
         <div className='modal-root__modal__content'>
           <ComposeFromContainer />

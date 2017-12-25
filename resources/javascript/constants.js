@@ -1,5 +1,6 @@
 export const RECENT_SEARCHES_MAX_LENGTH = 4;
-export const DEFAULT_STATUS_MAX_LENGTH  = 500;
+export const DEFAULT_STATUS_MAX_LENGTH = 500;
+export const ERROR_MESSAGE_INTERVAL = 5000;
 
 export const LANUAGES = [
   { value: 'en', name: 'English' },

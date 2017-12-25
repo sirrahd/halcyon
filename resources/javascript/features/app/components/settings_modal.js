@@ -26,11 +26,11 @@ export default class SettingsModal extends React.PureComponent {
           <h3>
             <FormattedMessage id='modal.settings' defaultMessage='Settings' />
           </h3>
-        </header>
 
-        <button className='modal-root__modal__close' onClick={onClose} onKeyDown={this.handleKeyDown}>
-          <i className='icon-time' aria-hidden='true' />
-        </button>
+          <button className='modal-root__modal__close' onClick={onClose} onKeyDown={this.handleKeyDown}>
+            <i className='icon-time' aria-hidden='true' />
+          </button>
+        </header>
 
         <SettingsForm />
       </div>

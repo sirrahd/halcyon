@@ -117,11 +117,11 @@ export default class KeyboradShortcutsModal extends React.PureComponent {
           <h3>
             <FormattedMessage id='modal.keyboard_shortcuts' defaultMessage='Keyboard Shortcuts' />
           </h3>
-        </header>
 
-        <button className='modal-root__modal__close' onClick={onClose} onKeyDown={this.handleKeyDown} autoFocus='true'>
-          <i className='icon-time' aria-hidden='true' />
-        </button>
+          <button className='modal-root__modal__close' onClick={onClose} onKeyDown={this.handleKeyDown} autoFocus='true'>
+            <i className='icon-time' aria-hidden='true' />
+          </button>
+        </header>
 
         <div className='keyboard-shortcuts'>
           { this.shortcuts.map(items => this.renderItem(items)) }

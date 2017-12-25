@@ -1,16 +1,16 @@
 import {
-  ALERT_SHOW,
-  ALERT_DISMISS,
+  MESSAGE_SHOW,
+  MESSAGE_HIDE,
   SPINNER_SHOW,
   SPINNER_HIDE,
 } from '../actions/indicators';
 
-import { Map as ImmutableMap } from 'immutable';
+import { Map as ImmutableMap, fromJS } from 'immutable';
 
 const initialState = ImmutableMap({
-  alert: ImmutableMap({
+  message: ImmutableMap({
     show: false,
-    message: '',
+    props: ImmutableMap(),
   }),
 
   spinner: false,
@@ -18,12 +18,12 @@ const initialState = ImmutableMap({
 
 export default function indicators(state = initialState, action) {
   switch(action.type) {
-  case ALERT_SHOW:
+  case MESSAGE_SHOW:
     return state
-      .setIn(['alert', 'show'], true)
-      .setIn(['alert', 'message'], action.message);
-  case ALERT_DISMISS:
-    return state.clear();
+      .setIn(['message', 'show'], true)
+      .setIn(['message', 'props'], fromJS(action.messageProps));
+  case MESSAGE_HIDE:
+    return state.setIn(['message', 'show'], false);
   case SPINNER_SHOW:
     return state.set('spinner', true);
   case SPINNER_HIDE:
