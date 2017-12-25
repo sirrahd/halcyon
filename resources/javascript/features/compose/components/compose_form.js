@@ -22,6 +22,7 @@ const messages = defineMessages({
   placeholder: { id: 'compose_form.placeholder', defaultMessage: 'What\'s happning?' },
   spoiler_placeholder: { id: 'compose_form.spoiler_placeholder', defaultMessage: 'Write your warning here' },
   emoji: { id: 'compose_form.emoji', defaultMessage: 'Add emoji' },
+  published: { id: 'compose_form.published', defaultMessage: 'Your Toot was sent' },
 });
 
 @injectIntl
@@ -47,6 +48,7 @@ export default class ComposeForm extends ImmutablePureComponent {
     onChangeSpoilerText: PropTypes.func.isRequired,
     onPaste: PropTypes.func.isRequired,
     onPickEmoji: PropTypes.func.isRequired,
+    onShowMessage: PropTypes.func.isRequired,
   }
 
   handleChange = (e) => {
@@ -91,6 +93,12 @@ export default class ComposeForm extends ImmutablePureComponent {
     // save the last caret position so we can restore it below!
     if (!nextProps.is_uploading && this.props.is_uploading) {
       this._restoreCaret = this.autosuggestTextarea.textarea.selectionStart;
+    }
+
+    // Show "Your Toot was sent" after making sure of
+    // request finished and status published successfully
+    if ( !nextProps.is_submitting && this.props.is_submitting && nextProps.text === '' ) {
+      this.props.onShowMessage({ message: this.props.intl.formatMessage(messages.published) });
     }
   }
 

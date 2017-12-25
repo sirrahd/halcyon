@@ -9,6 +9,7 @@ import {
   changeComposeSpoilerText,
   insertEmojiCompose,
 } from '../../../actions/compose';
+import { showMessage } from '../../../actions/indicators';
 import ComposeForm from '../components/compose_form';
 
 const mapStateToProps = (state) => ({
@@ -22,7 +23,6 @@ const mapStateToProps = (state) => ({
   preselectDate: state.getIn(['compose', 'preselectDate']),
   is_submitting: state.getIn(['compose', 'is_submitting']),
   is_uploading: state.getIn(['compose', 'is_uploading']),
-  showSearch: state.getIn(['search', 'submitted']) && !state.getIn(['search', 'hidden']),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -57,6 +57,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onPickEmoji (position, data) {
     dispatch(insertEmojiCompose(position, data));
+  },
+
+  onShowMessage (props) {
+    dispatch(showMessage(props));
   },
 
 });

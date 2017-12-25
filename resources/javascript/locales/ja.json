@@ -21,6 +21,7 @@
   "compose_form.sensitive": "メディアを閲覧注意としてマークする",
   "compose_form.emoji": "絵文字を追加",
   "compose_form.publish": "トゥート！",
+  "compose_form.published": "トゥートが送信されました",
 
   "upload_area.title": "ドラッグ＆ドロップでアップロード",
   "upload_button.label": "メディアを追加",

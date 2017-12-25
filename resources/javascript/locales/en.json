@@ -21,6 +21,7 @@
   "compose_form.sensitive": "Mark media as sensitive",
   "compose_form.emoji": "Add emoji",
   "compose_form.publish": "Toot!",
+  "compose_form.published": "Your Toot was sent",
 
   "upload_area.title": "Drag & drop to upload",
   "upload_button.label": "Add media",
