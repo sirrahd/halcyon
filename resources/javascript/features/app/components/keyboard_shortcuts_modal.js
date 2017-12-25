@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape, defineMessages } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 import { FormattedMessage } from 'react-intl';
 
 const messages = defineMessages({
@@ -29,7 +29,7 @@ const messages = defineMessages({
 export default class KeyboradShortcutsModal extends React.PureComponent {
 
   static propTypes = {
-    intl:  intlShape.isRequired,
+    intl: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
   }
 

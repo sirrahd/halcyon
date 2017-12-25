@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import QueryString from 'querystring';
 import { Link } from 'react-router-dom';
-import { intlShape, injectIntl, defineMessages } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 import halcyon from '../../../api/halcyon';
 import mastodon from '../../../api/mastodon';
 
@@ -15,7 +15,7 @@ const messages = defineMessages({
 export default class LoginFormVerifyResponse extends React.PureComponent {
 
   static propTypes = {
-    intl: intlShape.isRequired,
+    intl: PropTypes.object.isRequired,
   }
 
   state = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import { injectIntl, intlShape, defineMessages } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 import classNames from 'classnames';
 
 import AccountsSettingsContainer from './containers/accounts_settings_container';
@@ -64,7 +64,7 @@ class SettingsMenu extends React.PureComponent {
 export default class Settings extends React.PureComponent {
 
   static propTypes = {
-    intl: intlShape.isRequired,
+    intl: PropTypes.object.isRequired,
   }
 
   state = {

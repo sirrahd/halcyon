@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape, defineMessages } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 
 const messages = defineMessages({
   spoiler: { id: 'compose_form.spoiler', defaultMessage: 'Hide text behind warning' },
@@ -10,7 +10,7 @@ const messages = defineMessages({
 export default class SpoilerButton extends React.PureComponent {
 
   static propTypes = {
-    intl: intlShape.isRequired,
+    intl: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
   }
 

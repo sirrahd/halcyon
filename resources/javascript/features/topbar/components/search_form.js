@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Link } from 'react-router-dom';
-import { intlShape, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import Dropdown, { DropdownContent } from 'react-simple-dropdown';
 
 const DropdownItem = (item, index, onDelete) => {
@@ -99,7 +99,7 @@ class SearchForm extends React.PureComponent {
     onDeleteRecentSearches: PropTypes.func.isRequired,
     onClearRecentSearches: PropTypes.func.isRequired,
     onDeleteSavedSearches: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
+    intl: PropTypes.object.isRequired,
     recentSearches: ImmutablePropTypes.list.isRequired,
     savedSearches: ImmutablePropTypes.list.isRequired,
   };

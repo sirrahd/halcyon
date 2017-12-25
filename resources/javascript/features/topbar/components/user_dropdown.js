@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Overlay from 'react-overlays/lib/Overlay';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
-import { intlShape, defineMessages } from 'react-intl';
+import { defineMessages } from 'react-intl';
 import normalizeAcct from '../../../normalize_acct';
 import { DropdownMenu } from '../../../components/dropdown_menu';
 import Avatar from '../../../containers/avatar_container';
@@ -26,7 +26,7 @@ export default class UserDropdown extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
-    intl: intlShape.isRequired,
+    intl: PropTypes.object.isRequired,
     isUserTouching: PropTypes.func,
     isModalOpen: PropTypes.bool.isRequired,
     onModalOpen: PropTypes.func,

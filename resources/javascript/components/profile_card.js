@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
-import { FormattedMessage, FormattedNumber, injectIntl, intlShape, defineMessages } from 'react-intl';
+import { FormattedMessage, FormattedNumber, injectIntl, defineMessages } from 'react-intl';
 import classNames from 'classnames';
 
 import { makeGetAccount } from '../selectors';
@@ -90,7 +90,7 @@ class ProfileCardCounters extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
-    intl: intlShape,
+    intl: PropTypes.object.isRequired,
   }
 
   render() {

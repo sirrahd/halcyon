@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape, defineMessages, FormattedMessage } from 'react-intl';
+import { injectIntl, defineMessages, FormattedMessage } from 'react-intl';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import SettingCheckbox from '../../../components/setting_checkbox';
 import { LANUAGES, THEMES } from '../../../constants';
@@ -16,7 +16,7 @@ export default class UISettings extends React.PureComponent {
   static propTypes = {
     settings: ImmutablePropTypes.map.isRequired,
     onChange: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
+    intl: PropTypes.object.isRequired,
   }
 
   render () {

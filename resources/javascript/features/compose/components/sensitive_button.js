@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape, defineMessages } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 
 const messages = defineMessages({
   sensitive: { id: 'compose_form.sensitive', defaultMessage: 'Mark media as sensitive' },
@@ -13,7 +13,7 @@ export default class SensitiveButton extends React.PureComponent {
     visible: PropTypes.bool.isRequired,
     active: PropTypes.bool.isRequired,
     disabled: PropTypes.bool.isRequired,
-    intl: intlShape.isRequired,
+    intl: PropTypes.object.isRequired,
   }
 
   handleClick = (e) => {

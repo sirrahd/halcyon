@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import { injectIntl, intlShape, defineMessages, FormattedMessage } from 'react-intl';
+import { injectIntl, defineMessages, FormattedMessage } from 'react-intl';
 import { length } from 'stringz';
 
 import AutosuggestTextarea from './autosuggest_textarea';
@@ -29,7 +29,7 @@ const messages = defineMessages({
 export default class ComposeForm extends ImmutablePureComponent {
 
   static propTypes = {
-    intl: intlShape.isRequired,
+    intl: PropTypes.object.isRequired,
     text: PropTypes.string.isRequired,
     suggestion_token: PropTypes.string,
     suggestions: ImmutablePropTypes.list,
