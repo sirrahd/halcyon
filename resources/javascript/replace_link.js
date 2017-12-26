@@ -6,10 +6,11 @@ export default function replaceLink(text) {
   }
 
   const { domain } = initialState.meta;
-  const baseURL = `${location.href.split('/')[0]}//${location.href.split('/')[2]}`;
+  const baseURL    = `${window.location.protocol}//${window.location.host}`;
 
   return text
     .replace(RegExp('https?:\/\/([-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)\/(@[a-zA-Z0-9_]{1,30})', 'g'), `${baseURL}/$2@$1`)
+    .replace(RegExp('https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+\/tags\/(.+?)', 'g'), `${baseURL}\/timelines\/tag\/$1`)
     .replace(RegExp(`https?:\/\/${domain}`, 'g'), baseURL)
   ;
 }
