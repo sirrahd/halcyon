@@ -1,25 +1,22 @@
 import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import ImmutablePureComponent from 'react-immutable-pure-component';
 import { autoPlayGif } from '../../../initial_state';
 
 import AccountHeaderCounters from '../components/account_header_counters';
 import AccountHeaderActionButton from '../components/account_header_action_button';
 
-export default class AccountHeader extends React.Component {
+export default class AccountHeader extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
   }
 
-  shouldComponentUpdate () {
-    return true;
-  }
-
   render () {
     const { account } = this.props;
 
-    if ( account === null ) {
-      return <p>Missing information... :3</p>;
+    if ( !account ) {
+      return <div />;
     }
 
     const src = autoPlayGif ? account.get('header') : account.get('header_static');

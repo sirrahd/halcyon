@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import ImmutablePureComponent from 'react-immutable-pure-component';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 // import { ScrollContainer } from 'react-router-scroll-4';
 import {
@@ -23,7 +24,7 @@ const mapStateToProps = (state, props) => ({
 });
 
 @connect(mapStateToProps)
-export default class AccountFollowers extends React.PureComponent {
+export default class AccountFollowers extends ImmutablePureComponent {
 
   static propTypes = {
     match: PropTypes.object.isRequired,

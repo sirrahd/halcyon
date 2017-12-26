@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import ImmutablePureComponent from 'react-immutable-pure-component';
 import normalizeAcct from '../../../normalize_acct';
 import replaceLink from '../../../replace_link';
 
 import Avatar from '../../../containers/avatar_container';
 
-export default class AccountLetterhead extends React.PureComponent {
+export default class AccountLetterhead extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
@@ -14,26 +15,20 @@ export default class AccountLetterhead extends React.PureComponent {
 
   render () {
     const { account } = this.props;
-    let id, acct, displayNameHtml, noteHtml;
 
-    if ( account !== null ) {
-      id              = account.get('id');
-      acct            = normalizeAcct(account.get('acct'), true);
-      displayNameHtml = { __html: account.get('display_name_html') };
-      noteHtml        = { __html: replaceLink(account.get('note_emojified')) };
-    } else {
-      id              = '';
-      acct            = '';
-      displayNameHtml = { __html: '' };
-      noteHtml        = { __html: '' };
+    if ( !account ) {
+      return <div />;
     }
+
+    const id              = account.get('id');
+    const acct            = normalizeAcct(account.get('acct'), true);
+    const displayNameHtml = { __html: account.get('display_name_html') };
+    const noteHtml        = { __html: replaceLink(account.get('note_emojified')) };
 
     return (
       <div className='account-letterhead'>
         <div className='account-letterhead__avatar'>
-          {
-            account ? <Avatar account={account ? account : false} size={200} /> : <div />
-          }
+          <Avatar account={account} size={200} />
         </div>
 
         <Link to={`/accounts/${id}`} className='account-letterhead__link'>

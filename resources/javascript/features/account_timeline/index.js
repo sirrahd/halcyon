@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
+import ImmutablePureComponent from 'react-immutable-pure-component';
+import { fetchAccount } from '../../actions/accounts';
+import { List as ImmutableList } from 'immutable';
 
 import Page from '../app/components/page';
 import Content from '../app/components/content';
@@ -13,11 +17,29 @@ import Gallery from './components/gallery';
 import WithReplies from './components/with_replies';
 import Pinned from './components/pinned';
 
-export default class AccountTimeline extends React.Component {
+const mapStateToProps = (state, props) => ({
+  statusIds: state.getIn(['timelines', `account:${props.match.params.accountId}`, 'items'], ImmutableList()),
+  isLoading: state.getIn(['timelines', `account:${props.match.params.accountId}`, 'isLoading']),
+  hasMore: !!state.getIn(['timelines', `account:${props.match.params.accountId}`, 'next']),
+});
+
+@connect(mapStateToProps)
+export default class AccountTimeline extends ImmutablePureComponent {
 
   static propTypes = {
     match: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
   };
+
+  componentWillMount () {
+    this.props.dispatch(fetchAccount(this.props.match.params.accountId));
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.match.params.accountId !== this.props.match.params.accountId && nextProps.match.params.accountId) {
+      this.props.dispatch(fetchAccount(nextProps.match.params.accountId));
+    }
+  }
 
   render() {
     return (

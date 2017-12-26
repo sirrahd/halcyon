@@ -1,23 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import ImmutablePureComponent from 'react-immutable-pure-component';
 
-@withRouter
-export default class AccountHeaderCounters extends React.Component {
+export default class AccountHeaderCounters extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
     history: PropTypes.object.isRequired,
-  }
-
-  shouldComponentUpdate (nextProps) {
-    if ( this.props.history.location.pathname !== nextProps.history.location.pathname ) {
-      return true;
-    }
-
-    return false;
   }
 
   render () {
