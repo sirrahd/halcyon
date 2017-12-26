@@ -1,14 +1,18 @@
 import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import ImmutablePureComponent from 'react-immutable-pure-component';
+import { autoPlayGif } from '../../../initial_state';
 
 import AccountHeaderCounters from '../components/account_header_counters';
 import AccountHeaderActionButton from '../components/account_header_action_button';
 
-export default class AccountHeader extends ImmutablePureComponent {
+export default class AccountHeader extends React.Component {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
+  }
+
+  shouldComponentUpdate () {
+    return true;
   }
 
   render () {
@@ -18,8 +22,7 @@ export default class AccountHeader extends ImmutablePureComponent {
       return <p>Missing information... :3</p>;
     }
 
-    const src = account.get('header');
-    // const staticSrc = account.get('static_header');
+    const src = autoPlayGif ? account.get('header') : account.get('header_static');
 
     return(
       <header className='account-header'>

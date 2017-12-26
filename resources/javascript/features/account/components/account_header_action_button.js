@@ -4,7 +4,9 @@ export default class AccountHeaderActionButton extends React.PureComponent {
 
   render () {
     return(
-      <button>ボタン</button>
+      <div className='account-header-action-button'>
+        <button>ボタン</button>
+      </div>
     );
   }
 

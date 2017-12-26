@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class Content extends React.PureComponent {
+export default class Content extends React.Component {
 
   static propTypes = {
     children: PropTypes.node,

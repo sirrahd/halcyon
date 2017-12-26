@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { Route, Switch } from 'react-router';
+import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
+import { ScrollContext } from 'react-router-scroll-4';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import configureStore from '../store/configureStore';
 import { hydrateStore } from '../actions/store';
 import initialState from '../initial_state';
-import AppContainer from '../features/app';
+import App from '../features/app';
 
 import en from 'react-intl/locale-data/en';
 import ja from 'react-intl/locale-data/ja';
@@ -33,9 +34,9 @@ export default class Halcyon extends React.PureComponent {
       <IntlProvider locale={locale} messages={messagesForLocale(locale)}>
         <Provider store={store} >
           <BrowserRouter>
-            <Switch>
-              <Route path='/' component={AppContainer} />
-            </Switch>
+            <ScrollContext>
+              <Route path='/' component={App} />
+            </ScrollContext>
           </BrowserRouter>
         </Provider>
       </IntlProvider>
