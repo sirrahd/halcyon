@@ -9,7 +9,12 @@ import {
   expandFollowing,
 } from '../../actions/accounts';
 
-import ProfileCard from '../profile_card';
+import Page from '../app/components/page';
+import Content from '../app/components/content';
+import Dashborad from '../app/components/dashboard';
+import ProfileCard from '../../containers/profile_card_container';
+import AccountHeaderContainer from '../account/containers/account_header_container';
+import AccountLetterheadContainer from '../account/containers/account_letterhead_container';
 
 const mapStateToProps = (state, props) => ({
   accountIds: state.getIn(['user_lists', 'following', props.match.params.accountId, 'items']),
@@ -57,7 +62,19 @@ export default class AccountFollowing extends React.PureComponent {
     let loadMore = null;
 
     if (!accountIds) {
-      return null;
+      return (
+        <Page>
+          <AccountHeaderContainer accountId={this.props.match.params.accountId} />
+
+          <Content>
+            <Dashborad position='left'>
+              <AccountLetterheadContainer accountId={this.props.match.params.accountId} />
+            </Dashborad>
+
+            <p>読み込み中</p>
+          </Content>
+        </Page>
+      );
     }
 
     if (hasMore) {
@@ -65,12 +82,23 @@ export default class AccountFollowing extends React.PureComponent {
     }
 
     return (
-      <div className='scrollable' onScroll={this.handleScroll}>
-        <div className='accounts-list'>
-          {accountIds.map(id => <ProfileCard key={id} accountId={id} withNote />)}
-          {loadMore}
-        </div>
-      </div>
+      <Page>
+        <AccountHeaderContainer accountId={this.props.match.params.accountId} />
+
+        <Content>
+          <Dashborad position='left'>
+            <AccountLetterheadContainer accountId={this.props.match.params.accountId} />
+          </Dashborad>
+
+          <div className='scrollable' onScroll={this.handleScroll}>
+            <div className='accounts-list'>
+              {accountIds.map(id => <ProfileCard key={id} accountId={id} withNote withFollowButton />)}
+            </div>
+
+            {loadMore}
+          </div>
+        </Content>
+      </Page>
     );
   }
 
