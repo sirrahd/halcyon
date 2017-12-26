@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { changeMetaSetting } from '../../../actions/meta';
+import { changeMeta } from '../../../actions/meta';
 import A11ySettings from '../components/a11y_settings';
 
 const mapStateToProps = state => ({
@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onChange(key, value) {
-    dispatch(changeMetaSetting(key, value));
+    dispatch(changeMeta(key, value));
   },
 });
 
