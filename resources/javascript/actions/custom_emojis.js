@@ -19,6 +19,7 @@ export function fetchCustomEmojis() {
 export function fetchCustomEmojisRequest() {
   return {
     type: CUSTOM_EMOJIS_FETCH_REQUEST,
+    skipLoading: true,
   };
 }
 

@@ -23,6 +23,7 @@ export function verifyCredentials() {
 export function verifyCredentialsRequest() {
   return {
     type: CREDENTIALS_VERIFY_REQUEST,
+    skipLoading: true,
   };
 }
 
