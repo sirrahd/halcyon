@@ -26,8 +26,6 @@ import {
   COMPOSE_UPLOAD_CHANGE_SUCCESS,
   COMPOSE_UPLOAD_CHANGE_FAIL,
   COMPOSE_RESET,
-  COMPOSE_DEFAULT_VISIBILITY_CHANGE,
-  COMPOSE_DEFAULT_SENSITIVITY_CHANGE,
 } from '../actions/compose';
 import { TIMELINE_DELETE } from '../actions/timelines';
 import { STORE_HYDRATE } from '../actions/store';
@@ -263,17 +261,6 @@ export default function compose(state = initialState, action) {
       .set('sensitive', action.account.source.sensitive)
       .set('default_privacy', action.account.source.privacy)
       .set('default_sensitive', action.account.source.sensitive);
-  case COMPOSE_DEFAULT_VISIBILITY_CHANGE:
-    return state
-      .set('privacy', action.value)
-      .set('default_privacy', action.value);
-  case COMPOSE_DEFAULT_SENSITIVITY_CHANGE:
-    return state.withMutations(map => {
-      if (!state.get('spoiler')) {
-        map.set('sensitive', !state.get('sensitive'));
-      }
-      map.set('default_sensitive', !state.get('sensitive'));
-    });
   default:
     return state;
   }

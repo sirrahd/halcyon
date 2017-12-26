@@ -1,4 +1,6 @@
-const storage = localStorage.getItem('initial_state');
+import { INITIAL_STATE_KEY } from './constants';
+
+const storage = localStorage.getItem(INITIAL_STATE_KEY);
 const initialState = storage && JSON.parse(storage);
 const getMeta = (prop) => initialState && initialState.meta && initialState.meta[prop];
 

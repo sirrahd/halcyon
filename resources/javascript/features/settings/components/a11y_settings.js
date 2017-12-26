@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, defineMessages, FormattedMessage } from 'react-intl';
+import { defineMessages, FormattedMessage } from 'react-intl';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import SettingCheckbox from '../../../components/setting_checkbox';
 
@@ -12,7 +12,6 @@ const messages = defineMessages({
   reduce_motion: { id: 'settings.a11y.reduce_motion', defaultMessage: 'Reduce motion in animations' },
 });
 
-@injectIntl
 export default class A11ySettings extends React.PureComponent {
 
   static propTypes = {

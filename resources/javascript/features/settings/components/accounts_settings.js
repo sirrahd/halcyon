@@ -12,6 +12,14 @@ export default class AccountsSettings extends React.PureComponent {
     account: ImmutablePropTypes.map.isRequired,
   }
 
+  handleProtocolHandlerEnable = e => {
+    e.preventDefault();
+    if (typeof navigator.registerProtocolHandler !== 'undefined') {
+      const handlerUrl = window.location.protocol + '//' + window.location.host + '/intent?uri=%s';
+      navigator.registerProtocolHandler('web+mastodon', handlerUrl, 'Halcyon');
+    }
+  }
+
   render () {
     const { account } = this.props;
 
@@ -23,6 +31,12 @@ export default class AccountsSettings extends React.PureComponent {
           <div>
             <Avatar size={50} account={account} />
             <DispalyName account={account} />
+          </div>
+
+          <div>
+            <button className='generic-button' onClick={this.handleProtocolHandlerEnable}>
+              web+mastodon
+            </button>
           </div>
         </form>
       </div>

@@ -44,9 +44,6 @@ export const COMPOSE_UPLOAD_CHANGE_REQUEST     = 'COMPOSE_UPLOAD_UPDATE_REQUEST'
 export const COMPOSE_UPLOAD_CHANGE_SUCCESS     = 'COMPOSE_UPLOAD_UPDATE_SUCCESS';
 export const COMPOSE_UPLOAD_CHANGE_FAIL        = 'COMPOSE_UPLOAD_UPDATE_FAIL';
 
-export const COMPOSE_DEFAULT_VISIBILITY_CHANGE = 'COMPOSE_DEFAULT_VISIBILITY_CHANGE';
-export const COMPOSE_DEFAULT_SENSITIVITY_CHANGE = 'COMPOSE_DEFAULT_SENSITIVE_CHANGE';
-
 export function changeCompose(text) {
   return {
     type: COMPOSE_CHANGE,
@@ -378,11 +375,5 @@ export function changeDefaultVisibility(value) {
   return {
     type: COMPOSE_VISIBILITY_CHANGE,
     value,
-  };
-}
-
-export function changeDefaultSensitivity() {
-  return {
-    type: COMPOSE_DEFAULT_VISIBILITY_CHANGE,
   };
 }
