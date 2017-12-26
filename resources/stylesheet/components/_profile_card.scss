@@ -26,6 +26,7 @@
 }
 
 .profile-card-account__link {
+  display: block;
   position: relative;
   color: $text-color;
 
@@ -35,14 +36,14 @@
 }
 
 .profile-card-account__avatar {
+  position: absolute;
+  top: -72px;
+
   .account__avatar {
-    position: absolute;
-    top: -21px;
-    left: 0;
+    box-sizing: border-box;
+    border: 3px solid $primary-color;
     background-size: 74px !important;
     background-color: $primary-color;
-    border: 3px solid $primary-color;
-    box-sizing: border-box;
   }
 }
 
