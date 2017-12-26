@@ -44,6 +44,9 @@ export const COMPOSE_UPLOAD_CHANGE_REQUEST     = 'COMPOSE_UPLOAD_UPDATE_REQUEST'
 export const COMPOSE_UPLOAD_CHANGE_SUCCESS     = 'COMPOSE_UPLOAD_UPDATE_SUCCESS';
 export const COMPOSE_UPLOAD_CHANGE_FAIL        = 'COMPOSE_UPLOAD_UPDATE_FAIL';
 
+export const COMPOSE_DEFAULT_VISIBILITY_CHANGE = 'COMPOSE_DEFAULT_VISIBILITY_CHANGE';
+export const COMPOSE_DEFAULT_SENSITIVITY_CHANGE = 'COMPOSE_DEFAULT_SENSITIVE_CHANGE';
+
 export function changeCompose(text) {
   return {
     type: COMPOSE_CHANGE,
@@ -106,10 +109,6 @@ export function submitCompose() {
       sensitive: getState().getIn(['compose', 'sensitive']),
       spoiler_text: getState().getIn(['compose', 'spoiler_text'], ''),
       visibility: getState().getIn(['compose', 'privacy']),
-    }, {
-      headers: {
-        'Idempotency-Key': getState().getIn(['compose', 'idempotencyKey']),
-      },
     }).then(function (response) {
       dispatch(submitComposeSuccess({ ...response.data }));
 
@@ -372,5 +371,18 @@ export function changeComposing(value) {
   return {
     type: COMPOSE_COMPOSING_CHANGE,
     value,
+  };
+}
+
+export function changeDefaultVisibility(value) {
+  return {
+    type: COMPOSE_VISIBILITY_CHANGE,
+    value,
+  };
+}
+
+export function changeDefaultSensitivity() {
+  return {
+    type: COMPOSE_DEFAULT_VISIBILITY_CHANGE,
   };
 }
