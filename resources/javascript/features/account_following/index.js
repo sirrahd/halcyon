@@ -15,6 +15,7 @@ import Dashborad from '../app/components/dashboard';
 import ProfileCard from '../../containers/profile_card_container';
 import AccountHeaderContainer from '../account/containers/account_header_container';
 import AccountLetterheadContainer from '../account/containers/account_letterhead_container';
+import LoadingIndicator from '../../components/loading_indicator';
 
 const mapStateToProps = (state, props) => ({
   accountIds: state.getIn(['user_lists', 'following', props.match.params.accountId, 'items']),
@@ -61,22 +62,6 @@ export default class AccountFollowing extends React.PureComponent {
 
     let loadMore = null;
 
-    if (!accountIds) {
-      return (
-        <Page>
-          <AccountHeaderContainer accountId={this.props.match.params.accountId} />
-
-          <Content>
-            <Dashborad position='left'>
-              <AccountLetterheadContainer accountId={this.props.match.params.accountId} />
-            </Dashborad>
-
-            <p>読み込み中</p>
-          </Content>
-        </Page>
-      );
-    }
-
     if (hasMore) {
       loadMore = <button onClick={this.handleLoadMore}>Load more</button>;
     }
@@ -92,12 +77,18 @@ export default class AccountFollowing extends React.PureComponent {
 
           <div className='scrollable' onScroll={this.handleScroll}>
             <div className='accounts-list'>
-              {accountIds.map(id => <ProfileCard key={id} accountId={id} withNote withFollowButton />)}
+              {
+                accountIds ?
+                  accountIds.map(id => <ProfileCard key={id} accountId={id} withNote withFollowButton />):
+                  <LoadingIndicator />
+              }
             </div>
 
             {loadMore}
           </div>
         </Content>
+
+        <LoadingIndicator />
       </Page>
     );
   }

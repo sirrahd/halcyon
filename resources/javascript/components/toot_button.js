@@ -14,7 +14,7 @@ export default class TootButton extends React.PureComponent {
     return (
       <button className='toot-button' onClick={onClick}>
         <div className='toot-button__icon'>
-          <i class='fa fa-pencil' aria-hidden='true' />
+          <i className='fa fa-pencil' aria-hidden='true' />
         </div>
 
         <div className='toot-button__label'>

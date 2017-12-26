@@ -15,6 +15,7 @@ import Dashborad from '../app/components/dashboard';
 import ProfileCard from '../../containers/profile_card_container';
 import AccountHeaderContainer from '../account/containers/account_header_container';
 import AccountLetterheadContainer from '../account/containers/account_letterhead_container';
+import LoadingIndicator from '../../components/loading_indicator';
 
 const mapStateToProps = (state, props) => ({
   accountIds: state.getIn(['user_lists', 'followers', props.match.params.accountId, 'items']),
@@ -79,7 +80,7 @@ export default class AccountFollowers extends React.PureComponent {
               {
                 accountIds ?
                   accountIds.map(id => <ProfileCard key={id} accountId={id} withNote withFollowButton />) :
-                  <p>読み込み中</p>
+                  <LoadingIndicator />
               }
             </div>
 

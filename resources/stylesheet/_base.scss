@@ -128,3 +128,20 @@ select {
   width: 16px;
   height: 16px;
 }
+
+button.generic-button {
+  display: block;
+  padding: 6px 18px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: $highlight-color;
+
+  color: $white;
+  font-size: 14px;
+  font-weight: 700;
+
+  &:hover, &:active {
+    background-color: darken($highlight-color, 5%);
+  }
+}

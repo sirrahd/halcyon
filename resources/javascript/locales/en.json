@@ -148,6 +148,8 @@
   "login_from.fetching_access_token": "Fetching access token",
   "login_from.verifying_credentials": "Verifying credentials",
 
+  "loading_indicator.label": "Loading...",
+
   "not_found.generic": "Sorry, Page not found",
 
   "login_form.error.access_denied": "The resource owner or authorization server denied the request.",
