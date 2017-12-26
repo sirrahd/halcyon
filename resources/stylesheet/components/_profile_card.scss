@@ -5,7 +5,7 @@
   &--with-follow-button {
     .profile-card-account__meta {
       margin-left: 0;
-      margin-top: 42px;
+      padding-top: 48px;
     }
   }
 }
@@ -37,7 +37,7 @@
 
 .profile-card-account__avatar {
   position: absolute;
-  top: -72px;
+  top: -36px;
 
   .account__avatar {
     box-sizing: border-box;
