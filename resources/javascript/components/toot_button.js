@@ -12,11 +12,15 @@ export default class TootButton extends React.PureComponent {
     const { onClick } = this.props;
 
     return (
-      <div className='user-navigation__toot-button'>
-        <button className='toot-button' onClick={onClick}>
+      <button className='toot-button' onClick={onClick}>
+        <div className='toot-button__icon'>
+          <i class='fa fa-pencil' aria-hidden='true' />
+        </div>
+
+        <div className='toot-button__label'>
           <FormattedMessage id='compose_form.toot' defaultMessage='Toot' />
-        </button>
-      </div>
+        </div>
+      </button>
     );
   }
 

@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
-import { openModal } from '../../../actions/modal';
+import { openModal } from '../actions/modal';
 import TootButton from '../components/toot_button';
 
 const mapDispatchToProps = dispatch => ({

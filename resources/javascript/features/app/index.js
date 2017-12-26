@@ -16,11 +16,13 @@ import CommunityTimeline from '../community_timeline';
 import PublicTimeline from '../public_timeline';
 import HashtagTimeline from '../hashtag_timeline';
 import ListTimeline from '../list_timeline';
-import Account from '../account';
-import Notifications from '../notifications';
-import AcctToAccount from '../acct_to_account';
+import AccountTimeline from '../account_timeline';
+import AccountFollowers from '../account_followers';
+import AccountFollowing from '../account_following';
 import NotFound from '../not_found';
 
+import MobileTootButton from './components/mobile_toot_button';
+import MessageContainer from '../../containers/message_container';
 import ModalContaienr from '../app/containers/modal_contaienr';
 import Tooltip from 'react-tooltip';
 
@@ -75,6 +77,7 @@ export default class App extends React.Component {
       <HotKeys keyMap={keyMap} handlers={handlers} >
         <div className='app'>
           <Topbar />
+          <MessageContainer />
 
           <Switch>
             <Redirect exact from='/' to='/timelines/home' />
@@ -83,7 +86,10 @@ export default class App extends React.Component {
             <Route exact path='/timelines/public/local' component={CommunityTimeline} />
             <Route exact path='/timelines/tag/:id' component={HashtagTimeline} />
             <Route exact path='/timelines/list/:id' component={ListTimeline} />
-            <Route path='/accounts/:accountId' component={Account} />
+
+            <Route exact path='/accounts/:accountId' component={AccountTimeline} />
+            <Route exact path='/accounts/:accountId/followers' component={AccountFollowers} />
+            <Route exact path='/accounts/:accountId/following' component={AccountFollowing} />
 
             {/*
             <Route exact path='/search/statuses' component={SearchStatuses} />
@@ -93,11 +99,12 @@ export default class App extends React.Component {
             <Route exact path='/follow_requests' component={FollowRequests} />
             */}
 
-            <Route path='/:acct(@[a-zA-Z0-9_]{1,30}@.+?\..+?)/:page?' component={AcctToAccount} />
+            {/* <Route path='/:acct(@[a-zA-Z0-9_]{1,30}@.+?\..+?)/:page?' component={AcctToAccount} /> */}
 
             <Route component={NotFound} />
           </Switch>
 
+          <MobileTootButton />
           <ModalContaienr />
           <Tooltip effect='solid' disable={isMobile(window.innerWidth)} />
         </div>

@@ -1,0 +1,41 @@
+.toot-button {
+  width: 100%;
+  height: 100%;
+  color: $white;
+}
+
+.toot-button__icon {
+  display: none;
+  font-size: 18px;
+}
+
+.mobile-toot-button {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  margin: 8px;
+  border-radius: 50%;
+  background-color: $highlight-color;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.26);
+
+  @media screen and (max-width: 890px) {
+    display: block;
+  }
+
+  .toot-button {
+    width: 100%;
+    height: 100%;
+    color: $white;
+  }
+
+  .toot-button__icon {
+    display: block;
+  }
+
+  .toot-button__label {
+    display: none;
+  }
+}

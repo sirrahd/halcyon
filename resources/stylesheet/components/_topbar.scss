@@ -328,17 +328,19 @@
   .toot-button {
     height: 100%;
     padding: 6px 18px;
-    font-size: 14px;
-    font-weight: 700;
     border-radius: 25px;
     overflow: hidden;
-    white-space: nowrap;
     box-sizing: border-box;
-    color: $white;
     background-color: $highlight-color;
 
     &:hover, &:active {
       background-color: darken($highlight-color, 5%);
     }
+  }
+
+  .toot-button__label {
+    color: $white;
+    font-size: 14px;
+    font-weight: 700;
   }
 }
