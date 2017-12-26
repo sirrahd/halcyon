@@ -1,0 +1,16 @@
+body {
+  /*
+    Photo by: Wake Up Freeman (https://flic.kr/p/fwAqfY)
+    License: Attribution-NonCommercial 2.0 Generic (CC BY-NC 2.0)
+  */
+  background-image: url('./background-image.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.topbar__title-wrap a .topbar__title::before {
+  content: "\e90f";
+  font-family: 'halcyon-font';
+  font-size: 21px;
+  background: none;
+}
