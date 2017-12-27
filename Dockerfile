@@ -41,9 +41,9 @@ RUN apk -U upgrade \
  && rm -rf /var/cache/apk/*
 
 COPY ./composer.phar /usr/local/bin/composer
-COPY ./deploy/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY ./deploy/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d
-COPY ./deploy/supervisord.conf /etc
+COPY ./installation/nginx.conf /etc/nginx/nginx.conf
+COPY ./installation/zzz-www.conf /usr/local/etc/php-fpm.d
+COPY ./installation/supervisord.conf /etc
 COPY . /halcyon
 
 RUN mkdir -p /halcyon/storage /halcyon/bootstrap/cache \
