@@ -1,11 +1,11 @@
 import {
-  showSpinner,
-  hideSpinner,
-} from '../actions/indicators';
+  showLoading,
+  hideLoading,
+} from '../actions/loading';
 
 const defaultTypeSuffixes = ['PENDING', 'FULFILLED', 'REJECTED'];
 
-export default function requestsMiddleware(config = {}) {
+export default function loadingMiddleware(config = {}) {
   const promiseTypeSuffixes = config.promiseTypeSuffixes || defaultTypeSuffixes;
 
   return ({ dispatch }) => next => action => {
@@ -17,9 +17,9 @@ export default function requestsMiddleware(config = {}) {
       const isRejected = new RegExp(`${REJECTED}$`, 'g');
 
       if (action.type.match(isPending)) {
-        dispatch(showSpinner());
+        dispatch(showLoading());
       } else if (action.type.match(isFulfilled) || action.type.match(isRejected)) {
-        dispatch(hideSpinner());
+        dispatch(hideLoading());
       }
     }
 

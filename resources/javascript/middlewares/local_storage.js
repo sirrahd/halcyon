@@ -17,6 +17,8 @@ function mergeLocalStorage(key, value) {
 }
 
 export default function localStorageMiddleware() {
+  const getAccount = makeGetAccount();
+
   return ({ getState }) => next => action => {
     next(action);
 
@@ -28,7 +30,6 @@ export default function localStorageMiddleware() {
         return mergeLocalStorage(INITIAL_STATE_KEY, { settings: getState().get('settings').toJS() });
       case CREDENTIALS_VERIFY_SUCCESS:
       case CREDENTIALS_UPDATE_SUCCESS:
-        const getAccount = makeGetAccount();
         return mergeLocalStorage(INITIAL_STATE_KEY, { accounts: { [me] : getAccount(getState(), me).toJS() } });
       case CUSTOM_EMOJIS_FETCH_SUCCESS:
         return mergeLocalStorage(INITIAL_STATE_KEY, { custom_emojis: getState().get('custom_emojis').toJS() });

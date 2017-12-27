@@ -22,7 +22,8 @@ import notifications from './notifications';
 import height_cache from './height_cache';
 import custom_emojis from './custom_emojis';
 import lists from './lists';
-import indicators from './indicators';
+import message from './message';
+import loading from './loading';
 
 const reducers = {
   timelines,
@@ -48,7 +49,8 @@ const reducers = {
   height_cache,
   custom_emojis,
   lists,
-  indicators,
+  message,
+  loading,
 };
 
 export default combineReducers(reducers);

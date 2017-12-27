@@ -3,8 +3,9 @@ import { hideMessage } from '../actions/indicators';
 import Message from '../components/message';
 
 const mapStateToProps = state => ({
-  show: state.getIn(['indicators', 'message', 'show']),
-  message: state.getIn(['indicators', 'message', 'props', 'message']),
+  show: state.getIn(['message', 'show']),
+  text: state.getIn(['message', 'text']),
+  time: state.getIn(['message', 'time']),
   isModalOpen: !!state.get('modal').modalType,
 });
 

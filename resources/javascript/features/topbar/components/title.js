@@ -6,17 +6,17 @@ import { FormattedMessage } from 'react-intl';
 export default class Title extends React.PureComponent {
 
   static propTypes = {
-    isRequesting: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired,
   }
 
   render () {
-    const { isRequesting } = this.props;
+    const { isLoading } = this.props;
 
     return (
       <div className='topbar__title-wrap'>
         <Link to='/'>
           {
-            !isRequesting ? (
+            !isLoading ? (
               <div className='topbar__title'>
                 <h1 className='invisible'>
                   <FormattedMessage id='title.halcyon' defaultMessage='halcyon' />
