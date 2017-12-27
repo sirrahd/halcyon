@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, defineMessages } from 'react-intl';
-import { FormattedMessage } from 'react-intl';
+import ModalHeader from './modal_header';
 
 const messages = defineMessages({
   actions: { id: 'keyboard_shortcuts.actions', defaultMessage: 'Actions' },
@@ -109,19 +109,11 @@ export default class KeyboradShortcutsModal extends React.PureComponent {
   }
 
   render () {
-    const { onClose } = this.props;
+    const { intl, onClose } = this.props;
 
     return(
-      <div className='modal-root__modal keyboard-shortcuts-modal'>
-        <header className='modal-root__modal__header'>
-          <h3>
-            <FormattedMessage id='modal.keyboard_shortcuts' defaultMessage='Keyboard Shortcuts' />
-          </h3>
-
-          <button className='modal-root__modal__close' onClick={onClose} onKeyDown={this.handleKeyDown} autoFocus='true'>
-            <i className='icon-time' aria-hidden='true' />
-          </button>
-        </header>
+      <div className='modal keyboard-shortcuts-modal'>
+        <ModalHeader title={intl.formatMessage({ id: 'modal.keyboard_shortcuts', defaultMessage: 'Keyboard Shortcuts' })} onClose={onClose} autoFocus />
 
         <div className='keyboard-shortcuts'>
           { this.shortcuts.map(items => this.renderItem(items)) }

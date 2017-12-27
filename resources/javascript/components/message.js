@@ -28,7 +28,7 @@ export default class Message extends React.PureComponent {
             <span>{ text }</span>
           </div>
 
-          <button className='message__close' onClick={onClose}>
+          <button className='message__close-button' onClick={onClose}>
             <i className='icon-time' aria-hidden='true' />
           </button>
         </div>

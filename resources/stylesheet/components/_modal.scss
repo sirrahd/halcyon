@@ -27,7 +27,7 @@
   user-select: none;
 }
 
-.modal-root__modal {
+.modal {
   position: relative;
   top: 20vh;
   left: 0;
@@ -42,7 +42,7 @@
   z-index: 998;
 }
 
-.modal-root__modal__header {
+.modal-header {
   position: relative;
   padding: 14px 12px;
   border-bottom: 1px solid $background-color;
@@ -52,16 +52,19 @@
     font-weight: bold;
     text-align: center;
   }
-}
 
-.modal-root__modal__close {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 14px;
-  font-size: 12px;
-  line-height: 21px;
-  color: $text-color-gray;
+  .modal-header__close-button {
+    position: absolute;
+    right: 14px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 21px;
+    height: 21px;
+    font-size: 12px;
+    line-height: 21px;
+    color: $text-color-gray;
+  }
 }
 
 .compose-form-modal,

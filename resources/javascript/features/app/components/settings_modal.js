@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
+import ModalHeader from './modal_header';
 import SettingsForm from '../../settings';
 
+@injectIntl
 export default class SettingsModal extends React.PureComponent {
 
   static propTypes = {
@@ -18,21 +20,15 @@ export default class SettingsModal extends React.PureComponent {
   }
 
   render() {
-    const { onClose } = this.props;
+    const { intl, onClose } = this.props;
 
     return(
-      <div className='modal-root__modal settings-modal'>
-        <header className='modal-root__modal__header'>
-          <h3>
-            <FormattedMessage id='modal.settings' defaultMessage='Settings' />
-          </h3>
+      <div className='modal settings-modal'>
+        <ModalHeader title={intl.formatMessage({ id: 'modal.settings', defaultMessage: 'Settings' })} onClose={onClose} />
 
-          <button className='modal-root__modal__close' onClick={onClose} onKeyDown={this.handleKeyDown}>
-            <i className='icon-time' aria-hidden='true' />
-          </button>
-        </header>
-
-        <SettingsForm />
+        <div className='modal-content'>
+          <SettingsForm />
+        </div>
       </div>
     );
   }
