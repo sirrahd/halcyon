@@ -2,11 +2,8 @@
 
 /public/hot
 /public/storage
-/public/fonts
-/public/images
-/public/javascript
-/public/stylesheet
-/public/mix-manifest.json
+/public/packs
+/public/*manifest.json
 
 /storage/*.key
 /vendor/*

@@ -1,9 +1,16 @@
 const mix = require('laravel-mix');
+const path = require('path');
+
+mix.webpackConfig({
+  output: {
+    path: path.resolve('public/packs'),
+  },
+});
 
 mix
-  .react('resources/javascript/main.js', 'public/packs')
-  .sass('resources/stylesheet/theme_dark.scss', 'public/packs')
-  .sass('resources/stylesheet/theme_light.scss', 'public/packs');
+  .react('resources/halcyon/main.js', 'halcyon')
+  .sass('resources/styles/theme_dark.scss', 'styles')
+  .sass('resources/styles/theme_light.scss', 'styles');
 
 if (mix.inProduction()) {
   mix.version();
