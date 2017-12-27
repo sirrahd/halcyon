@@ -98,7 +98,7 @@ export default class ComposeForm extends ImmutablePureComponent {
     // Show "Your Toot was sent" after making sure of
     // request finished and status published successfully
     if ( !nextProps.is_submitting && this.props.is_submitting && nextProps.text === '' ) {
-      this.props.onShowMessage({ message: this.props.intl.formatMessage(messages.published) });
+      this.props.onShowMessage({ text: this.props.intl.formatMessage(messages.published) });
     }
   }
 

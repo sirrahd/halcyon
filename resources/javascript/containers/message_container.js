@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { hideMessage } from '../actions/indicators';
+import { hideMessage } from '../actions/message';
 import Message from '../components/message';
 
 const mapStateToProps = state => ({

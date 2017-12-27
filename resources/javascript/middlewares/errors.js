@@ -1,4 +1,4 @@
-import { showMessage } from '../actions/indicators';
+import { showMessage } from '../actions/message';
 
 const defaultFailSuffix = 'FAIL';
 
@@ -11,16 +11,16 @@ export default function errorsMiddleware() {
         if (action.error.response) {
           const { data, statusText } = action.error.response;
 
-          let message = statusText;
+          let text = statusText;
 
           if (data.error) {
-            message = data.error;
+            text = data.error;
           }
 
-          dispatch(showMessage({ message }));
+          dispatch(showMessage({ text }));
         } else {
           console.error(action.error);
-          dispatch(showMessage({ message: 'An unexpected error occurred.' }));
+          dispatch(showMessage({ text: 'An unexpected error occurred.' }));
         }
       }
     }

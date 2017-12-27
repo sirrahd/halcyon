@@ -9,7 +9,7 @@ import {
   changeComposeSpoilerText,
   insertEmojiCompose,
 } from '../../../actions/compose';
-import { showMessage } from '../../../actions/indicators';
+import { showMessage } from '../../../actions/message';
 import ComposeForm from '../components/compose_form';
 
 const mapStateToProps = (state) => ({
