@@ -17,7 +17,7 @@ export default function message(state = initialState, action) {
     return state
       .set('show', true)
       .set('text', action.messageProps.text)
-      .set('time', action.messageProps.time);
+      .set('time', action.messageProps.time || 5000);
   case MESSAGE_HIDE:
     return state.set('show', false);
   default:
