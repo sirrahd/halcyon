@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ImmutablePropTypes from 'react-immutable-proptypes';
@@ -8,6 +7,7 @@ import { FormattedMessage, FormattedNumber, injectIntl, defineMessages } from 'r
 import classNames from 'classnames';
 import { autoPlayGif } from '../initial_state';
 import normalizeAcct from '../normalize_acct';
+import replaceLink from '../replace_link';
 
 import Avatar from '../containers/avatar_container';
 
@@ -111,7 +111,7 @@ export default class ProfileCard extends ImmutablePureComponent {
     const header          = autoPlayGif ? account.get('header') : account.get('header_static');
     const id              = account.get('id');
     const displayNameHtml = { __html: account.get('display_name_html') };
-    const noteHtml        = { __html: account.get('note_emojified') };
+    const noteHtml        = { __html: replaceLink(account.get('note_emojified')) };
     const acct            = normalizeAcct(account.get('acct'), true);
 
     return (

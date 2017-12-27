@@ -11,15 +11,17 @@ import { fetchCustomEmojis } from '../../actions/custom_emojis';
 
 import Topbar from '../topbar';
 
-import HomeTimeline from '../home_timeline';
-import CommunityTimeline from '../community_timeline';
-import PublicTimeline from '../public_timeline';
-import HashtagTimeline from '../hashtag_timeline';
-import ListTimeline from '../list_timeline';
-import AccountTimeline from '../account_timeline';
-import AccountFollowers from '../account_followers';
-import AccountFollowing from '../account_following';
-import NotFound from '../not_found';
+import {
+  HomeTimeline,
+  CommunityTimeline,
+  PublicTimeline,
+  HashtagTimeline,
+  ListTimeline,
+  AccountTimeline,
+  AccountFollowers,
+  AccountFollowing,
+  NotFound,
+} from './util/async-components';
 
 import MobileTootButton from './components/mobile_toot_button';
 import MessageContainer from '../../containers/message_container';

@@ -53,19 +53,8 @@ export default class AccountFollowers extends ImmutablePureComponent {
     }
   }
 
-  handleLoadMore = (e) => {
-    e.preventDefault();
-    this.props.dispatch(expandFollowers(this.props.match.params.accountId));
-  }
-
   render() {
-    const { accountIds, hasMore } = this.props;
-
-    let loadMore = null;
-
-    if (hasMore) {
-      loadMore = <button onClick={this.handleLoadMore}>Load more</button>;
-    }
+    const { accountIds, hasMore = true } = this.props;
 
     return (
       <Page>
@@ -78,14 +67,9 @@ export default class AccountFollowers extends ImmutablePureComponent {
 
           <div className='scrollable' onScroll={this.handleScroll}>
             <div className='accounts-list'>
-              {
-                accountIds ?
-                  accountIds.map(id => <ProfileCard key={id} accountId={id} withNote withFollowButton />) :
-                  <LoadingIndicator />
-              }
+              { accountIds && accountIds.map(id => <ProfileCard key={id} accountId={id} withNote withFollowButton />)}
+              { (!accountIds || hasMore) && <LoadingIndicator /> }
             </div>
-
-            {loadMore}
           </div>
         </Content>
       </Page>

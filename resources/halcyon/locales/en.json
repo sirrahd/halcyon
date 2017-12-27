@@ -112,7 +112,7 @@
   "account.view_full_profile": "View full profile",
   "account.with_replies": "Toots & replies",
 
-  "modal.compose_form": "Compose new toot",
+  "modal.compose_form": "Compose new Toot",
   "modal.settings": "Settings",
   "modal.keyboard_shortcuts": "Keyboard Shortcuts",
 
@@ -149,6 +149,8 @@
   "login_from.verifying_credentials": "Verifying credentials",
 
   "loading_indicator.label": "Loading...",
+
+  "not_supported.generic": "This feature is not supported in your browser",
 
   "not_found.generic": "Sorry, Page not found",
 

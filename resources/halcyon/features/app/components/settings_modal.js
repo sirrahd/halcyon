@@ -8,6 +8,7 @@ import SettingsForm from '../../settings';
 export default class SettingsModal extends React.PureComponent {
 
   static propTypes = {
+    intl: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
   }
 
