@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const path    = require('path');
+const { env } = require('process');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const { env } = require('process');
 
 const isProd = env.NODE_ENV === 'production';
 
@@ -22,6 +22,7 @@ module.exports = {
     filename: isProd ? '[name]-[chunkhash].js' : '[name].js',
     chunkFilename: isProd ? '[name]-[chunkhash].js' : '[name].js',
     path: path.resolve(__dirname, 'public', 'packs'),
+    publicPath: '/packs/',
   },
 
   module: {
@@ -47,8 +48,12 @@ module.exports = {
                 sourceMap: !isProd,
               },
             },
-            'resolve-url-loader',
-            'sass-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: !isProd,
+              },
+            },
           ],
         }),
       },
@@ -58,6 +63,7 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: isProd ? '[name]-[hash].[ext]' : '[name].[ext]',
+            publicPath: '/packs/',
           },
         }],
       },
@@ -78,11 +84,12 @@ module.exports = {
     new ExtractTextPlugin({
       filename: isProd ? '[name]-[contenthash].css' : '[name].css',
       allChunks: true,
+      publicPath: '/packs/',
     }),
 
     new ManifestPlugin({
       fileName: 'mix-manifest.json',
-      basePath: '/', // Laravel's mix() inserts slash automatically
+      basePath: '/', // Laravel's mix() always inserts slash in path
       writeToFileEmit: true,
     }),
   ],

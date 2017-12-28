@@ -49,7 +49,7 @@ const mapDispatchToProps = dispatch => ({
 export default class App extends React.Component {
 
   static propTypes = {
-    z: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     onOpenModal: PropTypes.func.isRequired,
     onUpdateState: PropTypes.func.isRequired,

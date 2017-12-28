@@ -32,7 +32,7 @@ export default function localStorageMiddleware() {
       case CREDENTIALS_UPDATE_SUCCESS:
         return mergeLocalStorage(INITIAL_STATE_KEY, { accounts: { [me] : getAccount(getState(), me).toJS() } });
       case CUSTOM_EMOJIS_FETCH_SUCCESS:
-        return mergeLocalStorage(INITIAL_STATE_KEY, { custom_emojis: getState().get('custom_emojis').toJS() });
+        return mergeLocalStorage(INITIAL_STATE_KEY, { custom_emojis: action.emojis });
       }
     }
   };

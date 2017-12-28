@@ -9,7 +9,7 @@ export function fetchCustomEmojis() {
     dispatch(fetchCustomEmojisRequest());
 
     api(getState).get('/api/v1/custom_emojis').then(response => {
-      dispatch(fetchCustomEmojisSuccess(response));
+      dispatch(fetchCustomEmojisSuccess(response.data));
     }).catch(error => {
       dispatch(fetchCustumEmojisFail(error));
     });

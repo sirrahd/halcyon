@@ -19,7 +19,7 @@ export default function errorsMiddleware() {
 
           dispatch(showMessage({ text }));
         } else {
-          console.error(action.error);
+          console.error(action.error, action.type);
           dispatch(showMessage({ text: 'An unexpected error occurred.' }));
         }
       }
