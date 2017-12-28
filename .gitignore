@@ -3,7 +3,6 @@
 /public/hot
 /public/storage
 /public/packs
-/public/*manifest.json
 
 /storage/*.key
 /vendor/*

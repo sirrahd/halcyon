@@ -32,7 +32,7 @@ class LanguageDetector
             explode(',', $request->server('HTTP_ACCEPT_LANGUAGE'))
         );
 
-        $known_langs = $this->getKnownLanguages(resource_path('javascript/locales'));
+        $known_langs = $this->getKnownLanguages(resource_path('halcyon/locales'));
 
         if ( $query_lang && in_array($query_lang, $known_langs) ) {
             $lang = $query_lang;
@@ -58,7 +58,7 @@ class LanguageDetector
     }
 
     /**
-     * Detect locale files from react-intl locale directory
+     * Get known languages from react-intl locale directory
      *
      * @param  $path  path to react-intl locale directory
      * @return array  array of valid language

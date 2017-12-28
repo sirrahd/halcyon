@@ -4,15 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="yes" name="apple-mobile-web-app-capable">
     <meta name="csrf-token" content="{{ csrf_token() }}" id="csrf-token">
     <title>Halcyon</title>
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="{{ mix('/stylesheet/theme_light.css') }}" />
+    <link rel="stylesheet" href="{{ mix('/theme_light.css', 'packs') }}" />
   </head>
   <body class="{{ app()->getLocale() }}" role="application">
     <div id="halcyon" data-props="{{ json_encode([
       'locale' => app()->getLocale()
     ]) }}"></div>
-    <script src="{{ mix('/javascript/main.js') }}"></script>
+    <script src="{{ mix('/main.js', 'packs') }}"></script>
   </body>
 </html>

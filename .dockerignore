@@ -3,11 +3,7 @@ node_modules
 
 public/hot
 public/storage
-public/fonts
-public/images
-public/javascript
-public/stylesheet
-public/mix-manifest.json
+public/packs
 
 storage/app
 storage/framework/cache
