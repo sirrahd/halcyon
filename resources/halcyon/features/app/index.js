@@ -83,6 +83,7 @@ export default class App extends React.Component {
 
           <Switch>
             <Redirect exact from='/' to='/timelines/home' />
+
             <Route exact path='/timelines/home' component={HomeTimeline} />
             <Route exact path='/timelines/public' component={PublicTimeline} />
             <Route exact path='/timelines/public/local' component={CommunityTimeline} />
