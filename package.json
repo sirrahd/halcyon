@@ -6,12 +6,12 @@
     "test": "npm run test:lint",
     "test:lint": "./node_modules/.bin/eslint *.js",
     "clear": "rm -rf ./public/packs/*",
-    "watch": "./node_modules/.bin/webpack-cli --watch --progress --hide-modules",
+    "watch": "cross-env NODE_ENV=development ./node_modules/.bin/webpack --watch --progress --hide-modules",
     "watch-poll": "npm run watch -- --watch-poll",
     "dev": "npm run development",
     "prod": "npm run production",
-    "development": "./node_modules/.bin/webpack-cli --progress --hide-modules --mode development",
-    "production": "./node_modules/.bin/webpack-cli --no-progress --hide-modules --mode production",
+    "development": "cross-env NODE_ENV=development ./node_modules/.bin/webpack --progress --hide-modules",
+    "production": "cross-env NODE_ENV=production ./node_modules/.bin/webpack --no-progress --hide-modules",
     "postinstall": "npm rebuild node-sass"
   },
   "repository": {
@@ -70,13 +70,13 @@
     "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
+    "resolve-url-loader": "^2.2.1",
     "sass-loader": "^6.0.6",
     "stringz": "^0.4.0",
     "style-loader": "^0.19.1",
     "substring-trie": "^1.0.2",
-    "webpack": "webpack/webpack#v4.0.0-alpha.2",
-    "webpack-cli": "^2.0.1",
-    "webpack-laravel-mix-manifest": "^1.0.4",
+    "webpack": "^3.10.0",
+    "webpack-manifest-plugin": "^1.3.2",
     "websocket.js": "^0.1.12"
   },
   "devDependencies": {

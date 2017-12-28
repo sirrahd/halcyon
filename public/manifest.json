@@ -1,0 +1,17 @@
+{
+    "name": "Halcyon",
+    "short_name": "Halcyon",
+    "description": "Another interface of Mastodon",
+    "icons": [
+        {
+            "src": "",
+            "sizes": "",
+            "type": ""
+        }
+    ],
+    "theme_color": "#00aced",
+    "background_color": "#e6ecf0",
+    "display": "standalone",
+    "start_url": "/timelines/home",
+    "scope": "https://halcyon.social/"
+}
