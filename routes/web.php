@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +12,10 @@
 | contains the 'web' middleware group. Now create something great!
 |
 */
+
+Route::get('/intent', function (Request $request) {
+    return redirect(str_replace('web+mastodon://', '', $request->input('uri')));
+});
 
 Route::get('/{any?}', function () {
     return view('index');

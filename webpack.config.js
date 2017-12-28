@@ -4,7 +4,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const { env } = require('process');
 
-const publicPath = '/packs/';
 const isProd = env.NODE_ENV === 'production';
 
 module.exports = {
@@ -23,7 +22,6 @@ module.exports = {
     filename: isProd ? '[name]-[chunkhash].js' : '[name].js',
     chunkFilename: isProd ? '[name]-[chunkhash].js' : '[name].js',
     path: path.resolve(__dirname, 'public', 'packs'),
-    publicPath,
   },
 
   module: {
@@ -59,7 +57,6 @@ module.exports = {
         use: [{
           loader: 'file-loader',
           options: {
-            publicPath,
             name: isProd ? '[name]-[hash].[ext]' : '[name].[ext]',
           },
         }],
@@ -97,11 +94,9 @@ if ( isProd ) {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       mangle: true,
-
       compress: {
         warnings: false,
       },
-
       output: {
         comments: false,
       },

@@ -49,7 +49,7 @@ const mapDispatchToProps = dispatch => ({
 export default class App extends React.Component {
 
   static propTypes = {
-    location: PropTypes.object.isRequired,
+    z: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     onOpenModal: PropTypes.func.isRequired,
     onUpdateState: PropTypes.func.isRequired,
@@ -75,10 +75,6 @@ export default class App extends React.Component {
       new: this.handleHotkeyOpenComposeFormModal,
     };
 
-    const { query } = this.props.location;
-
-    console.log(query);
-
     return (
       <HotKeys keyMap={keyMap} handlers={handlers} >
         <div className='app'>
@@ -96,8 +92,6 @@ export default class App extends React.Component {
             <Route exact path='/accounts/:accountId' component={AccountTimeline} />
             <Route exact path='/accounts/:accountId/followers' component={AccountFollowers} />
             <Route exact path='/accounts/:accountId/following' component={AccountFollowing} />
-
-            <Redirect from='/intent/' to='/timelines/home' />
 
             {/*
             <Route exact path='/search/statuses' component={SearchStatuses} />
