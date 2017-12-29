@@ -5,7 +5,9 @@ export default class PageError extends React.PureComponent {
 
   render () {
     return (
-      <div className='page-error' />
+      <div className='page-error'>
+        えらーおきゅーど
+      </div>
     );
   }
 

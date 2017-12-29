@@ -19,29 +19,29 @@ import AccountLetterheadContainer from '../account/containers/account_letterhead
 import LoadingIndicator from '../../components/loading_indicator';
 
 const mapStateToProps = (state, props) => ({
-  accountIds: state.getIn(['user_lists', 'following', props.match.params.accountId, 'items']),
-  hasMore: !!state.getIn(['user_lists', 'following', props.match.params.accountId, 'next']),
+  accountIds: state.getIn(['user_lists', 'following', props.params.accountId, 'items']),
+  hasMore: !!state.getIn(['user_lists', 'following', props.params.accountId, 'next']),
 });
 
 @connect(mapStateToProps)
 export default class AccountFollowing extends ImmutablePureComponent {
 
   static propTypes = {
-    match: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     accountIds: ImmutablePropTypes.list,
     hasMore: PropTypes.bool,
   };
 
   componentWillMount () {
-    this.props.dispatch(fetchAccount(this.props.match.params.accountId));
-    this.props.dispatch(fetchFollowing(this.props.match.params.accountId));
+    this.props.dispatch(fetchAccount(this.props.params.accountId));
+    this.props.dispatch(fetchFollowing(this.props.params.accountId));
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.match.params.accountId !== this.props.match.params.accountId && nextProps.match.params.accountId) {
-      this.props.dispatch(fetchAccount(nextProps.match.params.accountId));
-      this.props.dispatch(fetchFollowing(nextProps.match.params.accountId));
+    if (nextProps.params.accountId !== this.props.params.accountId && nextProps.params.accountId) {
+      this.props.dispatch(fetchAccount(nextProps.params.accountId));
+      this.props.dispatch(fetchFollowing(nextProps.params.accountId));
     }
   }
 
@@ -49,13 +49,13 @@ export default class AccountFollowing extends ImmutablePureComponent {
     const { scrollTop, scrollHeight, clientHeight } = e.target;
 
     if (scrollTop === scrollHeight - clientHeight && this.props.hasMore) {
-      this.props.dispatch(expandFollowing(this.props.match.params.accountId));
+      this.props.dispatch(expandFollowing(this.props.params.accountId));
     }
   }
 
   handleLoadMore = (e) => {
     e.preventDefault();
-    this.props.dispatch(expandFollowing(this.props.match.params.accountId));
+    this.props.dispatch(expandFollowing(this.props.params.accountId));
   }
 
   render() {
@@ -63,11 +63,11 @@ export default class AccountFollowing extends ImmutablePureComponent {
 
     return (
       <Page>
-        <AccountHeaderContainer accountId={this.props.match.params.accountId} />
+        <AccountHeaderContainer accountId={this.props.params.accountId} />
 
         <Content>
           <Dashborad position='left'>
-            <AccountLetterheadContainer accountId={this.props.match.params.accountId} />
+            <AccountLetterheadContainer accountId={this.props.params.accountId} />
           </Dashborad>
 
           <div className='scrollable' onScroll={this.handleScroll}>

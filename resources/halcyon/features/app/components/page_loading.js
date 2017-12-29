@@ -5,7 +5,9 @@ export default class PageLoading extends React.PureComponent {
 
   render () {
     return (
-      <div className='page-loading' />
+      <div className='page-loading'>
+        なうろーでぃんぐ
+      </div>
     );
   }
 

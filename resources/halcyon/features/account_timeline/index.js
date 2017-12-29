@@ -18,37 +18,37 @@ import WithReplies from './components/with_replies';
 import Pinned from './components/pinned';
 
 const mapStateToProps = (state, props) => ({
-  statusIds: state.getIn(['timelines', `account:${props.match.params.accountId}`, 'items'], ImmutableList()),
-  isLoading: state.getIn(['timelines', `account:${props.match.params.accountId}`, 'isLoading']),
-  hasMore: !!state.getIn(['timelines', `account:${props.match.params.accountId}`, 'next']),
+  statusIds: state.getIn(['timelines', `account:${props.params.accountId}`, 'items'], ImmutableList()),
+  isLoading: state.getIn(['timelines', `account:${props.params.accountId}`, 'isLoading']),
+  hasMore: !!state.getIn(['timelines', `account:${props.params.accountId}`, 'next']),
 });
 
 @connect(mapStateToProps)
 export default class AccountTimeline extends ImmutablePureComponent {
 
   static propTypes = {
-    match: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
   };
 
   componentWillMount () {
-    this.props.dispatch(fetchAccount(this.props.match.params.accountId));
+    this.props.dispatch(fetchAccount(this.props.params.accountId));
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.match.params.accountId !== this.props.match.params.accountId && nextProps.match.params.accountId) {
-      this.props.dispatch(fetchAccount(nextProps.match.params.accountId));
+    if (nextProps.params.accountId !== this.props.params.accountId && nextProps.params.accountId) {
+      this.props.dispatch(fetchAccount(nextProps.params.accountId));
     }
   }
 
   render() {
     return (
       <Page>
-        <AccountHeaderContainer accountId={this.props.match.params.accountId} />
+        <AccountHeaderContainer accountId={this.props.params.accountId} />
 
         <Content>
           <Dashborad position='left'>
-            <AccountLetterheadContainer accountId={this.props.match.params.accountId} />
+            <AccountLetterheadContainer accountId={this.props.params.accountId} />
           </Dashborad>
 
           <Switch>

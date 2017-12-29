@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import { EmojiPicker as EmojiPickerAsync } from '../../ui/util/async-components';
+import { EmojiPicker as EmojiPickerAsync } from '../../app/util/async-components';
 import Overlay from 'react-overlays/lib/Overlay';
 import classNames from 'classnames';
 import ImmutablePropTypes from 'react-immutable-proptypes';
@@ -26,7 +26,7 @@ const messages = defineMessages({
 });
 
 const assetHost = process.env.CDN_HOST || '';
-let EmojiPicker, Emoji;
+let EmojiPicker, Emoji; // load asynchronously
 
 const backgroundImageFn = () => `${assetHost}/emoji/sheets.png`;
 const listenerOptions = detectPassiveEvents.hasSupport ? { passive: true } : false;
@@ -261,6 +261,7 @@ class EmojiPickerMenu extends React.PureComponent {
           skin={skinTone}
           showPreview={false}
           backgroundImageFn={backgroundImageFn}
+          // emojiTooltip
         />
 
         <ModifierPicker

@@ -13,7 +13,7 @@ export default function custom_emojis(state = initialState, action) {
     return action.state.get('custom_emojis');
   case CUSTOM_EMOJIS_FETCH_SUCCESS:
     emojiSearch('', { custom: buildCustomEmojis(fromJS(action.emojis) || ImmutableList()) });
-    return action.emojis;
+    return fromJS(action.emojis);
   default:
     return state;
   }

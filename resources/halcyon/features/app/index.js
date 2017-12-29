@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Route, Switch, Redirect } from 'react-router';
+import { Switch, Redirect } from 'react-router';
 import { withRouter } from 'react-router-dom';
 import { HotKeys } from 'react-hotkeys';
+import { WrappedRoute } from './util/react_router_helpers';
 import { isMobile } from '../../is_mobile';
 import { openModal } from '../../actions/modal';
 import { verifyCredentials } from '../../actions/credentials';
@@ -20,6 +21,7 @@ import {
   AccountTimeline,
   AccountFollowers,
   AccountFollowing,
+  Share,
   NotFound,
 } from './util/async-components';
 
@@ -84,27 +86,28 @@ export default class App extends React.Component {
           <Switch>
             <Redirect exact from='/' to='/timelines/home' />
 
-            <Route exact path='/timelines/home' component={HomeTimeline} />
-            <Route exact path='/timelines/public' component={PublicTimeline} />
-            <Route exact path='/timelines/public/local' component={CommunityTimeline} />
-            <Route exact path='/timelines/tag/:id' component={HashtagTimeline} />
-            <Route exact path='/timelines/list/:id' component={ListTimeline} />
+            <WrappedRoute exact path='/timelines/home' component={HomeTimeline} />
+            <WrappedRoute exact path='/timelines/public' component={PublicTimeline} />
+            <WrappedRoute exact path='/timelines/public/local' component={CommunityTimeline} />
+            <WrappedRoute exact path='/timelines/tag/:id' component={HashtagTimeline} />
+            <WrappedRoute exact path='/timelines/list/:id' component={ListTimeline} />
 
-            <Route exact path='/accounts/:accountId' component={AccountTimeline} />
-            <Route exact path='/accounts/:accountId/followers' component={AccountFollowers} />
-            <Route exact path='/accounts/:accountId/following' component={AccountFollowing} />
+            <WrappedRoute exact path='/accounts/:accountId' component={AccountTimeline} />
+            <WrappedRoute exact path='/accounts/:accountId/followers' component={AccountFollowers} />
+            <WrappedRoute exact path='/accounts/:accountId/following' component={AccountFollowing} />
 
             {/*
-            <Route exact path='/search/statuses' component={SearchStatuses} />
-            <Route exact path='/search/accounts' component={SearchAccounts} />
-            <Route exact path='/search/hashtags' component={SearchHashtags} />
-            <Route exact path='/notifications' component={Notificaitons} />
-            <Route exact path='/follow_requests' component={FollowRequests} />
+            <WrappedRoute exact path='/search/statuses' component={SearchStatuses} />
+            <WrappedRoute exact path='/search/accounts' component={SearchAccounts} />
+            <WrappedRoute exact path='/search/hashtags' component={SearchHashtags} />
+            <WrappedRoute exact path='/notifications' component={Notificaitons} />
+            <WrappedRoute exact path='/follow_requests' component={FollowRequests} />
             */}
 
-            {/* <Route path='/:acct(@[a-zA-Z0-9_]{1,30}@.+?\..+?)/:page?' component={AcctToAccount} /> */}
+            {/* <WrappedRoute path='/:acct(@[a-zA-Z0-9_]{1,30}@.+?\..+?)/:page?' component={AcctToAccount} /> */}
 
-            <Route component={NotFound} />
+            <WrappedRoute exact path='/share' component={Share} />
+            <WrappedRoute component={NotFound} />
           </Switch>
 
           <MobileTootButton />

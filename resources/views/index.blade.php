@@ -22,9 +22,9 @@ $props = json_encode([
 
     <link rel="stylesheet" href="{{ mix('/theme_light.css', '/packs') }}" />
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link color="#1da1f2" href="/mask-icon.svg" rel="mask-icon">
-    <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
-    <link href="/manifest.json" rel="manifest">
+    <link rel="mask-icon" href="/mask-icon.svg" color="#1da1f2">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    <link rel="manifest" href="/manifest.json">
   </head>
 
   <body class="{{ app()->getLocale() }}" role="application">
