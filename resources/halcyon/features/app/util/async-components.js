@@ -34,6 +34,10 @@ export function AccountFollowing () {
   return import(/* webpackChunkName: "features/account_following" */'../../account_following');
 }
 
+export function Share () {
+  return import(/* webpackChunkName: "features/share" */'../../share');
+}
+
 export function NotFound () {
   return import(/* webpackChunkName: "features/not_found" */'../../not_found');
 }

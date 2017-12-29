@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import { EmojiMart } from '../../emoji/emoji_picker';
+import { EmojiPicker as EmojiPickerAsync } from '../../ui/util/async-components';
 import Overlay from 'react-overlays/lib/Overlay';
 import classNames from 'classnames';
 import ImmutablePropTypes from 'react-immutable-proptypes';
@@ -302,9 +302,15 @@ export default class EmojiPickerDropdown extends React.PureComponent {
 
     if (!EmojiPicker) {
       this.setState({ loading: true });
-      EmojiPicker = EmojiMart.Picker;
-      Emoji       = EmojiMart.Emoji;
-      this.setState({ loading: false });
+
+      EmojiPickerAsync().then(EmojiMart => {
+        EmojiPicker = EmojiMart.Picker;
+        Emoji       = EmojiMart.Emoji;
+
+        this.setState({ loading: false });
+      }).catch(() => {
+        this.setState({ loading: false });
+      });
     }
   }
 
