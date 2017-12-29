@@ -148,6 +148,8 @@
   "login_from.fetching_access_token": "Fetching access token",
   "login_from.verifying_credentials": "Verifying credentials",
 
+  "share.title": "Share a link to the Fediverse",
+
   "loading_indicator.label": "Loading...",
 
   "not_supported.generic": "This feature is not supported in your browser",
