@@ -138,20 +138,20 @@ const privacyPreference = (a, b) => {
   }
 };
 
-const hydrate = (state, hydratedState) => {
-  state = clearAll(state.merge(hydratedState));
-
-  if (hydratedState.has('text')) {
-    state = state.set('text', hydratedState.get('text'));
-  }
-
-  return state;
-};
-
 export default function compose(state = initialState, action) {
   switch(action.type) {
   case STORE_HYDRATE:
-    return hydrate(state, action.state.get('compose'));
+    return state.withMutations(map => {
+      const privacy = action.state.getIn(['accounts', me, 'source', 'privacy']);
+      const sensitive = action.state.getIn(['accounts', me, 'source', 'sensitive']);
+
+      map.set('default_privacy', privacy);
+      map.set('default_sensitive', sensitive);
+      map.set('privacy', privacy);
+      if ( !state.get('spoiler') ) {
+        map.set('sensitive', sensitive);
+      };
+    });
   case COMPOSE_MOUNT:
     return state.set('mounted', true);
   case COMPOSE_UNMOUNT:
@@ -256,11 +256,17 @@ export default function compose(state = initialState, action) {
         return item;
       }));
   case CREDENTIALS_VERIFY_SUCCESS:
-    return state
-      .set('privacy', action.account.source.privacy)
-      .set('sensitive', action.account.source.sensitive)
-      .set('default_privacy', action.account.source.privacy)
-      .set('default_sensitive', action.account.source.sensitive);
+    return state.withMutations(map => {
+      const privacy = action.account.source.privacy;
+      const sensitive = action.account.source.sensitive;
+
+      map.set('default_privacy', privacy);
+      map.set('default_sensitive', sensitive);
+      map.set('privacy', privacy);
+      if ( !state.get('spoiler') ) {
+        map.set('sensitive', sensitive);
+      };
+    });
   default:
     return state;
   }
