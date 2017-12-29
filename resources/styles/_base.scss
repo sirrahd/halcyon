@@ -17,6 +17,10 @@ body {
   }
 }
 
+.app {
+  min-height: 100vh;
+}
+
 a, .link-button {
   color: $highlight-color;
   text-decoration: none;
