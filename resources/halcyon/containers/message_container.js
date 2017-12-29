@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { injectIntl } from 'react-intl';
 import { hideMessage } from '../actions/message';
 import Message from '../components/message';
 
@@ -15,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(
+export default injectIntl(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Message);
+)(Message));

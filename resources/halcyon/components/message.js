@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { defineMessages } from 'react-intl';
+import IconButton from '../components/icon_button';
+
+const messages = defineMessages({
+  dismiss: { id: 'message.dismiss', defaultMessage: 'Dismiss this message' },
+});
 
 export default class Message extends React.PureComponent {
 
   static propTypes = {
+    intl: PropTypes.object.isRequired,
     show: PropTypes.bool,
     text: PropTypes.string,
     time: PropTypes.number,
@@ -19,7 +26,7 @@ export default class Message extends React.PureComponent {
   }
 
   render () {
-    const { show, text, onClose, isModalOpen } = this.props;
+    const { intl, show, text, onClose, isModalOpen } = this.props;
 
     return (
       <div className={classNames('message-container', { 'message-container--show': show, 'message-container--ahead-modal' : isModalOpen })}>
@@ -28,9 +35,12 @@ export default class Message extends React.PureComponent {
             <span>{ text }</span>
           </div>
 
-          <button className='message__close-button' onClick={onClose}>
-            <i className='icon-time' aria-hidden='true' />
-          </button>
+          <IconButton
+            className='message__close-button'
+            icon='icon-time'
+            title={intl.formatMessage(messages.dismiss)}
+            onClick={onClose}
+          />
         </div>
       </div>
     );

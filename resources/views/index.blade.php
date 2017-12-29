@@ -20,7 +20,7 @@ $props = json_encode([
     <meta name="theme-color" content="#1da1f2">
     <meta name="csrf-token" content="{{ csrf_token() }}" id="csrf-token">
 
-    <link rel="stylesheet" href="{{ mix('/theme_light.css', '/packs') }}" />
+    <link rel="stylesheet" href="{{ mix('/theme_dark.css', '/packs') }}" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="mask-icon" href="/mask-icon.svg" color="#1da1f2">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">

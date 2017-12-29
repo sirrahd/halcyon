@@ -149,6 +149,8 @@
   "login_form.fetching_access_token": "アクセストークンを取得中",
   "login_form.verifying_credentials": "資格情報を認証中",
 
+  "message.dismiss": "このメッセージを閉じる",
+
   "share.title": "リンクをタイムラインに共有する",
 
   "loading_indicator.label": "読み込み中...",
