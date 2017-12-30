@@ -147,7 +147,7 @@ export default class UserDropdown extends ImmutablePureComponent {
     ];
 
     return (
-      <div className='user-navigation__use2r-dropdown-menu'>
+      <div className='user-navigation__user-dropdown-menu'>
         <button
           title={intl.formatMessage(messages.tooltip)}
           ref={this.setTargetRef}

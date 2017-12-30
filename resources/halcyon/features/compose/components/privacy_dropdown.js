@@ -111,6 +111,37 @@ export default class PrivacyDropdown extends React.PureComponent {
     open: false,
   }
 
+  componentWillMount () {
+    const { intl } = this.props;
+
+    this.options = [
+      {
+        value: 'public',
+        text: intl.formatMessage(messages.public_short),
+        meta: intl.formatMessage(messages.public_long),
+        iconClassName: 'fa fa-globe',
+      },
+      {
+        value: 'unlisted',
+        text: intl.formatMessage(messages.unlisted_short),
+        meta: intl.formatMessage(messages.unlisted_long),
+        iconClassName: 'fa fa-lock',
+      },
+      {
+        value: 'private',
+        text: intl.formatMessage(messages.private_short),
+        meta: intl.formatMessage(messages.private_long),
+        iconClassName: 'fa fa-unlock-alt',
+      },
+      {
+        value: 'direct',
+        text: intl.formatMessage(messages.direct_short),
+        meta: intl.formatMessage(messages.direct_long),
+        iconClassName: 'fa fa-envelope',
+      },
+    ];
+  }
+
   handleToggle = () => {
     // if (this.props.isUserTouching()) {
     //   if (this.state.open) {
@@ -152,37 +183,6 @@ export default class PrivacyDropdown extends React.PureComponent {
 
   handleChange = value => {
     this.props.onChange(value);
-  }
-
-  componentWillMount () {
-    const { intl } = this.props;
-
-    this.options = [
-      {
-        value: 'public',
-        text: intl.formatMessage(messages.public_short),
-        meta: intl.formatMessage(messages.public_long),
-        iconClassName: 'fa fa-globe',
-      },
-      {
-        value: 'unlisted',
-        text: intl.formatMessage(messages.unlisted_short),
-        meta: intl.formatMessage(messages.unlisted_long),
-        iconClassName: 'fa fa-lock',
-      },
-      {
-        value: 'private',
-        text: intl.formatMessage(messages.private_short),
-        meta: intl.formatMessage(messages.private_long),
-        iconClassName: 'fa fa-unlock-alt',
-      },
-      {
-        value: 'direct',
-        text: intl.formatMessage(messages.direct_short),
-        meta: intl.formatMessage(messages.direct_long),
-        iconClassName: 'fa fa-envelope',
-      },
-    ];
   }
 
   render () {

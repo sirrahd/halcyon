@@ -278,48 +278,43 @@
 
 .user-navigation__user-dropdown-menu {
   height: 100%;
+}
 
-  .user-dropdown-menu {
-    height: 100%;
+.user-dropdown-menu {
+  height: 100%;
+}
 
-    .user-dropdown-menu__button {
-      height: 100%;
-      border-radius: 50%;
-      overflow: hidden;
-    }
+.user-dropdown-menu__button {
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
 
-    .dropdown__list {
-      max-width: 200px;
+.dropdown-menu__list {
+  max-width: 200px;
+}
+.user-dropdown-menu__display-name {
+  display: block;
+  margin-bottom: 2.5px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $text-color;
+  font-size: 18px;
+  font-weight: bold;
+}
 
-      .dropdown__list-item.dropdown-list-account {
-        a {
-          &:hover {
-            color: inherit;
-            background-color: inherit;
-          }
+.user-dropdown-menu__username {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $text-color-gray;
+}
 
-          .dropdown-account__display-name {
-            display: block;
-            margin-bottom: 2.5px;
-            width: 100%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            color: $text-color;
-            font-size: 18px;
-            font-weight: bold;
-          }
-
-          .dropdown-account__username {
-            display: block;
-            width: 100%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            color: $text-color-gray;
-          }
-        }
-      }
-    }
-  }
+a:hover .user-dropdown-menu__display-name,
+a:hover .user-dropdown-menu__username {
+  color: $white;
 }
 
 .user-navigation__toot-button {

@@ -1,32 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import { injectIntl, defineMessages } from 'react-intl';
+import { defineMessages } from 'react-intl';
+import classNames from 'classnames';
 import { me } from '../initial_state';
 
 const messages = defineMessages({
-  mention: { id: 'account.mention', defaultMessage: 'Mention @{name}' },
-  edit_profile: { id: 'account.edit_profile', defaultMessage: 'Edit profile' },
-  unblock: { id: 'account.unblock', defaultMessage: 'Unblock @{name}' },
-  unfollow: { id: 'account.unfollow', defaultMessage: 'Unfollow' },
-  unmute: { id: 'account.unmute', defaultMessage: 'Unmute @{name}' },
-  block: { id: 'account.block', defaultMessage: 'Block @{name}' },
-  mute: { id: 'account.mute', defaultMessage: 'Mute @{name}' },
   follow: { id: 'account.follow', defaultMessage: 'Follow' },
-  report: { id: 'account.report', defaultMessage: 'Report @{name}' },
-  share: { id: 'account.share', defaultMessage: 'Share @{name}\'s profile' },
-  media: { id: 'account.media', defaultMessage: 'Media' },
-  blockDomain: { id: 'account.block_domain', defaultMessage: 'Hide everything from {domain}' },
-  unblockDomain: { id: 'account.unblock_domain', defaultMessage: 'Unhide {domain}' },
-  hideReblogs: { id: 'account.hide_reblogs', defaultMessage: 'Hide boosts from @{name}' },
-  showReblogs: { id: 'account.show_reblogs', defaultMessage: 'Show boosts from @{name}' },
+  following: { id: 'account.following', defaultMessage: 'Following' },
+  unfollow: { id: 'account.unfollow', defaultMessage: 'Unfollow' },
+  requested: { id: 'account.requested', defaultMessage: 'Awaiting approval' },
+  unblock: { id: 'account.unblock', defaultMessage: 'Unblock @{name}' },
+  unmute: { id: 'account.unmute', defaultMessage: 'Unmute @{name}' },
+  mute_notifications: { id: 'account.mute_notifications', defaultMessage: 'Mute notifications from @{name}' },
+  unmute_notifications: { id: 'account.unmute_notifications', defaultMessage: 'Unmute notifications from @{name}' },
 });
 
-@injectIntl
 export default class FollowButton extends React.PureComponent {
 
   static propTypes = {
-    account: ImmutablePropTypes.map.isRequired,
+    account: ImmutablePropTypes.map,
     onFollow: PropTypes.func.isRequired,
     onBlock: PropTypes.func.isRequired,
     onMute: PropTypes.func.isRequired,
@@ -55,36 +48,40 @@ export default class FollowButton extends React.PureComponent {
   }
 
   render () {
-    const { account, intl } = this.porps;
-    let button;
+    const { account, intl } = this.props;
+
+    if ( account === null ) {
+      return <div />;
+    }
 
     if (account.get('id') !== me && account.get('relationship', null) !== null) {
       const following = account.getIn(['relationship', 'following']);
       const requested = account.getIn(['relationship', 'requested']);
-      const blocking  = account.getIn(['relationship', 'blocking']);
-      const muting  = account.getIn(['relationship', 'muting']);
+      // const blocking  = account.getIn(['relationship', 'blocking']);
+      // const muting  = account.getIn(['relationship', 'muting']);
+      // const mutingNotificaitions = account.getIn(['relationship', 'muting_notifications']);
+      // const moved = account.get('moved');
 
       if (requested) {
-        button = <button disabled icon='hourglass' title={intl.formatMessage(messages.requested)} />;
-      } else if (blocking) {
-        button = <button active icon='unlock-alt' title={intl.formatMessage(messages.unblock, { name: account.get('username') })} onClick={this.handleBlock} />;
-      } else if (muting) {
-        let hidingNotificationsButton;
-        if (account.getIn(['relationship', 'muting_notifications'])) {
-          hidingNotificationsButton = <IconButton active icon='bell' title={intl.formatMessage(messages.unmute_notifications, { name: account.get('username') })} onClick={this.handleUnmuteNotifications} />;
-        } else {
-          hidingNotificationsButton = <IconButton active icon='bell-slash' title={intl.formatMessage(messages.mute_notifications, { name: account.get('username')  })} onClick={this.handleMuteNotifications} />;
-        }
-        buttons = (
-          <Fragment>
-            <IconButton active icon='volume-up' title={intl.formatMessage(messages.unmute, { name: account.get('username') })} onClick={this.handleMute} />
-            {hidingNotificationsButton}
-          </Fragment>
+        return (
+          <button className='follow-button follow-button--reuested'>
+            <div className='follow-button__label'>
+              { intl.formatMessage(messages.requested) }
+            </div>
+          </button>
         );
-      } else if (!account.get('moved')) {
-        buttons = <IconButton icon={following ? 'user-times' : 'user-plus'} title={intl.formatMessage(following ? messages.unfollow : messages.follow)} onClick={this.handleFollow} active={following} />;
       }
+
+      return (
+        <button className={classNames('follow-button', { 'follow-button--following' : following })}>
+          <div className='follow-button__label'>
+            { following ? intl.formatMessage(messages.following) : intl.formatMessage(messages.follow)}
+          </div>
+        </button>
+      );
     }
+
+    return <div>else</div>;
   }
 
 }

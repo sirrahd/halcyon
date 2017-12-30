@@ -6,34 +6,19 @@
   color: $text-color-gray;
   background-color: $primary-color;
   box-shadow: 0 1px 4px rgba(0,0,0,0.26);
-
-  &--active {
-    .dropdown-menu__content {
-      display: block;
-    }
-  }
+  z-index: 800;
 
   &--right {
-    .dropdown-menu__content {
+    .dropdown-menu__caret {
       left: auto;
-      right: 0;
-
-      .dropdown-menu__caret {
-        left: auto;
-        right: 28px;
-      }
+      right: 28px;
     }
   }
 
   &--left {
-    .dropdown-menu__content {
-      left: 0;
+    .dropdown-menu__caret {
+      left: 8px;
       right: auto;
-
-      .dropdown-menu__caret {
-        left: 8px;
-        right: auto;
-      }
     }
   }
 }

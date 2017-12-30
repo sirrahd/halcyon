@@ -3,12 +3,17 @@ export const DEFAULT_STATUS_MAX_LENGTH = 500;
 export const ERROR_MESSAGE_INTERVAL = 5000;
 export const INITIAL_STATE_KEY = 'initial_state';
 
+export const INFORMATION_MASTODON = 'https://joinmastodon.org';
+export const INFORMATION_SOURCE_CODE = 'https://github.com/halcyon-suite/halcyon';
+export const INFORMATION_FEEDBACK = 'https://github.com/halcyon-suite/halcyon/issues';
+export const INFORMATION_DONATION = 'https://www.patreon.com/neetshin';
+
 export const LANUAGES = [
   { value: 'en', name: 'English' },
   { value: 'ja', name: '日本語' },
 ];
 
 export const THEMES = [
-  { value: '/stylesheet/theme_dark.css',  name: 'Light' },
-  { value: '/stylesheet/theme_light.css', name: 'Dark' },
+  { value: '/theme_dark.css',  name: 'Light' },
+  { value: '/theme_light.css', name: 'Dark' },
 ];

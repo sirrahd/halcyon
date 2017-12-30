@@ -4,7 +4,7 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 import { autoPlayGif } from '../../../initial_state';
 
 import AccountHeaderCounters from '../components/account_header_counters';
-import AccountHeaderActionButton from '../components/account_header_action_button';
+import FollowButtonContainer from '../../../containers/follow_button_container';
 
 export default class AccountHeader extends ImmutablePureComponent {
 
@@ -28,7 +28,10 @@ export default class AccountHeader extends ImmutablePureComponent {
         <div className='account-header__banner'>
           <div className='account-header__banner-inner'>
             <AccountHeaderCounters account={account} />
-            <AccountHeaderActionButton account={account} />
+
+            <div className='account-header-follow-button'>
+              <FollowButtonContainer accountId={account.get('id')} />
+            </div>
           </div>
         </div>
       </header>
