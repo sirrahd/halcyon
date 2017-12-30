@@ -112,6 +112,7 @@
   "account.view_full_profile": "View full profile",
   "account.with_replies": "Toots & replies",
 
+  "modal.close": "Close this window",
   "modal.compose_form": "Compose new Toot",
   "modal.settings": "Settings",
   "modal.keyboard_shortcuts": "Keyboard Shortcuts",

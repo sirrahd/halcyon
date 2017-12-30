@@ -113,6 +113,7 @@
   "account.view_full_profile": "全ての情報を見る",
   "account.with_replies": "トゥートと返信",
 
+  "modal.close": "このウィンドウを閉じる",
   "modal.compose_form": "新しいトゥート",
   "modal.settings": "設定",
   "modal.keyboard_shortcuts": "キーボードショートカット",
