@@ -51,6 +51,17 @@ import { STORE_HYDRATE } from '../actions/store';
 import emojify from '../features/emoji/emoji';
 import { Map as ImmutableMap, fromJS } from 'immutable';
 import escapeTextContentForBrowser from 'escape-html';
+import { domain as instanceDomain } from '../initial_state';
+
+const generateFullAcct = acct => {
+  const [ username, domain = instanceDomain ] = acct.split('@');
+
+  if ( username.charAt(0) !== '@' ) {
+    return `@${username}@${domain}`;
+  }
+
+  return `${username}@${domain}`;
+};
 
 const normalizeAccount = (state, account) => {
   account = { ...account };
@@ -62,6 +73,7 @@ const normalizeAccount = (state, account) => {
   const displayName = account.display_name.length === 0 ? account.username : account.display_name;
   account.display_name_html = emojify(escapeTextContentForBrowser(displayName));
   account.note_emojified = emojify(account.note);
+  account.full_acct = generateFullAcct(account.acct);
 
   if (account.moved) {
     state = normalizeAccount(state, account.moved);

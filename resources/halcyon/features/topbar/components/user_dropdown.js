@@ -4,7 +4,6 @@ import Overlay from 'react-overlays/lib/Overlay';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { defineMessages } from 'react-intl';
-import normalizeAcct from '../../../normalize_acct';
 import { DropdownMenu } from '../../../components/dropdown_menu';
 import Avatar from '../../../containers/avatar_container';
 
@@ -109,7 +108,7 @@ export default class UserDropdown extends ImmutablePureComponent {
     }
 
     const id              = account.get('id');
-    const acct            = normalizeAcct(account.get('acct'), true);
+    const acct            = account.get('full_acct');
     const displayNameHtml = { __html: account.get('display_name_html') };
 
     const items = [

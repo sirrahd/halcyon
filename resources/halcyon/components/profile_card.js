@@ -6,7 +6,6 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 import { FormattedMessage, FormattedNumber, injectIntl, defineMessages } from 'react-intl';
 import classNames from 'classnames';
 import { autoPlayGif } from '../initial_state';
-import normalizeAcct from '../normalize_acct';
 import replaceLink from '../replace_link';
 
 import Avatar from '../containers/avatar_container';
@@ -112,7 +111,7 @@ export default class ProfileCard extends ImmutablePureComponent {
     const id              = account.get('id');
     const displayNameHtml = { __html: account.get('display_name_html') };
     const noteHtml        = { __html: replaceLink(account.get('note_emojified')) };
-    const acct            = normalizeAcct(account.get('acct'), true);
+    const acct            = account.get('full_acct');
 
     return (
       <div className={classNames('profile-card', { 'profile-card--with-follow-button' : withFollowButton })}>
