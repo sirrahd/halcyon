@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { changeCompose } from '../../actions/compose';
 import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
-import qs from 'qs';
+import querystring from 'querystring';
 
 import Page from '../app/components/page';
 import Content from '../app/components/content';
@@ -26,7 +26,7 @@ export default class Share extends React.PureComponent {
   }
 
   componentWillMount () {
-    const text = qs.parse(this.props.location.search.substr(1)).text || '';
+    const text = querystring.decode(this.props.location.search.substr(1)).text || '';
     this.props.onMount(text);
   }
 
