@@ -86,7 +86,7 @@ export default class KeyboradShortcutsModal extends React.PureComponent {
       <table className='keyboard-shortcuts__table'>
         <thead className='keyboard-shortcuts__thead'>
           <tr>
-            <th colspan='2'>
+            <th colSpan='2'>
               <span>{group}</span>
             </th>
           </tr>
@@ -94,7 +94,7 @@ export default class KeyboradShortcutsModal extends React.PureComponent {
 
         <tbody className='keyboard-shortcuts__tbody'>
           {keymap.map(keymap => (
-            <tr className='keyboard-shortcuts__row'>
+            <tr className='keyboard-shortcuts__row' key={keymap.label}>
               <td className='keyboard-shortcuts__row__keys'>
                 {keymap.keys.map(key => (<kbd>{key}</kbd>))}
               </td>
