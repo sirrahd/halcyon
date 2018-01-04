@@ -22,16 +22,8 @@ export function ListTimeline () {
   return import(/* webpackChunkName: "features/list_timeline" */'../../list_timeline');
 }
 
-export function AccountTimeline () {
-  return import(/* webpackChunkName: "features/account_timeline" */'../../account_timeline');
-}
-
-export function AccountFollowers () {
-  return import(/* webpackChunkName: "features/account_followers" */'../../account_followers');
-}
-
-export function AccountFollowing () {
-  return import(/* webpackChunkName: "features/account_following" */'../../account_following');
+export function Account () {
+  return import(/* webpackChunkName: "features/account" */'../../account');
 }
 
 export function Share () {

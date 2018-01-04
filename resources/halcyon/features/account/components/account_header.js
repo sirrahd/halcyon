@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { autoPlayGif } from '../../../initial_state';
@@ -10,10 +11,11 @@ export default class AccountHeader extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
+    location: PropTypes.object.isRequired,
   }
 
   render () {
-    const { account } = this.props;
+    const { account, location } = this.props;
 
     if ( !account ) {
       return <div />;
@@ -27,7 +29,7 @@ export default class AccountHeader extends ImmutablePureComponent {
 
         <div className='account-header__banner'>
           <div className='account-header__banner-inner'>
-            <AccountHeaderCounters account={account} />
+            <AccountHeaderCounters account={account} location={location} />
 
             <div className='account-header-follow-button'>
               <FollowButtonContainer accountId={account.get('id')} />
