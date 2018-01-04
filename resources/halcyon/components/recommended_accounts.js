@@ -36,6 +36,8 @@ export default class RecommendedAccounts extends ImmutablePureComponent {
   }
 
   renderItem = (account, index) => {
+    const displayNameHtml = { __html: account.get('display_name_html') };
+
     return (
       <li className='recommended-account' key={account.get('acct')}>
         <Link to={`/${account.get('acct')}`}>
@@ -45,9 +47,7 @@ export default class RecommendedAccounts extends ImmutablePureComponent {
 
           <div className='recommended-account__meta'>
             <div className='recommended-account__name'>
-              <span className='recommended-account__display-name'>
-                { account.get('display_name') }
-              </span>
+              <span className='recommended-account__display-name' dangerouslySetInnerHTML={displayNameHtml} />
 
               <span className='recommended-account__acct'>
                 { account.get('acct') }
