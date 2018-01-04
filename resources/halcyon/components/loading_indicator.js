@@ -1,16 +1,41 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-const LoadingIndicator = () => (
-  <div className='loading-indicator'>
-    <div className='loading-indicator__icon'>
-      <i className='fa fa-circle-o-notch fa-spin' aria-hidden='true' />
-    </div>
+export default class LoadingIndicator extends React.PureComponent {
 
-    <div className='loading-indicator__label'>
-      <FormattedMessage id='loading_indicator.label' defaultMessage='Loading...' />
-    </div>
-  </div>
-);
+  static propTypes = {
+    withLabel: PropTypes.bool,
+    withSpinner: PropTypes.bool,
+  }
 
-export default LoadingIndicator;
+  static defaultProps = {
+    withLabel: true,
+    withSpinner: true,
+  }
+
+  render () {
+    const { withLabel, withSpinner } = this.props;
+
+    return (
+      <div className='loading-indicator'>
+        {
+          withSpinner && (
+            <div className='loading-indicator__icon'>
+              <i className='fa fa-circle-o-notch fa-spin' aria-hidden='true' />
+            </div>
+          )
+        }
+
+        {
+          withLabel && (
+            <div className='loading-indicator__label'>
+              <FormattedMessage id='loading_indicator.label' defaultMessage='Loading...' />
+            </div>
+          )
+        }
+      </div>
+    );
+  }
+
+}
