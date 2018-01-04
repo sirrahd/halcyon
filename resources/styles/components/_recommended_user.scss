@@ -40,6 +40,13 @@
 }
 
 .recommended-account__meta {
+  position: relative;
+  padding-right: 14px;
+  box-sizing: border-box;
+  width: calc(100% - 48px - 8px);
+}
+
+.recommended-account__name {
   font-size: 14px;
   line-height: 1.2;
   white-space: nowrap;
@@ -52,9 +59,16 @@
     margin-right: 8px;
   }
 
-  .recommended-account__display-acct {
+  .recommended-account__acct {
     color: $text-color-gray;
   }
+}
+
+.recommended-account__delete-button {
+  position: absolute;
+  color: $text-color-gray;
+  top: 0;
+  right: 0;
 }
 
 .recommended-accounts__footer {

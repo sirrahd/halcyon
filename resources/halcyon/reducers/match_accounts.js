@@ -2,6 +2,7 @@ import {
   MATCH_ACCOUNTS_FETCH_REQUEST,
   MATCH_ACCOUNTS_FETCH_SUCCESS,
   MATCH_ACCOUNTS_FETCH_FAIL,
+  MATCH_ACCOUNTS_DELETE,
 } from '../actions/match_accounts';
 import { STORE_HYDRATE } from '../actions/store';
 import emojify from '../features/emoji/emoji';
@@ -49,6 +50,8 @@ export default function matchAccounts(state = initialState, action) {
     return normalizeAccounts(state, action.accounts);
   case MATCH_ACCOUNTS_FETCH_FAIL:
     return state.set('is_fetching', false);
+  case MATCH_ACCOUNTS_DELETE:
+    return state.set('accounts', state.get('accounts').delete(action.index));
   default:
     return state;
   }

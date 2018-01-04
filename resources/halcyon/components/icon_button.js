@@ -12,7 +12,7 @@ export default class IconButton extends React.PureComponent {
   }
 
   render () {
-    const { className, icon, title, autoFocus, onClick } = this.props;
+    const { className, icon, title, autoFocus, onClick, ...other } = this.props;
 
     return (
       <button
@@ -21,6 +21,7 @@ export default class IconButton extends React.PureComponent {
         aria-label={title}
         autoFocus={autoFocus}
         onClick={onClick}
+        {...other}
       >
         <i className={icon} aria-hidden='true' />
       </button>

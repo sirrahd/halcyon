@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-import { fetchMatchAccounts } from '../actions/match_accounts';
+import {
+  fetchMatchAccounts,
+  deleteMatchAccounts,
+} from '../actions/match_accounts';
 import RecommendedAccounts from '../components/recommended_accounts';
 
 const mapStateToProps = state => ({
@@ -10,6 +13,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onFetch() {
     dispatch(fetchMatchAccounts());
+  },
+
+  onDelete(index) {
+    dispatch(deleteMatchAccounts(index));
   },
 });
 

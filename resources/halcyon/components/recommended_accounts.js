@@ -6,6 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import Avatar from '../containers/avatar_container';
+import IconButton from '../components/icon_button';
 import LoadingIndicator from './loading_indicator';
 
 export default class RecommendedAccounts extends ImmutablePureComponent {
@@ -15,6 +16,7 @@ export default class RecommendedAccounts extends ImmutablePureComponent {
     is_fetching: PropTypes.bool.isRequired,
     limit: PropTypes.number,
     onFetch: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -27,7 +29,13 @@ export default class RecommendedAccounts extends ImmutablePureComponent {
     }
   }
 
-  renderItem (account) {
+  handleDeleteItem = e => {
+    e.preventDefault();
+    const index = e.currentTarget.getAttribute('data-index');
+    this.props.onDelete(index);
+  }
+
+  renderItem = (account, index) => {
     return (
       <li className='recommended-account' key={account.get('acct')}>
         <Link to={`/${account.get('acct')}`}>
@@ -35,15 +43,24 @@ export default class RecommendedAccounts extends ImmutablePureComponent {
             <Avatar account={account} size={48} />
           </div>
 
-          <span className='recommended-account__meta'>
-            <span className='recommended-account__display-name'>
-              { account.get('display_name') }
-            </span>
+          <div className='recommended-account__meta'>
+            <div className='recommended-account__name'>
+              <span className='recommended-account__display-name'>
+                { account.get('display_name') }
+              </span>
 
-            <span className='recommended-account__display-acct'>
-              { account.get('acct') }
-            </span>
-          </span>
+              <span className='recommended-account__acct'>
+                { account.get('acct') }
+              </span>
+            </div>
+
+            <IconButton
+              className='recommended-account__delete-button'
+              icon='icon-time'
+              onClick={this.handleDeleteItem}
+              data-index={index}
+            />
+          </div>
         </Link>
       </li>
     );
@@ -69,9 +86,9 @@ export default class RecommendedAccounts extends ImmutablePureComponent {
         </header>
 
         {
-          accounts.size || !is_fetching ? (
+          accounts.size && !is_fetching ? (
             <ul className='recommended-accounts__list'>
-              { accounts.slice(0, limit).map(account => this.renderItem(account)) }
+              { accounts.slice(0, limit).map((account, index) => this.renderItem(account, index)) }
             </ul>
           ) : (
             <LoadingIndicator withLabel={false} />

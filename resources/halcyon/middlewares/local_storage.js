@@ -5,7 +5,10 @@ import {
   CREDENTIALS_UPDATE_SUCCESS,
 } from '../actions/credentials';
 import { CUSTOM_EMOJIS_FETCH_SUCCESS } from '../actions/custom_emojis';
-import { MATCH_ACCOUNTS_FETCH_SUCCESS } from '../actions/match_accounts';
+import {
+  MATCH_ACCOUNTS_FETCH_SUCCESS,
+  MATCH_ACCOUNTS_DELETE,
+} from '../actions/match_accounts';
 import { makeGetAccount } from '../selectors';
 import { me } from '../initial_state';
 import { INITIAL_STATE_KEY } from '../constants';
@@ -33,6 +36,7 @@ export default function localStorageMiddleware() {
       case CREDENTIALS_UPDATE_SUCCESS:
         return mergeLocalStorage(INITIAL_STATE_KEY, { accounts: { [me] : getAccount(getState(), me).toJS() } });
       case MATCH_ACCOUNTS_FETCH_SUCCESS:
+      case MATCH_ACCOUNTS_DELETE:
         return mergeLocalStorage(INITIAL_STATE_KEY, { match_accounts: getState().get('match_accounts').toJS() });
       case CUSTOM_EMOJIS_FETCH_SUCCESS:
         return mergeLocalStorage(INITIAL_STATE_KEY, { custom_emojis: action.emojis });
