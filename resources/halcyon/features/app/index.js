@@ -18,9 +18,7 @@ import {
   PublicTimeline,
   HashtagTimeline,
   ListTimeline,
-  AccountTimeline,
-  AccountFollowers,
-  AccountFollowing,
+  Account,
   Share,
   NotFound,
 } from './util/async-components';
@@ -91,10 +89,7 @@ export default class App extends React.Component {
             <WrappedRoute exact path='/timelines/public/local' component={CommunityTimeline} />
             <WrappedRoute exact path='/timelines/tag/:id' component={HashtagTimeline} />
             <WrappedRoute exact path='/timelines/list/:id' component={ListTimeline} />
-
-            <WrappedRoute exact path='/accounts/:accountId' component={AccountTimeline} />
-            <WrappedRoute exact path='/accounts/:accountId/followers' component={AccountFollowers} />
-            <WrappedRoute exact path='/accounts/:accountId/following' component={AccountFollowing} />
+            <WrappedRoute path='/accounts/:accountId' component={Account} />
 
             {/*
             <WrappedRoute exact path='/search/statuses' component={SearchStatuses} />
