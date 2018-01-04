@@ -7,26 +7,12 @@
   background-color: $primary-color;
   box-shadow: 0 1px 4px rgba(0,0,0,0.26);
   z-index: 800;
-
-  &--right {
-    .dropdown-menu__caret {
-      left: auto;
-      right: 28px;
-    }
-  }
-
-  &--left {
-    .dropdown-menu__caret {
-      left: 8px;
-      right: auto;
-    }
-  }
 }
 
 .dropdown-menu__caret {
   position: absolute;
   top: -10px;
-  left: 8px;
+  left: calc(50% - 10px);
   right: auto;
 
   .dropdown-menu__caret-outer {
