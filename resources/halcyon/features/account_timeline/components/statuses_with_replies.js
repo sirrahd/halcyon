@@ -5,7 +5,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { List as ImmutableList } from 'immutable';
 import { fetchAccount } from '../../../actions/accounts';
-import { refreshAccountMediaTimeline, expandAccountTimeline } from '../../../actions/timelines';
+import { refreshAccountTimelineWithReplies, expandAccountTimeline } from '../../../actions/timelines';
 
 import Timeline from '../../../components/timeline';
 import TimelineHeaderNavigation from '../../../components/timeline_header_navigation';
@@ -13,13 +13,13 @@ import StatusList from '../../../components/status_list';
 import LoadingIndicator from '../../../components/loading_indicator';
 
 const mapStateToProps = (state, props) => ({
-  statusIds: state.getIn(['timelines', `account:${props.match.params.accountId}:media`, 'items'], ImmutableList()),
-  isLoading: state.getIn(['timelines', `account:${props.match.params.accountId}:media`, 'isLoading']),
-  hasMore: !!state.getIn(['timelines', `account:${props.match.params.accountId}:media`, 'next']),
+  statusIds: state.getIn(['timelines', `account:${props.match.params.accountId}:with_replies`, 'items'], ImmutableList()),
+  isLoading: state.getIn(['timelines', `account:${props.match.params.accountId}:with_replies`, 'isLoading']),
+  hasMore: !!state.getIn(['timelines', `account:${props.match.params.accountId}:with_replies`, 'next']),
 });
 
 @connect(mapStateToProps)
-export default class Gallery extends ImmutablePureComponent {
+export default class StatusesWithReplies extends ImmutablePureComponent {
 
   static propTypes = {
     match: PropTypes.object.isRequired,
@@ -31,13 +31,13 @@ export default class Gallery extends ImmutablePureComponent {
 
   componentWillMount () {
     this.props.dispatch(fetchAccount(this.props.match.params.accountId));
-    this.props.dispatch(refreshAccountMediaTimeline(this.props.match.params.accountId));
+    this.props.dispatch(refreshAccountTimelineWithReplies(this.props.match.params.accountId));
   }
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.match.params.accountId !== this.props.match.params.accountId && nextProps.match.params.accountId) {
       this.props.dispatch(fetchAccount(nextProps.match.params.accountId));
-      this.props.dispatch(refreshAccountMediaTimeline(nextProps.match.params.accountId));
+      this.props.dispatch(refreshAccountTimelineWithReplies(nextProps.match.params.accountId));
     }
   }
 

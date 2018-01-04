@@ -73,7 +73,11 @@ const normalizeAccount = (state, account) => {
   const displayName = account.display_name.length === 0 ? account.username : account.display_name;
   account.display_name_html = emojify(escapeTextContentForBrowser(displayName));
   account.note_emojified = emojify(account.note);
-  account.full_acct = generateFullAcct(account.acct);
+  account.is_remote = account.acct.split('@').length < 2;
+
+  const [ username, domain = instanceDomain ] = account.acct.split('@');
+  account.full_acct = username.charAt(0) !== '@' ? `@${username}@${domain}` : `${username}@${domain}`;
+  account.domain = domain;
 
   if (account.moved) {
     state = normalizeAccount(state, account.moved);
