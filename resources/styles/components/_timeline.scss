@@ -1,0 +1,43 @@
+.timeline {
+  width: $timeline-width;
+  margin: 0 10px;
+}
+
+.timeline-header-compose {
+  padding: 10px 12px;
+  background-color: $secondary-color;
+}
+
+.timeline-header-navigation {
+  border-bottom: 1px solid $background-color;
+  background-color: $primary_color;
+}
+
+.timeline-header-navigation__list {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+.timeline-header-navigation__list-item {
+  padding: 15px;
+}
+
+.timline-header-navigation__link {
+  color: $highlight-color;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &--current {
+    color: $text-color;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

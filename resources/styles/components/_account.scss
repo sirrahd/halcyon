@@ -110,6 +110,7 @@
 
 .account-letterhead__link {
   display: block;
+  margin-bottom: 14px;
 
   &:hover {
     text-decoration: none;
@@ -131,7 +132,6 @@
   display: block;
   font-size: 14px;
   color: $text-color-gray;
-  margin-bottom: 14px;
 
   &:hover {
     text-decoration: underline;
