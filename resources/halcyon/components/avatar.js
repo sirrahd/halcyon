@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { autoPlayGif } from '../initial_state';
+import omae_mona from '../../images/omae_mona.png';
 
 export default class Avatar extends React.PureComponent {
 
@@ -33,8 +34,8 @@ export default class Avatar extends React.PureComponent {
 
   render () {
     const { account, size, animate, inline, round } = this.props;
-    const src       = account.get('avatar');
-    const staticSrc = account.get('avatar_static');
+    const src       = account.get('avatar') || omae_mona;
+    const staticSrc = account.get('avatar_static') || omae_mona;
     const className = classNames('account__avatar', { 'account__avatar--inline': inline, 'account__avatar--round': round });
 
     const style = {
