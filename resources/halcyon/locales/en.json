@@ -111,11 +111,17 @@
   "account.unmute": "Unmute @{name}",
   "account.view_full_profile": "View full profile",
   "account.with_replies": "Toots & replies",
+  "account.all_media": "Show all media",
 
   "modal.close": "Close this window",
   "modal.compose_form": "Compose new Toot",
   "modal.settings": "Settings",
   "modal.keyboard_shortcuts": "Keyboard Shortcuts",
+
+  "recommended_users.title": "Who to Follow",
+  "recommended_users.refresh": "Refresh",
+  "recommended_users.refreshing": "Refreshing...",
+  "recommended_users.refreshing_note": "It may take a while",
 
   "settings.accounts": "Accounts",
   "settings.publishing": "Publishing",

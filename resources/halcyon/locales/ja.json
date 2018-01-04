@@ -112,11 +112,17 @@
   "account.unmute": "ミュート解除",
   "account.view_full_profile": "全ての情報を見る",
   "account.with_replies": "トゥートと返信",
+  "account.all_media": "すべてのメディアを見る",
 
   "modal.close": "このウィンドウを閉じる",
   "modal.compose_form": "新しいトゥート",
   "modal.settings": "設定",
   "modal.keyboard_shortcuts": "キーボードショートカット",
+
+  "recommended_users.title": "おすすめユーザー",
+  "recommended_users.refresh": "再取得する",
+  "recommended_users.refreshing": "再取得中",
+  "recommended_users.refreshing_note": "しばらく時間が掛かる場合があります",
 
   "information.mastodon": "Mastodonについて",
   "information.feedback": "フィードバック",
