@@ -1,11 +1,10 @@
-import initialState from './initial_state';
+import { domain } from './initial_state';
 
 export default function replaceLink(text) {
   if (!text) {
     return null;
   }
 
-  const { domain } = initialState.meta;
   const baseURL    = `${window.location.protocol}//${window.location.host}`;
 
   return text

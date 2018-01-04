@@ -13,9 +13,11 @@ export const getLinks = (response) => {
 
 export default getState => axios.create({
   baseURL: `https://${getState().getIn(['meta', 'domain'])}`,
+
   headers: {
     Authorization: `Bearer ${getState().getIn(['meta', 'access_token'], '')}`,
   },
+
   transformResponse: [(data) => {
     try {
       return JSON.parse(data);

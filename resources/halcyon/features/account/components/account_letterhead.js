@@ -6,6 +6,7 @@ import { FormattedDate } from 'react-intl';
 import replaceLink from '../../../replace_link';
 
 import Avatar from '../../../containers/avatar_container';
+import AccountCompactGallery from './account_compact_gallery';
 
 export default class AccountLetterhead extends ImmutablePureComponent {
 
@@ -48,6 +49,8 @@ export default class AccountLetterhead extends ImmutablePureComponent {
             />
           </time>
         </div>
+
+        <AccountCompactGallery accountId={account.get('id')} limit={6} />
       </div>
     );
   }
