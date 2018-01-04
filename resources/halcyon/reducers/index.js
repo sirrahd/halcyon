@@ -24,6 +24,7 @@ import custom_emojis from './custom_emojis';
 import lists from './lists';
 import message from './message';
 import loading from './loading';
+import match_accounts from './match_accounts';
 
 const reducers = {
   timelines,
@@ -51,6 +52,7 @@ const reducers = {
   lists,
   message,
   loading,
+  match_accounts,
 };
 
 export default combineReducers(reducers);
