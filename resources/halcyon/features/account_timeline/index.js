@@ -4,6 +4,7 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 import { Switch, Route } from 'react-router-dom';
 
 import Dashboard from '../app/components/dashboard';
+import RecommendedAccounts from '../../containers/recommended_accounts_container';
 
 import AccountStatuses from './components/statuses';
 import AccountGallery from './components/gallery';
@@ -22,7 +23,9 @@ export default class AccountTimeline extends ImmutablePureComponent {
           <Route exact path='/accounts/:accountId/pinned' component={AccountPinned} />
         </Switch>
 
-        <Dashboard position='right' />
+        <Dashboard position='right'>
+          <RecommendedAccounts />
+        </Dashboard>
       </div>
     );
   }

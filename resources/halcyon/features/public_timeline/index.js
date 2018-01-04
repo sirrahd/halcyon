@@ -10,6 +10,7 @@ import Page from '../app/components/page';
 import Content from '../app/components/content';
 import Dashborad from '../app/components/dashboard';
 import ProfileCard from '../../containers/profile_card_container';
+import RecommendedAccounts from '../../containers/recommended_accounts_container';
 
 import Timeline from '../../components/timeline';
 import TimelineHeaderCompose from '../../components/timeline_header_compose';
@@ -39,7 +40,9 @@ export default class PublicTimeline extends React.Component {
             <StatusListContainer timelineId='public' />
           </Timeline>
 
-          <Dashborad position='right' />
+          <Dashborad position='right'>
+            <RecommendedAccounts />
+          </Dashborad>
         </Content>
       </Page>
     );
