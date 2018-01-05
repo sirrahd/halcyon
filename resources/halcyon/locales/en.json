@@ -120,6 +120,7 @@
 
   "recommended_users.title": "Who to Follow",
   "recommended_users.refresh": "Refresh",
+  "recommended_users.delete": "Delete this user from recommendation list",
 
   "settings.accounts": "Accounts",
   "settings.publishing": "Publishing",

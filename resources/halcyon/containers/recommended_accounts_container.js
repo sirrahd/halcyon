@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { injectIntl } from 'react-intl';
 import {
   fetchMatchAccounts,
   deleteMatchAccounts,
@@ -20,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(
+export default injectIntl(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RecommendedAccounts);
+)(RecommendedAccounts));

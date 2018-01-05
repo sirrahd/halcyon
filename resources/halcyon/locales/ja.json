@@ -121,6 +121,7 @@
 
   "recommended_users.title": "おすすめユーザー",
   "recommended_users.refresh": "再取得",
+  "recommended_users.delete": "このユーザーをおすすめから削除する",
 
   "information.mastodon": "Mastodonについて",
   "information.feedback": "フィードバック",

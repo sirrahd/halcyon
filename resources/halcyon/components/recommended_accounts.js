@@ -2,16 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImmurablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, defineMessages } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import Avatar from '../containers/avatar_container';
 import IconButton from '../components/icon_button';
 import LoadingIndicator from './loading_indicator';
 
+const messages = defineMessages({
+  delete: { id: 'recommended_users.delete', defaultMessage: 'Delete this user from recommendation list' },
+});
+
 export default class RecommendedAccounts extends ImmutablePureComponent {
 
   static propTypes = {
+    intl: PropTypes.object.isRequired,
     accounts: ImmurablePropTypes.list,
     is_fetching: PropTypes.bool.isRequired,
     limit: PropTypes.number,
@@ -24,7 +29,7 @@ export default class RecommendedAccounts extends ImmutablePureComponent {
   }
 
   componentWillMount () {
-    if ( !this.props.accounts.size ) {
+    if ( !this.props.accounts.size && !this.props.is_fetching ) {
       this.props.onFetch();
     }
   }
@@ -36,6 +41,7 @@ export default class RecommendedAccounts extends ImmutablePureComponent {
   }
 
   renderItem = (account, index) => {
+    const { intl } = this.props;
     const displayNameHtml = { __html: account.get('display_name_html') };
 
     return (
@@ -57,6 +63,7 @@ export default class RecommendedAccounts extends ImmutablePureComponent {
             <IconButton
               className='recommended-account__delete-button'
               icon='icon-time'
+              title={intl.formatMessage(messages.delete)}
               onClick={this.handleDeleteItem}
               data-index={index}
             />
