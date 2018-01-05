@@ -24,6 +24,7 @@ export function fetchMatchAccounts() {
 export function fetchMatchAccountsRequest() {
   return {
     type: MATCH_ACCOUNTS_FETCH_REQUEST,
+    skipLoading: true,
   };
 }
 
