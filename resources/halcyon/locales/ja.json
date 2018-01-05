@@ -120,9 +120,7 @@
   "modal.keyboard_shortcuts": "キーボードショートカット",
 
   "recommended_users.title": "おすすめユーザー",
-  "recommended_users.refresh": "再取得する",
-  "recommended_users.refreshing": "再取得中",
-  "recommended_users.refreshing_note": "しばらく時間が掛かる場合があります",
+  "recommended_users.refresh": "再取得",
 
   "information.mastodon": "Mastodonについて",
   "information.feedback": "フィードバック",
