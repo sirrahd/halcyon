@@ -43,32 +43,37 @@ export default class RecommendedAccounts extends ImmutablePureComponent {
   renderItem = (account, index) => {
     const { intl } = this.props;
     const displayNameHtml = { __html: account.get('display_name_html') };
+    const noteHtml        = { __html: account.get('note_emojified') };
 
     return (
       <li className='recommended-account' key={account.get('acct')}>
-        <Link to={`/${account.get('acct')}`}>
-          <div className='recommended-account__avatar'>
+        <div className='recommended-account__avatar'>
+          <Link to={`/${account.get('acct')}`}>
             <Avatar account={account} size={48} />
-          </div>
+          </Link>
+        </div>
 
-          <div className='recommended-account__meta'>
-            <div className='recommended-account__name'>
+        <div className='recommended-account__meta'>
+          <div className='recommended-account__name'>
+            <Link to={`/${account.get('acct')}`}>
               <span className='recommended-account__display-name' dangerouslySetInnerHTML={displayNameHtml} />
 
               <span className='recommended-account__acct'>
                 { account.get('acct') }
               </span>
-            </div>
-
-            <IconButton
-              className='recommended-account__delete-button'
-              icon='icon-time'
-              title={intl.formatMessage(messages.delete)}
-              onClick={this.handleDeleteItem}
-              data-index={index}
-            />
+            </Link>
           </div>
-        </Link>
+
+          <div className='recommended-account__note' dangerouslySetInnerHTML={noteHtml} />
+
+          <IconButton
+            className='recommended-account__delete-button'
+            icon='icon-time'
+            title={intl.formatMessage(messages.delete)}
+            onClick={this.handleDeleteItem}
+            data-index={index}
+          />
+        </div>
       </li>
     );
   }
