@@ -13,7 +13,7 @@ export function fetchMatchAccounts() {
 
     const query = `${domain}+${getState().getIn(['accounts', me, 'username'])}`;
 
-    api().get(`/cgi-bin/vinayaka-user-match-api.cgi?${query}`).then(response => {
+    api().get(`/cgi-bin/vinayaka-user-match-simple-api.cgi?${query}`).then(response => {
       dispatch(fetchMatchAccountsSuccess(response.data));
     }).catch(error => {
       dispatch(fetchMatchAccountsFail(error));
