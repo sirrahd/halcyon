@@ -7,14 +7,14 @@ export default class Acct extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
-    normalizing: PropTypes.string.isRequired,
+    acctDisplay: PropTypes.string.isRequired,
   }
 
   render () {
-    const { account, normalizing } = this.props;
+    const { account, acctDisplay } = this.props;
     let acct;
 
-    switch(normalizing) {
+    switch(acctDisplay) {
     case 'always_full':
       acct = `@${account.get('full_acct')}`;
       break;
