@@ -103,12 +103,6 @@
     margin-top: ($topbar-height - 18)/2;
   }
 
-  &--current {
-    .page-navigation__icon {
-      font-weight: bold;
-    }
-  }
-
   span {
     font-size: 13px;
     font-weight: 700;

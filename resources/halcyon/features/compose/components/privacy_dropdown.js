@@ -119,25 +119,25 @@ export default class PrivacyDropdown extends React.PureComponent {
         value: 'public',
         text: intl.formatMessage(messages.public_short),
         meta: intl.formatMessage(messages.public_long),
-        iconClassName: 'fa fa-globe',
+        iconClassName: 'icon-globe',
       },
       {
         value: 'unlisted',
         text: intl.formatMessage(messages.unlisted_short),
         meta: intl.formatMessage(messages.unlisted_long),
-        iconClassName: 'fa fa-lock',
+        iconClassName: 'icon-unlocked-hasp',
       },
       {
         value: 'private',
         text: intl.formatMessage(messages.private_short),
         meta: intl.formatMessage(messages.private_long),
-        iconClassName: 'fa fa-unlock-alt',
+        iconClassName: 'icon-locked-hasp',
       },
       {
         value: 'direct',
         text: intl.formatMessage(messages.direct_short),
         meta: intl.formatMessage(messages.direct_long),
-        iconClassName: 'fa fa-envelope',
+        iconClassName: 'icon-envelope',
       },
     ];
   }
