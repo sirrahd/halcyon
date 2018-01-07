@@ -53,16 +53,6 @@ import { Map as ImmutableMap, fromJS } from 'immutable';
 import escapeTextContentForBrowser from 'escape-html';
 import { domain as instanceDomain } from '../initial_state';
 
-const generateFullAcct = acct => {
-  const [ username, domain = instanceDomain ] = acct.split('@');
-
-  if ( username.charAt(0) !== '@' ) {
-    return `@${username}@${domain}`;
-  }
-
-  return `${username}@${domain}`;
-};
-
 const normalizeAccount = (state, account) => {
   account = { ...account };
 
@@ -76,8 +66,8 @@ const normalizeAccount = (state, account) => {
   account.is_remote = account.acct.split('@').length < 2;
 
   const [ username, domain = instanceDomain ] = account.acct.split('@');
-  account.full_acct = username.charAt(0) !== '@' ? `@${username}@${domain}` : `${username}@${domain}`;
-  account.domain = domain;
+  account.full_acct = `${username}@${domain}`;
+  account.domain    = domain;
 
   if (account.moved) {
     state = normalizeAccount(state, account.moved);
