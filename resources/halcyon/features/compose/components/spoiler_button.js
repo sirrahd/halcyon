@@ -11,6 +11,7 @@ export default class SpoilerButton extends React.PureComponent {
 
   static propTypes = {
     intl: PropTypes.object.isRequired,
+    active: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
   }
 
@@ -20,7 +21,7 @@ export default class SpoilerButton extends React.PureComponent {
   }
 
   render() {
-    const { intl } = this.props;
+    const { intl, active } = this.props;
 
     return (
       <div
@@ -29,7 +30,7 @@ export default class SpoilerButton extends React.PureComponent {
         aria-label={intl.formatMessage(messages.spoiler)}
       >
         <button className='compose-form__button-icon' onClick={this.handleClick}>
-          <i className='icon-cw' aria-hidden='true' />
+          <i className={active ? 'icon-cw-bold' : 'icon-cw'} aria-hidden='true' />
         </button>
       </div>
     );
