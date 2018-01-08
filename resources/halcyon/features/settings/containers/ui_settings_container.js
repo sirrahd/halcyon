@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { injectIntl } from 'react-intl';
 import { changeSetting } from '../../../actions/settings';
 import UISettings from '../components/ui_settings';
 
@@ -12,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(
+export default injectIntl(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(UISettings);
+)(UISettings));

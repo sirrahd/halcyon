@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, defineMessages, FormattedMessage } from 'react-intl';
+import { defineMessages, FormattedMessage } from 'react-intl';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { LANUAGES, THEMES } from '../../../constants';
 
-import SettingSelect from '../../../components/setting_select';
-import SettingCheckbox from '../../../components/setting_checkbox';
+import SettingCheckbox from '../utils/setting_checkbox';
 
 const messages = defineMessages({
   round_avatars: { id: 'settings.ui.round_avatars', defaultMessage: 'Round avatars' },
   navigations_label: { id: 'settings.ui.navigations_label', defaultMessage: 'Show labels in the navigation bar' },
 });
 
-@injectIntl
 export default class UISettings extends React.PureComponent {
 
   static propTypes = {
@@ -56,29 +54,6 @@ export default class UISettings extends React.PureComponent {
             settings={settings}
             settingKey={['halcyon', 'showNavigationLabels']}
             label={intl.formatMessage(messages.navigations_label)}
-            onChange={onChange}
-          />
-        </div>
-
-        <div>
-          <SettingSelect
-            settings={settings}
-            settingKey={['halcyon', 'acctDisplay']}
-            name='halcyon-acct-display'
-            options={[
-              {
-                text: 'Remote only @username@host',
-                value: 'remote_only',
-              },
-              {
-                text: 'Always @username@host',
-                value: 'always_full',
-              },
-              {
-                text: 'Always @username',
-                value: 'always_short',
-              },
-            ]}
             onChange={onChange}
           />
         </div>

@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { FormattedMessage, defineMessages } from 'react-intl';
 
-import Avatar from '../../../containers/avatar_container';
-import DispalyName from '../../../components/display_name';
+import ProfileCard from '../../../containers/profile_card_container';
 
 const messages = defineMessages({
   not_supported: { id: 'not_supported.generic', defaultMessage: 'This feature is not supported in your browser' },
@@ -38,8 +37,7 @@ export default class AccountsSettings extends React.PureComponent {
 
         <form className='account-setting-form'>
           <div>
-            <Avatar size={50} account={account} />
-            <DispalyName account={account} />
+            <ProfileCard accountId={account.get('id')} />
           </div>
 
           <div>

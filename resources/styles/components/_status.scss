@@ -1,5 +1,5 @@
 .status {
-  padding: 12px 24px;
+  padding: 9px 12px 9px 72px;
   border-bottom: 1px solid $background-color;
   background-color: $primary-color;
 
@@ -8,18 +8,78 @@
   }
 }
 
+.status__info {
+  position: relative;
+  font-size: 14px;
+
+  a {
+    text-decoration: none;
+
+    .account__avatar {
+      position: absolute;
+      left: -57px;
+      top: 0;
+    }
+
+    .account__display-name {
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      line-height: 20px;
+      margin-right: 4px;
+      text-overflow: ellipsis;
+    }
+
+    .account__username {
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      line-height: 20px;
+      text-overflow: ellipsis;
+      text-decoration: none;
+    }
+
+    &:hover {
+      .account__display-name {
+        color: $highlight-color;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.status__relative-time {
+  color: $text-color-gray;
+
+  &:hover {
+    color: $highlight-color;
+    text-decoration: underline;
+  }
+}
+
 .status-content {
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 20px;
+
+  & > p:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
 
 .status-action-bar {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 2px;
+  margin-top: 10px;
 }
 
-.statuc-action-bar__item {
+.status-action-bar__item {
   flex-grow: 1;
   flex-shrink: 0;
+
+  .status-action-bar__button {
+    font-size: 15px;
+    color: $text-color-gray;
+  }
 }

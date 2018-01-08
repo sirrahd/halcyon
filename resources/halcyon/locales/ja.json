@@ -29,6 +29,12 @@
   "upload_form.undo": "やり直す",
   "upload_progress.label": "アップロード中...",
 
+  "relative_time.days": "{number}日前",
+  "relative_time.hours": "{number}時間前",
+  "relative_time.just_now": "今",
+  "relative_time.minutes": "{number}分前",
+  "relative_time.seconds": "{number}秒前",
+
   "emoji_button.activity": "活動",
   "emoji_button.custom": "カスタム絵文字",
   "emoji_button.flags": "国旗",
@@ -142,6 +148,10 @@
   "settings.ui.theme": "テーマ",
   "settings.ui.round_avatars": "アバターを丸める",
   "settings.ui.navigations_label": "ナビゲーションバーにラベルを表示",
+  "settings.ui.acct_display": "ユーザー名表示方法",
+  "settings.ui.acct_display.remote_only": "リモートのみ @username@domain",
+  "settings.ui.acct_display.always_full": "常に @username@domain",
+  "settings.ui.acct_display.always_short": "常に @username",
 
   "settings.a11y.unfollow_modal": "フォロー解除する前に確認ダイアログを表示する",
   "settings.a11y.boost_modal": "ブーストする前に確認ダイアログを表示する",

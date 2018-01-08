@@ -16,7 +16,7 @@ import Timeline from '../../components/timeline';
 import TimelineHeaderCompose from '../../components/timeline_header_compose';
 import StatusListContainer from '../../containers/status_list_container';
 
-@connect()
+@connect(null, null)
 export default class HomeTimeline extends React.Component {
 
   static propTypes = {

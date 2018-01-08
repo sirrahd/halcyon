@@ -6,6 +6,8 @@ import { FormattedDate } from 'react-intl';
 import replaceLink from '../../../replace_link';
 
 import Avatar from '../../../containers/avatar_container';
+import DisplayName from '../../../components/display_name';
+import Username from '../../../containers/username_container';
 import AccountCompactGallery from './account_compact_gallery';
 
 export default class AccountLetterhead extends ImmutablePureComponent {
@@ -21,8 +23,6 @@ export default class AccountLetterhead extends ImmutablePureComponent {
       return <div />;
     }
 
-    const acct            = account.get('full_acct');
-    const displayNameHtml = { __html: account.get('display_name_html') };
     const noteHtml        = { __html: replaceLink(account.get('note_emojified')) };
 
     return (
@@ -32,14 +32,14 @@ export default class AccountLetterhead extends ImmutablePureComponent {
         </div>
 
         <Link to={`/accounts/${account.get('id')}`} className='account-letterhead__link'>
-          <h3 className='account-letterhead__display-name' dangerouslySetInnerHTML={displayNameHtml} />
-          <span className='account-letterhead__acct'>{acct}</span>
+          <DisplayName account={account} />
+          <Username account={account} />
         </Link>
 
         <section className='account-letterhead__note' dangerouslySetInnerHTML={noteHtml} />
 
         <div className='account-letterhead__created-at'>
-          <i className='fa fa-calendar' aria-hidden='true' />
+          <i className='icon-clock' aria-hidden='true' />
           <time dateTime={account.get('created_at')}>
             <FormattedDate
               value={account.get('created_at')}

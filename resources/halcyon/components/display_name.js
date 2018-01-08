@@ -10,7 +10,7 @@ export default class DisplayName extends React.PureComponent {
   render () {
     const displayNameHtml = { __html: this.props.account.get('display_name_html') };
 
-    return <strong className='display-name' dangerouslySetInnerHTML={displayNameHtml} />;
+    return <strong className='account__display-name' dangerouslySetInnerHTML={displayNameHtml} />;
   }
 
 }

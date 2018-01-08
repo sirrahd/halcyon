@@ -108,7 +108,7 @@ export default class UserDropdown extends ImmutablePureComponent {
     }
 
     const id              = account.get('id');
-    const acct            = account.get('full_acct');
+    const acct            = account.get('full_username');
     const displayNameHtml = { __html: account.get('display_name_html') };
 
     const items = [

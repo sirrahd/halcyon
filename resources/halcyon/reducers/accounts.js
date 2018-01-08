@@ -66,8 +66,8 @@ const normalizeAccount = (state, account) => {
   account.is_remote = account.acct.split('@').length < 2;
 
   const [ username, domain = instanceDomain ] = account.acct.split('@');
-  account.full_acct = `${username}@${domain}`;
-  account.domain    = domain;
+  account.full_username = `${username}@${domain}`;
+  account.domain = domain;
 
   if (account.moved) {
     state = normalizeAccount(state, account.moved);

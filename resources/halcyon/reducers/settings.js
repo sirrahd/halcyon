@@ -56,7 +56,7 @@ const initialState = ImmutableMap({
   halcyon: ImmutableMap({
     roundAvatars: false,
     showNavigationLabels: false,
-    acctDisplay: 'remote_only',
+    usernameDisplay: 'remote_only',
   }),
 });
 

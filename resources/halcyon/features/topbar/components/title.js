@@ -24,7 +24,7 @@ export default class Title extends React.PureComponent {
               </div>
             ) : (
               <div className='topbar__spinner'>
-                <i className='fa fa-spin fa-circle-o-notch' />
+                <i className='fa fa-spin fa-circle-o-notch' aria-hidden='true' />
               </div>
             )
           }

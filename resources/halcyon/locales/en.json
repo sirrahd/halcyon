@@ -23,6 +23,12 @@
   "compose_form.publish": "Toot!",
   "compose_form.published": "Your Toot was sent",
 
+  "relative_time.days": "{number}d",
+  "relative_time.hours": "{number}h",
+  "relative_time.just_now": "now",
+  "relative_time.minutes": "{number}m",
+  "relative_time.seconds": "{number}s",
+
   "upload_area.title": "Drag & drop to upload",
   "upload_button.label": "Add media",
   "upload_form.description": "Describe for the visually impaired",
@@ -136,6 +142,10 @@
   "settings.ui.theme": "Theme",
   "settings.ui.round_avatars": "Round avatars",
   "settings.ui.navigations_label": "Show labels in the navigation bar",
+  "settings.ui.acct_display": "Username display style",
+  "settings.ui.acct_display.remote_only": "Remote only @username@domain",
+  "settings.ui.acct_display.always_full": "Always @username@domain",
+  "settings.ui.acct_display.always_short": "Always @username",
 
   "settings.a11y.unfollow_modal": "Show confirmation dialog before unfollowing someone",
   "settings.a11y.boost_modal": "Show confirmation dialog before boosting",

@@ -4,6 +4,7 @@ import Overlay from 'react-overlays/lib/Overlay';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import detectPassiveEvents from 'detect-passive-events';
 import classNames from 'classnames';
+import IconButton from '../components/icon_button';
 
 const listenerOptions = detectPassiveEvents.hasSupport ? { passive: true } : false;
 
@@ -196,18 +197,20 @@ export default class Dropdown extends React.PureComponent {
   }
 
   render() {
-    const { items, title, placement, direction } = this.props;
+    const { icon, items, title, placement, disabled, size, direction } = this.props;
     const { expanded } = this.state;
 
     return (
       <div onKeyDown={this.handleKeyDown}>
-        <button
+        <IconButton
+          icon={icon}
           title={title}
+          active={expanded}
+          disabled={disabled}
+          size={size}
           ref={this.setTargetRef}
           onClick={this.handleClick}
-        >
-          This is just an Example desu.
-        </button>
+        />
 
         <Overlay show={expanded} placement={placement} target={this.findTarget}>
           <DropdownMenu

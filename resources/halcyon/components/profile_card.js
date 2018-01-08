@@ -9,6 +9,8 @@ import { autoPlayGif } from '../initial_state';
 import replaceLink from '../replace_link';
 
 import Avatar from '../containers/avatar_container';
+import DispalyName from '../components/display_name';
+import Username from '../containers/username_container';
 
 const messages = defineMessages({
   followers_tip: { id: 'account.followers.tip', defaultMessage: '{count} followers' },
@@ -109,9 +111,7 @@ export default class ProfileCard extends ImmutablePureComponent {
 
     const header          = autoPlayGif ? account.get('header') : account.get('header_static');
     const id              = account.get('id');
-    const displayNameHtml = { __html: account.get('display_name_html') };
     const noteHtml        = { __html: replaceLink(account.get('note_emojified')) };
-    const acct            = account.get('full_acct');
 
     return (
       <div className={classNames('profile-card', { 'profile-card--with-follow-button' : withFollowButton })}>
@@ -124,8 +124,8 @@ export default class ProfileCard extends ImmutablePureComponent {
             </div>
 
             <div className='profile-card-account__meta'>
-              <h4 className='profile-card-account__display-name' dangerouslySetInnerHTML={displayNameHtml} />
-              <span className='profile-card-account__acct'>{ acct }</span>
+              <DispalyName account={account} />
+              <Username account={account} />
             </div>
           </Link>
 

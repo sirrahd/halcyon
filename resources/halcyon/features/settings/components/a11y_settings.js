@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, FormattedMessage } from 'react-intl';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import SettingCheckbox from '../../../components/setting_checkbox';
+import SettingCheckbox from '../utils/setting_checkbox';
 
 const messages = defineMessages({
   unfollow_modal: { id: 'settings.a11y.unfollow_modal', defaultMessage: 'Show confirmation dialog before unfollowing someone' },

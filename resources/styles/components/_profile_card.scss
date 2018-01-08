@@ -30,7 +30,7 @@
   display: block;
   position: relative;
   color: $text-color;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 
   &:hover {
     text-decoration: none;
@@ -52,35 +52,33 @@
 .profile-card-account__meta {
   padding: 12px 0;
   margin-left: 92px;
-}
 
-.profile-card-account__display-name {
-  display: block;
-  margin-bottom: 2px;
-  font-size: 18px;
-  font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100%;
-  text-overflow: ellipsis;
+  .account__display-name {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
 
-  &:hover {
-    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
   }
-}
 
-.profile-card-account__acct {
-  display: block;
-  font-size: 14px;
-  line-height: 1.2;
-  color: $text-color-gray;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100%;
-  text-overflow: ellipsis;
+  .account__username {
+    display: block;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
 
-  &:hover {
-    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
