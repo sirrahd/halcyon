@@ -18,6 +18,7 @@ import {
   PublicTimeline,
   HashtagTimeline,
   ListTimeline,
+  Lists,
   Account,
   Share,
   NotFound,
@@ -101,6 +102,7 @@ export default class App extends React.Component {
 
             {/* <WrappedRoute path='/:acct(@[a-zA-Z0-9_]{1,30}@.+?\..+?)/:page?' component={AcctToAccount} /> */}
 
+            <WrappedRoute exact path='/lists' component={Lists} />
             <WrappedRoute exact path='/share' component={Share} />
             <WrappedRoute component={NotFound} />
           </Switch>
