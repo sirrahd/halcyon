@@ -47,7 +47,7 @@ export default function matchAccounts(state = initialState, action) {
   case MATCH_ACCOUNTS_FETCH_REQUEST:
     return state.set('is_fetching', true);
   case MATCH_ACCOUNTS_FETCH_SUCCESS:
-    return normalizeAccounts(state, action.accounts.slice(0, 50)); // Because there are too many, slice to the first 50 accounts
+    return normalizeAccounts(state, action.accounts);
   case MATCH_ACCOUNTS_FETCH_FAIL:
     return state.set('is_fetching', false);
   case MATCH_ACCOUNTS_DELETE:
