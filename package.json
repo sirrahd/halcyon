@@ -43,7 +43,7 @@
     "file-loader": "^1.1.6",
     "font-awesome": "^4.7.0",
     "fuzzysearch": "^1.0.3",
-    "halcyon-font": "halcyon-suite/halcyon-font#master",
+    "halcyon-font": "halcyon-suite/halcyon-font#1.0.0",
     "history": "^4.7.2",
     "http-link-header": "^0.8.0",
     "immutable": "^3.8.2",
