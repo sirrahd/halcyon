@@ -40,7 +40,6 @@ export default class UploadButton extends React.PureComponent {
       <div
         className='compose-form__button'
         aria-label={intl.formatMessage(messages.media_attachment)}
-        data-tip={intl.formatMessage(messages.media_attachment)}
       >
         <label>
           <button className='compose-form__button-icon' onClick={this.handleClick}>

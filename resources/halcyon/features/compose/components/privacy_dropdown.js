@@ -186,16 +186,15 @@ export default class PrivacyDropdown extends React.PureComponent {
   }
 
   render () {
-    const { value, intl } = this.props;
-    const { open }        = this.state;
-    const valueOption     = this.options.find(item => item.value === value);
+    const { value }   = this.props;
+    const { open }    = this.state;
+    const valueOption = this.options.find(item => item.value === value);
 
     return (
       <div className={classNames('privacy-dropdown', { 'privacy-dropdown--active': open })} onKeyDown={this.handleKeyDown}>
         <div className='compose-form__button'>
           <button
             className='compose-form__button-icon'
-            data-tip={intl.formatMessage(messages.change)}
             onClick={this.handleToggle}
           >
             <i className={`${valueOption.iconClassName} `} aria-hidden='true' />

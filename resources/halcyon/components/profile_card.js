@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
-import { FormattedMessage, FormattedNumber, injectIntl, defineMessages } from 'react-intl';
+import { FormattedMessage, FormattedNumber } from 'react-intl';
 import classNames from 'classnames';
 import { autoPlayGif } from '../initial_state';
 import replaceLink from '../replace_link';
@@ -12,13 +12,6 @@ import Avatar from '../containers/avatar_container';
 import DispalyName from '../components/display_name';
 import Username from '../containers/username_container';
 
-const messages = defineMessages({
-  followers_tip: { id: 'account.followers.tip', defaultMessage: '{count} followers' },
-  following_tip: { id: 'account.following.tip', defaultMessage: '{count} following' },
-  toots_tip:     { id: 'account.toots.tip',     defaultMessage: '{count} toots' },
-});
-
-@injectIntl
 class ProfileCardCounters extends ImmutablePureComponent {
 
   static propTypes = {
@@ -27,7 +20,8 @@ class ProfileCardCounters extends ImmutablePureComponent {
   }
 
   render() {
-    const { account, intl } = this.props;
+    const { account } = this.props;
+
     const id = account.get('id');
     const followers_count = account.get('followers_count');
     const following_count = account.get('following_count');
@@ -37,7 +31,7 @@ class ProfileCardCounters extends ImmutablePureComponent {
       <div className='profile-card-counters'>
         <ul className='profile-card-counters__list'>
           <li className='profile-card-counters__list-item'>
-            <Link to={`/accounts/${id}`} data-tip={intl.formatMessage(messages.toots_tip, { count: statuses_count })}>
+            <Link to={`/accounts/${id}`}>
               <span className='profile-card-counters__item-label'>
                 <FormattedMessage id='account.toots' defaultMessage='Toots' />
               </span>
@@ -49,7 +43,7 @@ class ProfileCardCounters extends ImmutablePureComponent {
           </li>
 
           <li className='profile-card-counters__list-item'>
-            <Link to={`/accounts/${id}/following`} data-tip={intl.formatMessage(messages.following_tip, { count: following_count } )}>
+            <Link to={`/accounts/${id}/following`}>
               <span className='profile-card-counters__item-label'>
                 <FormattedMessage id='account.following' defaultMessage='Following' />
               </span>
@@ -61,7 +55,7 @@ class ProfileCardCounters extends ImmutablePureComponent {
           </li>
 
           <li className='profile-card-counters__list-item'>
-            <Link to={`/accounts/${id}/followers`} data-tip={intl.formatMessage(messages.followers_tip, { count: followers_count })}>
+            <Link to={`/accounts/${id}/followers`}>
               <span className='profile-card-counters__item-label'>
                 <FormattedMessage id='account.followers' defaultMessage='Followers' />
               </span>
@@ -109,9 +103,9 @@ export default class ProfileCard extends ImmutablePureComponent {
       return <div />;
     }
 
-    const header          = autoPlayGif ? account.get('header') : account.get('header_static');
-    const id              = account.get('id');
-    const noteHtml        = { __html: replaceLink(account.get('note_emojified')) };
+    const header   = autoPlayGif ? account.get('header') : account.get('header_static');
+    const id       = account.get('id');
+    const noteHtml = { __html: replaceLink(account.get('note_emojified')) };
 
     return (
       <div className={classNames('profile-card', { 'profile-card--with-follow-button' : withFollowButton })}>

@@ -5,7 +5,6 @@ import { Switch, Redirect } from 'react-router';
 import { withRouter } from 'react-router-dom';
 import { HotKeys } from 'react-hotkeys';
 import { WrappedRoute } from './util/react_router_helpers';
-import { isMobile } from '../../is_mobile';
 import { openModal } from '../../actions/modal';
 import { verifyCredentials } from '../../actions/credentials';
 import { fetchCustomEmojis } from '../../actions/custom_emojis';
@@ -27,7 +26,6 @@ import {
 import MobileTootButton from './components/mobile_toot_button';
 import MessageContainer from '../../containers/message_container';
 import ModalContaienr from '../app/containers/modal_contaienr';
-import Tooltip from 'react-tooltip';
 
 const keyMap = {
   new: 'n',
@@ -109,7 +107,6 @@ export default class App extends React.Component {
 
           <MobileTootButton />
           <ModalContaienr />
-          <Tooltip effect='solid' disable={isMobile(window.innerWidth)} />
         </div>
       </HotKeys>
     );

@@ -65,7 +65,6 @@
     "react-router-dom": "^4.2.2",
     "react-router-scroll-4": "^1.0.0-beta.1",
     "react-textarea-autosize": "^5.2.1",
-    "react-tooltip": "^3.4.0",
     "redux": "^3.7.2",
     "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.2.0",

@@ -21,7 +21,6 @@ import { isMobile } from '../../../is_mobile';
 const messages = defineMessages({
   placeholder: { id: 'compose_form.placeholder', defaultMessage: 'What\'s happning?' },
   spoiler_placeholder: { id: 'compose_form.spoiler_placeholder', defaultMessage: 'Write your warning here' },
-  emoji: { id: 'compose_form.emoji', defaultMessage: 'Add emoji' },
   published: { id: 'compose_form.published', defaultMessage: 'Your Toot was sent' },
 });
 
@@ -182,7 +181,7 @@ export default class ComposeForm extends ImmutablePureComponent {
             autoFocus={!isMobile(window.innerWidth)}
           />
 
-          <div className='compose-form__emoji-button' data-tip={intl.formatMessage(messages.emoji)}>
+          <div className='compose-form__emoji-button'>
             <EmojiPickerDropdown onPickEmoji={this.handleEmojiPick} />
           </div>
         </div>

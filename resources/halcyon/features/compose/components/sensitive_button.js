@@ -28,7 +28,6 @@ export default class SensitiveButton extends React.PureComponent {
     return (
       <div
         className='compose-form__button'
-        data-tip={intl.formatMessage(messages.sensitive)}
         aria-label={intl.formatMessage(messages.sensitive)}
         style={{ display: visible ? 'block' : 'none' }}
       >

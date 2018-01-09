@@ -26,7 +26,6 @@ export default class SpoilerButton extends React.PureComponent {
     return (
       <div
         className='compose-form__button'
-        data-tip={intl.formatMessage(messages.spoiler)}
         aria-label={intl.formatMessage(messages.spoiler)}
       >
         <button className='compose-form__button-icon' onClick={this.handleClick}>
