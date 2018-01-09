@@ -1,8 +1,7 @@
 bootstrap/cache
-node_modules
+**/*node_modules
 
 public/hot
-public/storage
 public/packs
 
 storage/app
@@ -12,7 +11,10 @@ storage/framework/views
 storage/logs
 storage/*.key
 
-vendor
+vendor/**/test*
+vendor/**/tests*
+vendor/**/Tests*
+
 logs
 
 .idea

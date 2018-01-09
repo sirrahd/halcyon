@@ -49,8 +49,6 @@ COPY . /halcyon
 RUN mkdir -p /halcyon/storage /halcyon/bootstrap/cache \
  && chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
  && chmod +x /usr/local/bin/composer; sync \
- && composer install --no-progress \
- && yarn --pure-lockfile \
  && yarn cache clean
 
 VOLUME ["/halcyon"]
