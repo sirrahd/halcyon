@@ -29,8 +29,13 @@ export default class AccountFollowers extends ImmutablePureComponent {
   };
 
   componentWillMount () {
+    window.addEventListener('scroll', this.handleScroll);
     this.props.dispatch(fetchAccount(this.props.match.params.accountId));
     this.props.dispatch(fetchFollowers(this.props.match.params.accountId));
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -40,10 +45,14 @@ export default class AccountFollowers extends ImmutablePureComponent {
     }
   }
 
-  handleScroll = (e) => {
-    const { scrollTop, scrollHeight, clientHeight } = e.target;
+  handleScroll = () => {
+    const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
+    const body = document.body;
+    const html = document.documentElement;
+    const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
+    const windowBottom = windowHeight + window.pageYOffset;
 
-    if (scrollTop === scrollHeight - clientHeight && this.props.hasMore) {
+    if (windowBottom >= docHeight && this.props.hasMore) {
       this.props.dispatch(expandFollowers(this.props.match.params.accountId));
     }
   }
@@ -52,11 +61,9 @@ export default class AccountFollowers extends ImmutablePureComponent {
     const { accountIds, hasMore = true } = this.props;
 
     return (
-      <div className='scrollable' onScroll={this.handleScroll}>
-        <div className='accounts-list'>
-          { accountIds && accountIds.map(id => <ProfileCard key={id} accountId={id} withNote withFollowButton />)}
-          { (!accountIds || hasMore) && <LoadingIndicator /> }
-        </div>
+      <div className='accounts-list'>
+        { accountIds && accountIds.map(id => <ProfileCard key={id} accountId={id} withNote withFollowButton />)}
+        { (!accountIds || hasMore) && <LoadingIndicator /> }
       </div>
     );
   }
