@@ -1,25 +1,27 @@
-.compose-form__spoiler-text {
-  display: none;
-  padding: 8px;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 6px;
-  background-color: $primary-color;
-  border: 1px solid lighten($highlight-color, 5%);
-  font-size: 14px;
-  font-family: inherit;
-  color: $text-color-gray;
-  resize: none;
-  outline: none;
-  transition: 0.3s ease-in-out;
-
-  &--visible {
-    display: block;
-    margin-bottom: 8px;
-  }
-
-  &:focus, &:invalid, &:valid {
+.compose-form__spoiler-text-wrapper {
+  .compose-form__spoiler-text {
+    display: none;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 6px;
+    background-color: $primary-color;
+    border: 1px solid lighten($highlight-color, 5%);
+    font-size: 14px;
+    font-family: inherit;
+    color: $text-color-gray;
+    resize: none;
     outline: none;
+    transition: 0.3s ease-in-out;
+
+    &--visible {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    &:focus, &:invalid, &:valid {
+      outline: none;
+    }
   }
 }
 
