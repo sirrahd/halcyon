@@ -1,6 +1,7 @@
 {
     "name": "halcyon-suite/halcyon",
     "license": "AGPL-3.0",
+    "description": "Another web interface of Mastodon",
     "require": {
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
