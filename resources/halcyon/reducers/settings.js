@@ -6,6 +6,12 @@ import { Map as ImmutableMap } from 'immutable';
 const initialState = ImmutableMap({
   skinTone: 1,
 
+  unfollowModal: false,
+  boostBodal: false,
+  deleteModal: true,
+  autoPlayGif: true,
+  reduceMotion: false,
+
   home: ImmutableMap({
     shows: ImmutableMap({
       reblog: true,
