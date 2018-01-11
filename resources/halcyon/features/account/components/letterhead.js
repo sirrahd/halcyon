@@ -8,7 +8,7 @@ import replaceLink from '../../../replace_link';
 import Avatar from '../../../containers/avatar_container';
 import DisplayName from '../../../components/display_name';
 import Username from '../../../containers/username_container';
-import AccountCompactGallery from './account_compact_gallery';
+import AccountCompactGallery from './compact_gallery';
 
 export default class AccountLetterhead extends ImmutablePureComponent {
 
@@ -23,7 +23,7 @@ export default class AccountLetterhead extends ImmutablePureComponent {
       return <div />;
     }
 
-    const noteHtml        = { __html: replaceLink(account.get('note_emojified')) };
+    const noteHtml = { __html: replaceLink(account.get('note_emojified')) };
 
     return (
       <div className='account-letterhead'>

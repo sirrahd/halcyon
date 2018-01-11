@@ -13,10 +13,13 @@ import ProfileCard from '../../containers/profile_card_container';
 import RecommendedAccounts from '../../containers/recommended_accounts_container';
 
 import Timeline from '../../components/timeline';
-import TimelineHeaderCompose from '../../components/timeline_header_compose';
 import StatusListContainer from '../../containers/status_list_container';
 
-@connect(null, null)
+const mapStateToProps = state => ({
+  hasUnread: state.getIn(['timelines', 'home', 'unread']) > 0,
+});
+
+@connect(mapStateToProps)
 export default class HomeTimeline extends React.Component {
 
   static propTypes = {
@@ -24,7 +27,24 @@ export default class HomeTimeline extends React.Component {
   }
 
   componentWillMount () {
+    window.addEventListener('scroll', this.handleScroll);
     this.props.dispatch(refreshHomeTimeline());
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
+    const body = document.body;
+    const html = document.documentElement;
+    const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
+    const windowBottom = windowHeight + window.pageYOffset;
+
+    if (windowBottom >= docHeight) {
+      this.props.dispatch(expandHomeTimeline());
+    }
   }
 
   render() {
@@ -36,7 +56,6 @@ export default class HomeTimeline extends React.Component {
           </Dashborad>
 
           <Timeline>
-            <TimelineHeaderCompose />
             <StatusListContainer timelineId='home' />
           </Timeline>
 

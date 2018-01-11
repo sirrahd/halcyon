@@ -8,7 +8,7 @@ import { fetchAccount } from '../../../actions/accounts';
 import { refreshAccountTimelineWithReplies, expandAccountTimeline } from '../../../actions/timelines';
 
 import Timeline from '../../../components/timeline';
-import TimelineHeaderNavigation from '../../../components/timeline_header_navigation';
+import TimelineHeader from './timeline_header';
 import StatusList from '../../../components/status_list';
 import LoadingIndicator from '../../../components/loading_indicator';
 
@@ -46,7 +46,7 @@ export default class StatusesWithReplies extends ImmutablePureComponent {
 
     return (
       <Timeline>
-        <TimelineHeaderNavigation id={this.props.match.params.accountId} />
+        <TimelineHeader id={this.props.match.params.accountId} />
 
         {
           statusIds.size ? <StatusList statusIds={statusIds} /> : <LoadingIndicator />

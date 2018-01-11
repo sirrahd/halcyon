@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
-import { changeMeta } from '../../../actions/meta';
+import { changeSetting } from '../../../actions/settings';
 import { injectIntl } from 'react-intl';
 import A11ySettings from '../components/a11y_settings';
 
 const mapStateToProps = state => ({
-  meta: state.get('meta'),
+  settings: state.get('settings'),
 });
 
 const mapDispatchToProps = dispatch => ({
   onChange(key, value) {
-    dispatch(changeMeta(key, value));
+    dispatch(changeSetting(key, value));
   },
 });
 

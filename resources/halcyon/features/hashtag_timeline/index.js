@@ -12,7 +12,6 @@ import Dashborad from '../app/components/dashboard';
 import ProfileCard from '../../containers/profile_card_container';
 
 import Timeline from '../../components/timeline';
-import TimelineHeaderCompose from '../../components/timeline_header_compose';
 import StatusListContainer from '../../containers/status_list_container';
 
 @connect()
@@ -38,7 +37,6 @@ export default class HashtagTimeline extends React.Component {
           </Dashborad>
 
           <Timeline>
-            <TimelineHeaderCompose />
             <StatusListContainer timelineId={`hashtag:${id}`} />
           </Timeline>
 

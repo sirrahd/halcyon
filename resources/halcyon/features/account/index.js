@@ -8,7 +8,7 @@ import Content from '../app/components/content';
 import Dashborad from '../app/components/dashboard';
 
 import AccountHeaderContainer from '../account/containers/account_header_container';
-import AccountLetterheadContainer from '../account/containers/account_letterhead_container';
+import AccountLetterheadContainer from '../account/containers/letterhead_container';
 
 import AccountTimeline from '../account_timeline';
 import AccountFollowers from '../account_followers';

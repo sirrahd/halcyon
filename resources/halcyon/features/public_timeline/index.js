@@ -13,7 +13,6 @@ import ProfileCard from '../../containers/profile_card_container';
 import RecommendedAccounts from '../../containers/recommended_accounts_container';
 
 import Timeline from '../../components/timeline';
-import TimelineHeaderCompose from '../../components/timeline_header_compose';
 import StatusListContainer from '../../containers/status_list_container';
 
 @connect()
@@ -36,7 +35,6 @@ export default class PublicTimeline extends React.Component {
           </Dashborad>
 
           <Timeline>
-            <TimelineHeaderCompose />
             <StatusListContainer timelineId='public' />
           </Timeline>
 

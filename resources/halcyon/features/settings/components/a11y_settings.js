@@ -16,35 +16,60 @@ export default class A11ySettings extends React.PureComponent {
 
   static propTypes = {
     intl: PropTypes.object.isRequired,
-    meta: ImmutablePropTypes.map.isRequired,
+    settings: ImmutablePropTypes.map.isRequired,
     onChange: PropTypes.func.isRequired,
   }
 
   render () {
-    const { meta, intl, onChange } = this.props;
+    const { settings, intl, onChange } = this.props;
 
     return(
       <div className='settings__content'>
         <h3><FormattedMessage id='settings.a11y' defaultMessage='Accessibility' /></h3>
 
         <div>
-          <SettingCheckbox settings={meta} settingKey={['unfollow_modal']} label={intl.formatMessage(messages.unfollow_modal)} onChange={onChange} />
+          <SettingCheckbox
+            settings={settings}
+            settingKey={['unfollowModal']}
+            label={intl.formatMessage(messages.unfollow_modal)}
+            onChange={onChange}
+          />
         </div>
 
         <div>
-          <SettingCheckbox settings={meta} settingKey={['boost_modal']} label={intl.formatMessage(messages.boost_modal)} onChange={onChange} />
+          <SettingCheckbox
+            settings={settings}
+            settingKey={['boost_modal']}
+            label={intl.formatMessage(messages.boostModal)}
+            onChange={onChange}
+          />
         </div>
 
         <div>
-          <SettingCheckbox settings={meta} settingKey={['delete_modal']} label={intl.formatMessage(messages.delete_modal)} onChange={onChange} />
+          <SettingCheckbox
+            settings={settings}
+            settingKey={['deleteModal']}
+            label={intl.formatMessage(messages.delete_modal)}
+            onChange={onChange}
+          />
         </div>
 
         <div>
-          <SettingCheckbox settings={meta} settingKey={['auto_play_gif']} label={intl.formatMessage(messages.auto_play_gif)} onChange={onChange} />
+          <SettingCheckbox
+            settings={settings}
+            settingKey={['autoPlayGif']}
+            label={intl.formatMessage(messages.auto_play_gif)}
+            onChange={onChange}
+          />
         </div>
 
         <div>
-          <SettingCheckbox settings={meta} settingKey={['reduce_motion']} label={intl.formatMessage(messages.reduce_motion)} onChange={onChange} />
+          <SettingCheckbox
+            settings={settings}
+            settingKey={['reduceMotion']}
+            label={intl.formatMessage(messages.reduce_motion)}
+            onChange={onChange}
+          />
         </div>
       </div>
     );
