@@ -17,6 +17,8 @@ Route::get('/intent', function (Request $request) {
     return redirect(str_replace('web+mastodon://', '', $request->input('uri')));
 });
 
+Route::post('/settings', 'SettingsController@index');
+
 Route::get('/{any?}', function () {
     return view('index');
 })->where('any', '.*');

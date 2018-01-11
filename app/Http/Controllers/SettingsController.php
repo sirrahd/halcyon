@@ -2,18 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
     public function index(Request $request) {
-        if ( $request->input('setting') ) {
-            return response()->json(['error' => 'Invalid setting object'], 500);
+        if ( empty($request->all()) ) {
+            return response()->json(['error' => 'Invalid settings'], 500);
         }
 
-        $request->session()->put('lang', $request->input('setting')['lang']);
-        $request->session()->put('theme', $request->input('setting')['theme']);
+        $initial_settings = [
+            'lang'  => 'en',
+            'theme' => '/theme_light.css',
+        ];
 
-        return response()->json($request->input('setting'));
+        $settings = array_merge(
+            $initial_settings,
+            $request->session()->get('settings'),
+            $request->all()
+        );
+
+        if ( $settings ) {
+            $request->session()->put('settings', $settings);
+        }
+
+        return response()->json($request->session()->get('settings'));
     }
 }

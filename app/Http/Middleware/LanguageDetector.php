@@ -22,7 +22,7 @@ class LanguageDetector
     public function handle($request, Closure $next)
     {
         $query_lang = $request->input('lang');
-        $session_lang = $request->session()->get('lang');
+        $session_lang = $request->session()->get('settings')['lang'];
         $accept_langs = array_map(
             function($tag) {
                 $exploded = explode(';', $tag );
@@ -41,7 +41,8 @@ class LanguageDetector
         } else if ( !empty($accept_langs) ) {
             foreach ( $accept_langs as &$accept_lang ) {
                 if ( in_array($accept_lang, $known_langs) ) {
-                    $request->session()->put('lang', $accept_lang);
+                    $settings = array('lang' => $accept_lang) + $request->session()->get('settings', array());
+                    $request->session()->put('settings', $settings);
                     $lang = $accept_lang;
                     break;
                 }
