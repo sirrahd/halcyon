@@ -1,53 +1,112 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Halcyon
+Halcyon is another web interface of [Mastodon](https://github.com/tootsuite/mastodon/).
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Features
+- 3 column based familiar interface.
+- Able to use in every instance.
+- Deployable with Docker.
+- No tracking, No ads.
 
-## About Laravel
+## Supporting
+|Platform  |Version|
+|:---------|:------|
+|Mastodon  |latest |
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Deployment
+At first, you need to create `.env` file. This file defines environment variables that enable the application container.
+```bash
+cp .env.example .env
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Then, Set your host URL in the `.env`. It's necessary for registration of Mastodon API.
+```env
+APP_URL=https://example.com
+```
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+If you want, uncomment following variables to change several information of client.
+```diff
+- # MASTODON_CLIENT_NAME="My Halcyon Fork"
+- # MASTODON_WEBSITE=https://example.com/about/
++ MASTODON_CLIENT_NAME="My Halcyon Fork"
++ MASTODON_WEBSITE=https://example.com/about/
+```
 
-## Learning Laravel
+Then, modify `docker-compose.yml` to uncomment following lines. It makes database persistence.
+```diff
+db:
+  restart: always
+  image: postgres:10.1-alpine
+-  # volumes:
+-  #   - ./postgres:/var/lib/postgresql/data
++  volumes:
++    - ./postgres:/var/lib/postgresql/data
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+redis:
+  restart: always
+  image: redis:4.0.2-alpine
+-  # volumes:
+-  #   - ./redis:/data
++  volumes:
++    - ./redis:/data
+```
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+Then initialize the database, install dependencies and compile assets.
+```
+docker-compose run --rm web composer install --no-progress \
+ && php artisan key:generate \
+```
+```
+docker-compose run --rm web php artisan migrate \
+ && yarn --pure-lockfile \
+ && yarn run prod
+```
 
-## Laravel Sponsors
+Finally, run containers. By default, container exposes its web server in `localhost:2800` so you need to proxy a port in your host to the container.
+```bash
+docker-compose up
+```
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+### Stop application temporary
+```bash
+docker-compose stop
+```
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
+### Remove application
+```bash
+docker-compose rm
+```
 
-## Contributing
+## Development
+Move into the web container
+```bash
+docker-compose exec web ash
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Change `NODE_ENV` to `development` and then install dependence packages for development.
+```bash
+cd /halcyon
+export NODE_ENV="development"
+yarn --pure-lockfile
+```
 
-## Security Vulnerabilities
+After modifying codes, you can build them with:
+```bash
+yarn run build:development
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+# Build automatically if updated files
+yarn run build:development --watch
+```
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+## Donations
+Thanks for supporting Halcyon in [Patreon](https://www.patreon.com/neetshin)!
+- [Ryan Prior](https://www.patreon.com/ryanprior)
+- [Sandro Hawke](https://www.patreon.com/user?u=4112551)
+- [Brenda Salem](https://www.patreon.com/user?u=8460542)
+- [Technowix](https://www.patreon.com/user/creators?u=5702560)
+
+### How to support development?
+- Become a patron via [Patreon](https://www.patreon.com/neetshin).
+- Donate to Bitcoin address: `3AucsLDnY37qipYngLM5KH9heWkJ1AEArv`.
+- Create Pull Requests/Issues in this repository.
