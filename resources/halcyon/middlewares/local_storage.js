@@ -1,4 +1,3 @@
-import { META_CHANGE } from '../actions/meta';
 import { SETTING_CHANGE } from '../actions/settings';
 import {
   CREDENTIALS_VERIFY_SUCCESS,
@@ -28,8 +27,6 @@ export default function localStorageMiddleware() {
 
     if (action.type && !action.skipLocalStorage) {
       switch(action.type) {
-      case META_CHANGE:
-        return mergeLocalStorage(INITIAL_STATE_KEY, { meta: getState().get('meta').toJS() });
       case SETTING_CHANGE:
         return mergeLocalStorage(INITIAL_STATE_KEY, { settings: getState().get('settings').toJS() });
       case CREDENTIALS_VERIFY_SUCCESS:

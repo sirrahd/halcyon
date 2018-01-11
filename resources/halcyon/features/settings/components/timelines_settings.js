@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, FormattedMessage } from 'react-intl';
-import SettingSelect from '../utils/setting_select';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+
+// import SettingSelect from '../utils/setting_select';
+import SettingRadio from '../utils/setting_radio';
 
 const messages = defineMessages({
   round_avatars: { id: 'settings.ui.round_avatars', defaultMessage: 'Round avatars' },
@@ -29,7 +31,7 @@ export default class ComposeSettings extends React.PureComponent {
         <h3><FormattedMessage id='settings.timelines' defaultMessage='Timelines' /></h3>
 
         <div>
-          <SettingSelect
+          <SettingRadio
             settings={settings}
             settingKey={['halcyon', 'usernameDisplay']}
             name='halcyon-username-display'

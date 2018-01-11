@@ -19,6 +19,16 @@ export default class UISettings extends React.PureComponent {
     intl: PropTypes.object.isRequired,
   }
 
+  handleChangeLanguage = e => {
+    const value = e.currentTarget.value;
+    this.props.onChangeLanguage(value);
+  }
+
+  handleChangeTheme = e => {
+    const value = e.currentTarget.value;
+    this.props.onChangeTheme(value);
+  }
+
   render () {
     const { settings, onChange, intl } = this.props;
 
@@ -28,14 +38,14 @@ export default class UISettings extends React.PureComponent {
 
         <div>
           <FormattedMessage id='settings.ui.language' defaultMessage='Language' />
-          <select className='default-css'>
+          <select className='default-css' onBlur={this.handleChangeLanguage}>
             { LANUAGES.map((data, i) => <option key={`${i}-${data.value}`} value={data.value}>{data.name}</option>)}
           </select>
         </div>
 
         <div>
           <FormattedMessage id='settings.ui.theme' defaultMessage='Theme' />
-          <select className='default-css'>
+          <select className='default-css' onBlur={this.handleChangeTheme}>
             { THEMES.map((data, i) => <option key={`${i}-${data.value}`} value={data.value}>{data.name}</option>)}
           </select>
         </div>

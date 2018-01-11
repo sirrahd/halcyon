@@ -16,6 +16,6 @@ export const LANUAGES = [
 ];
 
 export const THEMES = [
-  { value: '/theme_dark.css',  name: 'Light' },
-  { value: '/theme_light.css', name: 'Dark' },
+  { value: '/theme_dark.css',  name: 'Dark' },
+  { value: '/theme_light.css', name: 'Light' },
 ];

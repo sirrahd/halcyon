@@ -35,7 +35,6 @@ export default class ModalRoot extends React.PureComponent {
 
   componentWillReceiveProps (nextProps) {
     if (!!nextProps.type && !this.props.type) {
-      document.body.style.overflow = 'hidden';
       this.activeElement = document.activeElement;
       this.getSiblings().forEach(sibling => sibling.setAttribute('inert', true));
     } else if (!nextProps.type) {
@@ -51,6 +50,7 @@ export default class ModalRoot extends React.PureComponent {
       this.activeElement = null;
     }
     if (this.props.type) {
+      document.body.style.overflow = 'hidden';
       requestAnimationFrame(() => {
         this.setState({ revealed: true });
       });
