@@ -1,6 +1,7 @@
 button.follow-button {
   display: block;
   min-width: 100px;
+  margin-left: 8px;
   padding: 8px 18px;
   box-sizing: border-box;
   border-radius: 25px;
@@ -13,13 +14,29 @@ button.follow-button {
 
   &:hover {
     color: $white;
-    border: 1px solid $highlight-color;
     background-color: $highlight-color;
   }
 
   &--following {
     color: $white;
-    border: 1px solid $highlight-color;
     background-color: $highlight-color;
+  }
+
+  &--edit-profile,
+  &--reset-edit-profile {
+    color: $text-color-gray;
+    border-color: $text-color-gray;
+    background-color: transparent;
+
+    &:hover {
+      color: $text-color-gray;
+      background-color: $primary-color-gray;
+    }
+  }
+
+  &--update-profile {
+    color: $highlight-color;
+    border-color: $highlight-color;
+    background-color: transparent;
   }
 }
