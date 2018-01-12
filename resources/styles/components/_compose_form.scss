@@ -315,7 +315,7 @@
 
   .privacy-dropdown-menu__caret-outer {
     position: absolute;
-    border-bottom: 10px solid $text-color-gray;
+    border-bottom: 10px solid rgba(0,0,0,0.26);
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
   }

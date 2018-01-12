@@ -116,6 +116,8 @@
   "account.view_full_profile": "View full profile",
   "account.with_replies": "Toots & replies",
   "account.all_media": "Show all media",
+  "account.edit_avatar": "Upload avatar image",
+  "account.edit_header": "Upload header image",
 
   "modal.close": "Close this window",
   "modal.compose_form": "Compose new Toot",

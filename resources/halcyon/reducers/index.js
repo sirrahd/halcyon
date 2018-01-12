@@ -25,6 +25,8 @@ import lists from './lists';
 import message from './message';
 import loading from './loading';
 import match_accounts from './match_accounts';
+import credentials from './credentials';
+import source from './source';
 
 const reducers = {
   timelines,
@@ -53,6 +55,8 @@ const reducers = {
   message,
   loading,
   match_accounts,
+  credentials,
+  source,
 };
 
 export default combineReducers(reducers);

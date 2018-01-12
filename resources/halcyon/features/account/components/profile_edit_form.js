@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import { FormattedMessage } from 'react-intl';
 import Textarea from 'react-textarea-autosize';
 
 import Username from '../../../components/username';
@@ -53,10 +54,26 @@ export default class ProfileEditForm extends React.PureComponent {
     return (
       <div className='profile-edit-form'>
         <div className='profile-edit-form__avatar'>
-          <Avatar account={account} size={200} />
-          <div>
-            { avatarPreviewUrl ? <div style={{ backgroundImage: `url("${avatarPreviewUrl}")` }} /> : null }
-            <input type='file' multiple='false' onChange={this.handleChangeAvatar} />
+          <Avatar
+            account={account}
+            size={200}
+            src={avatarPreviewUrl ? avatarPreviewUrl : null}
+          />
+
+          <div className='profile-edit-form__avatar-upload'>
+            <label>
+              <div className='profile-edit-form__avatar-upload-label'>
+                <i className='icon-photo' aria-hidden='true' />
+                <FormattedMessage id='account.edit_avatar' defaultMessage='Upload avatar image' />
+              </div>
+
+              <input
+                type='file'
+                multiple='false'
+                onChange={this.handleChangeAvatar}
+                style={{ display: 'none' }}
+              />
+            </label>
           </div>
         </div>
 

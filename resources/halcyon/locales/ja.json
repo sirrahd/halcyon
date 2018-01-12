@@ -117,6 +117,8 @@
   "account.view_full_profile": "全ての情報を見る",
   "account.with_replies": "トゥートと返信",
   "account.all_media": "すべてのメディアを見る",
+  "account.edit_avatar": "アイコンをアップロード",
+  "account.edit_header": "ヘッダーをアップロード",
 
   "modal.close": "このウィンドウを閉じる",
   "modal.compose_form": "新しいトゥート",

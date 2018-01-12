@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
+import { FormattedMessage } from 'react-intl';
 import { autoPlayGif } from '../../../initial_state';
 
 import AccountHeaderCounters from '../components/account_header_counters';
@@ -52,7 +53,25 @@ export default class AccountHeader extends ImmutablePureComponent {
     return(
       <header className='account-header'>
         <div className='account-header__header' style={{ backgroundImage: `url(${previewSrc || src})` }}>
-          {isEditing ? <input type='file' multiple='false' onChange={this.handleChangeHeader} /> : null}
+          {
+            isEditing && (
+              <div className='account-header__header-upload'>
+                <label>
+                  <div className='account-header__header-upload-label'>
+                    <i className='icon-photo' aria-hidden='true' />
+                    <FormattedMessage id='account.edit_header' defaultMessage='Upload header image' />
+                  </div>
+
+                  <input
+                    type='file'
+                    multiple='false'
+                    onChange={this.handleChangeHeader}
+                    style={{ display: 'none' }}
+                  />
+                </label>
+              </div>
+            )
+          }
         </div>
 
         <div className='account-header__banner'>

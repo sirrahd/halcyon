@@ -14,9 +14,11 @@ export default class Avatar extends React.PureComponent {
     style: PropTypes.object,
     animate: PropTypes.bool,
     inline: PropTypes.bool,
+    src: PropTypes.string,
   };
 
   static defaultProps = {
+    src: null,
     animate: autoPlayGif,
     size: 20,
     inline: false,
@@ -34,8 +36,8 @@ export default class Avatar extends React.PureComponent {
 
   render () {
     const { account, size, animate, inline, round } = this.props;
-    const src       = account.get('avatar') || omae_mona;
-    const staticSrc = account.get('avatar_static') || omae_mona;
+    const src       = this.props.src || account.get('avatar') || omae_mona;
+    const staticSrc = this.props.src || account.get('avatar_static') || omae_mona;
     const className = classNames('account__avatar', { 'account__avatar--inline': inline, 'account__avatar--round': round });
 
     const style = {
