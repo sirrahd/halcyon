@@ -40,7 +40,7 @@ export default class A11ySettings extends React.PureComponent {
           <SettingCheckbox
             settings={settings}
             settingKey={['boost_modal']}
-            label={intl.formatMessage(messages.boostModal)}
+            label={intl.formatMessage(messages.boost_modal)}
             onChange={onChange}
           />
         </div>
