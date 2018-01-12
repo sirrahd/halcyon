@@ -75,25 +75,43 @@ export function changeNote(text) {
   };
 }
 
-export function changeAvatar(image) {
+export function changeAvatar(file) {
   return {
     type: CHANGE_AVATAR,
-    image,
+    file: file[0],
   };
 }
 
-export function changeHeader(image) {
+export function changeHeader(file) {
   return {
     type: CHANGE_HEADER,
-    image,
+    file: file[0],
   };
 }
 
-export function updateCredentials(data) {
+export function updateCredentials() {
   return (dispatch, getState) => {
+    let data = new FormData();
+
+    if ( getState().getIn(['credentials', 'display_name']) ) {
+      data.append('display_name', getState().getIn(['credentials', 'display_name']));
+    }
+
+    if ( getState().getIn(['credentials', 'note']) ) {
+      data.append('note', getState().getIn(['credentials', 'note']));
+    }
+
+    if ( getState().getIn(['credentials', 'avatar']) ) {
+      data.append('avatar', getState().getIn(['credentials', 'avatar']));
+    }
+
+    if ( getState().getIn(['credentials', 'header']) ) {
+      data.append('header', getState().getIn(['credentials', 'header']));
+    }
+
     dispatch(updateCredentialsRequest(data));
 
-    api(getState).patch('/api/v1/accounts/update_credentials', { data }).then(response => {
+    api(getState).patch('/api/v1/accounts/update_credentials', data).then(response => {
       dispatch(updateCredentialsSuccess(response.data));
     }).catch(error => {
       dispatch(updateCredentialsFail(error, data));

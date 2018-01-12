@@ -1,11 +1,11 @@
 <?php
 $lang  = app()->getLocale();
-$theme = Request::session()->get('settings')['theme'];
+$theme = isset(Request::session()->get('settings')['theme']) ? Request::session()->get('settings')['theme'] : '/theme_light.css';
 
 $props = json_encode([
   'locale' => $lang,
   'theme'  => $theme,
-])
+]);
 ?>
 
 <!DOCTYPE HTML>

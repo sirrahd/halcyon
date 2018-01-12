@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
@@ -8,19 +9,25 @@ import replaceLink from '../../../replace_link';
 import Avatar from '../../../containers/avatar_container';
 import DisplayName from '../../../components/display_name';
 import Username from '../../../containers/username_container';
-import AccountCompactGallery from './compact_gallery';
+import CompactGallery from './compact_gallery';
+import ProfileEditForm from '../containers/profile_edit_form_container';
 
 export default class AccountLetterhead extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map,
+    isEditing: PropTypes.bool.isRequired,
   }
 
   render () {
-    const { account } = this.props;
+    const { account, isEditing } = this.props;
 
     if ( !account ) {
       return <div />;
+    }
+
+    if ( isEditing ) {
+      return <ProfileEditForm accountId={account.get('id')} />;
     }
 
     const noteHtml = { __html: replaceLink(account.get('note_emojified')) };
@@ -50,7 +57,7 @@ export default class AccountLetterhead extends ImmutablePureComponent {
           </time>
         </div>
 
-        <AccountCompactGallery accountId={account.get('id')} limit={6} />
+        <CompactGallery accountId={account.get('id')} limit={6} />
       </div>
     );
   }

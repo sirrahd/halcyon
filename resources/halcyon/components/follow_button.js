@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { defineMessages } from 'react-intl';
@@ -14,17 +14,24 @@ const messages = defineMessages({
   unmute: { id: 'account.unmute', defaultMessage: 'Unmute @{name}' },
   mute_notifications: { id: 'account.mute_notifications', defaultMessage: 'Mute notifications from @{name}' },
   unmute_notifications: { id: 'account.unmute_notifications', defaultMessage: 'Unmute notifications from @{name}' },
+  edit_profile: { id: 'account.edit_profile', defaultMessage: 'Edit profile' },
+  update_profile: { id: 'account.update_profile', defaultMessage: 'Save changes' },
+  reset_edit_profile: { id: 'account.reset_edit_profile', defaultMessage: 'Cancel' },
 });
 
 export default class FollowButton extends React.PureComponent {
 
   static propTypes = {
+    intl: PropTypes.object.isRequired,
     account: ImmutablePropTypes.map,
     onFollow: PropTypes.func.isRequired,
     onBlock: PropTypes.func.isRequired,
     onMute: PropTypes.func.isRequired,
     onMuteNotifications: PropTypes.func.isRequired,
-    intl: PropTypes.object.isRequired,
+    onEdit: PropTypes.func.isRequired,
+    onReset: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired,
+    isEditing: PropTypes.bool.isRequired,
   }
 
   handleFollow = () => {
@@ -48,7 +55,7 @@ export default class FollowButton extends React.PureComponent {
   }
 
   render () {
-    const { account, intl } = this.props;
+    const { intl, account, isEditing } = this.props;
 
     if ( account === null ) {
       return <div />;
@@ -79,9 +86,36 @@ export default class FollowButton extends React.PureComponent {
           </div>
         </button>
       );
+
+    } else if ( account.get('id') === me ) {
+      if ( isEditing ) {
+        return (
+          <Fragment>
+            <button className='follow-button follow-button--reset-edit-profile' onClick={this.props.onReset}>
+              <div className='follow-button__label'>
+                { intl.formatMessage(messages.reset_edit_profile)}
+              </div>
+            </button>
+
+            <button className='follow-button follow-button--update-profile' onClick={this.props.onUpdate}>
+              <div className='follow-button__label'>
+                { intl.formatMessage(messages.update_profile)}
+              </div>
+            </button>
+          </Fragment>
+        );
+      }
+
+      return (
+        <button className='follow-button follow-button--edit-profile' onClick={this.props.onEdit}>
+          <div className='follow-button__label'>
+            { intl.formatMessage(messages.edit_profile)}
+          </div>
+        </button>
+      );
     }
 
-    return <div>else</div>;
+    return <div />;
   }
 
 }

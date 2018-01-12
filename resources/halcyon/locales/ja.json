@@ -90,6 +90,8 @@
   "account.block_domain": "{domain}全体を非表示",
   "account.disclaimer_full": "以下の情報は不正確な可能性があります。",
   "account.edit_profile": "プロフィールを編集",
+  "account.update_profile": "変更を保存",
+  "account.reset_edit_profile": "キャンセル",
   "account.favourites": "お気に入り",
   "account.follow": "フォローする",
   "account.followers": "フォロワー",

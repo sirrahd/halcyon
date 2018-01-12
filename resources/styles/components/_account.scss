@@ -17,6 +17,10 @@
   color: $text-color;
   font-weight: bold;
   line-height: 1.2;
+
+  & > i {
+    margin: 0 0.1em;
+  }
 }
 
 .account__username {
@@ -125,14 +129,17 @@
 
 .account-letterhead {
   position: relative;
-  top: -183px;
-  left: 0;
-  padding: 0 10px;
+  padding: 32px 10px 0;
 }
 
-.account-letterhead__avatar .account__avatar {
-  margin-bottom: 8px;
-  border: 5px solid $primary-color;
+.account-letterhead__avatar {
+  position: absolute;
+  top: -183px;
+  left: 0;
+
+  .account__avatar {
+    border: 5px solid $primary-color;
+  }
 }
 
 .account-letterhead__link {
@@ -182,6 +189,63 @@
   }
 }
 
+.profile-edit-form {
+  position: relative;
+  padding-top: 32px
+}
+
+.profile-edit-form__avatar {
+  position: absolute;
+  top: -183px;
+  left: 0;
+
+  .account__avatar {
+    border: 5px solid $primary-color;
+  }
+}
+
+.profile-edit-form__form {
+  padding: 8px;
+  border-radius: 6px;
+  background-color: $secondary-color;
+
+  & > * {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+.profile-edit-form__display-name {
+  border-radius: 6px;
+  background-color: $primary-color;
+  border: 1px solid lighten($highlight-color, 5%);
+
+  & > input[type="text"] {
+    width: 100%;
+    padding: 4px 8px;
+    font-size: 21px;
+    font-weight: bold;
+    color: $text-color;
+    box-sizing: border-box;
+  }
+}
+
+.profile-edit-form__note {
+  border-radius: 6px;
+  background-color: $primary-color;
+  border: 1px solid lighten($highlight-color, 5%);
+
+  & > textarea {
+    width: 100%;
+    padding: 8px 8px;
+    font-size: 14px;
+    line-height: 1.2;
+    font-family: inherit;
+    color: $text-color-gray;
+    resize: none;
+    box-sizing: border-box;
+  }
+}
 .account-compact-gallery {
   margin-bottom: 12px;
 }

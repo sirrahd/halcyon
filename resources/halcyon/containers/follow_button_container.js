@@ -9,6 +9,11 @@ import {
   muteAccount,
   unmuteAccount,
 } from '../actions/accounts';
+import {
+  editCredentials,
+  resetCredentials,
+  updateCredentials,
+} from '../actions/credentials';
 import FollowButton from '../components/follow_button';
 
 const makeMapStateToProps = () => {
@@ -16,6 +21,7 @@ const makeMapStateToProps = () => {
 
   const mapStateToProps = (state, { accountId }) => ({
     account: getAccount(state, accountId),
+    isEditing: state.getIn(['credentials', 'is_editing' ]),
   });
 
   return mapStateToProps;
@@ -55,9 +61,20 @@ const mapDispatchToProps = (dispatch, { intl }) => ({
     }
   },
 
-
   onMuteNotifications (account, notifications) {
     dispatch(muteAccount(account.get('id'), notifications));
+  },
+
+  onEdit () {
+    dispatch(editCredentials());
+  },
+
+  onReset () {
+    dispatch(resetCredentials());
+  },
+
+  onUpdate () {
+    dispatch(updateCredentials());
   },
 });
 

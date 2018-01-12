@@ -1,26 +1,39 @@
 import { connect } from 'react-redux';
-import { changeHeader } from '../../../actions/credentials';
 import { makeGetAccount } from '../../../selectors';
-import AccountHeader from '../components/account_header';
+import {
+  changeAvatar,
+  changeDisplayName,
+  changeNote,
+} from '../../../actions/credentials';
+import ProfileEditFrom from '../components/profile_edit_form';
 
 const makeMapStateToProps = () => {
   const getAccount = makeGetAccount();
 
   const mapStateToProps = (state, { accountId }) => ({
     account: getAccount(state, accountId),
-    isEditing: state.getIn(['credentials', 'is_editing']),
+    note: state.getIn(['source', 'note']),
   });
 
   return mapStateToProps;
 };
 
 const mapDispatchToProps = dispatch => ({
-  onChangeHeader (file) {
-    dispatch(changeHeader(file));
+
+  onChangeAvatar (file) {
+    dispatch(changeAvatar(file));
+  },
+
+  onChangeDisplayName (text) {
+    dispatch(changeDisplayName(text));
+  },
+
+  onChangeNote (text) {
+    dispatch(changeNote(text));
   },
 });
 
 export default connect(
   makeMapStateToProps,
   mapDispatchToProps,
-)(AccountHeader);
+)(ProfileEditFrom);
