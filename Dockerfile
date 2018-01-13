@@ -41,13 +41,14 @@ RUN apk -U upgrade \
  && rm -rf /var/cache/apk/*
 
 COPY ./composer.phar /usr/local/bin/composer
+COPY ./installation/php.ini /usr/local/etc/php/php.ini
 COPY ./installation/nginx.conf /etc/nginx/nginx.conf
 COPY ./installation/zzz-www.conf /usr/local/etc/php-fpm.d
-COPY ./installation/supervisord.conf /etc
+COPY ./installation/supervisord.conf /etc/supervisord.conf
 COPY . /halcyon
 
 RUN mkdir -p /halcyon/storage /halcyon/bootstrap/cache \
- && chmod -R 770 /halcyon/storage /halcyon/bootstrap/cache \
+ && chmod -R 777 /halcyon/storage /halcyon/bootstrap/cache \
  && chmod +x /usr/local/bin/composer; sync \
  && yarn cache clean
 
