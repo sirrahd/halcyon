@@ -20,10 +20,12 @@ export default class SettingText extends React.PureComponent {
     const { settings, settingKey, label } = this.props;
 
     return (
-      <label>
-        <input type='text' defaultValue={settings.getIn(settingKey)} onChange={this.handleChange} />
-        <span>{label}</span>
-      </label>
+      <div className='setting-text'>
+        <label>
+          <input type='text' defaultValue={settings.getIn(settingKey)} onChange={this.handleChange} />
+          <span>{label}</span>
+        </label>
+      </div>
     );
   }
 

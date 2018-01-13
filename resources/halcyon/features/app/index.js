@@ -20,6 +20,7 @@ import {
   Lists,
   Account,
   Share,
+  Login,
   NotFound,
 } from './util/async-components';
 
@@ -33,12 +34,12 @@ const keyMap = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onUpdateState() {
+  onUpdateState () {
     dispatch(verifyCredentials());
     dispatch(fetchCustomEmojis());
   },
 
-  onOpenModal(type, props) {
+  onOpenModal (type, props) {
     dispatch(openModal(type, props));
   },
 });
@@ -83,11 +84,11 @@ export default class App extends React.Component {
           <Switch>
             <Redirect exact from='/' to='/timelines/home' />
 
-            <WrappedRoute exact path='/timelines/home' component={HomeTimeline} />
-            <WrappedRoute exact path='/timelines/public' component={PublicTimeline} />
-            <WrappedRoute exact path='/timelines/public/local' component={CommunityTimeline} />
-            <WrappedRoute exact path='/timelines/tag/:id' component={HashtagTimeline} />
-            <WrappedRoute exact path='/timelines/list/:id' component={ListTimeline} />
+            <WrappedRoute path='/timelines/home' component={HomeTimeline} />
+            <WrappedRoute path='/timelines/public' component={PublicTimeline} />
+            <WrappedRoute path='/timelines/public/local' component={CommunityTimeline} />
+            <WrappedRoute path='/timelines/tag/:id' component={HashtagTimeline} />
+            <WrappedRoute path='/timelines/list/:id' component={ListTimeline} />
             <WrappedRoute path='/accounts/:accountId' component={Account} />
 
             {/*
@@ -98,10 +99,11 @@ export default class App extends React.Component {
             <WrappedRoute exact path='/follow_requests' component={FollowRequests} />
             */}
 
-            {/* <WrappedRoute path='/:acct(@[a-zA-Z0-9_]{1,30}@.+?\..+?)/:page?' component={AcctToAccount} /> */}
+            {/* <WrappedRoute path='/:acct(@[a-zA-Z0-9_]{1,30}@.+?\..+?)' component={ReverseAccountLookup} /> */}
 
-            <WrappedRoute exact path='/lists' component={Lists} />
-            <WrappedRoute exact path='/share' component={Share} />
+            <WrappedRoute path='/lists' component={Lists} />
+            <WrappedRoute path='/share' component={Share} />
+            <WrappedRoute path='/login' component={Login} />
             <WrappedRoute component={NotFound} />
           </Switch>
 

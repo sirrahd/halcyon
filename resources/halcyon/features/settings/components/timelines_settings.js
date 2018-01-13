@@ -31,6 +31,7 @@ export default class ComposeSettings extends React.PureComponent {
         <h3><FormattedMessage id='settings.timelines' defaultMessage='Timelines' /></h3>
 
         <div>
+          <h4>ユーザー名の表示方法</h4>
           <SettingRadio
             settings={settings}
             settingKey={['halcyon', 'usernameDisplay']}

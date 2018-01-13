@@ -3,6 +3,7 @@ body {
   color: $text-color;
   background-color: $background-color;
   font-family : "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-feature-settings: "kern";
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -134,7 +135,10 @@ select {
   height: 16px;
 }
 
-button.generic-button {
+button.generic-button,
+input[type="button"].generic-button,
+input[type="submit"].generic-button,
+input[type="reset"].generic-button {
   display: block;
   padding: 6px 18px;
   overflow: hidden;

@@ -129,7 +129,7 @@
 
 .account-letterhead {
   position: relative;
-  padding: 32px 10px 0;
+  padding: 38px 10px 0;
 }
 
 .account-letterhead__avatar {
@@ -191,7 +191,7 @@
 
 .profile-edit-form {
   position: relative;
-  padding-top: 32px
+  padding-top: 38px
 }
 
 .profile-edit-form__avatar {
@@ -272,6 +272,11 @@
     color: $text-color;
     box-sizing: border-box;
   }
+}
+
+.profile-edit-form__username {
+  font-size: 14px;
+  line-height: 1.2;
 }
 
 .profile-edit-form__note {

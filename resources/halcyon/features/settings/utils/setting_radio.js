@@ -39,7 +39,7 @@ export default class SettingRadio extends React.PureComponent {
     const { options } = this.props;
 
     return (
-      <div>
+      <div className='setting-radio'>
         { options.map(item => this.renderItem(item)) }
       </div>
     );

@@ -8,7 +8,6 @@ import { DropdownMenu } from '../../../components/dropdown_menu';
 import Avatar from '../../../containers/avatar_container';
 
 const messages = defineMessages({
-  tooltip: { id: 'user_navigation.tooltip', defaultMessage: 'Profile and Settings' },
   profile: { id: 'user_navigation.profile', defaultMessage: 'Profile' },
   list: { id: 'user_navigation.list', defaultMessage: 'Lists' },
   settings: { id: 'user_navigation.settings', defaultMessage: 'Settings' },
@@ -147,11 +146,7 @@ export default class UserDropdown extends ImmutablePureComponent {
 
     return (
       <div className='user-navigation__user-dropdown-menu'>
-        <button
-          title={intl.formatMessage(messages.tooltip)}
-          ref={this.setTargetRef}
-          onClick={this.handleClick}
-        >
+        <button ref={this.setTargetRef} onClick={this.handleClick}>
           <Avatar account={account} size={32} />
         </button>
 

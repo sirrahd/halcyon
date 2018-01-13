@@ -27,7 +27,7 @@ export default class SettingCheckbox extends React.PureComponent {
     const { settings, settingKey, options, name } = this.props;
 
     return (
-      <select name={name} defaultValue={settings.getIn(settingKey)} className='default-css' onBlur={this.handleChange}>
+      <select name={name} defaultValue={settings.getIn(settingKey)} className='default-css setting-select' onBlur={this.handleChange}>
         { options.map(item => this.renderItem(item)) }
       </select>
     );

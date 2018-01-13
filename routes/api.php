@@ -12,6 +12,6 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'api'], function() {
-    Route::post('/login/verify_response',  'LoginController@verifyResponse');
-    Route::post('/login/confirm_instance', 'LoginController@confirmInstance');
+    Route::post('/login/verify_response', 'LoginController@verifyResponse');
+    Route::post('/login/verify_instance', 'LoginController@verifyInstance');
 });

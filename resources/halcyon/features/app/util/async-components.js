@@ -34,6 +34,10 @@ export function Share () {
   return import(/* webpackChunkName: "features/share" */'../../share');
 }
 
+export function Login () {
+  return import(/* webpackChunkName: "features/login" */'../../login');
+}
+
 export function NotFound () {
   return import(/* webpackChunkName: "features/not_found" */'../../not_found');
 }

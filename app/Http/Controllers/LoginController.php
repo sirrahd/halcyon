@@ -10,15 +10,15 @@ use App\Instances;
 class LoginController extends Controller
 {
     /**
-     * confirmInstance
+     * verifyInstance
      */
-    public function confirmInstance(Request $request)
+    public function verifyInstance(Request $request)
     {
-        if ( !explode('@', $request->input('acct'))[2] ) {
-            return response()->json(['error' => 'Invalid account'], 500);
+        if ( empty($request->input('instance_domain')) ) {
+            return response()->json(['error' => 'Invalid instance'], 500);
         }
 
-        $instance_domain = explode('@', $request->input('acct'))[2];
+        $instance_domain = $request->input('instance_domain');
         $registrar       = new MastodonRegistrar($instance_domain);
         $table           = new Instances();
 

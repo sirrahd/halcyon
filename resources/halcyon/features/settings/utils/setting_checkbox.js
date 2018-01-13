@@ -20,10 +20,12 @@ export default class SettingCheckbox extends React.PureComponent {
     const { settings, settingKey, label } = this.props;
 
     return (
-      <label>
-        <input type='checkbox' defaultChecked={settings.getIn(settingKey)} onChange={this.handleChange} />
-        <span>{label}</span>
-      </label>
+      <div className='setting-checkbox'>
+        <label>
+          <input type='checkbox' defaultChecked={settings.getIn(settingKey)} onChange={this.handleChange} />
+          <span>{label}</span>
+        </label>
+      </div>
     );
   }
 
