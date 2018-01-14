@@ -19,10 +19,11 @@ export default function login(state = initialState, action) {
   case INSTANCE_VERIFY_REQUEST:
     return state.set('is_verifying_instance', true);
   case INSTANCE_VERIFY_SUCCESS:
-  case INSTANCE_VERIFY_FAIL:
     return state
       .set('is_verifying_instance', false)
-      .set('authorization_url', action.authorize.authorization_uri);
+      .set('authorization_uri', action.authorize.authorization_uri);
+  case INSTANCE_VERIFY_FAIL:
+    return state.set('is_verifying_instance', false);
   case RESPONSE_VERIFY_REQUEST:
     return state.set('is_verifying_response', true);
   case RESPONSE_VERIFY_SUCCESS:
