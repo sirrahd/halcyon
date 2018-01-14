@@ -34,7 +34,7 @@ export default function localStorageMiddleware() {
         return mergeLocalStorage(INITIAL_STATE_KEY, { accounts: { [me] : getAccount(getState(), me).toJS() } });
       case MATCH_ACCOUNTS_FETCH_SUCCESS:
       case MATCH_ACCOUNTS_DELETE:
-        return mergeLocalStorage(INITIAL_STATE_KEY, { match_accounts: getState().get('match_accounts').toJS() });
+        return mergeLocalStorage(INITIAL_STATE_KEY, { match_accounts: getState().get('match_accounts').filter((_, key) => key !== 'is_fetching').toJS() });
       case CUSTOM_EMOJIS_FETCH_SUCCESS:
         return mergeLocalStorage(INITIAL_STATE_KEY, { custom_emojis: action.emojis });
       }
