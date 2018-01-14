@@ -71,17 +71,12 @@ export default class Login extends React.PureComponent {
     this.props.onVerifyInstance(value);
   }
 
-  setInitialState = certificates => {
-    const initialState = Object.assign(
-      DEFAULT_INITIAL_STATE,
-      {
-        meta: {
-          streaming_api_base_url: `wss://${certificates.instance_domain}`,
-          access_token: certificates.access_token,
-          domain: certificates.instance_domain,
-        },
-      },
-    );
+  setInitialState = ({ instance_domain, access_token }) => {
+    const initialState = { ...DEFAULT_INITIAL_STATE };
+
+    initialState.meta.streaming_api_base_url = `wss://${instance_domain}`;
+    initialState.meta.access_token = access_token;
+    initialState.meta.domain = instance_domain;
 
     window.localStorage.setItem(INITIAL_STATE_KEY, JSON.stringify(initialState));
   }

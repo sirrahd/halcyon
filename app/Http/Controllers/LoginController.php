@@ -88,7 +88,7 @@ class LoginController extends Controller
 
             if ( isset($response['access_token']) ) {
                 return response()->json([
-                    'domain' => $instance_domain,
+                    'instance_domain' => $instance_domain,
                     'access_token' => $response['access_token'],
                 ]);
             } else {
