@@ -67,10 +67,10 @@ export function verifyResponseRequest(instanceDomain, code) {
   };
 }
 
-export function verifyResponseSuccess(credentials) {
+export function verifyResponseSuccess(certificates) {
   return {
     type: RESPONSE_VERIFY_SUCCESS,
-    credentials,
+    certificates,
   };
 }
 

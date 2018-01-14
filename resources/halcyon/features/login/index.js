@@ -16,7 +16,7 @@ import Page from '../app/components/page';
 import Content from '../app/components/content';
 
 const mapStateToProps = state => ({
-  credentials: state.getIn(['login', 'credentials']),
+  certificates: state.getIn(['login', 'certificates']),
   authorizationUri: state.getIn(['login', 'authorization_uri']),
   isVerifyingInstance: state.getIn(['login', 'is_verifying_instance']),
   isVerifyingResponse: state.getIn(['login', 'is_verifying_response']),
@@ -38,7 +38,7 @@ export default class Login extends React.PureComponent {
 
   static propTypes = {
     location: PropTypes.object.isRequired,
-    credentials: PropTypes.object,
+    certificates: PropTypes.object,
     authorizationUri: PropTypes.string,
     isVerifyingInstance: PropTypes.bool.isRequired,
     isVerifyingResponse: PropTypes.bool.isRequired,
@@ -59,9 +59,9 @@ export default class Login extends React.PureComponent {
       window.location.href = nextProps.authorizationUri;
     }
 
-    if ( !this.props.credentials && nextProps.credentials && this.props.isVerifyingResponse && !nextProps.isVerifyingResponse ) {
-      this.setInitialState(nextProps.credentials);
-      window.location.href = '/timeline/home';
+    if ( !this.props.certificates && nextProps.certificates && this.props.isVerifyingResponse && !nextProps.isVerifyingResponse ) {
+      this.setInitialState(nextProps.certificates);
+      window.location.href = '/';
     }
   }
 
@@ -71,14 +71,14 @@ export default class Login extends React.PureComponent {
     this.props.onVerifyInstance(value);
   }
 
-  setInitialState = credentials => {
+  setInitialState = certificates => {
     const initialState = Object.assign(
       DEFAULT_INITIAL_STATE,
       {
         meta: {
-          streaming_api_base_url: `wss://${credentials.instance_domain}`,
-          access_token: credentials.access_token,
-          domain: credentials.instance_domain,
+          streaming_api_base_url: `wss://${certificates.instance_domain}`,
+          access_token: certificates.access_token,
+          domain: certificates.instance_domain,
         },
       },
     );
