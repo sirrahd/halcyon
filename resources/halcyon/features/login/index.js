@@ -56,7 +56,7 @@ export default class Login extends React.PureComponent {
 
   handleSubmit = e => {
     e.preventDefault();
-    const value = this.c.value.split('@')[2];
+    const value = this.input.value.split('@')[2];
     this.props.onVerifyInstance(value);
   }
 
