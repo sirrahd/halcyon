@@ -7,7 +7,7 @@ const initialState = ImmutableMap({
   skinTone: 1,
 
   unfollowModal: false,
-  boostBodal: false,
+  boostModal: false,
   deleteModal: true,
   autoPlayGif: true,
   reduceMotion: false,

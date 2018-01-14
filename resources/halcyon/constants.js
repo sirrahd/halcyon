@@ -19,3 +19,56 @@ export const THEMES = [
   { value: '/theme_dark.css',  name: 'Dark' },
   { value: '/theme_light.css', name: 'Light' },
 ];
+
+export const DEFAULT_INITIAL_STATE = {
+  meta: {
+  },
+
+  compose: {
+    me: '76721',
+    default_privacy: 'public',
+    default_sensitive: false,
+  },
+
+  accounts: {},
+
+  custom_emojis: [],
+
+  settings: {
+    skinTone: 1,
+
+    unfollowModal: false,
+    boostModal: false,
+    deleteModal: true,
+    autoPlayGif: true,
+    reduceMotion: false,
+
+    home: {
+      shows: {
+        reblog: true,
+        reply: true,
+      },
+      regex: {
+        body: '',
+      },
+    },
+    community: {
+      regex: {
+        body: '',
+      },
+    },
+    public: {
+      regex: {
+        body: '',
+      },
+    },
+
+    halcyon: {
+      roundAvatars: true,
+      showNavigationLabels: false,
+      acctNormalizing: 'remote_only',
+    },
+  },
+
+  match_accounts: {},
+};

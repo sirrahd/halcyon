@@ -6,7 +6,7 @@ const getMeta    = (prop) => initialState && initialState.meta && initialState.m
 const getSetting = (prop) => initialState && initialState.settings && initialState.settings[prop];
 
 export const unfollowModal = getSetting('unfollowModal');
-export const boostModal    = getSetting('boostBodal');
+export const boostModal    = getSetting('boostModal');
 export const deleteModal   = getSetting('deleteModal');
 export const reduceMotion  = getSetting('autoPlayGif');
 export const autoPlayGif   = getSetting('reduceMotion');
