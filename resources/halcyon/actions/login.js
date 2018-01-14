@@ -13,7 +13,7 @@ export function verifyInstance(instanceDomain) {
     const data = { instance_domain: instanceDomain };
     dispatch(verifyInstanceRequest(instanceDomain));
 
-    api(getState).get('/api/login/verify_instance', { ...data }).then((response) => {
+    api(getState).post('/api/login/verify_instance', { ...data }).then((response) => {
       dispatch(verifyInstanceSuccess(response.data));
     }).catch((error) => {
       dispatch(verifyInstanceFail(instanceDomain, error));
@@ -48,7 +48,7 @@ export function verifyResponse(instanceDomain, code) {
   return (dispatch, getState) => {
     dispatch(verifyResponseRequest(instanceDomain, code));
 
-    api(getState).get('/api/login/verify_response', {
+    api(getState).post('/api/login/verify_response', {
       instance_domain: instanceDomain,
       code,
     }).then((response) => {
