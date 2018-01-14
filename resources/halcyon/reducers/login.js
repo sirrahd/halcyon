@@ -29,7 +29,7 @@ export default function login(state = initialState, action) {
   case RESPONSE_VERIFY_SUCCESS:
     return state
       .set('is_verifying_response', false)
-      .set('credentials', action.credentials);
+      .set('certificates', action.certificates);
   case RESPONSE_VERIFY_FAIL:
     return state.set('is_verifying_response', false);
   default:

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import ImmutablePureComponent from 'react-immutable-pure-component';
 import { withRouter } from 'react-router-dom';
 import {
   verifyInstance,
@@ -34,11 +36,11 @@ const mapDispatchToProps = dispatch => ({
 
 @connect(mapStateToProps, mapDispatchToProps)
 @withRouter
-export default class Login extends React.PureComponent {
+export default class Login extends ImmutablePureComponent {
 
   static propTypes = {
     location: PropTypes.object.isRequired,
-    certificates: PropTypes.object,
+    certificates: ImmutablePropTypes.map,
     authorizationUri: PropTypes.string,
     isVerifyingInstance: PropTypes.bool.isRequired,
     isVerifyingResponse: PropTypes.bool.isRequired,
