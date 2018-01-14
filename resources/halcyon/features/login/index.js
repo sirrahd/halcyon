@@ -22,8 +22,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(verifyInstance(instance_domain));
   },
 
-  onVerifyResponse (code, instance_domain) {
-    dispatch(verifyResponse(code, instance_domain));
+  onVerifyResponse (instance_domain, code) {
+    dispatch(verifyResponse(instance_domain, code));
   },
 });
 
@@ -41,10 +41,10 @@ export default class Login extends React.PureComponent {
   }
 
   componentDidMount () {
-    const { code, instance_domain } = querystring.decode(this.props.location.search.substr(1));
+    const { instance_domain, code } = querystring.decode(this.props.location.search.substr(1));
 
-    if ( code && instance_domain ) {
-      this.props.onVerifyResponse(code, instance_domain);
+    if ( instance_domain && code ) {
+      this.props.onVerifyResponse(instance_domain, code);
     }
   }
 
