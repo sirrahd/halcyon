@@ -27,6 +27,7 @@ import loading from './loading';
 import match_accounts from './match_accounts';
 import credentials from './credentials';
 import source from './source';
+import login from './login';
 
 const reducers = {
   timelines,
@@ -57,6 +58,7 @@ const reducers = {
   match_accounts,
   credentials,
   source,
+  login,
 };
 
 export default combineReducers(reducers);

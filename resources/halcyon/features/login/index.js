@@ -48,7 +48,7 @@ export default class Login extends React.PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if ( !this.props.authorizationUri && nextProps.authorizationUri && this.props.isVerifyingInstance && !nextProps.isVerifyingInstance ) {
       window.location.href = nextProps.authorizationUri;
     }
