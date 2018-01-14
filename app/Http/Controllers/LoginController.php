@@ -18,7 +18,7 @@ class LoginController extends Controller
             return response()->json(['error' => 'Invalid instance'], 500);
         }
 
-        $instance_domain = $request->input('instance_domain');
+        $instance_domain = mb_strtolower($request->input('instance_domain'));
         $registrar       = new MastodonRegistrar($instance_domain);
         $table           = new Instances();
 
@@ -70,7 +70,7 @@ class LoginController extends Controller
         }
 
         $code            = $request->input('code');
-        $instance_domain = $request->input('instance_domain');
+        $instance_domain = mb_strtolower($request->input('instance_domain'));
         $table           = new Instances();
         $registrar       = new MastodonRegistrar($instance_domain);
 
