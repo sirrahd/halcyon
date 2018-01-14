@@ -83,7 +83,7 @@ class MastodonRegistrar
             'response_type' => 'code',
             'scope'         => implode(' ', config('mastodon.scopes')),
             'website'       => config('mastodon.website'),
-            'redirect_uri'  => url('/login?&instance_domain='.$instance_domain)
+            'redirect_uri'  => url('/login?&instance_domain='.$instance_domain, [], true)
         ]);
 
         return $authorization_uri;

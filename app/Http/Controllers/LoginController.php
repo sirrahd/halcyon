@@ -83,7 +83,7 @@ class LoginController extends Controller
                 $client_info->client_id,
                 $client_info->client_secret,
                 $code,
-                url('/login?&instance_domain='.$instance_domain)
+                url('/login?&instance_domain='.$instance_domain, [], true)
             );
 
             if ( isset($response['access_token']) ) {
