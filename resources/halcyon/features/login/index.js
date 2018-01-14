@@ -7,11 +7,16 @@ import {
   verifyResponse,
 } from '../../actions/login';
 import querystring from 'querystring';
+import {
+  INITIAL_STATE_KEY,
+  DEFAULT_INITIAL_STATE,
+} from '../../constants';
 
 import Page from '../app/components/page';
 import Content from '../app/components/content';
 
 const mapStateToProps = state => ({
+  credentials: state.getIn(['login', 'credentials']),
   authorizationUri: state.getIn(['login', 'authorization_uri']),
   isVerifyingInstance: state.getIn(['login', 'is_verifying_instance']),
   isVerifyingResponse: state.getIn(['login', 'is_verifying_response']),
@@ -33,6 +38,7 @@ export default class Login extends React.PureComponent {
 
   static propTypes = {
     location: PropTypes.object.isRequired,
+    credentials: PropTypes.object,
     authorizationUri: PropTypes.string,
     isVerifyingInstance: PropTypes.bool.isRequired,
     isVerifyingResponse: PropTypes.bool.isRequired,
@@ -52,12 +58,32 @@ export default class Login extends React.PureComponent {
     if ( !this.props.authorizationUri && nextProps.authorizationUri && this.props.isVerifyingInstance && !nextProps.isVerifyingInstance ) {
       window.location.href = nextProps.authorizationUri;
     }
+
+    if ( !this.props.credentials && nextProps.credentials && this.props.isVerifyingResponse && !nextProps.isVerifyingResponse ) {
+      this.setInitialState(nextProps.credentials);
+      window.location.href = '/timeline/home';
+    }
   }
 
   handleSubmit = e => {
     e.preventDefault();
     const value = this.input.value.split('@')[2];
     this.props.onVerifyInstance(value);
+  }
+
+  setInitialState = credentials => {
+    const initialState = Object.assign(
+      DEFAULT_INITIAL_STATE,
+      {
+        meta: {
+          streaming_api_base_url: `wss://${credentials.instance_domain}`,
+          access_token: credentials.access_token,
+          domain: credentials.instance_domain,
+        },
+      },
+    );
+
+    window.localStorage.setItem(INITIAL_STATE_KEY, initialState);
   }
 
   setRef = c => {

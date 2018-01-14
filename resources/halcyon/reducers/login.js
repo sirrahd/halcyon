@@ -27,6 +27,9 @@ export default function login(state = initialState, action) {
   case RESPONSE_VERIFY_REQUEST:
     return state.set('is_verifying_response', true);
   case RESPONSE_VERIFY_SUCCESS:
+    return state
+      .set('is_verifying_response', false)
+      .set('credentials', action.credentials);
   case RESPONSE_VERIFY_FAIL:
     return state.set('is_verifying_response', false);
   default:
